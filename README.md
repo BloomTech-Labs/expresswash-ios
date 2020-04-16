@@ -56,49 +56,38 @@ D. Allow customers and car washers to rate and leave feedback about each other.
 ![](header.png)
 
 ### Features
-🚫
--    Feature 1
--    Feature 2
--    Feature 3
--    Feature 4
--    Feature 5
+
+-    In-App Payment
+-    Schedule/Accept Car Wash  [Client/Washer]
+-    Notification of Completed Wash w/ Photos
+-    Map for Washers
+-    User Profiles for Display
 
 ### Authentication API here
 
-🚫Replace text below with a description of the API
+AWS Amplify:
 
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
+AWS Amplify is a development platform for building secure, scalable mobile and web applications. It makes it easy for you to authenticate users, securely store data and user metadata, authorize selective access to data, integrate machine learning, analyze application metrics, and execute server-side code.
+
 
 ### Payment API here
 
-🚫Replace text below with a description of the API
+Stripe: 
 
-This is the way you take out your frustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
+Stripe is a service that allows users to accept payments online, specifically developers. With the Stripe application, users can keep track of payments, search past payments, create recurring charges, and keep track of customers.
 
-### Misc API here
-
-🚫Replace text below with a description of the API
-
-You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldn't shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
 
 ### Misc API here
 
-🚫Replace text below with a description of the API
+MapBox:
 
-When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good.
+Mapbox is the location data platform for mobile and web applications. They provide building blocks to add location features like maps, search, and navigation into any experience created.
 
-### Misc API here
-
-🚫Replace text below with a description of the API
-
-Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
 
 ## Requirements
 
-🚫 These are examples, make sure this matches your project's requirements
-
--   iOS 8.0+
--   Xcode 7.3
+-   iOS 13.0+
+-   Xcode 11.0+
 -   Cocoa Pods
 
 ## Contributing
