@@ -16,6 +16,10 @@
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/EZSwiftExtensions.svg)](https://cocoapods.org/)  
 [![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](https://www.apple.com/ios/ios-13/)
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/b0e7997cfcbf8e3931ca/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/wowo-ios/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/b0e7997cfcbf8e3931ca/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/wowo-ios/test_coverage)
+
 
 ## Project Overview
 
