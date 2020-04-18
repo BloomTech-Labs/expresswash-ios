@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C3BA4D3BC35E4F62848175C /* Pods_ExpressWash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A8200D7CB7A1DA0AE0695DE /* Pods_ExpressWash.framework */; };
 		375DB3DA244A5AE500C889F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375DB3D9244A5AE500C889F2 /* AppDelegate.swift */; };
 		375DB3DC244A5AE500C889F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375DB3DB244A5AE500C889F2 /* SceneDelegate.swift */; };
 		375DB3E1244A5AE500C889F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375DB3DF244A5AE500C889F2 /* Main.storyboard */; };
@@ -22,6 +23,9 @@
 		375DB3E2244A5AE800C889F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		375DB3E5244A5AE800C889F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		375DB3E7244A5AE800C889F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		784D55BC02CE141CBBA94DD7 /* Pods-ExpressWash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpressWash.release.xcconfig"; path = "Target Support Files/Pods-ExpressWash/Pods-ExpressWash.release.xcconfig"; sourceTree = "<group>"; };
+		7A8200D7CB7A1DA0AE0695DE /* Pods_ExpressWash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpressWash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C22957D25B9EF61851B91CB3 /* Pods-ExpressWash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpressWash.debug.xcconfig"; path = "Target Support Files/Pods-ExpressWash/Pods-ExpressWash.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C3BA4D3BC35E4F62848175C /* Pods_ExpressWash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				375DB3D8244A5AE500C889F2 /* ExpressWash */,
 				375DB3D7244A5AE500C889F2 /* Products */,
+				39C68DA884EC6C2CC46D9DFC /* Pods */,
+				B41FE9FEE225BA7775004AA3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +135,24 @@
 			name = "App Lifecycle";
 			sourceTree = "<group>";
 		};
+		39C68DA884EC6C2CC46D9DFC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C22957D25B9EF61851B91CB3 /* Pods-ExpressWash.debug.xcconfig */,
+				784D55BC02CE141CBBA94DD7 /* Pods-ExpressWash.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B41FE9FEE225BA7775004AA3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A8200D7CB7A1DA0AE0695DE /* Pods_ExpressWash.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +160,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 375DB3EA244A5AE800C889F2 /* Build configuration list for PBXNativeTarget "ExpressWash" */;
 			buildPhases = (
+				E58B59E715163F75D9605B0C /* [CP] Check Pods Manifest.lock */,
 				375DB3D2244A5AE500C889F2 /* Sources */,
 				375DB3D3244A5AE500C889F2 /* Frameworks */,
 				375DB3D4244A5AE500C889F2 /* Resources */,
+				ADCF719F7D8F97C95357762D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -193,6 +220,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ADCF719F7D8F97C95357762D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExpressWash/Pods-ExpressWash-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExpressWash/Pods-ExpressWash-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExpressWash/Pods-ExpressWash-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E58B59E715163F75D9605B0C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ExpressWash-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		375DB3D2244A5AE500C889F2 /* Sources */ = {
@@ -342,6 +411,7 @@
 		};
 		375DB3EB244A5AE800C889F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C22957D25B9EF61851B91CB3 /* Pods-ExpressWash.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -360,6 +430,7 @@
 		};
 		375DB3EC244A5AE800C889F2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 784D55BC02CE141CBBA94DD7 /* Pods-ExpressWash.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
