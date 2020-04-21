@@ -165,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				375DB3DF244A5AE500C889F2 /* Main.storyboard */,
+				378BB365244E837000A2DCDA /* SignUp.storyboard */,
 				375DB3E4244A5AE800C889F2 /* LaunchScreen.storyboard */,
 			);
 			name = Storyboards;
@@ -370,6 +371,7 @@
 			files = (
 				375DB3E6244A5AE800C889F2 /* LaunchScreen.storyboard in Resources */,
 				375DB3E3244A5AE800C889F2 /* Assets.xcassets in Resources */,
+				378BB366244E837000A2DCDA /* SignUp.storyboard in Resources */,
 				375DB3E1244A5AE500C889F2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
