@@ -31,10 +31,10 @@ class SignUpViewController: UIViewController {
     
     //MARK: - Methods
     
+    //MARK: - Actions
+    
     @IBAction func nextButtonTapped(_ sender: Any) {
     }
-    
-    //MARK: - Actions
     
     //MARK: - Navigation
     
