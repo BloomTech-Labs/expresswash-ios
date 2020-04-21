@@ -13,9 +13,18 @@
 		375DB3E1244A5AE500C889F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375DB3DF244A5AE500C889F2 /* Main.storyboard */; };
 		375DB3E3244A5AE800C889F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 375DB3E2244A5AE800C889F2 /* Assets.xcassets */; };
 		375DB3E6244A5AE800C889F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375DB3E4244A5AE800C889F2 /* LaunchScreen.storyboard */; };
-		5D46BE40244E8B110058A660 /* ExpressWash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE3E244E8B110058A660 /* ExpressWash.xcdatamodeld */; };
 		5D46BE42244E9E2A0058A660 /* Appointment+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE41244E9E2A0058A660 /* Appointment+Convenience.swift */; };
 		5D46BE44244E9EE20058A660 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE43244E9EE20058A660 /* CoreDataStack.swift */; };
+		5D46BE46244EA0950058A660 /* AppointmentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE45244EA0950058A660 /* AppointmentRepresentation.swift */; };
+		5D46BE4D244EBAA80058A660 /* ExpressWash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE4B244EBAA80058A660 /* ExpressWash.xcdatamodeld */; };
+		5D46BE56244EBE5A0058A660 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE4E244EBE5A0058A660 /* User+CoreDataClass.swift */; };
+		5D46BE57244EBE5A0058A660 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE4F244EBE5A0058A660 /* User+CoreDataProperties.swift */; };
+		5D46BE58244EBE5A0058A660 /* Appointment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE50244EBE5A0058A660 /* Appointment+CoreDataClass.swift */; };
+		5D46BE59244EBE5A0058A660 /* Appointment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE51244EBE5A0058A660 /* Appointment+CoreDataProperties.swift */; };
+		5D46BE5A244EBE5A0058A660 /* Washer+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE52244EBE5A0058A660 /* Washer+CoreDataClass.swift */; };
+		5D46BE5B244EBE5A0058A660 /* Washer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE53244EBE5A0058A660 /* Washer+CoreDataProperties.swift */; };
+		5D46BE5C244EBE5A0058A660 /* Car+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE54244EBE5A0058A660 /* Car+CoreDataClass.swift */; };
+		5D46BE5D244EBE5A0058A660 /* Car+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE55244EBE5A0058A660 /* Car+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,9 +35,18 @@
 		375DB3E2244A5AE800C889F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		375DB3E5244A5AE800C889F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		375DB3E7244A5AE800C889F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5D46BE3F244E8B110058A660 /* ExpressWash.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExpressWash.xcdatamodel; sourceTree = "<group>"; };
 		5D46BE41244E9E2A0058A660 /* Appointment+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+Convenience.swift"; sourceTree = "<group>"; };
 		5D46BE43244E9EE20058A660 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		5D46BE45244EA0950058A660 /* AppointmentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentRepresentation.swift; sourceTree = "<group>"; };
+		5D46BE4C244EBAA80058A660 /* ExpressWash.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExpressWash.xcdatamodel; sourceTree = "<group>"; };
+		5D46BE4E244EBE5A0058A660 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5D46BE4F244EBE5A0058A660 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5D46BE50244EBE5A0058A660 /* Appointment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5D46BE51244EBE5A0058A660 /* Appointment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5D46BE52244EBE5A0058A660 /* Washer+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Washer+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5D46BE53244EBE5A0058A660 /* Washer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Washer+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5D46BE54244EBE5A0058A660 /* Car+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5D46BE55244EBE5A0058A660 /* Car+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		784D55BC02CE141CBBA94DD7 /* Pods-ExpressWash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpressWash.release.xcconfig"; path = "Target Support Files/Pods-ExpressWash/Pods-ExpressWash.release.xcconfig"; sourceTree = "<group>"; };
 		7A8200D7CB7A1DA0AE0695DE /* Pods_ExpressWash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpressWash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22957D25B9EF61851B91CB3 /* Pods-ExpressWash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpressWash.debug.xcconfig"; path = "Target Support Files/Pods-ExpressWash/Pods-ExpressWash.debug.xcconfig"; sourceTree = "<group>"; };
@@ -122,8 +140,17 @@
 			isa = PBXGroup;
 			children = (
 				5D46BE43244E9EE20058A660 /* CoreDataStack.swift */,
-				5D46BE3E244E8B110058A660 /* ExpressWash.xcdatamodeld */,
+				5D46BE4B244EBAA80058A660 /* ExpressWash.xcdatamodeld */,
+				5D46BE50244EBE5A0058A660 /* Appointment+CoreDataClass.swift */,
+				5D46BE51244EBE5A0058A660 /* Appointment+CoreDataProperties.swift */,
 				5D46BE41244E9E2A0058A660 /* Appointment+Convenience.swift */,
+				5D46BE45244EA0950058A660 /* AppointmentRepresentation.swift */,
+				5D46BE54244EBE5A0058A660 /* Car+CoreDataClass.swift */,
+				5D46BE55244EBE5A0058A660 /* Car+CoreDataProperties.swift */,
+				5D46BE4E244EBE5A0058A660 /* User+CoreDataClass.swift */,
+				5D46BE4F244EBE5A0058A660 /* User+CoreDataProperties.swift */,
+				5D46BE52244EBE5A0058A660 /* Washer+CoreDataClass.swift */,
+				5D46BE53244EBE5A0058A660 /* Washer+CoreDataProperties.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -277,10 +304,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D46BE44244E9EE20058A660 /* CoreDataStack.swift in Sources */,
-				5D46BE40244E8B110058A660 /* ExpressWash.xcdatamodeld in Sources */,
+				5D46BE46244EA0950058A660 /* AppointmentRepresentation.swift in Sources */,
+				5D46BE5D244EBE5A0058A660 /* Car+CoreDataProperties.swift in Sources */,
+				5D46BE57244EBE5A0058A660 /* User+CoreDataProperties.swift in Sources */,
+				5D46BE5C244EBE5A0058A660 /* Car+CoreDataClass.swift in Sources */,
 				375DB3DA244A5AE500C889F2 /* AppDelegate.swift in Sources */,
+				5D46BE4D244EBAA80058A660 /* ExpressWash.xcdatamodeld in Sources */,
+				5D46BE59244EBE5A0058A660 /* Appointment+CoreDataProperties.swift in Sources */,
 				375DB3DC244A5AE500C889F2 /* SceneDelegate.swift in Sources */,
+				5D46BE5B244EBE5A0058A660 /* Washer+CoreDataProperties.swift in Sources */,
+				5D46BE58244EBE5A0058A660 /* Appointment+CoreDataClass.swift in Sources */,
 				5D46BE42244E9E2A0058A660 /* Appointment+Convenience.swift in Sources */,
+				5D46BE56244EBE5A0058A660 /* User+CoreDataClass.swift in Sources */,
+				5D46BE5A244EBE5A0058A660 /* Washer+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,12 +518,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		5D46BE3E244E8B110058A660 /* ExpressWash.xcdatamodeld */ = {
+		5D46BE4B244EBAA80058A660 /* ExpressWash.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				5D46BE3F244E8B110058A660 /* ExpressWash.xcdatamodel */,
+				5D46BE4C244EBAA80058A660 /* ExpressWash.xcdatamodel */,
 			);
-			currentVersion = 5D46BE3F244E8B110058A660 /* ExpressWash.xcdatamodel */;
+			currentVersion = 5D46BE4C244EBAA80058A660 /* ExpressWash.xcdatamodel */;
 			path = ExpressWash.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
