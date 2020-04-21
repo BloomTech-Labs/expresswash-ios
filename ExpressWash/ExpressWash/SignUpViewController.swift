@@ -14,6 +14,15 @@ class SignUpViewController: UIViewController {
     
     //MARK: - Outlets
     
+    @IBOutlet weak var backgroundView: UIView!
+    
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var emailAddressTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confirmTextField: UITextField!
+    
+    @IBOutlet weak var nextButton: UIButton!
+    
     //MARK: - Views
     
     override func viewDidLoad() {
@@ -21,6 +30,9 @@ class SignUpViewController: UIViewController {
     }
     
     //MARK: - Methods
+    
+    @IBAction func nextButtonTapped(_ sender: Any) {
+    }
     
     //MARK: - Actions
     
