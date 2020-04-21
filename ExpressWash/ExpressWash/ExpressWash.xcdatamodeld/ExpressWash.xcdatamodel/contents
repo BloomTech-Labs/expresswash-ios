@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Appointment" representedClassName="Appointment" syncable="YES" codeGenerationType="class">
+        <attribute name="address1" attributeType="String"/>
+        <attribute name="address2" optional="YES" attributeType="String"/>
+        <attribute name="city" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lat" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="long" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="photoBeforeJob" optional="YES" attributeType="URI"/>
+        <attribute name="photoJobComplete" optional="YES" attributeType="URI"/>
+        <attribute name="state" attributeType="String"/>
+        <attribute name="timeComplete" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="timeRequested" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="zip" attributeType="String"/>
+        <relationship name="car" maxCount="1" deletionRule="Nullify" destinationEntity="Car" inverseName="appointment" inverseEntity="Car"/>
+        <relationship name="client" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="appointment" inverseEntity="User"/>
+        <relationship name="washer" maxCount="1" deletionRule="Nullify" destinationEntity="Washer" inverseName="appointment" inverseEntity="Washer"/>
+    </entity>
+    <entity name="Car" representedClassName="Car" syncable="YES" codeGenerationType="class">
+        <attribute name="attribute" optional="YES"/>
+        <attribute name="attribute1" optional="YES"/>
+        <attribute name="attribute2" optional="YES"/>
+        <attribute name="color" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="licensePlate" attributeType="String"/>
+        <attribute name="make" attributeType="String"/>
+        <attribute name="model" attributeType="String"/>
+        <attribute name="photo" optional="YES" attributeType="URI"/>
+        <attribute name="year" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="appointment" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Appointment" inverseName="car" inverseEntity="Appointment"/>
+        <relationship name="owner" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="cars" inverseEntity="User"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="bannerImage" optional="YES" attributeType="URI"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="firstName" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastName" attributeType="String"/>
+        <attribute name="profileImage" optional="YES" attributeType="URI"/>
+        <attribute name="userType" attributeType="String"/>
+        <relationship name="appointment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="client" inverseEntity="Appointment"/>
+        <relationship name="cars" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Car" inverseName="owner" inverseEntity="Car"/>
+        <relationship name="washer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Washer" inverseName="user" inverseEntity="Washer"/>
+    </entity>
+    <entity name="Washer" representedClassName="Washer" syncable="YES" codeGenerationType="class">
+        <attribute name="aboutMe" optional="YES" attributeType="String"/>
+        <attribute name="available" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="long" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="rate" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="appointment" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Appointment" inverseName="washer" inverseEntity="Appointment"/>
+        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="washer" inverseEntity="User"/>
+    </entity>
+    <elements>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="193"/>
+        <element name="Washer" positionX="295.53515625" positionY="196.859375" width="128" height="148"/>
+        <element name="Car" positionX="135" positionY="153" width="128" height="223"/>
+        <element name="Appointment" positionX="144" positionY="162" width="128" height="298"/>
+    </elements>
+</model>
