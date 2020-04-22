@@ -136,3 +136,10 @@ extension SignUpViewController: UITextFieldDelegate {
         return true
     }
 }
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+}
