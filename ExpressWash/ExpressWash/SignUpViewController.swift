@@ -111,21 +111,16 @@ class SignUpViewController: UIViewController {
     //MARK: - Actions
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        guard let password = passwordTextField.text, !password.isEmpty, let confirm = confirmTextField.text, !confirm.isEmpty else { return }
+        guard let name = nameTextField.text, !name.isEmpty, let email = emailAddressTextField.text, !email.isEmpty,  let password = passwordTextField.text, !password.isEmpty, let confirm = confirmTextField.text, !confirm.isEmpty else { return }
         
         if password == confirm {
-            //Do All Setting Of User's Data Here
+            //Set User Data & Continue
             self.performSegue(withIdentifier: "finishedSignUpSegue", sender: self)
         } else {
             let alertController = UIAlertController(title: "Passwords Do Not Match", message: "", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "", style: .cancel, handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }
-    }
-    
-    //MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     }
 }
 
