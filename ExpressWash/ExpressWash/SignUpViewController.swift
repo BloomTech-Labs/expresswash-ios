@@ -12,6 +12,9 @@ class SignUpViewController: UIViewController {
 
     //MARK: - Properties
     
+    private var passwordButton = UIButton(type: .custom)
+    private var confirmButton = UIButton(type: .custom)
+    
     //MARK: - Outlets
     
     @IBOutlet weak var backgroundView: UIView!
@@ -34,37 +37,57 @@ class SignUpViewController: UIViewController {
     //MARK: - Methods
     
     func setupSubviews() {
-        nameTextField.underline()
-        emailAddressTextField.underline()
-        passwordTextField.underline()
-        addButton(to: passwordTextField)
-        confirmTextField.underline()
-        addButton(to: confirmTextField)
         
         backgroundView.layer.cornerRadius = 20.0
-    }
-    
-    func addButton(to textField: UITextField) {
         
-        let button = UIButton(type: .custom)
-        
-        if textField.isSecureTextEntry {
-            button.setTitle("●",for: .normal)
-            button.titleLabel!.textColor = UIColor.init(named: "Salmon")
+        if passwordTextField.isSecureTextEntry {
+            passwordButton.setTitle("●",for: .normal)
         } else {
-            button.setTitle("○",for: .normal)
-            button.titleLabel!.textColor = UIColor.init(named: "Salmon")
+            passwordButton.setTitle("○",for: .normal)
         }
         
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
-        button.frame = CGRect(x: CGFloat(textField.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
-        button.addTarget(self, action: #selector(self.unhide), for: .touchUpInside)
-        textField.rightView = button
-        textField.rightViewMode = .always
+        passwordButton.setTitleColor(UIColor(named: "Salmon"), for: .normal)
+        passwordButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
+        passwordButton.frame = CGRect(x: CGFloat(passwordTextField.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
+        passwordButton.addTarget(self, action: #selector(self.unhidePassword), for: .touchUpInside)
+        passwordTextField.rightView = passwordButton
+        passwordTextField.rightViewMode = .always
+        
+        if confirmTextField.isSecureTextEntry {
+            confirmButton.setTitle("●",for: .normal)
+        } else {
+            confirmButton.setTitle("○",for: .normal)
+        }
+        
+        confirmButton.setTitleColor(UIColor(named: "Salmon"), for: .normal)
+        confirmButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
+        confirmButton.frame = CGRect(x: CGFloat(confirmTextField.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
+        confirmButton.addTarget(self, action: #selector(self.unhideConfirm), for: .touchUpInside)
+        confirmTextField.rightView = confirmButton
+        confirmTextField.rightViewMode = .always
     }
     
-    @objc func unhide() {
+    @objc func unhidePassword() {
         
+        if passwordButton.titleLabel?.text == "●" {
+            passwordTextField.isSecureTextEntry = false
+            passwordButton.titleLabel?.text = "○"
+        } else {
+            passwordTextField.isSecureTextEntry = true
+            passwordButton.titleLabel?.text = "●"
+        }
+        setupSubviews()
+    }
+    
+    @objc func unhideConfirm() {
+        
+        if confirmButton.titleLabel?.text == "●" {
+            confirmTextField.isSecureTextEntry = false
+            confirmButton.titleLabel?.text = "○"
+        } else {
+            confirmTextField.isSecureTextEntry = true
+            confirmButton.titleLabel?.text = "●"
+        }
         setupSubviews()
     }
     
@@ -76,18 +99,5 @@ class SignUpViewController: UIViewController {
     //MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    }
-}
-
-extension UITextField {
-
-    func underline() {
-        let border = CALayer()
-        let borderWidth = CGFloat(1.0)
-        border.borderColor = UIColor.init(named: "Salmon")?.cgColor
-        border.frame = CGRect(x: 0, y: self.frame.size.height - borderWidth, width: self.frame.size.width, height: self.frame.size.height)
-        border.borderWidth = borderWidth
-        self.layer.addSublayer(border)
-        self.layer.masksToBounds = true
     }
 }
