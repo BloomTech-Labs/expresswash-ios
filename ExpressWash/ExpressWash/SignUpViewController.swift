@@ -32,6 +32,15 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         
         setupSubviews()
+        
+        nameTextField.delegate = self
+        emailAddressTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmTextField.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
     //MARK: - Methods
@@ -91,6 +100,14 @@ class SignUpViewController: UIViewController {
         setupSubviews()
     }
     
+    @objc func keyboardWillShow(sender: NSNotification) {
+         self.view.frame.origin.y = -150 // Move view 150 points upward
+    }
+
+    @objc func keyboardWillHide(sender: NSNotification) {
+         self.view.frame.origin.y = 0 // Move view to original position
+    }
+    
     //MARK: - Actions
     
     @IBAction func nextButtonTapped(_ sender: Any) {
@@ -109,5 +126,12 @@ class SignUpViewController: UIViewController {
     //MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    }
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }
