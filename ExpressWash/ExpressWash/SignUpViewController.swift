@@ -24,6 +24,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmTextField: UITextField!
     
+    @IBOutlet weak var pleaseContinueLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     
     //MARK: - Views
@@ -94,6 +95,16 @@ class SignUpViewController: UIViewController {
     //MARK: - Actions
     
     @IBAction func nextButtonTapped(_ sender: Any) {
+        guard let password = passwordTextField.text, !password.isEmpty, let confirm = confirmTextField.text, !confirm.isEmpty else { return }
+        
+        if password == confirm {
+            //Do All Of The Setting Of the User's Info Here
+            self.performSegue(withIdentifier: "finishedSignUpSegue", sender: self)
+        } else {
+            let alertController = UIAlertController(title: "Passwords Do Not Match", message: "", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "", style: .cancel, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     //MARK: - Navigation

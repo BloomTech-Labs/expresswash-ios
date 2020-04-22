@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OX5-hr-Bwh">
-                                <rect key="frame" x="35" y="74" width="201.5" height="100"/>
+                                <rect key="frame" x="45" y="74" width="201.5" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="spQ-WA-7pR"/>
                                 </constraints>
@@ -166,21 +166,13 @@
                                     <action selector="nextButtonTapped:" destination="8jX-1J-ZWq" eventType="touchUpInside" id="bhi-EU-QdY"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Continue!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GcR-yJ-B0j">
-                                <rect key="frame" x="182" y="802" width="129" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.74117647058823533" green="0.83529411764705885" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="jPj-KT-hjQ" firstAttribute="leading" secondItem="GcR-yJ-B0j" secondAttribute="trailing" constant="8" id="8TS-WO-xqG"/>
                             <constraint firstItem="jPj-KT-hjQ" firstAttribute="top" secondItem="dci-3C-Me5" secondAttribute="bottom" constant="30" id="G1g-2d-ZUw"/>
                             <constraint firstItem="jPj-KT-hjQ" firstAttribute="trailing" secondItem="dci-3C-Me5" secondAttribute="trailing" id="HSn-oo-A1C"/>
-                            <constraint firstItem="OX5-hr-Bwh" firstAttribute="leading" secondItem="dci-3C-Me5" secondAttribute="leading" id="Hdy-hL-fXU"/>
+                            <constraint firstItem="OX5-hr-Bwh" firstAttribute="leading" secondItem="dci-3C-Me5" secondAttribute="leading" constant="10" id="Hdy-hL-fXU"/>
                             <constraint firstItem="1h7-bN-c6y" firstAttribute="bottom" secondItem="jPj-KT-hjQ" secondAttribute="bottom" constant="20" id="PHf-FS-16B"/>
-                            <constraint firstItem="GcR-yJ-B0j" firstAttribute="centerY" secondItem="jPj-KT-hjQ" secondAttribute="centerY" id="Thh-ay-kIk"/>
                             <constraint firstItem="OX5-hr-Bwh" firstAttribute="top" secondItem="1h7-bN-c6y" secondAttribute="top" constant="30" id="ZMP-cI-AJB"/>
                             <constraint firstItem="dci-3C-Me5" firstAttribute="top" secondItem="OX5-hr-Bwh" secondAttribute="bottom" constant="50" id="ezb-hv-sIu"/>
                             <constraint firstItem="1h7-bN-c6y" firstAttribute="trailing" secondItem="dci-3C-Me5" secondAttribute="trailing" constant="35" id="qRn-bu-lSR"/>
@@ -195,7 +187,7 @@
                         <outlet property="nameTextField" destination="ZU0-5N-QXV" id="VaI-oY-Ojm"/>
                         <outlet property="nextButton" destination="jPj-KT-hjQ" id="tnn-WA-ux0"/>
                         <outlet property="passwordTextField" destination="MFP-Ni-flY" id="YJL-qx-dkR"/>
-                        <segue destination="fpM-Xw-fn7" kind="presentation" identifier="finishedSignUpSegue" id="PSJ-yx-rPh"/>
+                        <segue destination="fpM-Xw-fn7" kind="presentation" identifier="finishedSignUpSegue" modalPresentationStyle="fullScreen" id="PSJ-yx-rPh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rfu-Xx-yiV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
