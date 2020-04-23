@@ -19,7 +19,8 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var backgroundView: UIView!
     
-    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailAddressTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmTextField: UITextField!
@@ -33,7 +34,8 @@ class SignUpViewController: UIViewController {
         
         setupSubviews()
         
-        nameTextField.delegate = self
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
         emailAddressTextField.delegate = self
         passwordTextField.delegate = self
         confirmTextField.delegate = self
@@ -111,7 +113,7 @@ class SignUpViewController: UIViewController {
     //MARK: - Actions
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        guard let name = nameTextField.text, !name.isEmpty, let email = emailAddressTextField.text, !email.isEmpty,  let password = passwordTextField.text, !password.isEmpty, let confirm = confirmTextField.text, !confirm.isEmpty else { return }
+        guard let name = lastNameTextField.text, !name.isEmpty, let email = emailAddressTextField.text, !email.isEmpty,  let password = passwordTextField.text, !password.isEmpty, let confirm = confirmTextField.text, !confirm.isEmpty else { return }
         
         if password == confirm {
             //Sign Up User!
