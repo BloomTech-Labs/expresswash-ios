@@ -114,7 +114,7 @@ class SignUpViewController: UIViewController {
         guard let name = nameTextField.text, !name.isEmpty, let email = emailAddressTextField.text, !email.isEmpty,  let password = passwordTextField.text, !password.isEmpty, let confirm = confirmTextField.text, !confirm.isEmpty else { return }
         
         if password == confirm {
-            //Set User Data & Continue
+            //Sign Up User!
             self.performSegue(withIdentifier: "finishedSignUpSegue", sender: self)
         } else {
             let alertController = UIAlertController(title: "Passwords Do Not Match", message: "", preferredStyle: .alert)
