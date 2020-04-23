@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8jX-1J-ZWq">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,51 +15,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nN4-Qo-GzJ">
-                                <rect key="frame" x="50" y="363" width="314" height="280"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OX5-hr-Bwh">
+                                <rect key="frame" x="80" y="104" width="254" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="6cK-R9-fAz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="textColor" red="0.28627450980000002" green="0.34509803919999998" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="nN4-Qo-GzJ">
+                                <rect key="frame" x="50" y="199" width="314" height="508"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZU0-5N-QXV">
-                                        <rect key="frame" x="0.0" y="0.0" width="314" height="40"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZU0-5N-QXV">
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="77.666666666666671"/>
+                                        <color key="backgroundColor" red="0.28627450980000002" green="0.34509803919999998" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PJ0-mi-ta0">
+                                        <rect key="frame" x="0.0" y="107.66666666666669" width="314" height="77.666666666666686"/>
+                                        <color key="backgroundColor" red="0.28627450980000002" green="0.34509803919999998" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5nt-yI-f6k">
+                                        <rect key="frame" x="0.0" y="215.33333333333331" width="314" height="77.333333333333314"/>
+                                        <color key="backgroundColor" red="0.28627450980000002" green="0.34509803919999998" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MFP-Ni-flY">
+                                        <rect key="frame" x="0.0" y="322.66666666666663" width="314" height="77.666666666666686"/>
+                                        <color key="backgroundColor" red="0.28627450980000002" green="0.34509803919999998" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dsA-h0-8of">
+                                        <rect key="frame" x="0.0" y="430.33333333333337" width="314" height="77.666666666666686"/>
+                                        <color key="backgroundColor" red="0.28627450980000002" green="0.34509803919999998" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="CFV-Hj-mVi"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="fRE-YC-gEc"/>
                                         </constraints>
-                                        <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" textContentType="name"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PJ0-mi-ta0">
-                                        <rect key="frame" x="0.0" y="60" width="314" height="40"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" textContentType="family-name"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5nt-yI-f6k">
-                                        <rect key="frame" x="0.0" y="120" width="314" height="40"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MFP-Ni-flY">
-                                        <rect key="frame" x="0.0" y="180" width="314" height="40"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" secureTextEntry="YES"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dsA-h0-8of">
-                                        <rect key="frame" x="0.0" y="240" width="314" height="40"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="join" secureTextEntry="YES"/>
+                                        <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -76,34 +84,28 @@
                                     <constraint firstItem="PJ0-mi-ta0" firstAttribute="leading" secondItem="nN4-Qo-GzJ" secondAttribute="leading" id="wad-SY-ytx"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIh-du-IKM">
-                                <rect key="frame" x="274" y="673" width="90" height="40"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="Hr5-vB-4DO"/>
-                                    <constraint firstAttribute="height" constant="40" id="PeN-V4-PFp"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Register">
-                                    <color key="titleColor" name="Salmon"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jPj-KT-hjQ">
+                                <rect key="frame" x="334" y="717" width="30" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <state key="normal" title="→">
+                                    <color key="titleColor" red="0.28627450980000002" green="0.34509803919999998" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="nextButtonTapped:" destination="8jX-1J-ZWq" eventType="touchUpInside" id="bhi-EU-QdY"/>
+                                </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="oaH-n0-NRq">
-                                <rect key="frame" x="0.0" y="44" width="414" height="319"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="pIh-du-IKM" firstAttribute="trailing" secondItem="nN4-Qo-GzJ" secondAttribute="trailing" id="0fa-Aj-dIR"/>
+                            <constraint firstItem="OX5-hr-Bwh" firstAttribute="centerX" secondItem="1h7-bN-c6y" secondAttribute="centerX" id="5QK-H6-bqV"/>
+                            <constraint firstItem="OX5-hr-Bwh" firstAttribute="top" secondItem="1h7-bN-c6y" secondAttribute="top" constant="60" id="6UU-Dp-Qtw"/>
                             <constraint firstItem="1h7-bN-c6y" firstAttribute="trailing" secondItem="nN4-Qo-GzJ" secondAttribute="trailing" constant="50" id="6n4-bD-EAc"/>
-                            <constraint firstItem="nN4-Qo-GzJ" firstAttribute="top" secondItem="oaH-n0-NRq" secondAttribute="bottom" id="ERI-hl-Ome"/>
+                            <constraint firstItem="jPj-KT-hjQ" firstAttribute="trailing" secondItem="nN4-Qo-GzJ" secondAttribute="trailing" id="B2r-gg-JQ5"/>
                             <constraint firstItem="nN4-Qo-GzJ" firstAttribute="centerX" secondItem="1h7-bN-c6y" secondAttribute="centerX" id="GTh-jy-9og"/>
                             <constraint firstItem="nN4-Qo-GzJ" firstAttribute="leading" secondItem="1h7-bN-c6y" secondAttribute="leading" constant="50" id="KYm-uP-rqN"/>
-                            <constraint firstItem="pIh-du-IKM" firstAttribute="top" secondItem="nN4-Qo-GzJ" secondAttribute="bottom" constant="30" id="gIe-sO-Cd7"/>
-                            <constraint firstItem="1h7-bN-c6y" firstAttribute="trailing" secondItem="oaH-n0-NRq" secondAttribute="trailing" id="kGp-2V-bmS"/>
-                            <constraint firstItem="oaH-n0-NRq" firstAttribute="leading" secondItem="1h7-bN-c6y" secondAttribute="leading" id="qjV-hq-Gg1"/>
-                            <constraint firstItem="oaH-n0-NRq" firstAttribute="top" secondItem="1h7-bN-c6y" secondAttribute="top" id="wpE-8Q-gsK"/>
-                            <constraint firstItem="nN4-Qo-GzJ" firstAttribute="centerY" secondItem="1h7-bN-c6y" secondAttribute="centerY" constant="50" id="zhw-Au-q8c"/>
+                            <constraint firstItem="jPj-KT-hjQ" firstAttribute="top" secondItem="nN4-Qo-GzJ" secondAttribute="bottom" constant="10" id="LJn-UA-GHa"/>
+                            <constraint firstItem="nN4-Qo-GzJ" firstAttribute="centerY" secondItem="1h7-bN-c6y" secondAttribute="centerY" id="j3o-oM-KQp"/>
+                            <constraint firstItem="nN4-Qo-GzJ" firstAttribute="top" secondItem="OX5-hr-Bwh" secondAttribute="bottom" constant="35" id="s9o-Ly-ium"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1h7-bN-c6y"/>
                     </view>
@@ -111,14 +113,15 @@
                         <outlet property="confirmTextField" destination="dsA-h0-8of" id="YBZ-Uu-l45"/>
                         <outlet property="emailAddressTextField" destination="5nt-yI-f6k" id="rb8-wZ-N8k"/>
                         <outlet property="firstNameTextField" destination="ZU0-5N-QXV" id="cVy-Cv-qpK"/>
-                        <outlet property="lastNameTextField" destination="PJ0-mi-ta0" id="pQX-ZX-iJJ"/>
+                        <outlet property="lastNameTextField" destination="ZU0-5N-QXV" id="VaI-oY-Ojm"/>
+                        <outlet property="nextButton" destination="jPj-KT-hjQ" id="tnn-WA-ux0"/>
                         <outlet property="passwordTextField" destination="MFP-Ni-flY" id="YJL-qx-dkR"/>
                         <segue destination="fpM-Xw-fn7" kind="presentation" identifier="finishedSignUpSegue" modalPresentationStyle="fullScreen" id="PSJ-yx-rPh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rfu-Xx-yiV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="179.71014492753625" y="112.5"/>
+            <point key="canvasLocation" x="179.71014492753625" y="112.50000000000001"/>
         </scene>
         <!--Main-->
         <scene sceneID="MTr-Mt-ENn">
@@ -129,10 +132,4 @@
             <point key="canvasLocation" x="747" y="113"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Logo" width="1024" height="1024"/>
-        <namedColor name="Salmon">
-            <color red="0.99607843137254903" green="0.37254901960784315" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>
