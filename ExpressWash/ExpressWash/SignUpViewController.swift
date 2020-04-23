@@ -33,12 +33,7 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         
         setupSubviews()
-        
-        firstNameTextField.delegate = self
-        lastNameTextField.delegate = self
-        emailAddressTextField.delegate = self
-        passwordTextField.delegate = self
-        confirmTextField.delegate = self
+        setupTextFields()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
 
@@ -76,6 +71,14 @@ class SignUpViewController: UIViewController {
         confirmButton.addTarget(self, action: #selector(self.unhideConfirm), for: .touchUpInside)
         confirmTextField.rightView = confirmButton
         confirmTextField.rightViewMode = .always
+    }
+    
+    func setupTextFields() {
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
+        emailAddressTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmTextField.delegate = self
     }
     
     @objc func unhidePassword() {
