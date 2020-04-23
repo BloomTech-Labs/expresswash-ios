@@ -33,7 +33,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="jE3-im-1qK"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Receipts" image="barcode" catalog="system" id="cdc-2Y-NSp"/>
+                    <tabBarItem key="tabBarItem" title="Receipts" image="barcode.viewfinder" catalog="system" id="cdc-2Y-NSp"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EbK-vI-aZJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -55,7 +55,7 @@
             </objects>
             <point key="canvasLocation" x="1977" y="-2215"/>
         </scene>
-        <!--Washer-->
+        <!--Wash-->
         <scene sceneID="LYx-3Z-6Gf">
             <objects>
                 <viewController id="BvZ-U7-8tD" customClass="WasherViewController" customModule="ExpressWash" customModuleProvider="target" sceneMemberID="viewController">
@@ -65,7 +65,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="GJN-AV-KcY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Washer" image="wind" catalog="system" id="3HV-Jb-EqK"/>
+                    <tabBarItem key="tabBarItem" title="Wash" image="wind" catalog="system" id="3HV-Jb-EqK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3S7-UO-F3V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -94,7 +94,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="barcode" catalog="system" width="128" height="93"/>
+        <image name="barcode.viewfinder" catalog="system" width="128" height="114"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="wind" catalog="system" width="128" height="103"/>
