@@ -17,11 +17,11 @@ extension Car {
         return NSFetchRequest<Car>(entityName: "Car")
     }
 
-    @NSManaged public var color: String?
+    @NSManaged public var color: String
     @NSManaged public var id: Int32
-    @NSManaged public var licensePlate: String?
-    @NSManaged public var make: String?
-    @NSManaged public var model: String?
+    @NSManaged public var licensePlate: String
+    @NSManaged public var make: String
+    @NSManaged public var model: String
     @NSManaged public var photo: URL?
     @NSManaged public var year: Int16
     @NSManaged public var appointments: NSSet?
