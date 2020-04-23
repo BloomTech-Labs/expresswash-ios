@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		375DB3E1244A5AE500C889F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375DB3DF244A5AE500C889F2 /* Main.storyboard */; };
 		375DB3E3244A5AE800C889F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 375DB3E2244A5AE800C889F2 /* Assets.xcassets */; };
 		375DB3E6244A5AE800C889F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375DB3E4244A5AE800C889F2 /* LaunchScreen.storyboard */; };
+		5DC1B27A24512563007C11EA /* SignInScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DC1B27924512563007C11EA /* SignInScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,8 @@
 		375DB3E2244A5AE800C889F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		375DB3E5244A5AE800C889F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		375DB3E7244A5AE800C889F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DC1B27924512563007C11EA /* SignInScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInScreen.storyboard; sourceTree = "<group>"; };
+		5DC1B27B24512746007C11EA /* ColorPalette.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ColorPalette.md; sourceTree = "<group>"; };
 		784D55BC02CE141CBBA94DD7 /* Pods-ExpressWash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpressWash.release.xcconfig"; path = "Target Support Files/Pods-ExpressWash/Pods-ExpressWash.release.xcconfig"; sourceTree = "<group>"; };
 		7A8200D7CB7A1DA0AE0695DE /* Pods_ExpressWash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpressWash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22957D25B9EF61851B91CB3 /* Pods-ExpressWash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpressWash.debug.xcconfig"; path = "Target Support Files/Pods-ExpressWash/Pods-ExpressWash.debug.xcconfig"; sourceTree = "<group>"; };
@@ -78,6 +81,7 @@
 			children = (
 				375DB3E2244A5AE800C889F2 /* Assets.xcassets */,
 				375DB3E7244A5AE800C889F2 /* Info.plist */,
+				5DC1B27B24512746007C11EA /* ColorPalette.md */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -87,6 +91,7 @@
 			children = (
 				375DB3DF244A5AE500C889F2 /* Main.storyboard */,
 				375DB3E4244A5AE800C889F2 /* LaunchScreen.storyboard */,
+				5DC1B27924512563007C11EA /* SignInScreen.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -141,7 +146,6 @@
 				C22957D25B9EF61851B91CB3 /* Pods-ExpressWash.debug.xcconfig */,
 				784D55BC02CE141CBBA94DD7 /* Pods-ExpressWash.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -215,6 +219,7 @@
 			files = (
 				375DB3E6244A5AE800C889F2 /* LaunchScreen.storyboard in Resources */,
 				375DB3E3244A5AE800C889F2 /* Assets.xcassets in Resources */,
+				5DC1B27A24512563007C11EA /* SignInScreen.storyboard in Resources */,
 				375DB3E1244A5AE500C889F2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,7 +429,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.BobbyKeffury.ExpressWash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -443,7 +448,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.BobbyKeffury.ExpressWash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
