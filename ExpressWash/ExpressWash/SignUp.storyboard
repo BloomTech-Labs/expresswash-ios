@@ -16,13 +16,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dci-3C-Me5">
-                                <rect key="frame" x="20" y="184" width="374" height="568"/>
+                                <rect key="frame" x="20" y="194" width="374" height="558"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nN4-Qo-GzJ">
-                                        <rect key="frame" x="20" y="20" width="344" height="508"/>
+                                        <rect key="frame" x="20" y="20" width="344" height="498"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZU0-5N-QXV">
-                                                <rect key="frame" x="0.0" y="0.0" width="344" height="95.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="344" height="93.333333333333329"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -30,7 +30,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PJ0-mi-ta0">
-                                                <rect key="frame" x="0.0" y="103.33333333333331" width="344" height="95"/>
+                                                <rect key="frame" x="0.0" y="101.33333333333331" width="344" height="93"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -38,7 +38,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5nt-yI-f6k">
-                                                <rect key="frame" x="0.0" y="206.33333333333331" width="344" height="95.333333333333314"/>
+                                                <rect key="frame" x="0.0" y="202.33333333333331" width="344" height="93.333333333333314"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -46,7 +46,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MFP-Ni-flY">
-                                                <rect key="frame" x="0.0" y="309.66666666666663" width="344" height="95"/>
+                                                <rect key="frame" x="0.0" y="303.66666666666663" width="344" height="93"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -54,7 +54,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dsA-h0-8of">
-                                                <rect key="frame" x="0.0" y="412.66666666666663" width="344" height="95.333333333333314"/>
+                                                <rect key="frame" x="0.0" y="404.66666666666663" width="344" height="93.333333333333314"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -97,8 +97,8 @@
                                     <action selector="nextButtonTapped:" destination="8jX-1J-ZWq" eventType="touchUpInside" id="bhi-EU-QdY"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OX5-hr-Bwh">
-                                <rect key="frame" x="20" y="104" width="168.66666666666666" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OX5-hr-Bwh">
+                                <rect key="frame" x="20" y="104" width="254" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="6cK-R9-fAz"/>
                                 </constraints>
@@ -107,13 +107,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.74117647058823533" green="0.83529411764705885" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dci-3C-Me5" firstAttribute="centerX" secondItem="1h7-bN-c6y" secondAttribute="centerX" id="2Kr-GJ-ZQc"/>
                             <constraint firstItem="jPj-KT-hjQ" firstAttribute="top" secondItem="dci-3C-Me5" secondAttribute="bottom" constant="20" id="5h5-lr-ZmU"/>
                             <constraint firstItem="OX5-hr-Bwh" firstAttribute="top" secondItem="1h7-bN-c6y" secondAttribute="top" constant="60" id="6UU-Dp-Qtw"/>
                             <constraint firstItem="1h7-bN-c6y" firstAttribute="trailing" secondItem="dci-3C-Me5" secondAttribute="trailing" constant="20" id="6uL-q6-JFg"/>
-                            <constraint firstItem="dci-3C-Me5" firstAttribute="top" secondItem="OX5-hr-Bwh" secondAttribute="bottom" constant="20" id="Jwe-vV-2xy"/>
+                            <constraint firstItem="dci-3C-Me5" firstAttribute="top" secondItem="OX5-hr-Bwh" secondAttribute="bottom" constant="30" id="Jwe-vV-2xy"/>
                             <constraint firstItem="OX5-hr-Bwh" firstAttribute="leading" secondItem="dci-3C-Me5" secondAttribute="leading" id="MAs-tR-BwC"/>
                             <constraint firstItem="dci-3C-Me5" firstAttribute="leading" secondItem="1h7-bN-c6y" secondAttribute="leading" constant="20" id="Wbq-6H-y3U"/>
                             <constraint firstItem="jPj-KT-hjQ" firstAttribute="trailing" secondItem="dci-3C-Me5" secondAttribute="trailing" id="fY2-oy-Ayw"/>
