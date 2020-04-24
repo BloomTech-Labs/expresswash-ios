@@ -112,6 +112,9 @@
                                 <state key="normal" title="Sign in">
                                     <color key="titleColor" red="0.89669334889999996" green="0.89847499129999997" blue="0.95148235560000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="signInTapped:" destination="JbG-16-B74" eventType="touchUpInside" id="HVZ-QR-hf2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -162,9 +165,12 @@
                         <viewLayoutGuide key="safeArea" id="98O-u0-Ywv"/>
                     </view>
                     <connections>
+                        <outlet property="btnSignIn" destination="0Cy-Id-UAE" id="s7v-n5-Vhq"/>
                         <outlet property="tapExpressWash" destination="8cF-4u-33C" id="FIE-Od-fAK"/>
                         <outlet property="tapForgotPassword" destination="3Sl-ht-3TO" id="xWl-Wj-hCz"/>
                         <outlet property="tapSignUp" destination="Vbg-4U-cIm" id="ToL-10-kNM"/>
+                        <outlet property="txtEmail" destination="EkV-Vn-2sh" id="iJ7-Fk-O76"/>
+                        <outlet property="txtPassword" destination="gRT-dK-KGu" id="QuT-Hm-8Fw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z4V-22-kbn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

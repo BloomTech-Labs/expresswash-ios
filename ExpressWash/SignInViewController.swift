@@ -11,13 +11,16 @@ import UIKit
 class SignInViewController: UIViewController {
 
     @IBOutlet var tapExpressWash: UITapGestureRecognizer!
+    @IBOutlet weak var txtEmail: UITextField!
+    @IBOutlet weak var txtPassword: UITextField!
+    @IBOutlet weak var btnSignIn: UIButton!
     @IBOutlet var tapSignUp: UITapGestureRecognizer!
     @IBOutlet var tapForgotPassword: UITapGestureRecognizer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        btnSignIn.layer.cornerRadius = 5.0
     }
     
 
@@ -39,6 +42,10 @@ class SignInViewController: UIViewController {
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { _ in }))
         present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func signInTapped(_ sender: Any) {
+        // handle sign in
     }
     
     @IBAction func lblSignUpTapped(_ sender: Any) {
