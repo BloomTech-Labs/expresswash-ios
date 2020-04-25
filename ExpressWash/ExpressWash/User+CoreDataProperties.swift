@@ -21,6 +21,7 @@ extension User {
     @NSManaged public var bannerImage: URL?
     @NSManaged public var email: String?
     @NSManaged public var firstName: String?
+    @NSManaged public var id: Int32
     @NSManaged public var lastName: String?
     @NSManaged public var phoneNumber: String?
     @NSManaged public var profileImage: URL?
