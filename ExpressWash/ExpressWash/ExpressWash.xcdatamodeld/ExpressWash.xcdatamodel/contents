@@ -39,12 +39,13 @@
         <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="lastName" attributeType="String"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String"/>
-        <attribute name="profileImage" optional="YES" attributeType="URI"/>
+        <attribute name="profilePicture" optional="YES" attributeType="URI"/>
         <attribute name="state" optional="YES" attributeType="String"/>
         <attribute name="streetAddress" optional="YES" attributeType="String"/>
         <attribute name="streetAddress2" optional="YES" attributeType="String"/>
         <attribute name="stripeUUID" optional="YES" attributeType="String"/>
         <attribute name="token" optional="YES" attributeType="String"/>
+        <attribute name="userRating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="zip" optional="YES" attributeType="String"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Appointment" inverseName="client" inverseEntity="Appointment"/>
         <relationship name="cars" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Car" inverseName="owner" inverseEntity="Car"/>
@@ -62,7 +63,7 @@
     <elements>
         <element name="Appointment" positionX="-27" positionY="18" width="128" height="298"/>
         <element name="Car" positionX="18" positionY="171" width="128" height="178"/>
-        <element name="User" positionX="54" positionY="198" width="128" height="313"/>
+        <element name="User" positionX="54" positionY="198" width="128" height="328"/>
         <element name="Washer" positionX="18" positionY="153" width="128" height="148"/>
     </elements>
 </model>

@@ -17,15 +17,16 @@ extension User {
         return NSFetchRequest<User>(entityName: "User")
     }
 
-    @NSManaged public var accountType: String?
+    @NSManaged public var accountType: String
     @NSManaged public var bannerImage: URL?
-    @NSManaged public var email: String?
-    @NSManaged public var firstName: String?
+    @NSManaged public var email: String
+    @NSManaged public var firstName: String
     @NSManaged public var id: Int32
-    @NSManaged public var lastName: String?
+    @NSManaged public var lastName: String
     @NSManaged public var phoneNumber: String?
-    @NSManaged public var profileImage: URL?
+    @NSManaged public var profilePicture: URL?
     @NSManaged public var stripeUUID: String?
+    @NSManaged public var userRating: Int16
     @NSManaged public var streetAddress: String?
     @NSManaged public var streetAddress2: String?
     @NSManaged public var city: String?
