@@ -160,6 +160,9 @@
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rdq-2Y-F7G">
                                         <rect key="frame" x="64.5" y="9.5" width="51" height="31"/>
                                         <color key="onTintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="activeSwitchToggled:" destination="BvZ-U7-8tD" eventType="valueChanged" id="AY2-0H-xeu"/>
+                                        </connections>
                                     </switch>
                                 </subviews>
                                 <constraints>
@@ -230,6 +233,10 @@
                         <viewLayoutGuide key="safeArea" id="GJN-AV-KcY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Wash" image="wind" catalog="system" id="3HV-Jb-EqK"/>
+                    <connections>
+                        <outlet property="activeSwitch" destination="Rdq-2Y-F7G" id="tPv-cC-2TN"/>
+                        <outlet property="appointmentsTableView" destination="peW-3Z-kFc" id="aF9-ee-Iam"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3S7-UO-F3V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
