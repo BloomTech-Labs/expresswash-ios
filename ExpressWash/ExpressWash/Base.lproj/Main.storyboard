@@ -167,7 +167,7 @@
                                 <rect key="frame" x="40" y="264" width="334" height="499"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="VWm-cc-wr5" detailTextLabel="ocl-0a-2Fa" imageView="9yQ-wP-2MO" style="IBUITableViewCellStyleValue1" id="PFZ-P4-VAd" customClass="AppointmentTableViewCell" customModule="ExpressWash" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="VWm-cc-wr5" detailTextLabel="ocl-0a-2Fa" imageView="9yQ-wP-2MO" style="IBUITableViewCellStyleValue1" id="PFZ-P4-VAd">
                                         <rect key="frame" x="0.0" y="28" width="334" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PFZ-P4-VAd" id="ykN-7V-oOV">
