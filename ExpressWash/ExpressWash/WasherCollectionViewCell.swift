@@ -9,8 +9,12 @@
 import UIKit
 
 class WasherCollectionViewCell: UICollectionViewCell {
+<<<<<<< master
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var starLabel: UILabel!
+=======
+    
+>>>>>>> Added Cells to Customize.
 }
