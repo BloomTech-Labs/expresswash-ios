@@ -62,6 +62,11 @@
                                                 <constraint firstItem="ksm-jt-fwV" firstAttribute="centerX" secondItem="W7l-Ik-a0s" secondAttribute="centerX" id="Ual-iP-Gqm"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageView" destination="Ss1-YQ-1c8" id="6XD-sD-vJK"/>
+                                            <outlet property="nameLabel" destination="lND-w4-nQd" id="dWY-H3-c6u"/>
+                                            <outlet property="starLabel" destination="QKy-Mn-OXC" id="HVb-i7-Vdw"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
