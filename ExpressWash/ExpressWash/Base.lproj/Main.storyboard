@@ -226,10 +226,10 @@
             </objects>
             <point key="canvasLocation" x="1976.8115942028987" y="-158.03571428571428"/>
         </scene>
-        <!--View Controller-->
+        <!--Appointment View Controller-->
         <scene sceneID="1YS-3w-ity">
             <objects>
-                <viewController id="gsZ-Vv-ADk" sceneMemberID="viewController">
+                <viewController id="gsZ-Vv-ADk" customClass="AppointmentViewController" customModule="ExpressWash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q4n-0p-d2K">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
