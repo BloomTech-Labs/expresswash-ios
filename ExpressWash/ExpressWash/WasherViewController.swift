@@ -14,6 +14,9 @@ class WasherViewController: UIViewController {
     
     //MARK: - Outlets
     
+    @IBOutlet weak var activeSwitch: UISwitch!
+    @IBOutlet weak var appointmentsTableView: UITableView!
+    
     //MARK: - Views
     
     override func viewDidLoad() {
@@ -24,6 +27,9 @@ class WasherViewController: UIViewController {
     //MARK: - Methods
     
     //MARK: - Actions
+    
+    @IBAction func activeSwitchToggled(_ sender: Any) {
+    }
     
     //MARK: - Navigation
     
