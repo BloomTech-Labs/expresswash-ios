@@ -49,6 +49,9 @@ class ScheduleViewController: UIViewController {
     
     //MARK: - Outlets
     
+    @IBOutlet weak var washersCollectionView: UICollectionView!
+    @IBOutlet weak var scheduleButton: UIButton!
+    
     //MARK: - Views
     
     override func viewDidLoad() {
@@ -60,6 +63,8 @@ class ScheduleViewController: UIViewController {
     
     //MARK: - Actions
     
+    @IBAction func scheduleButtonTapped(_ sender: Any) {
+    }
     //MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
