@@ -53,10 +53,13 @@
     </entity>
     <entity name="Washer" representedClassName="Washer" syncable="YES">
         <attribute name="aboutMe" attributeType="String"/>
-        <attribute name="available" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="long" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="rate" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="rateLarge" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="rateMedium" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="rateSmall" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="washerId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="workStatus" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Appointment" inverseName="washer" inverseEntity="Appointment"/>
         <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="washer" inverseEntity="User"/>
     </entity>
@@ -64,6 +67,6 @@
         <element name="Appointment" positionX="-27" positionY="18" width="128" height="298"/>
         <element name="Car" positionX="18" positionY="171" width="128" height="178"/>
         <element name="User" positionX="54" positionY="198" width="128" height="328"/>
-        <element name="Washer" positionX="18" positionY="153" width="128" height="148"/>
+        <element name="Washer" positionX="18" positionY="153" width="128" height="193"/>
     </elements>
 </model>

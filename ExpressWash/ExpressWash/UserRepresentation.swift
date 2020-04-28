@@ -6,6 +6,8 @@
 //  Copyright © 2020 Bobby Keffury. All rights reserved.
 //
 
+let NO_UID = 0
+
 import Foundation
 
 struct UserRepresentation: Codable {
@@ -24,8 +26,9 @@ struct UserRepresentation: Codable {
     var state: String?
     var zip: String?
     var token: String?
+    var userRating: Int?
     
-    init(id: Int = 0,
+    init(id: Int = NO_UID,
          accountType: String,
          email: String,
          firstName: String,
@@ -39,7 +42,8 @@ struct UserRepresentation: Codable {
          city: String? = nil,
          state: String? = nil,
          zip: String? = nil,
-         token: String? = nil) {
+         token: String? = nil,
+         userRating: Int? = nil) {
         self.id = id
         self.accountType = accountType
         self.email = email
@@ -55,6 +59,7 @@ struct UserRepresentation: Codable {
         self.state = state
         self.zip = zip
         self.token = token
+        self.userRating = userRating
     }
     
     enum UserKeys: String, CodingKey {
@@ -73,6 +78,7 @@ struct UserRepresentation: Codable {
         case state
         case zip
         case token
+        case userRating
     }
     
     init(from decoder: Decoder) throws {
@@ -96,13 +102,18 @@ struct UserRepresentation: Codable {
         self.state = try container.decodeIfPresent(String.self, forKey: .state)
         self.zip = try container.decodeIfPresent(String.self, forKey: .zip)
         self.token = try container.decodeIfPresent(String.self, forKey: .token)
+        self.userRating = try container.decodeIfPresent(Int.self, forKey: .userRating)
     }
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: UserKeys.self)
         
+        // ID is only required if this user already exists
+        if id != NO_UID {
+            try container.encode(id, forKey: .id)
+        }
+        
         // required attributes
-        try container.encode(id, forKey: .id)
         try container.encode(accountType, forKey: .accountType)
         try container.encode(email, forKey: .email)
         try container.encode(firstName, forKey: .firstName)
@@ -119,6 +130,6 @@ struct UserRepresentation: Codable {
         try container.encodeIfPresent(state, forKey: .state)
         try container.encodeIfPresent(zip, forKey: .zip)
         try container.encodeIfPresent(token, forKey: .token)
-        
+        try container.encodeIfPresent(userRating, forKey: .userRating)
     }
 }

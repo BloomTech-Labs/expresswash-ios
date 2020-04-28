@@ -27,6 +27,7 @@
 		5D46BE5D244EBE5A0058A660 /* Car+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE55244EBE5A0058A660 /* Car+CoreDataProperties.swift */; };
 		5D605C652453D31100B83420 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D605C642453D31100B83420 /* UserRepresentation.swift */; };
 		5D605C672453DEB700B83420 /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D605C662453DEB700B83420 /* User+Convenience.swift */; };
+		5DBD0ECF2457C10200ADE10A /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBD0ECE2457C10200ADE10A /* UserController.swift */; };
 		5DC1B276244FD97C007C11EA /* Car+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC1B275244FD97C007C11EA /* Car+Convenience.swift */; };
 		5DC1B278244FDB79007C11EA /* CarRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC1B277244FDB79007C11EA /* CarRepresentation.swift */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		5D46BE55244EBE5A0058A660 /* Car+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5D605C642453D31100B83420 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
 		5D605C662453DEB700B83420 /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
+		5DBD0ECE2457C10200ADE10A /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		5DC1B275244FD97C007C11EA /* Car+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+Convenience.swift"; sourceTree = "<group>"; };
 		5DC1B277244FDB79007C11EA /* CarRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRepresentation.swift; sourceTree = "<group>"; };
 		784D55BC02CE141CBBA94DD7 /* Pods-ExpressWash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpressWash.release.xcconfig"; path = "Target Support Files/Pods-ExpressWash/Pods-ExpressWash.release.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		375DB3F1244A5AFB00C889F2 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5DBD0ECE2457C10200ADE10A /* UserController.swift */,
 			);
 			name = "Model Controllers";
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DBD0ECF2457C10200ADE10A /* UserController.swift in Sources */,
 				5D46BE44244E9EE20058A660 /* CoreDataStack.swift in Sources */,
 				5D46BE46244EA0950058A660 /* AppointmentRepresentation.swift in Sources */,
 				5D46BE5D244EBE5A0058A660 /* Car+CoreDataProperties.swift in Sources */,
