@@ -234,6 +234,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Wash" image="wind" catalog="system" id="3HV-Jb-EqK"/>
                     <connections>
+                        <outlet property="activeLabel" destination="ws2-y0-exW" id="fDV-wq-HJ9"/>
                         <outlet property="activeSwitch" destination="Rdq-2Y-F7G" id="tPv-cC-2TN"/>
                         <outlet property="appointmentsTableView" destination="peW-3Z-kFc" id="aF9-ee-Iam"/>
                     </connections>
