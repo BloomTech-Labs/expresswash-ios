@@ -34,6 +34,7 @@ class WasherViewController: UIViewController {
     
     //MARK: - Outlets
     
+    @IBOutlet weak var activeLabel: UILabel!
     @IBOutlet weak var activeSwitch: UISwitch!
     @IBOutlet weak var appointmentsTableView: UITableView!
     
