@@ -14,6 +14,10 @@ class AppointmentViewController: UIViewController {
     
     //MARK: - Outlets
     
+    @IBOutlet weak var addressTextField: UITextView!
+    @IBOutlet weak var photosCollectionView: UICollectionView!
+    @IBOutlet weak var jobCompleteButton: UIButton!
+    
     //MARK: - Views
     
     override func viewDidLoad() {
@@ -24,6 +28,9 @@ class AppointmentViewController: UIViewController {
     //MARK: - Methods
     
     //MARK: - Actions
+    
+    @IBAction func jobCompleteTapped(_ sender: Any) {
+    }
     
     //MARK: - Navigation
     
