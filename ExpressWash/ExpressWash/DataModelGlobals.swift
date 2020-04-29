@@ -9,3 +9,4 @@
 import Foundation
 
 let NO_ID = 0
+let NO_ID32: Int32 = 0

@@ -186,7 +186,7 @@ class UserController {
     // MARK: - Server methods
     
     func put(user: User, completion: @escaping (Error?) -> Void = { _ in }) {
-        var representation = user.representation
+        let representation = user.representation
         let requestURL = BASE_URL.appendingPathComponent(ENDPOINTS.users.rawValue).appendingPathComponent(user.stringID)
         var request = URLRequest(url: requestURL)
         request.httpMethod = "PUT"
@@ -213,7 +213,22 @@ class UserController {
     func deleteFromServer(user: User,
                           context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
                           completion: @escaping (Error?) -> Void = { _ in }) {
+        guard user.id != NO_ID32 else {
+            completion(nil)
+            return
+        }
         
+        let requestURL = BASE_URL.appendingPathComponent(ENDPOINTS.users.rawValue).appendingPathComponent(user.stringID)
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "DELETE"
+        URLSession.shared.dataTask(with: request) { (_, response, error) in
+            if let error = error {
+                print("Error deleting entry from server: \(error)")
+                completion(error)
+                return
+            }
+            completion(nil)
+        }.resume()
     }
     
 }
