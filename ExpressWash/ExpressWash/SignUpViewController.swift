@@ -17,8 +17,6 @@ class SignUpViewController: UIViewController {
     
     //MARK: - Outlets
     
-    @IBOutlet weak var backgroundView: UIView!
-    
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailAddressTextField: UITextField!
@@ -43,8 +41,6 @@ class SignUpViewController: UIViewController {
     //MARK: - Methods
     
     func setupSubviews() {
-        
-        backgroundView.layer.cornerRadius = 20.0
         
         if passwordTextField.isSecureTextEntry {
             passwordButton.setTitle("●",for: .normal)
