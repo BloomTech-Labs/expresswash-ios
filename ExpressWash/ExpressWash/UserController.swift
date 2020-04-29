@@ -147,7 +147,7 @@ class UserController {
     }
     
     func updateUsers(with representations: [UserRepresentation]) {
-        let usersWithID = representations.filter({ $0.id != NO_UID })
+        let usersWithID = representations.filter({ $0.id != NO_ID })
         let usersToFetch = usersWithID.compactMap({ $0.id })
         let representationsByID = Dictionary(uniqueKeysWithValues: zip(usersToFetch, usersWithID))
         var usersToCreate = representationsByID // holds all users now, but will be whittled down
@@ -161,7 +161,7 @@ class UserController {
                 let existingUsers = try context.fetch(fetchRequest)
                 
                 for user in existingUsers {
-                    guard user.id != NO_UID,
+                    guard user.id != NO_ID,
                         let representation = representationsByID[Int(user.id)] else {
                         continue
                     }
@@ -186,8 +186,28 @@ class UserController {
     // MARK: - Server methods
     
     func put(user: User, completion: @escaping (Error?) -> Void = { _ in }) {
+        var representation = user.representation
+        let requestURL = BASE_URL.appendingPathComponent(ENDPOINTS.users.rawValue).appendingPathComponent(user.stringID)
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "PUT"
         
+        let encoder = JSONEncoder()
+        do {
+            request.httpBody = try encoder.encode(representation)
+        } catch {
+            print("Error encoding representation: \(error)")
+            completion(error)
+            return
+        }
         
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            if let error = error {
+                print("Error sending entry to server: \(error)")
+                completion(error)
+                return
+            }
+            completion(nil)
+        }.resume()
     }
     
     func deleteFromServer(user: User,

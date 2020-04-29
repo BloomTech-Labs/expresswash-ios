@@ -82,4 +82,8 @@ extension User {
                            token: self.token)
     }
     
+    var stringID: String {
+        String(self.id)
+    }
+    
 }

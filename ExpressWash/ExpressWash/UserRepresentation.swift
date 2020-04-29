@@ -6,8 +6,6 @@
 //  Copyright © 2020 Bobby Keffury. All rights reserved.
 //
 
-let NO_UID = 0
-
 import Foundation
 
 struct UserRepresentation: Codable {
@@ -28,7 +26,7 @@ struct UserRepresentation: Codable {
     var token: String?
     var userRating: Int?
     
-    init(id: Int = NO_UID,
+    init(id: Int = NO_ID,
          accountType: String,
          email: String,
          firstName: String,
@@ -109,7 +107,7 @@ struct UserRepresentation: Codable {
         var container = encoder.container(keyedBy: UserKeys.self)
         
         // ID is only required if this user already exists
-        if id != NO_UID {
+        if id != NO_ID {
             try container.encode(id, forKey: .id)
         }
         
