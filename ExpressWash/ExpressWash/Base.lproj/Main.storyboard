@@ -252,36 +252,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" text="Address" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcE-eo-1aW">
-                                <rect key="frame" x="35" y="50" width="344" height="134"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="P5T-8j-fTU">
-                                <rect key="frame" x="50" y="480" width="314" height="150"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gXB-F4-COI">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XFQ-lS-hSb">
-                                        <rect key="frame" x="0.0" y="11" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ynr-wh-H0S">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6Jx-oS-nB9">
+                                <rect key="frame" x="30" y="0.0" width="354" height="708"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="2324 Left Lane  Arroyo Grande  CA" textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcE-eo-1aW">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="230.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="200-y2-W0w">
+                                        <rect key="frame" x="0.0" y="238.5" width="354" height="231"/>
+                                    </mapView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="P5T-8j-fTU">
+                                        <rect key="frame" x="0.0" y="477.5" width="354" height="230.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gXB-F4-COI">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XFQ-lS-hSb">
+                                                <rect key="frame" x="0.0" y="51.5" width="128" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ynr-wh-H0S">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </collectionViewCellContentView>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                </subviews>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPJ-mv-qkj">
-                                <rect key="frame" x="50" y="716" width="314" height="42"/>
+                                <rect key="frame" x="30" y="718" width="354" height="50"/>
                                 <color key="backgroundColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Q2u-oL-AtY"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Job Complete!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -290,29 +301,16 @@
                                     <action selector="jobCompleteTapped:" destination="gsZ-Vv-ADk" eventType="touchUpInside" id="VYh-iZ-Ko9"/>
                                 </connections>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="200-y2-W0w">
-                                <rect key="frame" x="40" y="192" width="334" height="225"/>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="200-y2-W0w" firstAttribute="top" secondItem="tcE-eo-1aW" secondAttribute="bottom" constant="8" id="2QK-GN-Yim"/>
-                            <constraint firstItem="Shb-3z-NbN" firstAttribute="trailing" secondItem="P5T-8j-fTU" secondAttribute="trailing" constant="50" id="3sp-V2-a0w"/>
-                            <constraint firstItem="tcE-eo-1aW" firstAttribute="leading" secondItem="Shb-3z-NbN" secondAttribute="leading" constant="35" id="5E6-OV-tmy"/>
-                            <constraint firstItem="YPJ-mv-qkj" firstAttribute="leading" secondItem="Shb-3z-NbN" secondAttribute="leading" constant="50" id="7Sv-Nz-lvW"/>
-                            <constraint firstItem="P5T-8j-fTU" firstAttribute="leading" secondItem="Shb-3z-NbN" secondAttribute="leading" constant="50" id="8DQ-E0-jqP"/>
-                            <constraint firstItem="Shb-3z-NbN" firstAttribute="trailing" secondItem="200-y2-W0w" secondAttribute="trailing" constant="40" id="MhD-5M-n0o"/>
-                            <constraint firstItem="tcE-eo-1aW" firstAttribute="centerX" secondItem="Shb-3z-NbN" secondAttribute="centerX" id="N0S-tX-dPo"/>
-                            <constraint firstItem="P5T-8j-fTU" firstAttribute="top" secondItem="200-y2-W0w" secondAttribute="bottom" constant="20" id="Nv9-HH-YgY"/>
-                            <constraint firstItem="Shb-3z-NbN" firstAttribute="trailing" secondItem="YPJ-mv-qkj" secondAttribute="trailing" constant="50" id="P4W-TY-DeS"/>
-                            <constraint firstItem="200-y2-W0w" firstAttribute="centerX" secondItem="Shb-3z-NbN" secondAttribute="centerX" id="UCz-2F-Hnq"/>
-                            <constraint firstItem="YPJ-mv-qkj" firstAttribute="top" secondItem="P5T-8j-fTU" secondAttribute="bottom" constant="20" id="auM-uI-PUx"/>
-                            <constraint firstItem="200-y2-W0w" firstAttribute="leading" secondItem="Shb-3z-NbN" secondAttribute="leading" constant="40" id="cz5-ad-zKh"/>
-                            <constraint firstItem="YPJ-mv-qkj" firstAttribute="centerX" secondItem="Shb-3z-NbN" secondAttribute="centerX" id="eUx-qh-XD3"/>
-                            <constraint firstItem="Shb-3z-NbN" firstAttribute="trailing" secondItem="tcE-eo-1aW" secondAttribute="trailing" constant="35" id="nyq-SS-645"/>
-                            <constraint firstItem="Shb-3z-NbN" firstAttribute="bottom" secondItem="YPJ-mv-qkj" secondAttribute="bottom" constant="50" id="pip-PB-r0q"/>
-                            <constraint firstItem="P5T-8j-fTU" firstAttribute="centerX" secondItem="Shb-3z-NbN" secondAttribute="centerX" id="prd-W9-D71"/>
-                            <constraint firstItem="tcE-eo-1aW" firstAttribute="top" secondItem="Shb-3z-NbN" secondAttribute="top" constant="50" id="zDP-2P-sGe"/>
+                            <constraint firstItem="Shb-3z-NbN" firstAttribute="trailing" secondItem="YPJ-mv-qkj" secondAttribute="trailing" constant="30" id="1co-bV-Yyt"/>
+                            <constraint firstItem="6Jx-oS-nB9" firstAttribute="leading" secondItem="Shb-3z-NbN" secondAttribute="leading" constant="30" id="6jp-3b-BDp"/>
+                            <constraint firstItem="Shb-3z-NbN" firstAttribute="bottom" secondItem="YPJ-mv-qkj" secondAttribute="bottom" constant="40" id="78d-w6-n6r"/>
+                            <constraint firstItem="YPJ-mv-qkj" firstAttribute="leading" secondItem="Shb-3z-NbN" secondAttribute="leading" constant="30" id="MlZ-gc-X7F"/>
+                            <constraint firstItem="6Jx-oS-nB9" firstAttribute="top" secondItem="Shb-3z-NbN" secondAttribute="top" id="PDo-Zf-OTL"/>
+                            <constraint firstItem="Shb-3z-NbN" firstAttribute="trailing" secondItem="6Jx-oS-nB9" secondAttribute="trailing" constant="30" id="c2U-u3-O6D"/>
+                            <constraint firstItem="YPJ-mv-qkj" firstAttribute="top" secondItem="6Jx-oS-nB9" secondAttribute="bottom" constant="10" id="h6f-rH-3dd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Shb-3z-NbN"/>
                     </view>
