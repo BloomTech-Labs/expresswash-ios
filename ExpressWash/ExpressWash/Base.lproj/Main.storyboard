@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H4n-ci-vnw">
-                                <rect key="frame" x="40" y="94" width="334" height="561"/>
+                                <rect key="frame" x="40" y="94" width="334" height="579"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="40" minimumInteritemSpacing="20" id="kC2-1o-jQB">
                                     <size key="itemSize" width="150" height="175"/>
@@ -71,13 +71,13 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5l-bB-iAb">
-                                <rect key="frame" x="50" y="713" width="314" height="50"/>
+                                <rect key="frame" x="30" y="723" width="354" height="50"/>
                                 <color key="backgroundColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="enc-jm-0o8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Schedule">
+                                <state key="normal" title="Schedule Wash!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -88,13 +88,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="H4n-ci-vnw" firstAttribute="centerX" secondItem="Ebx-gE-aXq" secondAttribute="centerX" id="1bn-jk-7ns"/>
-                            <constraint firstItem="Ebx-gE-aXq" firstAttribute="trailing" secondItem="v5l-bB-iAb" secondAttribute="trailing" constant="50" id="3wx-tk-uke"/>
+                            <constraint firstItem="Ebx-gE-aXq" firstAttribute="trailing" secondItem="v5l-bB-iAb" secondAttribute="trailing" constant="30" id="3wx-tk-uke"/>
                             <constraint firstItem="Ebx-gE-aXq" firstAttribute="trailing" secondItem="H4n-ci-vnw" secondAttribute="trailing" constant="40" id="Acg-MX-NhB"/>
-                            <constraint firstItem="v5l-bB-iAb" firstAttribute="top" secondItem="H4n-ci-vnw" secondAttribute="bottom" constant="58" id="O4y-T6-sSZ"/>
+                            <constraint firstItem="v5l-bB-iAb" firstAttribute="top" secondItem="H4n-ci-vnw" secondAttribute="bottom" constant="50" id="O4y-T6-sSZ"/>
                             <constraint firstItem="H4n-ci-vnw" firstAttribute="top" secondItem="Ebx-gE-aXq" secondAttribute="top" constant="50" id="VtX-ju-kUr"/>
-                            <constraint firstItem="Ebx-gE-aXq" firstAttribute="bottom" secondItem="v5l-bB-iAb" secondAttribute="bottom" constant="50" id="hGW-4d-RpT"/>
+                            <constraint firstItem="Ebx-gE-aXq" firstAttribute="bottom" secondItem="v5l-bB-iAb" secondAttribute="bottom" constant="40" id="hGW-4d-RpT"/>
                             <constraint firstItem="H4n-ci-vnw" firstAttribute="leading" secondItem="Ebx-gE-aXq" secondAttribute="leading" constant="40" id="oiq-Sk-Xqe"/>
-                            <constraint firstItem="v5l-bB-iAb" firstAttribute="leading" secondItem="Ebx-gE-aXq" secondAttribute="leading" constant="50" id="rVh-qu-DqB"/>
+                            <constraint firstItem="v5l-bB-iAb" firstAttribute="leading" secondItem="Ebx-gE-aXq" secondAttribute="leading" constant="30" id="rVh-qu-DqB"/>
                             <constraint firstItem="v5l-bB-iAb" firstAttribute="centerX" secondItem="Ebx-gE-aXq" secondAttribute="centerX" id="wdA-hD-49n"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ebx-gE-aXq"/>
