@@ -31,17 +31,12 @@ enum ENDPOINTS: String {
     case jobSetWorkStatus = "/jobs/setWorkStatus"   // PUT      Boolean, id in req.body sets washer work status (??? job ID or washer ID?)
     case jobSelect = "/jobs/selectJob"              // POST     Adds the washer to a job
     case jobsQtyCompleted = "/jobs/howManyCompleted"    // POST Returns a count of how many jobs the washer is on.
-    
-    // Why are these POST and not GET?
-    case ratingWasher = "/ratings/washerAverage"    // POST     Returns average rating for a washer.
-    case ratingClient = "/ratings/clientAverage"    // POST     Returns average rating for a client.
-    
-    case rateWasher = "/ratings/rateWasher"         // POST     Add a washer rating.
-    case rateClient = "/ratings/rateClient"         // POST     Add a client rating.    ??? shouldn't this only be available to washers?
+
     
     case users      // GET      View all users.
                     // GET      /:id    View specific user.
                     // DELETE   /:id    Remove user.
                     // PUT      /:id    Update user.
     
+    // Need an endpoint to get a list washers who are active and near a job location
 }

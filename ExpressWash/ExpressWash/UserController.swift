@@ -10,7 +10,56 @@ import Foundation
 import CoreData
 
 class UserController {
+    static let shared = UserController()
     
+    // MARK: - User session
+    var sessionUser: User? {
+        didSet {
+            saveToPersistentStore()
+        }
+    }
+    
+    private lazy var localStoreURL: URL? = {
+        let fileManager = FileManager.default
+        guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        return documents.appendingPathComponent("expresswass.plist")
+    }()
+    
+    init() {
+        if UserDefaults.standard.bool(forKey: "Session") {
+            loadFromPersistentStore()
+        }
+    }
+    
+    private func saveToPersistentStore() {
+        guard let url = localStoreURL, let sessionUser = sessionUser else {
+            UserDefaults.standard.set(false, forKey: "Session")
+            return
+        }
+        
+        do {
+            let encoder = PropertyListEncoder()
+            let userData = try encoder.encode(sessionUser.representation)
+            try userData.write(to: url)
+            UserDefaults.standard.set(true, forKey: "Session")
+        } catch {
+            print("Error saving user session data: \(error)")
+        }
+    }
+    
+    private func loadFromPersistentStore() {
+        let fileManager = FileManager.default
+        guard let url = localStoreURL, fileManager.fileExists(atPath: url.path) else { return }
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let decoder = PropertyListDecoder()
+            let decodedUserRepresentation = try decoder.decode(UserRepresentation.self, from: data)
+            sessionUser = User(representation: decodedUserRepresentation)
+        } catch {
+            print("Error loading user session data: \(error)")
+        }
+    }
     
     // MARK: - Local store methods
     
