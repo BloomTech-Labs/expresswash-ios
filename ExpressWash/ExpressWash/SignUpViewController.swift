@@ -139,11 +139,6 @@ extension SignUpViewController: UITextFieldDelegate {
 
 extension SignUpViewController: UITextFieldDelegate {
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-       currentTappedTextField = textField
-        return true
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.text! == "" {
             return false
