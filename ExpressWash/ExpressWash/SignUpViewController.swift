@@ -138,8 +138,46 @@ extension SignUpViewController: UITextFieldDelegate {
 }
 
 extension SignUpViewController: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+       currentTappedTextField = textField
+        return true
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
+        if textField.text! == "" {
+            return false
+        } else if textField == firstNameTextField {
+            textField.resignFirstResponder()
+            lastNameTextField.becomeFirstResponder()
+            return true
+        } else if textField == lastNameTextField {
+            textField.resignFirstResponder()
+            emailAddressTextField.becomeFirstResponder()
+            return true
+        } else if textField == emailAddressTextField {
+            textField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+            return true
+        } else if textField == passwordTextField {
+            textField.resignFirstResponder()
+            confirmTextField.becomeFirstResponder()
+            return true
+        } else if textField == confirmTextField {
+            textField.resignFirstResponder()
+            guard let firstName = firstNameTextField.text, !firstName.isEmpty, let lastName = lastNameTextField.text, !lastName.isEmpty, let email = emailAddressTextField.text, !email.isEmpty,  let password = passwordTextField.text, !password.isEmpty, let confirm = confirmTextField.text, !confirm.isEmpty else { return false}
+            
+            if password == confirm {
+                //Sign Up User!
+                self.performSegue(withIdentifier: "finishedSignUpSegue", sender: self)
+            } else {
+                let alertController = UIAlertController(title: "Passwords Do Not Match", message: "", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "", style: .cancel, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+            }
+            return true
+        } else {
+            return false
+        }
     }
 }
