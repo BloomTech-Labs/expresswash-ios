@@ -8,6 +8,8 @@
 
 import Foundation
 
+let NO_DATA_ERROR = 99999
+
 let BASE_URL = URL(string: "https://www.expresswash.us")!
 
 enum ENDPOINTS: String {

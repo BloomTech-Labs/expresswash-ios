@@ -280,4 +280,60 @@ class UserController {
         }.resume()
     }
     
+    func fetchUserByID(uid: Int,
+                       context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
+                       completion: @escaping (User?, Error?) -> Void) {
+        guard uid > 0 else {
+            completion(nil, nil)
+            return
+        }
+        
+        let requestURL = BASE_URL.appendingPathComponent(ENDPOINTS.users.rawValue).appendingPathComponent(String(uid))
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "GET"
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error fetching user by ID \(uid): \(error)")
+                completion(nil, error)
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                print("Not a valid HTTPResponse when fetching user by ID \(uid)")
+                completion(nil, error)
+                return
+            }
+            
+            if httpResponse.statusCode != 200 {
+                print("Non-200 response when fetching user by ID \(uid): \(httpResponse.statusCode)")
+                completion(nil, NSError(domain: "fetchUserByID", code: httpResponse.statusCode, userInfo: nil))
+                return
+            }
+            
+            guard let data = data else {
+                print("No data when fetching user by ID \(uid)")
+                completion(nil, NSError(domain: "fetchUserByID", code: NO_DATA_ERROR, userInfo: nil))
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let representation = try decoder.decode(UserRepresentation.self, from: data)
+                let fetchedUser = User(representation: representation, context: context)
+                context.perform {
+                    do {
+                        try CoreDataStack.shared.save(context: context)
+                    } catch {
+                        print("Unable to save new user after fetching for ID \(uid): \(error)")
+                        context.reset()
+                        completion(fetchedUser, error)
+                    }
+                }
+            } catch {
+                print("Unable to decode after fetching user for ID \(uid): \(error)")
+                completion(nil, error)
+            }
+        }.resume()
+    }
+    
 }
