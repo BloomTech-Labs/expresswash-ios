@@ -15,6 +15,8 @@ class SignUpViewController: UIViewController {
     private var passwordButton = UIButton(type: .custom)
     private var confirmButton = UIButton(type: .custom)
     
+    private var currentTappedTextField : UITextField?
+    
     //MARK: - Outlets
     
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -22,8 +24,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailAddressTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmTextField: UITextField!
-    
-    @IBOutlet weak var nextButton: UIButton!
     
     //MARK: - Views
     
@@ -33,9 +33,11 @@ class SignUpViewController: UIViewController {
         setupSubviews()
         setupTextFields()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
 
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
+        
+        view.layoutIfNeeded()
     }
     
     //MARK: - Methods
@@ -74,7 +76,9 @@ class SignUpViewController: UIViewController {
         lastNameTextField.delegate = self
         emailAddressTextField.delegate = self
         passwordTextField.delegate = self
+        passwordTextField.passwordRules = UITextInputPasswordRules(descriptor: "required: upper; required: digit; minlength: 8;")
         confirmTextField.delegate = self
+        confirmTextField.passwordRules = UITextInputPasswordRules(descriptor: "required: upper; required: digit; minlength: 8;")
     }
     
     @objc func unhidePassword() {
@@ -101,33 +105,79 @@ class SignUpViewController: UIViewController {
         setupSubviews()
     }
     
-    @objc func keyboardWillShow(sender: NSNotification) {
-         self.view.frame.origin.y = -150 // Move view 150 points upward
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if currentTappedTextField == emailAddressTextField {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+                if self.view.frame.origin.y == 0 {
+                    self.view.frame.origin.y -= keyboardSize.height/2
+                }
+            }
+        } else if currentTappedTextField == passwordTextField {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+                if self.view.frame.origin.y == 0 {
+                    self.view.frame.origin.y -= keyboardSize.height
+                }
+            }
+        } else if currentTappedTextField == confirmTextField {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+                if self.view.frame.origin.y == 0 {
+                    self.view.frame.origin.y -= keyboardSize.height
+                }
+            }
+        }
     }
 
-    @objc func keyboardWillHide(sender: NSNotification) {
-         self.view.frame.origin.y = 0 // Move view to original position
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     //MARK: - Actions
     
-    @IBAction func nextButtonTapped(_ sender: Any) {
-        guard let name = lastNameTextField.text, !name.isEmpty, let email = emailAddressTextField.text, !email.isEmpty,  let password = passwordTextField.text, !password.isEmpty, let confirm = confirmTextField.text, !confirm.isEmpty else { return }
-        
-        if password == confirm {
-            //Sign Up User!
-            self.performSegue(withIdentifier: "finishedSignUpSegue", sender: self)
-        } else {
-            let alertController = UIAlertController(title: "Passwords Do Not Match", message: "", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "", style: .cancel, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
-        }
-    }
 }
 
 extension SignUpViewController: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+       currentTappedTextField = textField
+        return true
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
+        if textField.text! == "" {
+            return false
+        } else if textField == firstNameTextField {
+            textField.resignFirstResponder()
+            lastNameTextField.becomeFirstResponder()
+            return true
+        } else if textField == lastNameTextField {
+            textField.resignFirstResponder()
+            emailAddressTextField.becomeFirstResponder()
+            return true
+        } else if textField == emailAddressTextField {
+            textField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+            return true
+        } else if textField == passwordTextField {
+            textField.resignFirstResponder()
+            confirmTextField.becomeFirstResponder()
+            return true
+        } else if textField == confirmTextField {
+            textField.resignFirstResponder()
+            guard let firstName = firstNameTextField.text, !firstName.isEmpty, let lastName = lastNameTextField.text, !lastName.isEmpty, let email = emailAddressTextField.text, !email.isEmpty,  let password = passwordTextField.text, !password.isEmpty, let confirm = confirmTextField.text, !confirm.isEmpty else { return false}
+            
+            if password == confirm {
+                //Sign Up User!
+                self.performSegue(withIdentifier: "finishedSignUpSegue", sender: self)
+            } else {
+                let alertController = UIAlertController(title: "Passwords Do Not Match", message: "", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "", style: .cancel, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+            }
+            return true
+        } else {
+            return false
+        }
     }
 }
