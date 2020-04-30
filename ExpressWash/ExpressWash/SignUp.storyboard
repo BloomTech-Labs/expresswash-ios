@@ -25,10 +25,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="nN4-Qo-GzJ">
-                                <rect key="frame" x="50" y="214" width="314" height="598"/>
+                                <rect key="frame" x="50" y="194" width="314" height="608"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZU0-5N-QXV">
-                                        <rect key="frame" x="0.0" y="0.0" width="314" height="99.666666666666671"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="101.66666666666667"/>
                                         <color key="backgroundColor" red="0.28627450980000002" green="0.34509803919999998" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -36,7 +36,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" textContentType="name"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PJ0-mi-ta0">
-                                        <rect key="frame" x="0.0" y="124.66666666666669" width="314" height="99.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="126.66666666666669" width="314" height="101.66666666666669"/>
                                         <color key="backgroundColor" red="0.28627450980000002" green="0.34509803919999998" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -44,7 +44,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" textContentType="family-name"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5nt-yI-f6k">
-                                        <rect key="frame" x="0.0" y="249.33333333333334" width="314" height="99.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="253.33333333333334" width="314" height="101.33333333333334"/>
                                         <color key="backgroundColor" red="0.28627450980000002" green="0.34509803919999998" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -52,7 +52,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MFP-Ni-flY">
-                                        <rect key="frame" x="0.0" y="373.66666666666663" width="314" height="99.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="379.66666666666663" width="314" height="101.66666666666669"/>
                                         <color key="backgroundColor" red="0.28627450980000002" green="0.34509803919999998" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -60,7 +60,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dsA-h0-8of">
-                                        <rect key="frame" x="0.0" y="498.33333333333343" width="314" height="99.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="506.33333333333343" width="314" height="101.66666666666669"/>
                                         <color key="backgroundColor" red="0.28627450980000002" green="0.34509803919999998" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -89,8 +89,8 @@
                             <constraint firstItem="1h7-bN-c6y" firstAttribute="trailing" secondItem="nN4-Qo-GzJ" secondAttribute="trailing" constant="50" id="6n4-bD-EAc"/>
                             <constraint firstItem="nN4-Qo-GzJ" firstAttribute="centerX" secondItem="1h7-bN-c6y" secondAttribute="centerX" id="GTh-jy-9og"/>
                             <constraint firstItem="nN4-Qo-GzJ" firstAttribute="leading" secondItem="1h7-bN-c6y" secondAttribute="leading" constant="50" id="KYm-uP-rqN"/>
-                            <constraint firstItem="1h7-bN-c6y" firstAttribute="bottom" secondItem="nN4-Qo-GzJ" secondAttribute="bottom" constant="50" id="Lzv-wB-UFU"/>
-                            <constraint firstItem="nN4-Qo-GzJ" firstAttribute="top" secondItem="OX5-hr-Bwh" secondAttribute="bottom" constant="50" id="s9o-Ly-ium"/>
+                            <constraint firstItem="1h7-bN-c6y" firstAttribute="bottom" secondItem="nN4-Qo-GzJ" secondAttribute="bottom" constant="60" id="Lzv-wB-UFU"/>
+                            <constraint firstItem="nN4-Qo-GzJ" firstAttribute="top" secondItem="OX5-hr-Bwh" secondAttribute="bottom" constant="30" id="s9o-Ly-ium"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1h7-bN-c6y"/>
                     </view>
