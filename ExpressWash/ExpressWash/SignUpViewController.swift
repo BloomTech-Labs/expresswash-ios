@@ -33,10 +33,6 @@ class SignUpViewController: UIViewController {
         setupSubviews()
         setupTextFields()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
-
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
-        
         view.layoutIfNeeded()
     }
     
@@ -105,44 +101,11 @@ class SignUpViewController: UIViewController {
         setupSubviews()
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if currentTappedTextField == emailAddressTextField {
-            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-                if self.view.frame.origin.y == 0 {
-                    self.view.frame.origin.y -= keyboardSize.height/2
-                }
-            }
-        } else if currentTappedTextField == passwordTextField {
-            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-                if self.view.frame.origin.y == 0 {
-                    self.view.frame.origin.y -= keyboardSize.height
-                }
-            }
-        } else if currentTappedTextField == confirmTextField {
-            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-                if self.view.frame.origin.y == 0 {
-                    self.view.frame.origin.y -= keyboardSize.height
-                }
-            }
-        }
-    }
-
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
-    }
-    
     //MARK: - Actions
     
 }
 
 extension SignUpViewController: UITextFieldDelegate {
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-       currentTappedTextField = textField
-        return true
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.text! == "" {
