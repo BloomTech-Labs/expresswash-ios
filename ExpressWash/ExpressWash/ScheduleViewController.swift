@@ -14,7 +14,6 @@ class ScheduleViewController: UIViewController {
     
     //MARK: - Outlets
     
-    @IBOutlet weak var washersCollectionView: UICollectionView!
     @IBOutlet weak var scheduleButton: UIButton!
     
     //MARK: - Views

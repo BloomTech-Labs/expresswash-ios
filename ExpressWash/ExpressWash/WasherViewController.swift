@@ -16,7 +16,6 @@ class WasherViewController: UIViewController {
     
     @IBOutlet weak var activeLabel: UILabel!
     @IBOutlet weak var activeSwitch: UISwitch!
-    @IBOutlet weak var appointmentsTableView: UITableView!
     
     //MARK: - Views
     
