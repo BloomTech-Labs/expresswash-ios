@@ -199,7 +199,6 @@
 				37B747EF244FF997004AD2FE /* ScheduleViewController.swift */,
 				375D410E2451298200479C7E /* ReceiptsViewController.swift */,
 				375D41102451299500479C7E /* WasherViewController.swift */,
-				37D062672457CF0000E33895 /* AppointmentViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -509,7 +508,6 @@
 				5D605C672453DEB700B83420 /* User+Convenience.swift in Sources */,
 				5D46BE59244EBE5A0058A660 /* Job+CoreDataProperties.swift in Sources */,
 				375D410D2451296E00479C7E /* ProfileViewController.swift in Sources */,
-				37D062682457CF0000E33895 /* AppointmentViewController.swift in Sources */,
 				375DB3DC244A5AE500C889F2 /* SceneDelegate.swift in Sources */,
 				37B747F0244FF997004AD2FE /* ScheduleViewController.swift in Sources */,
 				377D1A02246A46FD00CA3AEB /* UserController+Registration.swift in Sources */,
