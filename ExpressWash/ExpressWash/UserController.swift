@@ -217,7 +217,9 @@ class UserController {
             }
         }
     }
+}
 
+extension UserController {
     // MARK: - Server methods
 
     func put(user: User, completion: @escaping (Error?) -> Void = { _ in }) {
