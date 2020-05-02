@@ -1,5 +1,5 @@
 //
-//  Appointment+CoreDataProperties.swift
+//  Job+CoreDataProperties.swift
 //  ExpressWash
 //
 //  Created by Joel Groomer on 4/20/20.
@@ -10,17 +10,16 @@
 import Foundation
 import CoreData
 
+extension Job {
 
-extension Appointment {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Appointment> {
-        return NSFetchRequest<Appointment>(entityName: "Appointment")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Job> {
+        return NSFetchRequest<Job>(entityName: "Job")
     }
 
     @NSManaged public var address1: String
     @NSManaged public var address2: String?
     @NSManaged public var city: String
-    @NSManaged public var id: Int32
+    @NSManaged public var jobID: Int32
     @NSManaged public var lat: Double
     @NSManaged public var long: Double
     @NSManaged public var notes: String?

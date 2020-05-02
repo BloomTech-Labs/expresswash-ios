@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Appointment" representedClassName="Appointment" syncable="YES">
+    <entity name="Car" representedClassName="Car" syncable="YES">
+        <attribute name="carID" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="color" attributeType="String"/>
+        <attribute name="licensePlate" attributeType="String"/>
+        <attribute name="make" attributeType="String"/>
+        <attribute name="model" attributeType="String"/>
+        <attribute name="photo" optional="YES" attributeType="URI"/>
+        <attribute name="year" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="jobs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Job" inverseName="car" inverseEntity="Job"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="cars" inverseEntity="User"/>
+    </entity>
+    <entity name="Job" representedClassName="Job" syncable="YES">
         <attribute name="address1" attributeType="String"/>
         <attribute name="address2" optional="YES" attributeType="String"/>
         <attribute name="city" attributeType="String"/>
-        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="jobID" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="lat" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="long" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
@@ -15,20 +26,9 @@
         <attribute name="timeRequested" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="type" attributeType="String"/>
         <attribute name="zip" attributeType="String"/>
-        <relationship name="car" maxCount="1" deletionRule="Nullify" destinationEntity="Car" inverseName="appointments" inverseEntity="Car"/>
-        <relationship name="client" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="appointments" inverseEntity="User"/>
-        <relationship name="washer" maxCount="1" deletionRule="Nullify" destinationEntity="Washer" inverseName="appointments" inverseEntity="Washer"/>
-    </entity>
-    <entity name="Car" representedClassName="Car" syncable="YES">
-        <attribute name="color" attributeType="String"/>
-        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="licensePlate" attributeType="String"/>
-        <attribute name="make" attributeType="String"/>
-        <attribute name="model" attributeType="String"/>
-        <attribute name="photo" optional="YES" attributeType="URI"/>
-        <attribute name="year" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="car" inverseEntity="Appointment"/>
-        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="cars" inverseEntity="User"/>
+        <relationship name="car" maxCount="1" deletionRule="Nullify" destinationEntity="Car" inverseName="jobs" inverseEntity="Car"/>
+        <relationship name="client" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="jobs" inverseEntity="User"/>
+        <relationship name="washer" maxCount="1" deletionRule="Nullify" destinationEntity="Washer" inverseName="jobs" inverseEntity="Washer"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="accountType" attributeType="String"/>
@@ -36,7 +36,6 @@
         <attribute name="city" optional="YES" attributeType="String"/>
         <attribute name="email" attributeType="String"/>
         <attribute name="firstName" attributeType="String"/>
-        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="lastName" attributeType="String"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String"/>
         <attribute name="profilePicture" optional="YES" attributeType="URI"/>
@@ -45,10 +44,11 @@
         <attribute name="streetAddress2" optional="YES" attributeType="String"/>
         <attribute name="stripeUUID" optional="YES" attributeType="String"/>
         <attribute name="token" optional="YES" attributeType="String"/>
+        <attribute name="userID" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="userRating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="zip" optional="YES" attributeType="String"/>
-        <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Appointment" inverseName="client" inverseEntity="Appointment"/>
         <relationship name="cars" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Car" inverseName="owner" inverseEntity="Car"/>
+        <relationship name="jobs" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Job" inverseName="client" inverseEntity="Job"/>
         <relationship name="washer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Washer" inverseName="user" inverseEntity="Washer"/>
     </entity>
     <entity name="Washer" representedClassName="Washer" syncable="YES">
@@ -60,11 +60,11 @@
         <attribute name="rateSmall" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="washerId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="workStatus" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Appointment" inverseName="washer" inverseEntity="Appointment"/>
+        <relationship name="jobs" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Job" inverseName="washer" inverseEntity="Job"/>
         <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="washer" inverseEntity="User"/>
     </entity>
     <elements>
-        <element name="Appointment" positionX="-27" positionY="18" width="128" height="298"/>
+        <element name="Job" positionX="160" positionY="192" width="128" height="298"/>
         <element name="Car" positionX="18" positionY="171" width="128" height="178"/>
         <element name="User" positionX="54" positionY="198" width="128" height="328"/>
         <element name="Washer" positionX="18" positionY="153" width="128" height="193"/>

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 extension User {
-    convenience init(id: Int32 = 0,
+    convenience init(userID: Int32 = 0,
                      accountType: String,
                      email: String,
                      firstName: String,
@@ -27,7 +27,7 @@ extension User {
                      token: String? = nil,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
-        self.id = id
+        self.userID = userID
         self.accountType = accountType
         self.email = email
         self.firstName = firstName
@@ -43,11 +43,11 @@ extension User {
         self.zip = zip
         self.token = token
     }
-    
+
     convenience init(representation: UserRepresentation,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
-        self.id = Int32(representation.id)
+        self.userID = Int32(representation.userID)
         self.accountType = representation.accountType
         self.email = representation.email
         self.firstName = representation.firstName
@@ -63,9 +63,9 @@ extension User {
         self.zip = representation.zip
         self.token = representation.token
     }
-    
+
     var representation: UserRepresentation {
-        UserRepresentation(id: Int(self.id),
+        UserRepresentation(userID: Int(self.userID),
                            accountType: self.accountType,
                            email: self.email,
                            firstName: self.firstName,
@@ -81,9 +81,9 @@ extension User {
                            zip: self.zip,
                            token: self.token)
     }
-    
+
     var stringID: String {
-        String(self.id)
+        String(self.userID)
     }
-    
+
 }

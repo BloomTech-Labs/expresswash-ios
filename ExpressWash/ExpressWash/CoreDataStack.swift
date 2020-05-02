@@ -11,7 +11,7 @@ import CoreData
 
 class CoreDataStack {
     static let shared = CoreDataStack()
-    
+
     lazy var container: NSPersistentContainer = {
        let container = NSPersistentContainer(name: "ExpressWash")
         container.loadPersistentStores { (_, error) in
@@ -21,13 +21,13 @@ class CoreDataStack {
         }
         return container
     }()
-    
+
     var mainContext: NSManagedObjectContext {
         let context = container.viewContext
         context.automaticallyMergesChangesFromParent = true
         return context
     }
-    
+
     func save(context: NSManagedObjectContext = CoreDataStack.shared.mainContext) throws {
         var error: Error?
         context.performAndWait {
@@ -39,5 +39,5 @@ class CoreDataStack {
         }
         if let error = error { throw error }
     }
-    
+
 }

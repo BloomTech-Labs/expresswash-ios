@@ -1,5 +1,5 @@
 //
-//  Appointment+Convenience.swift
+//  Job+Convenience.swift
 //  ExpressWash
 //
 //  Created by Joel Groomer on 4/20/20.
@@ -9,8 +9,8 @@
 import Foundation
 import CoreData
 
-extension Appointment {
-    convenience init(id: Int32 = 0,
+extension Job {
+    convenience init(jobID: Int32 = 0,
                      lat: Double,
                      long: Double,
                      address1: String,
@@ -21,7 +21,7 @@ extension Appointment {
                      notes: String?,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
-        self.id = id
+        self.jobID = jobID
         self.lat = lat
         self.long = long
         self.address1 = address1
@@ -31,11 +31,11 @@ extension Appointment {
         self.zip = zip
         self.notes = notes
     }
-    
-    convenience init(representation: AppointmentRepresentation,
+
+    convenience init(representation: JobRepresentation,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
-        self.id = Int32(representation.id)
+        self.jobID = Int32(representation.jobID)
         self.lat = representation.lat
         self.long = representation.long
         self.address1 = representation.address1
@@ -45,22 +45,22 @@ extension Appointment {
         self.zip = representation.zip
         self.notes = representation.notes
     }
-    
-    var representation: AppointmentRepresentation? {
-        AppointmentRepresentation(id: Int(self.id),
-                                  lat: self.lat,
-                                  long: self.long,
-                                  address1: self.address1,
-                                  address2: self.address2,
-                                  city: self.city,
-                                  state: self.state,
-                                  zip: self.zip,
-                                  notes: self.notes,
-                                  type: self.type,
-                                  photoBeforeJob: self.photoBeforeJob,
-                                  photoJobComplete: self.photoJobComplete,
-                                  timeRequested: self.timeRequested ?? Date(),
-                                  timeComplete: self.timeComplete
+
+    var representation: JobRepresentation? {
+        JobRepresentation(jobID: Int(self.jobID),
+                          lat: self.lat,
+                          long: self.long,
+                          address1: self.address1,
+                          address2: self.address2,
+                          city: self.city,
+                          state: self.state,
+                          zip: self.zip,
+                          notes: self.notes,
+                          type: self.type,
+                          photoBeforeJob: self.photoBeforeJob,
+                          photoJobComplete: self.photoJobComplete,
+                          timeRequested: self.timeRequested ?? Date(),
+                          timeComplete: self.timeComplete
         )
     }
 }

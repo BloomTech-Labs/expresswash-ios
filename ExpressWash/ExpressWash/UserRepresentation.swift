@@ -13,7 +13,7 @@ struct UserRepresentation: Codable {
     var bannerImage: URL?
     var email: String
     var firstName: String
-    var id: Int
+    var userID: Int
     var lastName: String
     var phoneNumber: String?
     var profilePicture: URL?
@@ -25,8 +25,8 @@ struct UserRepresentation: Codable {
     var zip: String?
     var token: String?
     var userRating: Int?
-    
-    init(id: Int = NO_ID,
+
+    init(userID: Int = NOID,
          accountType: String,
          email: String,
          firstName: String,
@@ -42,7 +42,7 @@ struct UserRepresentation: Codable {
          zip: String? = nil,
          token: String? = nil,
          userRating: Int? = nil) {
-        self.id = id
+        self.userID = userID
         self.accountType = accountType
         self.email = email
         self.firstName = firstName
@@ -59,9 +59,9 @@ struct UserRepresentation: Codable {
         self.token = token
         self.userRating = userRating
     }
-    
+
     enum UserKeys: String, CodingKey {
-        case id
+        case userID = "id"
         case accountType
         case email
         case firstName
@@ -78,17 +78,17 @@ struct UserRepresentation: Codable {
         case token
         case userRating
     }
-    
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: UserKeys.self)
-        
+
         // required attributes
-        self.id = try container.decode(Int.self, forKey: .id)
+        self.userID = try container.decode(Int.self, forKey: .userID)
         self.accountType = try container.decode(String.self, forKey: .accountType)
         self.email = try container.decode(String.self, forKey: .email)
         self.firstName = try container.decode(String.self, forKey: .firstName)
         self.lastName = try container.decode(String.self, forKey: .lastName)
-        
+
         // optional attributes
         self.bannerImage = try container.decodeIfPresent(URL.self, forKey: .bannerImage)
         self.phoneNumber = try container.decodeIfPresent(String.self, forKey: .phoneNumber)
@@ -102,21 +102,21 @@ struct UserRepresentation: Codable {
         self.token = try container.decodeIfPresent(String.self, forKey: .token)
         self.userRating = try container.decodeIfPresent(Int.self, forKey: .userRating)
     }
-    
+
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: UserKeys.self)
-        
+
         // ID is only required if this user already exists
-        if id != NO_ID {
-            try container.encode(id, forKey: .id)
+        if userID != NOID {
+            try container.encode(userID, forKey: .userID)
         }
-        
+
         // required attributes
         try container.encode(accountType, forKey: .accountType)
         try container.encode(email, forKey: .email)
         try container.encode(firstName, forKey: .firstName)
         try container.encode(lastName, forKey: .lastName)
-        
+
         // optional attributes
         try container.encodeIfPresent(bannerImage, forKey: .bannerImage)
         try container.encodeIfPresent(phoneNumber, forKey: .phoneNumber)

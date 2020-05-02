@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension User {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<User> {
@@ -21,7 +20,7 @@ extension User {
     @NSManaged public var bannerImage: URL?
     @NSManaged public var email: String
     @NSManaged public var firstName: String
-    @NSManaged public var id: Int32
+    @NSManaged public var userID: Int32
     @NSManaged public var lastName: String
     @NSManaged public var phoneNumber: String?
     @NSManaged public var profilePicture: URL?
@@ -33,44 +32,44 @@ extension User {
     @NSManaged public var state: String?
     @NSManaged public var zip: String?
     @NSManaged public var token: String?
-    @NSManaged public var appointments: NSOrderedSet?
+    @NSManaged public var jobs: NSOrderedSet?
     @NSManaged public var cars: NSOrderedSet?
     @NSManaged public var washer: Washer?
 
 }
 
-// MARK: Generated accessors for appointments
+// MARK: Generated accessors for jobs
 extension User {
 
-    @objc(insertObject:inAppointmentsAtIndex:)
-    @NSManaged public func insertIntoAppointments(_ value: Appointment, at idx: Int)
+    @objc(insertObject:inJobsAtIndex:)
+    @NSManaged public func insertIntoJobs(_ value: Job, at idx: Int)
 
-    @objc(removeObjectFromAppointmentsAtIndex:)
-    @NSManaged public func removeFromAppointments(at idx: Int)
+    @objc(removeObjectFromJobsAtIndex:)
+    @NSManaged public func removeFromJobs(at idx: Int)
 
-    @objc(insertAppointments:atIndexes:)
-    @NSManaged public func insertIntoAppointments(_ values: [Appointment], at indexes: NSIndexSet)
+    @objc(insertJobs:atIndexes:)
+    @NSManaged public func insertIntoJobs(_ values: [Job], at indexes: NSIndexSet)
 
-    @objc(removeAppointmentsAtIndexes:)
-    @NSManaged public func removeFromAppointments(at indexes: NSIndexSet)
+    @objc(removeJobsAtIndexes:)
+    @NSManaged public func removeFromJobs(at indexes: NSIndexSet)
 
-    @objc(replaceObjectInAppointmentsAtIndex:withObject:)
-    @NSManaged public func replaceAppointments(at idx: Int, with value: Appointment)
+    @objc(replaceObjectInJobsAtIndex:withObject:)
+    @NSManaged public func replaceJobs(at idx: Int, with value: Job)
 
-    @objc(replaceAppointmentsAtIndexes:withAppointments:)
-    @NSManaged public func replaceAppointments(at indexes: NSIndexSet, with values: [Appointment])
+    @objc(replaceJobsAtIndexes:withJobs:)
+    @NSManaged public func replaceJobs(at indexes: NSIndexSet, with values: [Job])
 
-    @objc(addAppointmentsObject:)
-    @NSManaged public func addToAppointments(_ value: Appointment)
+    @objc(addJobsObject:)
+    @NSManaged public func addToJobs(_ value: Job)
 
-    @objc(removeAppointmentsObject:)
-    @NSManaged public func removeFromAppointments(_ value: Appointment)
+    @objc(removeJobsObject:)
+    @NSManaged public func removeFromJobs(_ value: Job)
 
-    @objc(addAppointments:)
-    @NSManaged public func addToAppointments(_ values: NSOrderedSet)
+    @objc(addJobs:)
+    @NSManaged public func addToJobs(_ values: NSOrderedSet)
 
-    @objc(removeAppointments:)
-    @NSManaged public func removeFromAppointments(_ values: NSOrderedSet)
+    @objc(removeJobs:)
+    @NSManaged public func removeFromJobs(_ values: NSOrderedSet)
 
 }
 

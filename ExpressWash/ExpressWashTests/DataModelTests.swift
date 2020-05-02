@@ -21,17 +21,16 @@ class DataModelTests: XCTestCase {
 
     func testUserModel() throws {
         let user = User(accountType: "client", email: "email@email.com", firstName: "Test", lastName: "User")
-        XCTAssert(user.id == NO_ID32)
+        XCTAssert(user.userID == NOID32)
         XCTAssert(user.email == "email@email.com")
         XCTAssert(user.firstName == "Test")
         XCTAssert(user.lastName == "User")
-        
+
         let representation = user.representation
-        XCTAssert(representation.id == NO_ID)
+        XCTAssert(representation.userID == NOID)
         XCTAssert(representation.email == "email@email.com")
         XCTAssert(representation.firstName == "Test")
         XCTAssert(representation.lastName == "User")
     }
-
 
 }

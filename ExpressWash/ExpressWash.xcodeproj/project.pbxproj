@@ -13,14 +13,14 @@
 		375DB3E1244A5AE500C889F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375DB3DF244A5AE500C889F2 /* Main.storyboard */; };
 		375DB3E3244A5AE800C889F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 375DB3E2244A5AE800C889F2 /* Assets.xcassets */; };
 		375DB3E6244A5AE800C889F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375DB3E4244A5AE800C889F2 /* LaunchScreen.storyboard */; };
-		5D46BE42244E9E2A0058A660 /* Appointment+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE41244E9E2A0058A660 /* Appointment+Convenience.swift */; };
+		5D46BE42244E9E2A0058A660 /* Job+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE41244E9E2A0058A660 /* Job+Convenience.swift */; };
 		5D46BE44244E9EE20058A660 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE43244E9EE20058A660 /* CoreDataStack.swift */; };
-		5D46BE46244EA0950058A660 /* AppointmentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE45244EA0950058A660 /* AppointmentRepresentation.swift */; };
+		5D46BE46244EA0950058A660 /* JobRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE45244EA0950058A660 /* JobRepresentation.swift */; };
 		5D46BE4D244EBAA80058A660 /* ExpressWash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE4B244EBAA80058A660 /* ExpressWash.xcdatamodeld */; };
 		5D46BE56244EBE5A0058A660 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE4E244EBE5A0058A660 /* User+CoreDataClass.swift */; };
 		5D46BE57244EBE5A0058A660 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE4F244EBE5A0058A660 /* User+CoreDataProperties.swift */; };
-		5D46BE58244EBE5A0058A660 /* Appointment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE50244EBE5A0058A660 /* Appointment+CoreDataClass.swift */; };
-		5D46BE59244EBE5A0058A660 /* Appointment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE51244EBE5A0058A660 /* Appointment+CoreDataProperties.swift */; };
+		5D46BE58244EBE5A0058A660 /* Job+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE50244EBE5A0058A660 /* Job+CoreDataClass.swift */; };
+		5D46BE59244EBE5A0058A660 /* Job+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE51244EBE5A0058A660 /* Job+CoreDataProperties.swift */; };
 		5D46BE5A244EBE5A0058A660 /* Washer+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE52244EBE5A0058A660 /* Washer+CoreDataClass.swift */; };
 		5D46BE5B244EBE5A0058A660 /* Washer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE53244EBE5A0058A660 /* Washer+CoreDataProperties.swift */; };
 		5D46BE5C244EBE5A0058A660 /* Car+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE54244EBE5A0058A660 /* Car+CoreDataClass.swift */; };
@@ -53,14 +53,14 @@
 		375DB3E2244A5AE800C889F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		375DB3E5244A5AE800C889F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		375DB3E7244A5AE800C889F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5D46BE41244E9E2A0058A660 /* Appointment+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+Convenience.swift"; sourceTree = "<group>"; };
+		5D46BE41244E9E2A0058A660 /* Job+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+Convenience.swift"; sourceTree = "<group>"; };
 		5D46BE43244E9EE20058A660 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		5D46BE45244EA0950058A660 /* AppointmentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentRepresentation.swift; sourceTree = "<group>"; };
+		5D46BE45244EA0950058A660 /* JobRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRepresentation.swift; sourceTree = "<group>"; };
 		5D46BE4C244EBAA80058A660 /* ExpressWash.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExpressWash.xcdatamodel; sourceTree = "<group>"; };
 		5D46BE4E244EBE5A0058A660 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5D46BE4F244EBE5A0058A660 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		5D46BE50244EBE5A0058A660 /* Appointment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataClass.swift"; sourceTree = "<group>"; };
-		5D46BE51244EBE5A0058A660 /* Appointment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5D46BE50244EBE5A0058A660 /* Job+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5D46BE51244EBE5A0058A660 /* Job+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5D46BE52244EBE5A0058A660 /* Washer+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Washer+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5D46BE53244EBE5A0058A660 /* Washer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Washer+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5D46BE54244EBE5A0058A660 /* Car+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -180,14 +180,14 @@
 				5D46BE43244E9EE20058A660 /* CoreDataStack.swift */,
 				5DBD0ED02457DF0F00ADE10A /* DataModelGlobals.swift */,
 				5D46BE4B244EBAA80058A660 /* ExpressWash.xcdatamodeld */,
-				5D46BE50244EBE5A0058A660 /* Appointment+CoreDataClass.swift */,
-				5D46BE51244EBE5A0058A660 /* Appointment+CoreDataProperties.swift */,
-				5D46BE41244E9E2A0058A660 /* Appointment+Convenience.swift */,
-				5D46BE45244EA0950058A660 /* AppointmentRepresentation.swift */,
 				5D46BE54244EBE5A0058A660 /* Car+CoreDataClass.swift */,
 				5D46BE55244EBE5A0058A660 /* Car+CoreDataProperties.swift */,
 				5DC1B275244FD97C007C11EA /* Car+Convenience.swift */,
 				5DC1B277244FDB79007C11EA /* CarRepresentation.swift */,
+				5D46BE50244EBE5A0058A660 /* Job+CoreDataClass.swift */,
+				5D46BE51244EBE5A0058A660 /* Job+CoreDataProperties.swift */,
+				5D46BE41244E9E2A0058A660 /* Job+Convenience.swift */,
+				5D46BE45244EA0950058A660 /* JobRepresentation.swift */,
 				5D46BE4E244EBE5A0058A660 /* User+CoreDataClass.swift */,
 				5D46BE4F244EBE5A0058A660 /* User+CoreDataProperties.swift */,
 				5D605C662453DEB700B83420 /* User+Convenience.swift */,
@@ -253,6 +253,7 @@
 				375DB3D3244A5AE500C889F2 /* Frameworks */,
 				375DB3D4244A5AE500C889F2 /* Resources */,
 				ADCF719F7D8F97C95357762D /* [CP] Embed Pods Frameworks */,
+				5D97BB18245D079500B6F00E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -340,6 +341,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5D97BB18245D079500B6F00E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 		ADCF719F7D8F97C95357762D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -390,7 +408,7 @@
 				5DA0A8A32459141E00992692 /* NetworkGlobals.swift in Sources */,
 				5DBD0ECF2457C10200ADE10A /* UserController.swift in Sources */,
 				5D46BE44244E9EE20058A660 /* CoreDataStack.swift in Sources */,
-				5D46BE46244EA0950058A660 /* AppointmentRepresentation.swift in Sources */,
+				5D46BE46244EA0950058A660 /* JobRepresentation.swift in Sources */,
 				5D46BE5D244EBE5A0058A660 /* Car+CoreDataProperties.swift in Sources */,
 				5D46BE57244EBE5A0058A660 /* User+CoreDataProperties.swift in Sources */,
 				5D46BE5C244EBE5A0058A660 /* Car+CoreDataClass.swift in Sources */,
@@ -398,13 +416,13 @@
 				5D46BE4D244EBAA80058A660 /* ExpressWash.xcdatamodeld in Sources */,
 				5D605C652453D31100B83420 /* UserRepresentation.swift in Sources */,
 				5D605C672453DEB700B83420 /* User+Convenience.swift in Sources */,
-				5D46BE59244EBE5A0058A660 /* Appointment+CoreDataProperties.swift in Sources */,
+				5D46BE59244EBE5A0058A660 /* Job+CoreDataProperties.swift in Sources */,
 				375DB3DC244A5AE500C889F2 /* SceneDelegate.swift in Sources */,
 				5DC1B276244FD97C007C11EA /* Car+Convenience.swift in Sources */,
 				5D46BE5B244EBE5A0058A660 /* Washer+CoreDataProperties.swift in Sources */,
 				5DC1B278244FDB79007C11EA /* CarRepresentation.swift in Sources */,
-				5D46BE58244EBE5A0058A660 /* Appointment+CoreDataClass.swift in Sources */,
-				5D46BE42244E9E2A0058A660 /* Appointment+Convenience.swift in Sources */,
+				5D46BE58244EBE5A0058A660 /* Job+CoreDataClass.swift in Sources */,
+				5D46BE42244E9E2A0058A660 /* Job+Convenience.swift in Sources */,
 				5D46BE56244EBE5A0058A660 /* User+CoreDataClass.swift in Sources */,
 				5D46BE5A244EBE5A0058A660 /* Washer+CoreDataClass.swift in Sources */,
 			);

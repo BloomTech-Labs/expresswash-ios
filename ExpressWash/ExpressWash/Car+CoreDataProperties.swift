@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension Car {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Car> {
@@ -18,30 +17,30 @@ extension Car {
     }
 
     @NSManaged public var color: String
-    @NSManaged public var id: Int32
+    @NSManaged public var carID: Int32
     @NSManaged public var licensePlate: String
     @NSManaged public var make: String
     @NSManaged public var model: String
     @NSManaged public var photo: URL?
     @NSManaged public var year: Int16
-    @NSManaged public var appointments: NSSet?
+    @NSManaged public var jobs: NSSet?
     @NSManaged public var owner: User?
 
 }
 
-// MARK: Generated accessors for appointments
+// MARK: Generated accessors for jobs
 extension Car {
 
-    @objc(addAppointmentsObject:)
-    @NSManaged public func addToAppointments(_ value: Appointment)
+    @objc(addJobsObject:)
+    @NSManaged public func addToJobs(_ value: Job)
 
-    @objc(removeAppointmentsObject:)
-    @NSManaged public func removeFromAppointments(_ value: Appointment)
+    @objc(removeJobsObject:)
+    @NSManaged public func removeFromJobs(_ value: Job)
 
-    @objc(addAppointments:)
-    @NSManaged public func addToAppointments(_ values: NSSet)
+    @objc(addJobs:)
+    @NSManaged public func addToJobs(_ values: NSSet)
 
-    @objc(removeAppointments:)
-    @NSManaged public func removeFromAppointments(_ values: NSSet)
+    @objc(removeJobs:)
+    @NSManaged public func removeFromJobs(_ values: NSSet)
 
 }

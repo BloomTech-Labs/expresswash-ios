@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 extension Car {
-    convenience init(id: Int32 = 0,
+    convenience init(carID: Int32 = 0,
                      make: String,
                      model: String,
                      year: Int16,
@@ -19,7 +19,7 @@ extension Car {
                      photo: URL?,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
-        self.id = id
+        self.carID = carID
         self.make = make
         self.model = model
         self.year = year
@@ -27,10 +27,11 @@ extension Car {
         self.licensePlate = licensePlate
         self.photo = photo
     }
-    
-    convenience init(representation: CarRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+
+    convenience init(representation: CarRepresentation,
+                     context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
-        self.id = Int32(representation.id)
+        self.carID = Int32(representation.carID)
         self.make = representation.make
         self.model = representation.model
         self.year = representation.year
@@ -38,8 +39,14 @@ extension Car {
         self.licensePlate = representation.licensePlate
         self.photo = representation.photo
     }
-    
+
     var representation: CarRepresentation? {
-        CarRepresentation(id: Int(self.id), make: self.make, model: self.model, year: self.year, color: self.color, licensePlate: self.licensePlate, photo: self.photo)
+        CarRepresentation(carID: Int(self.carID),
+                          make: self.make,
+                          model: self.model,
+                          year: self.year,
+                          color: self.color,
+                          licensePlate: self.licensePlate,
+                          photo: self.photo)
     }
 }

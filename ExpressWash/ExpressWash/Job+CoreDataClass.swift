@@ -1,5 +1,5 @@
 //
-//  Appointment+CoreDataClass.swift
+//  Job+CoreDataClass.swift
 //  ExpressWash
 //
 //  Created by Joel Groomer on 4/20/20.
@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-@objc(Appointment)
-public class Appointment: NSManagedObject {
+@objc(Job)
+public class Job: NSManagedObject {
 
 }
