@@ -25,6 +25,8 @@ extension User {
                      state: String? = nil,
                      zip: String? = nil,
                      token: String? = nil,
+                     userRating: Int16 = 0,
+                     userRatingTotal: Int16 = 0,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.userID = userID
@@ -42,6 +44,8 @@ extension User {
         self.state = state
         self.zip = zip
         self.token = token
+        self.userRating = userRating
+        self.userRatingTotal = userRatingTotal
     }
 
     convenience init(representation: UserRepresentation,
@@ -62,6 +66,8 @@ extension User {
         self.state = representation.state
         self.zip = representation.zip
         self.token = representation.token
+        self.userRating = representation.userRating
+        self.userRatingTotal = representation.userRatingTotal
     }
 
     var representation: UserRepresentation {

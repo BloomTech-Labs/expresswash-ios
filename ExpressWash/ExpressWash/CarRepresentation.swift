@@ -16,6 +16,7 @@ struct CarRepresentation: Codable {
     var color: String
     var licensePlate: String
     var photo: URL?
+    var size: String
 
     init(carID: Int = 0,
          make: String,
@@ -23,7 +24,8 @@ struct CarRepresentation: Codable {
          year: Int16,
          color: String,
          licensePlate: String,
-         photo: URL?) {
+         photo: URL?,
+         size: String) {
         self.carID = carID
         self.make = make
         self.model = model
@@ -31,5 +33,6 @@ struct CarRepresentation: Codable {
         self.color = color
         self.licensePlate = licensePlate
         self.photo = photo
+        self.size = size
     }
 }

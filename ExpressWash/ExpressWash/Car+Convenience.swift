@@ -17,6 +17,7 @@ extension Car {
                      color: String,
                      licensePlate: String,
                      photo: URL?,
+                     size: String,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.carID = carID
@@ -26,6 +27,7 @@ extension Car {
         self.color = color
         self.licensePlate = licensePlate
         self.photo = photo
+        self.size = size
     }
 
     convenience init(representation: CarRepresentation,
@@ -38,6 +40,7 @@ extension Car {
         self.color = representation.color
         self.licensePlate = representation.licensePlate
         self.photo = representation.photo
+        self.size = representation.size
     }
 
     var representation: CarRepresentation? {
@@ -47,6 +50,7 @@ extension Car {
                           year: self.year,
                           color: self.color,
                           licensePlate: self.licensePlate,
-                          photo: self.photo)
+                          photo: self.photo,
+                          size: self.size)
     }
 }

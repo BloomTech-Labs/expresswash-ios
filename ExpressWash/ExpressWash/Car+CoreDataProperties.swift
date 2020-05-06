@@ -22,6 +22,7 @@ extension Car {
     @NSManaged public var make: String
     @NSManaged public var model: String
     @NSManaged public var photo: URL?
+    @NSManaged public var size: String
     @NSManaged public var year: Int16
     @NSManaged public var jobs: NSSet?
     @NSManaged public var owner: User?

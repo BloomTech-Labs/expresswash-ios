@@ -11,56 +11,83 @@ import CoreData
 
 extension Job {
     convenience init(jobID: Int32 = 0,
-                     lat: Double,
-                     long: Double,
+                     jobLocationLat: Double,
+                     jobLocationLon: Double,
                      address1: String,
                      address2: String? = nil,
                      city: String,
                      state: String,
                      zip: String,
-                     notes: String?,
+                     notes: String? = nil,
+                     completed: Bool = false,
+                     jobType: String,
+                     paid: Bool = false,
+                     photoBeforeJob: URL? = nil,
+                     photoAfterJob: URL? = nil,
+                     scheduled: Bool = true,
+                     timeCompleted: Date? = nil,
+                     timeRequested: Date = Date(),
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.jobID = jobID
-        self.lat = lat
-        self.long = long
-        self.address1 = address1
+        self.jobLocationLat = jobLocationLat
+        self.jobLocationLon = jobLocationLon
+        self.address = address1
         self.address2 = address2
         self.city = city
         self.state = state
         self.zip = zip
         self.notes = notes
+        self.completed = completed
+        self.jobType = jobType
+        self.paid = paid
+        self.photoBeforeJob = photoBeforeJob
+        self.photoAfterJob = photoAfterJob
+        self.scheduled = scheduled
+        self.timeCompleted = timeCompleted
+        self.timeRequested = timeRequested
     }
 
     convenience init(representation: JobRepresentation,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.jobID = Int32(representation.jobID)
-        self.lat = representation.lat
-        self.long = representation.long
-        self.address1 = representation.address1
+        self.jobLocationLat = representation.jobLocationLat
+        self.jobLocationLon = representation.jobLocationLon
+        self.address = representation.address
         self.address2 = representation.address2
         self.city = representation.city
         self.state = representation.state
         self.zip = representation.zip
         self.notes = representation.notes
+        self.completed = representation.completed
+        self.jobType = representation.jobType
+        self.paid = representation.paid
+        self.photoBeforeJob = representation.photoBeforeJob
+        self.photoAfterJob = representation.photoAfterJob
+        self.scheduled = representation.scheduled
+        self.timeCompleted = representation.timeCompleted
+        self.timeRequested = representation.timeRequested
     }
 
     var representation: JobRepresentation? {
         JobRepresentation(jobID: Int(self.jobID),
-                          lat: self.lat,
-                          long: self.long,
-                          address1: self.address1,
+                          jobLocationLat: self.jobLocationLat,
+                          jobLocationLon: self.jobLocationLon,
+                          address: self.address,
                           address2: self.address2,
                           city: self.city,
                           state: self.state,
                           zip: self.zip,
                           notes: self.notes,
-                          type: self.type,
+                          jobType: self.jobType,
+                          completed: self.completed,
+                          paid: self.paid,
+                          scheduled: self.scheduled,
                           photoBeforeJob: self.photoBeforeJob,
-                          photoJobComplete: self.photoJobComplete,
-                          timeRequested: self.timeRequested ?? Date(),
-                          timeComplete: self.timeComplete
+                          photoAfterJob: self.photoAfterJob,
+                          timeRequested: self.timeRequested,
+                          timeCompleted: self.timeCompleted
         )
     }
 }

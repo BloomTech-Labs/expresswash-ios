@@ -18,9 +18,14 @@ extension Washer {
 
     @NSManaged public var aboutMe: String?
     @NSManaged public var available: Bool
-    @NSManaged public var lat: Double
-    @NSManaged public var long: Double
-    @NSManaged public var rate: Double
+    @NSManaged public var currentLocationLat: Double
+    @NSManaged public var currentLocationLon: Double
+    @NSManaged public var rateSmall: Double
+    @NSManaged public var rateMedium: Double
+    @NSManaged public var rateLarge: Double
+    @NSManaged public var washerId: Int32
+    @NSManaged public var washerRating: Int16
+    @NSManaged public var washerRatingTotal: Int16
     @NSManaged public var jobs: NSOrderedSet?
     @NSManaged public var user: User?
 

@@ -25,6 +25,7 @@ struct UserRepresentation: Codable {
     var zip: String?
     var token: String?
     var userRating: Int?
+    var userRatingTotal: Int?
 
     init(userID: Int = NOID,
          accountType: String,
@@ -41,7 +42,8 @@ struct UserRepresentation: Codable {
          state: String? = nil,
          zip: String? = nil,
          token: String? = nil,
-         userRating: Int? = nil) {
+         userRating: Int? = nil,
+         userRatingTotal: Int? = nil) {
         self.userID = userID
         self.accountType = accountType
         self.email = email
@@ -58,6 +60,7 @@ struct UserRepresentation: Codable {
         self.zip = zip
         self.token = token
         self.userRating = userRating
+        self.userRatingTotal = userRatingTotal
     }
 
     enum UserKeys: String, CodingKey {
@@ -77,6 +80,7 @@ struct UserRepresentation: Codable {
         case zip
         case token
         case userRating
+        case userRatingTotal
     }
 
     init(from decoder: Decoder) throws {
@@ -101,6 +105,7 @@ struct UserRepresentation: Codable {
         self.zip = try container.decodeIfPresent(String.self, forKey: .zip)
         self.token = try container.decodeIfPresent(String.self, forKey: .token)
         self.userRating = try container.decodeIfPresent(Int.self, forKey: .userRating)
+        self.userRatingTotal = try container.decodeIfPresent(Int.self, forKey: .userRatingTotal)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -127,7 +132,5 @@ struct UserRepresentation: Codable {
         try container.encodeIfPresent(city, forKey: .city)
         try container.encodeIfPresent(state, forKey: .state)
         try container.encodeIfPresent(zip, forKey: .zip)
-        try container.encodeIfPresent(token, forKey: .token)
-        try container.encodeIfPresent(userRating, forKey: .userRating)
     }
 }

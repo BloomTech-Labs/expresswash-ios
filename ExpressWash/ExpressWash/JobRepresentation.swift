@@ -9,119 +9,127 @@
 import Foundation
 
 struct JobRepresentation: Codable {
-    var jobID: Int
-    var lat: Double
-    var long: Double
-    var address1: String
+    var address: String
     var address2: String?
     var city: String
-    var state: String
-    var zip: String
+    var completed: Bool
+    var jobID: Int
+    var jobLocationLat: Double
+    var jobLocationLon: Double
+    var jobType: String
     var notes: String?
-    var type: String
+    var paid: Bool
     var photoBeforeJob: URL?
-    var photoJobComplete: URL?
-    var timeRequested: Date = Date()
-    var timeComplete: Date?
+    var photoAfterJob: URL?
+    var scheduled: Bool
+    var state: String
+    var timeRequested: Date
+    var timeCompleted: Date?
+    var zip: String
 
     init(jobID: Int = 0,
-         lat: Double,
-         long: Double,
-         address1: String,
+         jobLocationLat: Double,
+         jobLocationLon: Double,
+         address: String,
          address2: String?,
          city: String,
          state: String,
          zip: String,
          notes: String?,
-         type: String,
-         photoBeforeJob: URL?,
-         photoJobComplete: URL?,
+         jobType: String,
+         completed: Bool = false,
+         paid: Bool = false,
+         scheduled: Bool = true,
+         photoBeforeJob: URL? = nil,
+         photoAfterJob: URL? = nil,
          timeRequested: Date = Date(),
-         timeComplete: Date?) {
-        self.jobID = jobID
-        self.lat = lat
-        self.long = long
-        self.address1 = address1
+         timeCompleted: Date? = nil) {
+        self.address = address
         self.address2 = address2
         self.city = city
-        self.state = state
-        self.zip = zip
+        self.completed = completed
+        self.jobID = jobID
+        self.jobLocationLat = jobLocationLat
+        self.jobLocationLon = jobLocationLon
+        self.jobType = jobType
         self.notes = notes
-        self.type = type
+        self.paid = paid
         self.photoBeforeJob = photoBeforeJob
-        self.photoJobComplete = photoJobComplete
+        self.photoAfterJob = photoAfterJob
+        self.scheduled = scheduled
+        self.state = state
         self.timeRequested = timeRequested
-        self.timeComplete = timeComplete
+        self.timeCompleted = timeCompleted
+        self.zip = zip
     }
 
     enum JobKeys: String, CodingKey {
-        case jobID = "id"
-        case jobLocation
-        case type
-        case photoBeforeJob
-        case photoJobComplete
-        case timeRequested
-        case timeComplete
-    }
-
-    enum JobLocationKeys: String, CodingKey {
-        case lat
-        case long
-        case address1
+        case address
         case address2
         case city
-        case state
-        case zip
+        case completed
+        case jobID
+        case jobLocationLat
+        case jobLocationLon
+        case jobType
         case notes
+        case paid
+        case photoBeforeJob
+        case photoAfterJob
+        case scheduled
+        case state
+        case timeRequested
+        case timeCompleted
+        case zip
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: JobKeys.self)
 
-        jobID               = try container.decode(Int.self, forKey: .jobID)
-        type                = try container.decode(String.self, forKey: .type)
-        photoBeforeJob      = try container.decodeIfPresent(URL.self, forKey: .photoBeforeJob)
-        photoJobComplete    = try container.decodeIfPresent(URL.self, forKey: .photoJobComplete)
-        timeRequested       = try container.decode(Date.self, forKey: .timeRequested)
-        timeComplete        = try container.decodeIfPresent(Date.self, forKey: .timeComplete)
-
-        let jobLocationContainer = try container.nestedContainer(keyedBy: JobLocationKeys.self, forKey: .jobLocation)
-
-        lat         = try jobLocationContainer.decode(Double.self, forKey: .lat)
-        long        = try jobLocationContainer.decode(Double.self, forKey: .long)
-        address1    = try jobLocationContainer.decode(String.self, forKey: .address1)
-        address2    = try jobLocationContainer.decodeIfPresent(String.self, forKey: .address2)
-        city        = try jobLocationContainer.decode(String.self, forKey: .city)
-        state       = try jobLocationContainer.decode(String.self, forKey: .state)
-        zip         = try jobLocationContainer.decode(String.self, forKey: .zip)
-        notes       = try jobLocationContainer.decodeIfPresent(String.self, forKey: .notes)
+        address         = try container.decode(String.self, forKey: .address)
+        address2        = try container.decodeIfPresent(String.self, forKey: .address2)
+        city            = try container.decode(String.self, forKey: .city)
+        completed       = try container.decode(Bool.self, forKey: .completed)
+        jobID           = try container.decode(Int.self, forKey: .jobID)
+        jobLocationLat  = try container.decode(Double.self, forKey: .jobLocationLat)
+        jobLocationLon  = try container.decode(Double.self, forKey: .jobLocationLon)
+        jobType         = try container.decode(String.self, forKey: .jobType)
+        notes           = try container.decodeIfPresent(String.self, forKey: .notes)
+        paid            = try container.decode(Bool.self, forKey: .paid)
+        photoBeforeJob  = try container.decodeIfPresent(URL.self, forKey: .photoBeforeJob)
+        photoAfterJob   = try container.decodeIfPresent(URL.self, forKey: .photoAfterJob)
+        scheduled       = try container.decode(Bool.self, forKey: .scheduled)
+        state           = try container.decode(String.self, forKey: .state)
+        timeRequested   = try container.decode(Date.self, forKey: .timeRequested)
+        timeCompleted   = try container.decodeIfPresent(Date.self, forKey: .timeCompleted)
+        zip             = try container.decode(String.self, forKey: .zip)
     }
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: JobKeys.self)
 
-        try container.encode(jobID, forKey: .jobID)
-        try container.encode(type, forKey: .type)
-        try container.encode(photoBeforeJob, forKey: .photoBeforeJob)
-        try container.encode(photoJobComplete, forKey: .photoJobComplete)
-        try container.encode(timeRequested, forKey: .timeRequested)
-        if let timeComplete = timeComplete {
-            try container.encode(timeComplete, forKey: .timeComplete)
-        }
-
-        var jobLocationContainer = container.nestedContainer(keyedBy: JobLocationKeys.self, forKey: .jobLocation)
-
-        try jobLocationContainer.encode(lat, forKey: .lat)
-        try jobLocationContainer.encode(long, forKey: .long)
-        try jobLocationContainer.encode(address1, forKey: .address1)
+        try container.encode(address, forKey: .address)
         if let address2 = address2 {
-            try jobLocationContainer.encode(address2, forKey: .address2)
+            try container.encode(address2, forKey: .address2)
         }
-        try jobLocationContainer.encode(city, forKey: .city)
-        try jobLocationContainer.encode(state, forKey: .state)
-        try jobLocationContainer.encode(zip, forKey: .zip)
+        try container.encode(city, forKey: .city)
+        try container.encode(completed, forKey: .completed)
+        try container.encode(jobID, forKey: .jobID)
+        try container.encode(jobLocationLat, forKey: .jobLocationLat)
+        try container.encode(jobLocationLon, forKey: .jobLocationLon)
+        try container.encode(jobType, forKey: .jobType)
         if let notes = notes {
-            try jobLocationContainer.encode(notes, forKey: .notes)
+            try container.encode(notes, forKey: .notes)
         }
+        try container.encode(paid, forKey: .paid)
+        try container.encode(photoBeforeJob, forKey: .photoBeforeJob)
+        try container.encode(photoAfterJob, forKey: .photoAfterJob)
+        try container.encode(scheduled, forKey: .scheduled)
+        try container.encode(state, forKey: .state)
+        try container.encode(timeRequested, forKey: .timeRequested)
+        if let timeCompleted = timeCompleted {
+            try container.encode(timeCompleted, forKey: .timeCompleted)
+        }
+        try container.encode(zip, forKey: .zip)
     }
 }
