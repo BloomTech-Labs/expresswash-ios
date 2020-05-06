@@ -10,6 +10,9 @@ import Foundation
 import CoreData
 
 class UserController {
+    
+    // TODO: - Make login method. Token and User object are at the same level in the results for this endpoint.
+    
     static let shared = UserController()
 
     // MARK: - User session
@@ -18,22 +21,28 @@ class UserController {
             saveToPersistentStore()
         }
     }
+    var token: String?
 
     private lazy var localStoreURL: URL? = {
         let fileManager = FileManager.default
         guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-        return documents.appendingPathComponent("expresswass.plist")
+        return documents.appendingPathComponent("expresswash.plist")
     }()
 
     init() {
         if UserDefaults.standard.bool(forKey: "Session") {
+            token = UserDefaults.standard.string(forKey: "Token")
             loadFromPersistentStore()
         }
     }
 
     private func saveToPersistentStore() {
-        guard let url = localStoreURL, let sessionUser = sessionUser else {
+        guard let url = localStoreURL,
+              let sessionUser = sessionUser,
+              let token = token
+        else {
             UserDefaults.standard.set(false, forKey: "Session")
+            UserDefaults.standard.set("", forKey: "Token")
             return
         }
 
@@ -42,6 +51,7 @@ class UserController {
             let userData = try encoder.encode(sessionUser.representation)
             try userData.write(to: url)
             UserDefaults.standard.set(true, forKey: "Session")
+            UserDefaults.standard.set(token, forKey: "Token")
         } catch {
             print("Error saving user session data: \(error)")
         }
@@ -95,7 +105,6 @@ class UserController {
         user.lastName = representation.lastName != "" ? representation.lastName : user.lastName
         user.phoneNumber = representation.phoneNumber != nil ? representation.phoneNumber! : user.phoneNumber
         user.stripeUUID = representation.stripeUUID != nil ? representation.stripeUUID! : user.stripeUUID
-        user.token = representation.token != nil ? representation.token! : user.token
         user.streetAddress = representation.streetAddress != nil ? representation.streetAddress! : user.streetAddress
         user.streetAddress2 = representation.streetAddress2 != nil
             ? representation.streetAddress2! : user.streetAddress2
@@ -158,7 +167,6 @@ class UserController {
         user.lastName = representation.lastName
         user.phoneNumber = representation.phoneNumber
         user.stripeUUID = representation.stripeUUID
-        user.token = representation.token
         user.streetAddress = representation.streetAddress
         user.streetAddress2 = representation.streetAddress2
         user.city = representation.city

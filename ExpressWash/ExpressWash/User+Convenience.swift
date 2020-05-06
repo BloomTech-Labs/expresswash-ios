@@ -24,7 +24,6 @@ extension User {
                      city: String? = nil,
                      state: String? = nil,
                      zip: String? = nil,
-                     token: String? = nil,
                      userRating: Int16 = 0,
                      userRatingTotal: Int16 = 0,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
@@ -43,7 +42,6 @@ extension User {
         self.city = city
         self.state = state
         self.zip = zip
-        self.token = token
         self.userRating = userRating
         self.userRatingTotal = userRatingTotal
     }
@@ -65,9 +63,18 @@ extension User {
         self.city = representation.city
         self.state = representation.state
         self.zip = representation.zip
-        self.token = representation.token
-        self.userRating = representation.userRating
-        self.userRatingTotal = representation.userRatingTotal
+        
+        if let repUserRating = representation.userRating {
+            self.userRating = Int16(repUserRating)
+        } else {
+            self.userRating = 0
+        }
+        
+        if let repUserRatingTotal = representation.userRatingTotal {
+            self.userRatingTotal = Int16(repUserRatingTotal)
+        } else {
+            self.userRatingTotal = 0
+        }
     }
 
     var representation: UserRepresentation {
@@ -84,8 +91,7 @@ extension User {
                            streetAddress2: self.streetAddress2,
                            city: self.city,
                            state: self.state,
-                           zip: self.zip,
-                           token: self.token)
+                           zip: self.zip)
     }
 
     var stringID: String {
