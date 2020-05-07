@@ -10,9 +10,9 @@ import Foundation
 import CoreData
 
 class UserController {
-    
+
     // TODO: - Make login method. Token and User object are at the same level in the results for this endpoint.
-    
+
     static let shared = UserController()
 
     // MARK: - User session

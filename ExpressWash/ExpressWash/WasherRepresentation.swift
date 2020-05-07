@@ -20,7 +20,7 @@ struct WasherRepresentation: Codable {
     var washerRating: Int
     var washerRatingTotal: Int
     var userId: Int
-    
+
     init(aboutMe: String?,
          available: Bool,
          currentLocationLat: Double,
@@ -44,5 +44,5 @@ struct WasherRepresentation: Codable {
         self.washerRatingTotal = washerRatingTotal
         self.userId = userId
     }
-    
+
 }

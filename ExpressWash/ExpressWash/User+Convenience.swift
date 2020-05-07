@@ -63,13 +63,13 @@ extension User {
         self.city = representation.city
         self.state = representation.state
         self.zip = representation.zip
-        
+
         if let repUserRating = representation.userRating {
             self.userRating = Int16(repUserRating)
         } else {
             self.userRating = 0
         }
-        
+
         if let repUserRatingTotal = representation.userRatingTotal {
             self.userRatingTotal = Int16(repUserRatingTotal)
         } else {

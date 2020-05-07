@@ -106,10 +106,10 @@ struct UserRepresentation: Codable {
         self.userRating = try container.decodeIfPresent(Int.self, forKey: .userRating)
         self.userRatingTotal = try container.decodeIfPresent(Int.self, forKey: .userRatingTotal)
         self.washerRepresentation = try container.decodeIfPresent(WasherRepresentation.self, forKey: .washer)
-        
+
         // If there are any cars owned by this user, decode them
         var carContainer = try container.nestedUnkeyedContainer(forKey: .cars)
-        
+
         while !carContainer.isAtEnd {
             let carRep = try carContainer.decode(CarRepresentation.self)
             carRepresentations.append(carRep)
