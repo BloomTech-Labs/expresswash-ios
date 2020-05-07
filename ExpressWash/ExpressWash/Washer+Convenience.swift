@@ -49,10 +49,36 @@ extension Washer {
         self.washerRating = Int16(representation.washerRating)
         self.washerRatingTotal = Int16(representation.washerRatingTotal)
 
-        // TODO: Get the user matching representation.userId and
-        // save it in self.user
+        // Get the user matching representation.userId and save it in self.user
+
+        let fetchrequest: NSFetchRequest<User> = User.fetchRequest()
+        fetchrequest.predicate = NSPredicate(format: "userId == %@", representation.userId)
+        do {
+            let matchedUsers = try context.fetch(fetchrequest)
+
+            if matchedUsers.count == 1 {
+                self.user = matchedUsers[0]
+            } else {
+                self.user = nil
+                print("Unexpected number of users matched userId \(representation.userId): \(matchedUsers.count)")
+                UserController.shared.fetchUserByID(uid: representation.userId,
+                                                    context: context) { (fetchedUser, error) in
+                    if let error = error {
+                        print("Error fetching userId \(representation.userId) for washerId \(self.washerId): \(error)")
+                        self.user = nil
+                    }
+
+                    if let fetchedUser = fetchedUser {
+                        self.user = fetchedUser
+                        return
+                    }
+                }
+            }
+        } catch {
+            print("Error when fetching core data object for userId \(representation.userId): \(error)")
+        }
     }
-    
+
     var representation: WasherRepresentation {
         WasherRepresentation(aboutMe: self.aboutMe,
                              available: self.available,
@@ -66,7 +92,7 @@ extension Washer {
                              washerRatingTotal: Int(self.washerRatingTotal),
                              userId: Int(self.user?.userId ?? NOID32))
     }
-    
+
     var stringID: String {
         String(self.washerId)
     }
