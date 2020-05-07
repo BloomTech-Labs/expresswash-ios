@@ -13,7 +13,7 @@ struct JobRepresentation: Codable {
     var address2: String?
     var city: String
     var completed: Bool
-    var jobID: Int
+    var jobId: Int
     var jobLocationLat: Double
     var jobLocationLon: Double
     var jobType: String
@@ -27,7 +27,7 @@ struct JobRepresentation: Codable {
     var timeCompleted: Date?
     var zip: String
 
-    init(jobID: Int = 0,
+    init(jobId: Int = 0,
          jobLocationLat: Double,
          jobLocationLon: Double,
          address: String,
@@ -48,7 +48,7 @@ struct JobRepresentation: Codable {
         self.address2 = address2
         self.city = city
         self.completed = completed
-        self.jobID = jobID
+        self.jobId = jobId
         self.jobLocationLat = jobLocationLat
         self.jobLocationLon = jobLocationLon
         self.jobType = jobType
@@ -68,7 +68,7 @@ struct JobRepresentation: Codable {
         case address2
         case city
         case completed
-        case jobID
+        case jobId
         case jobLocationLat
         case jobLocationLon
         case jobType
@@ -90,7 +90,7 @@ struct JobRepresentation: Codable {
         address2        = try container.decodeIfPresent(String.self, forKey: .address2)
         city            = try container.decode(String.self, forKey: .city)
         completed       = try container.decode(Bool.self, forKey: .completed)
-        jobID           = try container.decode(Int.self, forKey: .jobID)
+        jobId           = try container.decode(Int.self, forKey: .jobId)
         jobLocationLat  = try container.decode(Double.self, forKey: .jobLocationLat)
         jobLocationLon  = try container.decode(Double.self, forKey: .jobLocationLon)
         jobType         = try container.decode(String.self, forKey: .jobType)
@@ -114,7 +114,7 @@ struct JobRepresentation: Codable {
         }
         try container.encode(city, forKey: .city)
         try container.encode(completed, forKey: .completed)
-        try container.encode(jobID, forKey: .jobID)
+        try container.encode(jobId, forKey: .jobId)
         try container.encode(jobLocationLat, forKey: .jobLocationLat)
         try container.encode(jobLocationLon, forKey: .jobLocationLon)
         try container.encode(jobType, forKey: .jobType)

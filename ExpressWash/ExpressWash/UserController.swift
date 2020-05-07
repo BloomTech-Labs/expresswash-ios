@@ -98,7 +98,7 @@ class UserController {
     func updateUser(_ user: User,
                     with representation: UserRepresentation,
                     context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        user.userID = representation.userID > 0 ? Int32(representation.userID) : user.userID
+        user.userId = representation.userId > 0 ? Int32(representation.userId) : user.userId
         user.accountType = representation.accountType != "" ? representation.accountType : user.accountType
         user.email = representation.email != "" ? representation.email : user.email
         user.firstName = representation.firstName != "" ? representation.firstName : user.firstName
@@ -160,7 +160,7 @@ class UserController {
         // them. You can use this on its own by setting `saveOnMainContext` to true.
         // If you need to save on a different context, you'll need to leave it as false and save it yourself.
 
-        user.userID = Int32(representation.userID)
+        user.userId = Int32(representation.userId)
         user.accountType = representation.accountType
         user.email = representation.email
         user.firstName = representation.firstName
@@ -191,8 +191,8 @@ class UserController {
     }
 
     func updateUsers(with representations: [UserRepresentation]) {
-        let usersWithID = representations.filter({ $0.userID != NOID })
-        let usersToFetch = usersWithID.compactMap({ $0.userID })
+        let usersWithID = representations.filter({ $0.userId != NOID })
+        let usersToFetch = usersWithID.compactMap({ $0.userId })
         let representationsByID = Dictionary(uniqueKeysWithValues: zip(usersToFetch, usersWithID))
         var usersToCreate = representationsByID // holds all users now, but will be whittled down
 
@@ -205,13 +205,13 @@ class UserController {
                 let existingUsers = try context.fetch(fetchRequest)
 
                 for user in existingUsers {
-                    guard user.userID != NOID,
-                        let representation = representationsByID[Int(user.userID)] else {
+                    guard user.userId != NOID,
+                        let representation = representationsByID[Int(user.userId)] else {
                         continue
                     }
 
                     self.update(user: user, with: representation)
-                    usersToCreate.removeValue(forKey: Int(user.userID))
+                    usersToCreate.removeValue(forKey: Int(user.userId))
                     try CoreDataStack.shared.save(context: context)
                 }
 
@@ -258,7 +258,7 @@ extension UserController {
     func deleteFromServer(user: User,
                           context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
                           completion: @escaping (Error?) -> Void = { _ in }) {
-        guard user.userID != NOID32 else {
+        guard user.userId != NOID32 else {
             completion(nil)
             return
         }

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 extension Car {
-    convenience init(carID: Int32 = 0,
+    convenience init(carId: Int32 = 0,
                      make: String,
                      model: String,
                      year: Int16,
@@ -20,7 +20,7 @@ extension Car {
                      size: String,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
-        self.carID = carID
+        self.carId = carId
         self.make = make
         self.model = model
         self.year = year
@@ -33,7 +33,7 @@ extension Car {
     convenience init(representation: CarRepresentation,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
-        self.carID = Int32(representation.carID)
+        self.carId = Int32(representation.carId)
         self.make = representation.make
         self.model = representation.model
         self.year = representation.year
@@ -44,7 +44,7 @@ extension Car {
     }
 
     var representation: CarRepresentation? {
-        CarRepresentation(carID: Int(self.carID),
+        CarRepresentation(carId: Int(self.carId),
                           make: self.make,
                           model: self.model,
                           year: self.year,

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 extension Job {
-    convenience init(jobID: Int32 = 0,
+    convenience init(jobId: Int32 = 0,
                      jobLocationLat: Double,
                      jobLocationLon: Double,
                      address1: String,
@@ -29,7 +29,7 @@ extension Job {
                      timeRequested: Date = Date(),
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
-        self.jobID = jobID
+        self.jobId = jobId
         self.jobLocationLat = jobLocationLat
         self.jobLocationLon = jobLocationLon
         self.address = address1
@@ -51,7 +51,7 @@ extension Job {
     convenience init(representation: JobRepresentation,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
-        self.jobID = Int32(representation.jobID)
+        self.jobId = Int32(representation.jobId)
         self.jobLocationLat = representation.jobLocationLat
         self.jobLocationLon = representation.jobLocationLon
         self.address = representation.address
@@ -71,7 +71,7 @@ extension Job {
     }
 
     var representation: JobRepresentation? {
-        JobRepresentation(jobID: Int(self.jobID),
+        JobRepresentation(jobId: Int(self.jobId),
                           jobLocationLat: self.jobLocationLat,
                           jobLocationLon: self.jobLocationLon,
                           address: self.address,

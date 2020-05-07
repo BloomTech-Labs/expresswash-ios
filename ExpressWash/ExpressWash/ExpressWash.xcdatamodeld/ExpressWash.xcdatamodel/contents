@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Car" representedClassName="Car" syncable="YES">
-        <attribute name="carID" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="carId" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="color" attributeType="String"/>
         <attribute name="licensePlate" attributeType="String"/>
         <attribute name="make" attributeType="String"/>
@@ -17,7 +17,7 @@
         <attribute name="address2" optional="YES" attributeType="String"/>
         <attribute name="city" attributeType="String"/>
         <attribute name="completed" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="jobID" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="jobId" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="jobLocationLat" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="jobLocationLon" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="jobType" attributeType="String"/>
@@ -48,7 +48,7 @@
         <attribute name="streetAddress2" optional="YES" attributeType="String"/>
         <attribute name="stripeUUID" optional="YES" attributeType="String"/>
         <attribute name="token" optional="YES" attributeType="String"/>
-        <attribute name="userID" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="userId" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="userRating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="userRatingTotal" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="zip" optional="YES" attributeType="String"/>

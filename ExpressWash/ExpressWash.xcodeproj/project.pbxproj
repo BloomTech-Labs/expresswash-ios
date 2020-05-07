@@ -25,6 +25,7 @@
 		5D46BE5B244EBE5A0058A660 /* Washer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE53244EBE5A0058A660 /* Washer+CoreDataProperties.swift */; };
 		5D46BE5C244EBE5A0058A660 /* Car+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE54244EBE5A0058A660 /* Car+CoreDataClass.swift */; };
 		5D46BE5D244EBE5A0058A660 /* Car+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE55244EBE5A0058A660 /* Car+CoreDataProperties.swift */; };
+		5D51383B24639BF000E81AEA /* WasherRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D51383A24639BF000E81AEA /* WasherRepresentation.swift */; };
 		5D605C652453D31100B83420 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D605C642453D31100B83420 /* UserRepresentation.swift */; };
 		5D605C672453DEB700B83420 /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D605C662453DEB700B83420 /* User+Convenience.swift */; };
 		5DA0A8A32459141E00992692 /* NetworkGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA0A8A22459141E00992692 /* NetworkGlobals.swift */; };
@@ -65,6 +66,7 @@
 		5D46BE53244EBE5A0058A660 /* Washer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Washer+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5D46BE54244EBE5A0058A660 /* Car+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5D46BE55244EBE5A0058A660 /* Car+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5D51383A24639BF000E81AEA /* WasherRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherRepresentation.swift; sourceTree = "<group>"; };
 		5D605C642453D31100B83420 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
 		5D605C662453DEB700B83420 /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
 		5DA0A8A22459141E00992692 /* NetworkGlobals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkGlobals.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				5D605C642453D31100B83420 /* UserRepresentation.swift */,
 				5D46BE52244EBE5A0058A660 /* Washer+CoreDataClass.swift */,
 				5D46BE53244EBE5A0058A660 /* Washer+CoreDataProperties.swift */,
+				5D51383A24639BF000E81AEA /* WasherRepresentation.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				5DA0A8A32459141E00992692 /* NetworkGlobals.swift in Sources */,
 				5DBD0ECF2457C10200ADE10A /* UserController.swift in Sources */,
 				5D46BE44244E9EE20058A660 /* CoreDataStack.swift in Sources */,
+				5D51383B24639BF000E81AEA /* WasherRepresentation.swift in Sources */,
 				5D46BE46244EA0950058A660 /* JobRepresentation.swift in Sources */,
 				5D46BE5D244EBE5A0058A660 /* Car+CoreDataProperties.swift in Sources */,
 				5D46BE57244EBE5A0058A660 /* User+CoreDataProperties.swift in Sources */,

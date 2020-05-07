@@ -24,7 +24,7 @@ extension User {
     @NSManaged public var phoneNumber: String?
     @NSManaged public var profilePicture: URL?
     @NSManaged public var stripeUUID: String?
-    @NSManaged public var userID: Int32
+    @NSManaged public var userId: Int32
     @NSManaged public var userRating: Int16
     @NSManaged public var userRatingTotal: Int16
     @NSManaged public var streetAddress: String?

@@ -13,7 +13,7 @@ struct UserRepresentation: Codable {
     var bannerImage: URL?
     var email: String
     var firstName: String
-    var userID: Int
+    var userId: Int
     var lastName: String
     var phoneNumber: String?
     var profilePicture: URL?
@@ -26,7 +26,7 @@ struct UserRepresentation: Codable {
     var userRating: Int?
     var userRatingTotal: Int?
 
-    init(userID: Int = NOID,
+    init(userId: Int = NOID,
          accountType: String,
          email: String,
          firstName: String,
@@ -42,7 +42,7 @@ struct UserRepresentation: Codable {
          zip: String? = nil,
          userRating: Int? = nil,
          userRatingTotal: Int? = nil) {
-        self.userID = userID
+        self.userId = userId
         self.accountType = accountType
         self.email = email
         self.firstName = firstName
@@ -61,7 +61,7 @@ struct UserRepresentation: Codable {
     }
 
     enum UserKeys: String, CodingKey {
-        case userID = "id"
+        case userId = "id"
         case accountType
         case email
         case firstName
@@ -83,7 +83,7 @@ struct UserRepresentation: Codable {
         let container = try decoder.container(keyedBy: UserKeys.self)
 
         // required attributes
-        self.userID = try container.decode(Int.self, forKey: .userID)
+        self.userId = try container.decode(Int.self, forKey: .userId)
         self.accountType = try container.decode(String.self, forKey: .accountType)
         self.email = try container.decode(String.self, forKey: .email)
         self.firstName = try container.decode(String.self, forKey: .firstName)
@@ -112,8 +112,8 @@ struct UserRepresentation: Codable {
         var container = encoder.container(keyedBy: UserKeys.self)
 
         // ID is only required if this user already exists
-        if userID != NOID {
-            try container.encode(userID, forKey: .userID)
+        if userId != NOID {
+            try container.encode(userId, forKey: .userId)
         }
 
         // required attributes
