@@ -25,6 +25,8 @@ struct UserRepresentation: Codable {
     var zip: String?
     var userRating: Int?
     var userRatingTotal: Int?
+    var carRepresentations: [CarRepresentation] = []
+    var washerRepresentation: WasherRepresentation?
 
     init(userId: Int = NOID,
          accountType: String,
@@ -77,6 +79,8 @@ struct UserRepresentation: Codable {
         case zip
         case userRating
         case userRatingTotal
+        case cars
+        case washer
     }
 
     init(from decoder: Decoder) throws {
@@ -101,11 +105,15 @@ struct UserRepresentation: Codable {
         self.zip = try container.decodeIfPresent(String.self, forKey: .zip)
         self.userRating = try container.decodeIfPresent(Int.self, forKey: .userRating)
         self.userRatingTotal = try container.decodeIfPresent(Int.self, forKey: .userRatingTotal)
+        self.washerRepresentation = try container.decodeIfPresent(WasherRepresentation.self, forKey: .washer)
         
-        // TODO: -
-        // decode cars, if applicable
-        // decode washer object, if applicable
+        // If there are any cars owned by this user, decode them
+        var carContainer = try container.nestedUnkeyedContainer(forKey: .cars)
         
+        while !carContainer.isAtEnd {
+            let carRep = try carContainer.decode(CarRepresentation.self)
+            carRepresentations.append(carRep)
+        }
     }
 
     func encode(to encoder: Encoder) throws {
