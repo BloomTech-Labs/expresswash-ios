@@ -39,7 +39,7 @@ extension Washer {
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.aboutMe = representation.aboutMe
-        self.workStatus = representation.available
+        self.workStatus = representation.workStatus
         self.currentLocationLat = representation.currentLocationLat
         self.currentLocationLon = representation.currentLocationLon
         self.rateSmall = representation.rateSmall

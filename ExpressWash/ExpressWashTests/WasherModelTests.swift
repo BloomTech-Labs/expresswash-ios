@@ -11,6 +11,13 @@ import XCTest
 
 class WasherModelTests: XCTestCase {
 
+    let testAboutMe = "I'm a washer"
+    let testLat = 35.8609
+    let testLon = -120.8200
+    let testRateSmall = 25.0
+    let testRateMedium = 40.0
+    let testRateLarge = 55.0
+
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -21,13 +28,6 @@ class WasherModelTests: XCTestCase {
 
     func testWasherModel() throws {
         // tests Washer and WasherRepresentation computed property
-
-        let testAboutMe = "I'm a washer"
-        let testLat = 35.8609
-        let testLon = -120.8200
-        let testRateSmall = 25.0
-        let testRateMedium = 40.0
-        let testRateLarge = 55.0
 
         let user = User(accountType: "washer",
                         email: "washer@email.com",

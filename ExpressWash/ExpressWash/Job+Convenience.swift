@@ -13,7 +13,7 @@ extension Job {
     convenience init(jobId: Int32 = 0,
                      jobLocationLat: Double,
                      jobLocationLon: Double,
-                     address1: String,
+                     address: String,
                      address2: String? = nil,
                      city: String,
                      state: String,
@@ -32,7 +32,7 @@ extension Job {
         self.jobId = jobId
         self.jobLocationLat = jobLocationLat
         self.jobLocationLon = jobLocationLon
-        self.address = address1
+        self.address = address
         self.address2 = address2
         self.city = city
         self.state = state

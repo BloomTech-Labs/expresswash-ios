@@ -10,7 +10,7 @@ import Foundation
 
 struct WasherRepresentation: Codable {
     var aboutMe: String?
-    var available: Bool
+    var workStatus: Bool
     var currentLocationLat: Double
     var currentLocationLon: Double
     var rateSmall: Double
@@ -33,7 +33,7 @@ struct WasherRepresentation: Codable {
          washerRatingTotal: Int,
          userId: Int) {
         self.aboutMe = aboutMe
-        self.available = available
+        self.workStatus = available
         self.currentLocationLat = currentLocationLat
         self.currentLocationLon = currentLocationLon
         self.rateSmall = rateSmall
