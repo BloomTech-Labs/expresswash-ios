@@ -29,8 +29,11 @@
 		5D51383D2463A13500E81AEA /* Washer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D51383C2463A13500E81AEA /* Washer+Convenience.swift */; };
 		5D605C652453D31100B83420 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D605C642453D31100B83420 /* UserRepresentation.swift */; };
 		5D605C672453DEB700B83420 /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D605C662453DEB700B83420 /* User+Convenience.swift */; };
+		5D99624A2464FFB700D4151F /* WasherModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9962492464FFB700D4151F /* WasherModelTests.swift */; };
+		5D99624C2464FFDB00D4151F /* JobModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D99624B2464FFDB00D4151F /* JobModelTests.swift */; };
+		5D99624E2464FFE900D4151F /* CarModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D99624D2464FFE900D4151F /* CarModelTest.swift */; };
+		5D9962502465017600D4151F /* UserModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D99624F2465017600D4151F /* UserModelTests.swift */; };
 		5DA0A8A32459141E00992692 /* NetworkGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA0A8A22459141E00992692 /* NetworkGlobals.swift */; };
-		5DA0A8B324592F9D00992692 /* DataModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA0A8B224592F9D00992692 /* DataModelTests.swift */; };
 		5DBD0ECF2457C10200ADE10A /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBD0ECE2457C10200ADE10A /* UserController.swift */; };
 		5DBD0ED12457DF0F00ADE10A /* DataModelGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBD0ED02457DF0F00ADE10A /* DataModelGlobals.swift */; };
 		5DC1B276244FD97C007C11EA /* Car+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC1B275244FD97C007C11EA /* Car+Convenience.swift */; };
@@ -71,10 +74,13 @@
 		5D51383C2463A13500E81AEA /* Washer+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Washer+Convenience.swift"; sourceTree = "<group>"; };
 		5D605C642453D31100B83420 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
 		5D605C662453DEB700B83420 /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
+		5D9962492464FFB700D4151F /* WasherModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherModelTests.swift; sourceTree = "<group>"; };
+		5D99624B2464FFDB00D4151F /* JobModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobModelTests.swift; sourceTree = "<group>"; };
+		5D99624D2464FFE900D4151F /* CarModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModelTest.swift; sourceTree = "<group>"; };
+		5D99624F2465017600D4151F /* UserModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelTests.swift; sourceTree = "<group>"; };
 		5DA0A8A22459141E00992692 /* NetworkGlobals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkGlobals.swift; sourceTree = "<group>"; };
 		5DA0A8A824592A3100992692 /* ExpressWashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExpressWashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA0A8AC24592A3100992692 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5DA0A8B224592F9D00992692 /* DataModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelTests.swift; sourceTree = "<group>"; };
 		5DBD0ECE2457C10200ADE10A /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		5DBD0ED02457DF0F00ADE10A /* DataModelGlobals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelGlobals.swift; sourceTree = "<group>"; };
 		5DC1B275244FD97C007C11EA /* Car+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+Convenience.swift"; sourceTree = "<group>"; };
@@ -230,10 +236,21 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		5D9962512465021C00D4151F /* Modeltests */ = {
+			isa = PBXGroup;
+			children = (
+				5D99624D2464FFE900D4151F /* CarModelTest.swift */,
+				5D99624B2464FFDB00D4151F /* JobModelTests.swift */,
+				5D99624F2465017600D4151F /* UserModelTests.swift */,
+				5D9962492464FFB700D4151F /* WasherModelTests.swift */,
+			);
+			name = Modeltests;
+			sourceTree = "<group>";
+		};
 		5DA0A8A924592A3100992692 /* ExpressWashTests */ = {
 			isa = PBXGroup;
 			children = (
-				5DA0A8B224592F9D00992692 /* DataModelTests.swift */,
+				5D9962512465021C00D4151F /* Modeltests */,
 				5DA0A8AC24592A3100992692 /* Info.plist */,
 			);
 			path = ExpressWashTests;
@@ -440,7 +457,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DA0A8B324592F9D00992692 /* DataModelTests.swift in Sources */,
+				5D99624E2464FFE900D4151F /* CarModelTest.swift in Sources */,
+				5D99624A2464FFB700D4151F /* WasherModelTests.swift in Sources */,
+				5D9962502465017600D4151F /* UserModelTests.swift in Sources */,
+				5D99624C2464FFDB00D4151F /* JobModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,12 @@
 import Foundation
 import CoreData
 
+enum CarSize: String {
+    case small
+    case medium
+    case large
+}
+
 extension Car {
     convenience init(carId: Int32 = 0,
                      make: String,

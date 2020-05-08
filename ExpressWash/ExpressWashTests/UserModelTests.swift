@@ -1,15 +1,15 @@
 //
-//  DataModelTests.swift
+//  UserModelTests.swift
 //  ExpressWashTests
 //
-//  Created by Joel Groomer on 4/28/20.
+//  Created by Joel Groomer on 5/7/20.
 //  Copyright © 2020 Bobby Keffury. All rights reserved.
 //
 
 import XCTest
 @testable import ExpressWash
 
-class DataModelTests: XCTestCase {
+class UserModelTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -20,6 +20,8 @@ class DataModelTests: XCTestCase {
     }
 
     func testUserModel() throws {
+        // tests User and UserRepresentation computed property
+
         let user = User(accountType: "client", email: "email@email.com", firstName: "Test", lastName: "User")
         XCTAssert(user.userId == NOID32)
         XCTAssert(user.email == "email@email.com")

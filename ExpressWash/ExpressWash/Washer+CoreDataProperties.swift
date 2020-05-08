@@ -17,7 +17,7 @@ extension Washer {
     }
 
     @NSManaged public var aboutMe: String?
-    @NSManaged public var available: Bool
+    @NSManaged public var workStatus: Bool
     @NSManaged public var currentLocationLat: Double
     @NSManaged public var currentLocationLon: Double
     @NSManaged public var rateSmall: Double

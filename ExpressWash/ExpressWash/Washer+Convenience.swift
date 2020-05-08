@@ -24,7 +24,7 @@ extension Washer {
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.aboutMe = aboutMe
-        self.available = available
+        self.workStatus = available
         self.currentLocationLat = currentLocationLat
         self.currentLocationLon = currentLocationLon
         self.rateSmall = rateSmall
@@ -39,7 +39,7 @@ extension Washer {
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.aboutMe = representation.aboutMe
-        self.available = representation.available
+        self.workStatus = representation.available
         self.currentLocationLat = representation.currentLocationLat
         self.currentLocationLon = representation.currentLocationLon
         self.rateSmall = representation.rateSmall
@@ -81,7 +81,7 @@ extension Washer {
 
     var representation: WasherRepresentation {
         WasherRepresentation(aboutMe: self.aboutMe,
-                             available: self.available,
+                             available: self.workStatus,
                              currentLocationLat: self.currentLocationLat,
                              currentLocationLon: self.currentLocationLon,
                              rateSmall: self.rateSmall,
