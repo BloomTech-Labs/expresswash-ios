@@ -14,8 +14,6 @@ class ScheduleViewController: UIViewController {
     
     //MARK: - Outlets
     
-    @IBOutlet weak var scheduleButton: UIButton!
-    
     //MARK: - Views
     
     override func viewDidLoad() {
