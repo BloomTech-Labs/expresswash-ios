@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,7 +13,42 @@
 		375DB3E1244A5AE500C889F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375DB3DF244A5AE500C889F2 /* Main.storyboard */; };
 		375DB3E3244A5AE800C889F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 375DB3E2244A5AE800C889F2 /* Assets.xcassets */; };
 		375DB3E6244A5AE800C889F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375DB3E4244A5AE800C889F2 /* LaunchScreen.storyboard */; };
+		5D46BE42244E9E2A0058A660 /* Job+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE41244E9E2A0058A660 /* Job+Convenience.swift */; };
+		5D46BE44244E9EE20058A660 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE43244E9EE20058A660 /* CoreDataStack.swift */; };
+		5D46BE46244EA0950058A660 /* JobRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE45244EA0950058A660 /* JobRepresentation.swift */; };
+		5D46BE4D244EBAA80058A660 /* ExpressWash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE4B244EBAA80058A660 /* ExpressWash.xcdatamodeld */; };
+		5D46BE56244EBE5A0058A660 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE4E244EBE5A0058A660 /* User+CoreDataClass.swift */; };
+		5D46BE57244EBE5A0058A660 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE4F244EBE5A0058A660 /* User+CoreDataProperties.swift */; };
+		5D46BE58244EBE5A0058A660 /* Job+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE50244EBE5A0058A660 /* Job+CoreDataClass.swift */; };
+		5D46BE59244EBE5A0058A660 /* Job+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE51244EBE5A0058A660 /* Job+CoreDataProperties.swift */; };
+		5D46BE5A244EBE5A0058A660 /* Washer+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE52244EBE5A0058A660 /* Washer+CoreDataClass.swift */; };
+		5D46BE5B244EBE5A0058A660 /* Washer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE53244EBE5A0058A660 /* Washer+CoreDataProperties.swift */; };
+		5D46BE5C244EBE5A0058A660 /* Car+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE54244EBE5A0058A660 /* Car+CoreDataClass.swift */; };
+		5D46BE5D244EBE5A0058A660 /* Car+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE55244EBE5A0058A660 /* Car+CoreDataProperties.swift */; };
+		5D51383B24639BF000E81AEA /* WasherRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D51383A24639BF000E81AEA /* WasherRepresentation.swift */; };
+		5D51383D2463A13500E81AEA /* Washer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D51383C2463A13500E81AEA /* Washer+Convenience.swift */; };
+		5D605C652453D31100B83420 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D605C642453D31100B83420 /* UserRepresentation.swift */; };
+		5D605C672453DEB700B83420 /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D605C662453DEB700B83420 /* User+Convenience.swift */; };
+		5D99624A2464FFB700D4151F /* WasherModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9962492464FFB700D4151F /* WasherModelTests.swift */; };
+		5D99624C2464FFDB00D4151F /* JobModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D99624B2464FFDB00D4151F /* JobModelTests.swift */; };
+		5D99624E2464FFE900D4151F /* CarModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D99624D2464FFE900D4151F /* CarModelTest.swift */; };
+		5D9962502465017600D4151F /* UserModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D99624F2465017600D4151F /* UserModelTests.swift */; };
+		5DA0A8A32459141E00992692 /* NetworkGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA0A8A22459141E00992692 /* NetworkGlobals.swift */; };
+		5DBD0ECF2457C10200ADE10A /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBD0ECE2457C10200ADE10A /* UserController.swift */; };
+		5DBD0ED12457DF0F00ADE10A /* DataModelGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBD0ED02457DF0F00ADE10A /* DataModelGlobals.swift */; };
+		5DC1B276244FD97C007C11EA /* Car+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC1B275244FD97C007C11EA /* Car+Convenience.swift */; };
+		5DC1B278244FDB79007C11EA /* CarRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC1B277244FDB79007C11EA /* CarRepresentation.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5DA0A8AD24592A3100992692 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 375DB3CE244A5AE500C889F2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 375DB3D5244A5AE500C889F2;
+			remoteInfo = ExpressWash;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		375DB3D6244A5AE500C889F2 /* ExpressWash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpressWash.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -23,6 +58,33 @@
 		375DB3E2244A5AE800C889F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		375DB3E5244A5AE800C889F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		375DB3E7244A5AE800C889F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D46BE41244E9E2A0058A660 /* Job+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+Convenience.swift"; sourceTree = "<group>"; };
+		5D46BE43244E9EE20058A660 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		5D46BE45244EA0950058A660 /* JobRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRepresentation.swift; sourceTree = "<group>"; };
+		5D46BE4C244EBAA80058A660 /* ExpressWash.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExpressWash.xcdatamodel; sourceTree = "<group>"; };
+		5D46BE4E244EBE5A0058A660 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5D46BE4F244EBE5A0058A660 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5D46BE50244EBE5A0058A660 /* Job+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5D46BE51244EBE5A0058A660 /* Job+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5D46BE52244EBE5A0058A660 /* Washer+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Washer+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5D46BE53244EBE5A0058A660 /* Washer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Washer+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5D46BE54244EBE5A0058A660 /* Car+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5D46BE55244EBE5A0058A660 /* Car+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5D51383A24639BF000E81AEA /* WasherRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherRepresentation.swift; sourceTree = "<group>"; };
+		5D51383C2463A13500E81AEA /* Washer+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Washer+Convenience.swift"; sourceTree = "<group>"; };
+		5D605C642453D31100B83420 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
+		5D605C662453DEB700B83420 /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
+		5D9962492464FFB700D4151F /* WasherModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherModelTests.swift; sourceTree = "<group>"; };
+		5D99624B2464FFDB00D4151F /* JobModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobModelTests.swift; sourceTree = "<group>"; };
+		5D99624D2464FFE900D4151F /* CarModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModelTest.swift; sourceTree = "<group>"; };
+		5D99624F2465017600D4151F /* UserModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelTests.swift; sourceTree = "<group>"; };
+		5DA0A8A22459141E00992692 /* NetworkGlobals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkGlobals.swift; sourceTree = "<group>"; };
+		5DA0A8A824592A3100992692 /* ExpressWashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExpressWashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DA0A8AC24592A3100992692 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DBD0ECE2457C10200ADE10A /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		5DBD0ED02457DF0F00ADE10A /* DataModelGlobals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelGlobals.swift; sourceTree = "<group>"; };
+		5DC1B275244FD97C007C11EA /* Car+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+Convenience.swift"; sourceTree = "<group>"; };
+		5DC1B277244FDB79007C11EA /* CarRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRepresentation.swift; sourceTree = "<group>"; };
 		784D55BC02CE141CBBA94DD7 /* Pods-ExpressWash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpressWash.release.xcconfig"; path = "Target Support Files/Pods-ExpressWash/Pods-ExpressWash.release.xcconfig"; sourceTree = "<group>"; };
 		7A8200D7CB7A1DA0AE0695DE /* Pods_ExpressWash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpressWash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22957D25B9EF61851B91CB3 /* Pods-ExpressWash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpressWash.debug.xcconfig"; path = "Target Support Files/Pods-ExpressWash/Pods-ExpressWash.debug.xcconfig"; sourceTree = "<group>"; };
@@ -37,6 +99,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5DA0A8A524592A3100992692 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -44,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				375DB3D8244A5AE500C889F2 /* ExpressWash */,
+				5DA0A8A924592A3100992692 /* ExpressWashTests */,
 				375DB3D7244A5AE500C889F2 /* Products */,
 				39C68DA884EC6C2CC46D9DFC /* Pods */,
 				B41FE9FEE225BA7775004AA3 /* Frameworks */,
@@ -54,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				375DB3D6244A5AE500C889F2 /* ExpressWash.app */,
+				5DA0A8A824592A3100992692 /* ExpressWashTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,6 +179,7 @@
 		375DB3F1244A5AFB00C889F2 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5DBD0ECE2457C10200ADE10A /* UserController.swift */,
 			);
 			name = "Model Controllers";
 			sourceTree = "<group>";
@@ -115,6 +187,25 @@
 		375DB3F2244A5B1400C889F2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5D46BE43244E9EE20058A660 /* CoreDataStack.swift */,
+				5DBD0ED02457DF0F00ADE10A /* DataModelGlobals.swift */,
+				5D46BE4B244EBAA80058A660 /* ExpressWash.xcdatamodeld */,
+				5D46BE54244EBE5A0058A660 /* Car+CoreDataClass.swift */,
+				5D46BE55244EBE5A0058A660 /* Car+CoreDataProperties.swift */,
+				5DC1B275244FD97C007C11EA /* Car+Convenience.swift */,
+				5DC1B277244FDB79007C11EA /* CarRepresentation.swift */,
+				5D46BE50244EBE5A0058A660 /* Job+CoreDataClass.swift */,
+				5D46BE51244EBE5A0058A660 /* Job+CoreDataProperties.swift */,
+				5D46BE41244E9E2A0058A660 /* Job+Convenience.swift */,
+				5D46BE45244EA0950058A660 /* JobRepresentation.swift */,
+				5D46BE4E244EBE5A0058A660 /* User+CoreDataClass.swift */,
+				5D46BE4F244EBE5A0058A660 /* User+CoreDataProperties.swift */,
+				5D605C662453DEB700B83420 /* User+Convenience.swift */,
+				5D605C642453D31100B83420 /* UserRepresentation.swift */,
+				5D46BE52244EBE5A0058A660 /* Washer+CoreDataClass.swift */,
+				5D46BE53244EBE5A0058A660 /* Washer+CoreDataProperties.swift */,
+				5D51383C2463A13500E81AEA /* Washer+Convenience.swift */,
+				5D51383A24639BF000E81AEA /* WasherRepresentation.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -122,6 +213,7 @@
 		375DB3F3244A5B1900C889F2 /* Network Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5DA0A8A22459141E00992692 /* NetworkGlobals.swift */,
 			);
 			name = "Network Controllers";
 			sourceTree = "<group>";
@@ -141,8 +233,27 @@
 				C22957D25B9EF61851B91CB3 /* Pods-ExpressWash.debug.xcconfig */,
 				784D55BC02CE141CBBA94DD7 /* Pods-ExpressWash.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		5D9962512465021C00D4151F /* Modeltests */ = {
+			isa = PBXGroup;
+			children = (
+				5D99624D2464FFE900D4151F /* CarModelTest.swift */,
+				5D99624B2464FFDB00D4151F /* JobModelTests.swift */,
+				5D99624F2465017600D4151F /* UserModelTests.swift */,
+				5D9962492464FFB700D4151F /* WasherModelTests.swift */,
+			);
+			name = Modeltests;
+			sourceTree = "<group>";
+		};
+		5DA0A8A924592A3100992692 /* ExpressWashTests */ = {
+			isa = PBXGroup;
+			children = (
+				5D9962512465021C00D4151F /* Modeltests */,
+				5DA0A8AC24592A3100992692 /* Info.plist */,
+			);
+			path = ExpressWashTests;
 			sourceTree = "<group>";
 		};
 		B41FE9FEE225BA7775004AA3 /* Frameworks */ = {
@@ -165,6 +276,7 @@
 				375DB3D3244A5AE500C889F2 /* Frameworks */,
 				375DB3D4244A5AE500C889F2 /* Resources */,
 				ADCF719F7D8F97C95357762D /* [CP] Embed Pods Frameworks */,
+				5D97BB18245D079500B6F00E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -174,6 +286,24 @@
 			productName = ExpressWash;
 			productReference = 375DB3D6244A5AE500C889F2 /* ExpressWash.app */;
 			productType = "com.apple.product-type.application";
+		};
+		5DA0A8A724592A3100992692 /* ExpressWashTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5DA0A8AF24592A3100992692 /* Build configuration list for PBXNativeTarget "ExpressWashTests" */;
+			buildPhases = (
+				5DA0A8A424592A3100992692 /* Sources */,
+				5DA0A8A524592A3100992692 /* Frameworks */,
+				5DA0A8A624592A3100992692 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5DA0A8AE24592A3100992692 /* PBXTargetDependency */,
+			);
+			name = ExpressWashTests;
+			productName = ExpressWashTests;
+			productReference = 5DA0A8A824592A3100992692 /* ExpressWashTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -187,6 +317,10 @@
 				TargetAttributes = {
 					375DB3D5244A5AE500C889F2 = {
 						CreatedOnToolsVersion = 11.4.1;
+					};
+					5DA0A8A724592A3100992692 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = 375DB3D5244A5AE500C889F2;
 					};
 				};
 			};
@@ -204,6 +338,7 @@
 			projectRoot = "";
 			targets = (
 				375DB3D5244A5AE500C889F2 /* ExpressWash */,
+				5DA0A8A724592A3100992692 /* ExpressWashTests */,
 			);
 		};
 /* End PBXProject section */
@@ -219,9 +354,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5DA0A8A624592A3100992692 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5D97BB18245D079500B6F00E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 		ADCF719F7D8F97C95357762D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -268,12 +427,52 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DBD0ED12457DF0F00ADE10A /* DataModelGlobals.swift in Sources */,
+				5DA0A8A32459141E00992692 /* NetworkGlobals.swift in Sources */,
+				5DBD0ECF2457C10200ADE10A /* UserController.swift in Sources */,
+				5D51383D2463A13500E81AEA /* Washer+Convenience.swift in Sources */,
+				5D46BE44244E9EE20058A660 /* CoreDataStack.swift in Sources */,
+				5D51383B24639BF000E81AEA /* WasherRepresentation.swift in Sources */,
+				5D46BE46244EA0950058A660 /* JobRepresentation.swift in Sources */,
+				5D46BE5D244EBE5A0058A660 /* Car+CoreDataProperties.swift in Sources */,
+				5D46BE57244EBE5A0058A660 /* User+CoreDataProperties.swift in Sources */,
+				5D46BE5C244EBE5A0058A660 /* Car+CoreDataClass.swift in Sources */,
 				375DB3DA244A5AE500C889F2 /* AppDelegate.swift in Sources */,
+				5D46BE4D244EBAA80058A660 /* ExpressWash.xcdatamodeld in Sources */,
+				5D605C652453D31100B83420 /* UserRepresentation.swift in Sources */,
+				5D605C672453DEB700B83420 /* User+Convenience.swift in Sources */,
+				5D46BE59244EBE5A0058A660 /* Job+CoreDataProperties.swift in Sources */,
 				375DB3DC244A5AE500C889F2 /* SceneDelegate.swift in Sources */,
+				5DC1B276244FD97C007C11EA /* Car+Convenience.swift in Sources */,
+				5D46BE5B244EBE5A0058A660 /* Washer+CoreDataProperties.swift in Sources */,
+				5DC1B278244FDB79007C11EA /* CarRepresentation.swift in Sources */,
+				5D46BE58244EBE5A0058A660 /* Job+CoreDataClass.swift in Sources */,
+				5D46BE42244E9E2A0058A660 /* Job+Convenience.swift in Sources */,
+				5D46BE56244EBE5A0058A660 /* User+CoreDataClass.swift in Sources */,
+				5D46BE5A244EBE5A0058A660 /* Washer+CoreDataClass.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DA0A8A424592A3100992692 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D99624E2464FFE900D4151F /* CarModelTest.swift in Sources */,
+				5D99624A2464FFB700D4151F /* WasherModelTests.swift in Sources */,
+				5D9962502465017600D4151F /* UserModelTests.swift in Sources */,
+				5D99624C2464FFDB00D4151F /* JobModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5DA0A8AE24592A3100992692 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 375DB3D5244A5AE500C889F2 /* ExpressWash */;
+			targetProxy = 5DA0A8AD24592A3100992692 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		375DB3DF244A5AE500C889F2 /* Main.storyboard */ = {
@@ -447,6 +646,46 @@
 			};
 			name = Release;
 		};
+		5DA0A8B024592A3100992692 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3C2X999TFX;
+				INFOPLIST_FILE = ExpressWashTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.julltron.ExpressWashTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExpressWash.app/ExpressWash";
+			};
+			name = Debug;
+		};
+		5DA0A8B124592A3100992692 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3C2X999TFX;
+				INFOPLIST_FILE = ExpressWashTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.julltron.ExpressWashTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExpressWash.app/ExpressWash";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -468,7 +707,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		5DA0A8AF24592A3100992692 /* Build configuration list for PBXNativeTarget "ExpressWashTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DA0A8B024592A3100992692 /* Debug */,
+				5DA0A8B124592A3100992692 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5D46BE4B244EBAA80058A660 /* ExpressWash.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5D46BE4C244EBAA80058A660 /* ExpressWash.xcdatamodel */,
+			);
+			currentVersion = 5D46BE4C244EBAA80058A660 /* ExpressWash.xcdatamodel */;
+			path = ExpressWash.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 375DB3CE244A5AE500C889F2 /* Project object */;
 }
