@@ -3,6 +3,8 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Schedule-->
@@ -12,35 +14,10 @@
                     <view key="view" contentMode="scaleToFill" id="et7-rP-mMN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5l-bB-iAb">
-                                <rect key="frame" x="30" y="723" width="354" height="50"/>
-                                <color key="backgroundColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="enc-jm-0o8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Schedule Wash!">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="scheduleButtonTapped:" destination="reU-hQ-IQZ" eventType="touchUpInside" id="QVK-eP-hO7"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="Ebx-gE-aXq" firstAttribute="trailing" secondItem="v5l-bB-iAb" secondAttribute="trailing" constant="30" id="3wx-tk-uke"/>
-                            <constraint firstItem="Ebx-gE-aXq" firstAttribute="bottom" secondItem="v5l-bB-iAb" secondAttribute="bottom" constant="40" id="hGW-4d-RpT"/>
-                            <constraint firstItem="v5l-bB-iAb" firstAttribute="leading" secondItem="Ebx-gE-aXq" secondAttribute="leading" constant="30" id="rVh-qu-DqB"/>
-                            <constraint firstItem="v5l-bB-iAb" firstAttribute="centerX" secondItem="Ebx-gE-aXq" secondAttribute="centerX" id="wdA-hD-49n"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Ebx-gE-aXq"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Schedule" image="calendar" catalog="system" id="0b3-Pt-r7r"/>
-                    <connections>
-                        <outlet property="scheduleButton" destination="v5l-bB-iAb" id="PbV-cI-ixz"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9lR-Gm-GF5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -85,57 +62,10 @@
                     <view key="view" contentMode="scaleToFill" id="jkD-PF-Zt2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="aS7-a8-cnv">
-                                <rect key="frame" x="250.5" y="64" width="113.5" height="50"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ws2-y0-exW">
-                                        <rect key="frame" x="0.0" y="13" width="54.5" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rdq-2Y-F7G">
-                                        <rect key="frame" x="64.5" y="9.5" width="51" height="31"/>
-                                        <color key="onTintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <action selector="activeSwitchToggled:" destination="BvZ-U7-8tD" eventType="valueChanged" id="AY2-0H-xeu"/>
-                                        </connections>
-                                    </switch>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="3Wo-C0-GCL"/>
-                                </constraints>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Jobs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="36" translatesAutoresizingMaskIntoConstraints="NO" id="twp-hy-Iuu">
-                                <rect key="frame" x="50" y="154" width="314" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="aYR-Ol-nq4"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="200-y2-W0w">
-                                <rect key="frame" x="30" y="222" width="354" height="561"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="twp-hy-Iuu" firstAttribute="leading" secondItem="GJN-AV-KcY" secondAttribute="leading" constant="50" id="GsJ-3z-mPX"/>
-                            <constraint firstItem="twp-hy-Iuu" firstAttribute="top" secondItem="aS7-a8-cnv" secondAttribute="bottom" constant="40" id="a2h-dX-xU8"/>
-                            <constraint firstItem="aS7-a8-cnv" firstAttribute="top" secondItem="GJN-AV-KcY" secondAttribute="top" constant="20" id="phP-fa-C8f"/>
-                            <constraint firstItem="GJN-AV-KcY" firstAttribute="trailing" secondItem="twp-hy-Iuu" secondAttribute="trailing" constant="50" id="rys-1g-tch"/>
-                            <constraint firstItem="GJN-AV-KcY" firstAttribute="trailing" secondItem="aS7-a8-cnv" secondAttribute="trailing" constant="50" id="v9m-Fb-Oh9"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="GJN-AV-KcY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Wash" image="wind" catalog="system" id="3HV-Jb-EqK"/>
-                    <connections>
-                        <outlet property="activeLabel" destination="ws2-y0-exW" id="fDV-wq-HJ9"/>
-                        <outlet property="activeSwitch" destination="Rdq-2Y-F7G" id="tPv-cC-2TN"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3S7-UO-F3V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
