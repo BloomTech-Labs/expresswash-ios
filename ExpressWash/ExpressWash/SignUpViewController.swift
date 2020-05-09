@@ -69,31 +69,13 @@ class SignUpViewController: UIViewController {
     
     func setupTextFields() {
         firstNameTextField.delegate = self
-//        firstNameTextField.layer.borderColor = UIColor(named: "Light Blue")?.cgColor
-//        firstNameTextField.layer.borderWidth = 2.0
-//        firstNameTextField.layer.cornerRadius = 5.0
-        
         lastNameTextField.delegate = self
-//        lastNameTextField.layer.borderColor = UIColor(named: "Light Blue")?.cgColor
-//        lastNameTextField.layer.borderWidth = 2.0
-//        lastNameTextField.layer.cornerRadius = 5.0
-        
         emailAddressTextField.delegate = self
-//        emailAddressTextField.layer.borderColor = UIColor(named: "Light Blue")?.cgColor
-//        emailAddressTextField.layer.borderWidth = 2.0
-//        emailAddressTextField.layer.cornerRadius = 5.0
-        
         passwordTextField.delegate = self
         passwordTextField.passwordRules = UITextInputPasswordRules(descriptor: "required: upper; required: digit; minlength: 8;")
-//        passwordTextField.layer.borderColor = UIColor(named: "Light Blue")?.cgColor
-//        passwordTextField.layer.borderWidth = 2.0
-//        passwordTextField.layer.cornerRadius = 5.0
         
         confirmTextField.delegate = self
         confirmTextField.passwordRules = UITextInputPasswordRules(descriptor: "required: upper; required: digit; minlength: 8;")
-//        confirmTextField.layer.borderColor = UIColor(named: "Light Blue")?.cgColor
-//        confirmTextField.layer.borderWidth = 2.0
-//        confirmTextField.layer.cornerRadius = 5.0
     }
     
     @objc func unhidePassword() {
