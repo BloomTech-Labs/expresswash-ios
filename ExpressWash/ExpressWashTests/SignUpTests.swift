@@ -28,7 +28,7 @@ class SignUpTests: XCTestCase {
         let password = "Password!"
 
         userController.registerUser(with: firstName, lastName, email, password)
-        
+
         //Find something to test.
     }
 
