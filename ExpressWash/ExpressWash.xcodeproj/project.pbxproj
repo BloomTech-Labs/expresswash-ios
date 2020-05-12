@@ -268,6 +268,13 @@
 			name = "App Lifecycle";
 			sourceTree = "<group>";
 		};
+		377D1A05246A48A500CA3AEB /* SignUpTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SignUpTests;
+			sourceTree = "<group>";
+		};
 		39C68DA884EC6C2CC46D9DFC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +309,7 @@
 				5D0971E7246B909000B5492D /* authLogin.json */,
 				5DD4A84D246B8D7200E5FA2B /* URLProcotolMock.swift */,
 				5D0971E9246B913500B5492D /* JSONLoader.swift */,
+				377D1A05246A48A500CA3AEB /* SignUpTests */,
 				5D9962512465021C00D4151F /* Modeltests */,
 				5DA0A8AC24592A3100992692 /* Info.plist */,
 			);

@@ -15,7 +15,6 @@ class SignUpViewController: UIViewController {
     private var passwordButton = UIButton(type: .custom)
     private var confirmButton = UIButton(type: .custom)
     private var currentTappedTextField: UITextField?
-    private let passwordRules = "required: upper; required: digit; minlength: 8;"
     private var userController = UserController()
 
     // MARK: - Outlets
@@ -77,10 +76,7 @@ class SignUpViewController: UIViewController {
         lastNameTextField.delegate = self
         emailAddressTextField.delegate = self
         passwordTextField.delegate = self
-        passwordTextField.passwordRules = UITextInputPasswordRules(descriptor: passwordRules)
-
         confirmTextField.delegate = self
-        confirmTextField.passwordRules = UITextInputPasswordRules(descriptor: passwordRules)
     }
 
     @objc func unhidePassword() {
