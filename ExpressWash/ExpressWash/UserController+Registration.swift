@@ -9,7 +9,7 @@
 import Foundation
 
 extension UserController {
-    func registerUser(with firstName: String, lastName: String, emailAddress: String, password: String, completion: (Error?) -> Void) {
-        
+    func registerUser(with firstName: String, lastName: String, emailAddress: String, password: String) {
+
     }
 }
