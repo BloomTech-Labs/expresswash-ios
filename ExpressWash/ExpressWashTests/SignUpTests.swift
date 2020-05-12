@@ -19,8 +19,17 @@ class SignUpTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
+    func testRegistration() throws {
+        let userController = UserController()
 
+        let firstName = "John"
+        let lastName = "Doe"
+        let email = "John.Doe@gmail.com"
+        let password = "Password!"
+
+        userController.registerUser(with: firstName, lastName, email, password)
+        
+        //Find something to test.
     }
 
 }
