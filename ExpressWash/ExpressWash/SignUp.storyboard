@@ -91,7 +91,7 @@
                                     <color key="titleColor" red="0.28627450980000002" green="0.34509803919999998" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="nextButtonTapped:" destination="8jX-1J-ZWq" eventType="touchUpInside" id="bhi-EU-QdY"/>
+                                    <action selector="registerButtonTapped:" destination="8jX-1J-ZWq" eventType="touchUpInside" id="eb7-KI-HpC"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -116,6 +116,7 @@
                         <outlet property="lastNameTextField" destination="ZU0-5N-QXV" id="VaI-oY-Ojm"/>
                         <outlet property="nextButton" destination="jPj-KT-hjQ" id="tnn-WA-ux0"/>
                         <outlet property="passwordTextField" destination="MFP-Ni-flY" id="YJL-qx-dkR"/>
+                        <outlet property="registerButton" destination="pIh-du-IKM" id="RcC-lr-4XC"/>
                         <segue destination="fpM-Xw-fn7" kind="presentation" identifier="finishedSignUpSegue" modalPresentationStyle="fullScreen" id="PSJ-yx-rPh"/>
                     </connections>
                 </viewController>

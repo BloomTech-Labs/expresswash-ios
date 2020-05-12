@@ -24,6 +24,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailAddressTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmTextField: UITextField!
+    @IBOutlet weak var registerButton: UIButton!
     
     //MARK: - Views
     
@@ -103,6 +104,9 @@ class SignUpViewController: UIViewController {
     }
     
     //MARK: - Actions
+    
+    @IBAction func registerButtonTapped(_ sender: Any) {
+    }
     
 }
 
