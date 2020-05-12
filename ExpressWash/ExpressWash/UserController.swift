@@ -11,8 +11,6 @@ import CoreData
 
 class UserController {
 
-    // TODO: - Make login method. Token and User object are at the same level in the results for this endpoint.
-
     static let shared = UserController()
 
     // MARK: - User session
@@ -223,6 +221,29 @@ class UserController {
             } catch {
                 print("Error fetching users for IDs: \(error)")
             }
+        }
+    }
+
+    func findUser(byID uid: Int, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> User? {
+        findUser(byID: Int32(uid), context: context)
+    }
+
+    func findUser(byID uid: Int32, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> User? {
+        var foundUser: User?
+        let fetchrequest: NSFetchRequest<User> = User.fetchRequest()
+        fetchrequest.predicate = NSPredicate(format: "userId == %@", uid)
+        do {
+            let matchedUsers = try context.fetch(fetchrequest)
+
+            if matchedUsers.count == 1 {
+                foundUser = matchedUsers[0]
+            } else {
+                foundUser = nil
+            }
+            return foundUser
+        } catch {
+            print("Error when searching core data for userId \(uid): \(error)")
+            return nil
         }
     }
 }
