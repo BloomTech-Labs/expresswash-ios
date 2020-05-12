@@ -10,24 +10,23 @@ import UIKit
 
 class ReceiptsViewController: UIViewController {
 
-    //MARK: - Properties
-    
-    //MARK: - Outlets
-    
-    //MARK: - Views
-    
+    // MARK: - Properties
+
+    // MARK: - Outlets
+
+    // MARK: - Views
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    
-    //MARK: - Methods
-    
-    //MARK: - Actions
-    
-    //MARK: - Navigation
-    
+
+    // MARK: - Methods
+
+    // MARK: - Actions
+
+    // MARK: - Navigation
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+
     }
 }
