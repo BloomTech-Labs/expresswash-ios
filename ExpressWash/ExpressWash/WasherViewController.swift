@@ -14,6 +14,8 @@ class WasherViewController: UIViewController {
 
     // MARK: - Outlets
 
+    @IBOutlet weak var registerButton: UIButton!
+
     // MARK: - Views
 
     override func viewDidLoad() {
@@ -23,6 +25,9 @@ class WasherViewController: UIViewController {
     // MARK: - Methods
 
     // MARK: - Actions
+
+    @IBAction func registerButtonTapped(_ sender: Any) {
+    }
 
     // MARK: - Navigation
 
