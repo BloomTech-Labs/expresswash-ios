@@ -30,14 +30,49 @@
                     <view key="view" contentMode="scaleToFill" id="WST-wa-KZu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MND-dY-aqs">
+                                <rect key="frame" x="0.0" y="194" width="414" height="619"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="receiptCell" rowHeight="147" id="RvP-BV-3Xy">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="147"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RvP-BV-3Xy" id="LR3-td-ers">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="147"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="hOX-Xf-gen">
+                                <rect key="frame" x="20" y="64" width="374" height="110"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="glm-3u-0kc"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="MND-dY-aqs" firstAttribute="top" secondItem="hOX-Xf-gen" secondAttribute="bottom" constant="20" id="3oD-LK-n0k"/>
+                            <constraint firstItem="hOX-Xf-gen" firstAttribute="leading" secondItem="jE3-im-1qK" secondAttribute="leading" constant="20" id="4X0-qq-AxF"/>
+                            <constraint firstItem="MND-dY-aqs" firstAttribute="leading" secondItem="jE3-im-1qK" secondAttribute="leading" id="7Yv-Ya-Kdb"/>
+                            <constraint firstItem="hOX-Xf-gen" firstAttribute="centerX" secondItem="jE3-im-1qK" secondAttribute="centerX" id="D1P-lh-2Ow"/>
+                            <constraint firstItem="jE3-im-1qK" firstAttribute="trailing" secondItem="hOX-Xf-gen" secondAttribute="trailing" constant="20" id="Im1-HY-V6Q"/>
+                            <constraint firstItem="hOX-Xf-gen" firstAttribute="top" secondItem="jE3-im-1qK" secondAttribute="top" constant="20" id="hcA-cb-VVc"/>
+                            <constraint firstItem="MND-dY-aqs" firstAttribute="bottom" secondItem="jE3-im-1qK" secondAttribute="bottom" id="jYU-fo-Na9"/>
+                            <constraint firstItem="MND-dY-aqs" firstAttribute="trailing" secondItem="jE3-im-1qK" secondAttribute="trailing" id="t7x-aU-4pG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="jE3-im-1qK"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Receipts" image="barcode.viewfinder" catalog="system" id="cdc-2Y-NSp"/>
+                    <connections>
+                        <outlet property="receiptsTableView" destination="MND-dY-aqs" id="v6p-b4-6Cr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EbK-vI-aZJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1977" y="-842"/>
+            <point key="canvasLocation" x="1976.8115942028987" y="-842.41071428571422"/>
         </scene>
         <!--Profile-->
         <scene sceneID="pr9-du-SDX">
@@ -156,6 +191,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Logo" width="1024" height="1024"/>
         <image name="barcode.viewfinder" catalog="system" width="128" height="114"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="creditcard" catalog="system" width="128" height="91"/>

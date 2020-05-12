@@ -14,6 +14,8 @@ class ReceiptsViewController: UIViewController {
 
     // MARK: - Outlets
 
+    @IBOutlet weak var receiptsTableView: UITableView!
+
     // MARK: - Views
 
     override func viewDidLoad() {
