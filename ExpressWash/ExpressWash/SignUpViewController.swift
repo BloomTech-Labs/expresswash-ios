@@ -138,7 +138,7 @@ extension SignUpViewController: UITextFieldDelegate {
 }
 
 extension SignUpViewController: UITextFieldDelegate {
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.text! == "" {
             return false
@@ -160,16 +160,6 @@ extension SignUpViewController: UITextFieldDelegate {
             return true
         } else if textField == confirmTextField {
             textField.resignFirstResponder()
-            guard let firstName = firstNameTextField.text, !firstName.isEmpty, let lastName = lastNameTextField.text, !lastName.isEmpty, let email = emailAddressTextField.text, !email.isEmpty,  let password = passwordTextField.text, !password.isEmpty, let confirm = confirmTextField.text, !confirm.isEmpty else { return false}
-            
-            if password == confirm {
-                //Sign Up User!
-                self.performSegue(withIdentifier: "finishedSignUpSegue", sender: self)
-            } else {
-                let alertController = UIAlertController(title: "Passwords Do Not Match", message: "", preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "", style: .cancel, handler: nil))
-                self.present(alertController, animated: true, completion: nil)
-            }
             return true
         } else {
             return false

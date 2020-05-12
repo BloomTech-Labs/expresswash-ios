@@ -54,16 +54,15 @@ class ScheduleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    
-    //MARK: - Methods
-    
-    //MARK: - Actions
-    
+
+    // MARK: - Methods
+
+    // MARK: - Actions
+
     @IBAction func scheduleButtonTapped(_ sender: Any) {
     }
-    //MARK: - Navigation
-    
+    // MARK: - Navigation
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
 >>>>>>> Added Storyboard Layout & Wired up VC Files Accordingly
