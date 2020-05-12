@@ -10,27 +10,26 @@ import UIKit
 
 class ScheduleViewController: UIViewController {
 
-    //MARK: - Properties
-    
-    //MARK: - Outlets
-    
-    //MARK: - Views
-    
+    // MARK: - Properties
+
+    // MARK: - Outlets
+
+    // MARK: - Views
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    
-    //MARK: - Methods
-    
-    //MARK: - Actions
-    
+
+    // MARK: - Methods
+
+    // MARK: - Actions
+
     @IBAction func scheduleButtonTapped(_ sender: Any) {
     }
-    //MARK: - Navigation
-    
+    // MARK: - Navigation
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+
     }
 
 }
