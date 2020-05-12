@@ -87,6 +87,9 @@
                                 <state key="normal" title="Register">
                                     <color key="titleColor" name="Salmon"/>
                                 </state>
+                                <connections>
+                                    <action selector="registerButtonTapped:" destination="8jX-1J-ZWq" eventType="touchUpInside" id="eb7-KI-HpC"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="oaH-n0-NRq">
                                 <rect key="frame" x="0.0" y="44" width="414" height="319"/>
@@ -113,6 +116,7 @@
                         <outlet property="firstNameTextField" destination="ZU0-5N-QXV" id="cVy-Cv-qpK"/>
                         <outlet property="lastNameTextField" destination="PJ0-mi-ta0" id="pQX-ZX-iJJ"/>
                         <outlet property="passwordTextField" destination="MFP-Ni-flY" id="YJL-qx-dkR"/>
+                        <outlet property="registerButton" destination="pIh-du-IKM" id="RcC-lr-4XC"/>
                         <segue destination="fpM-Xw-fn7" kind="presentation" identifier="finishedSignUpSegue" modalPresentationStyle="fullScreen" id="PSJ-yx-rPh"/>
                     </connections>
                 </viewController>
