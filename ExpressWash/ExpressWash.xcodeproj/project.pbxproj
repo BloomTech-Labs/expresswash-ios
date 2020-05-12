@@ -251,6 +251,13 @@
 			name = "App Lifecycle";
 			sourceTree = "<group>";
 		};
+		377D1A05246A48A500CA3AEB /* SignUpTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SignUpTests;
+			sourceTree = "<group>";
+		};
 		39C68DA884EC6C2CC46D9DFC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +281,7 @@
 		5DA0A8A924592A3100992692 /* ExpressWashTests */ = {
 			isa = PBXGroup;
 			children = (
+				377D1A05246A48A500CA3AEB /* SignUpTests */,
 				5D9962512465021C00D4151F /* Modeltests */,
 				5DA0A8AC24592A3100992692 /* Info.plist */,
 			);
