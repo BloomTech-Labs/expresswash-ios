@@ -14,6 +14,13 @@ class ProfileViewController: UIViewController {
 
     // MARK: - Outlets
 
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var creditCardButton: UIButton!
+
     // MARK: - Views
 
     override func viewDidLoad() {
@@ -23,6 +30,9 @@ class ProfileViewController: UIViewController {
     // MARK: - Methods
 
     // MARK: - Actions
+
+    @IBAction func creditCardButtonTapped(_ sender: Any) {
+    }
 
     // MARK: - Navigation
 

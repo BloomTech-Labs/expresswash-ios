@@ -46,14 +46,76 @@
                     <view key="view" contentMode="scaleToFill" id="HBe-uo-eyU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Ds-oN-TWi">
+                                <rect key="frame" x="0.0" y="44" width="414" height="464"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2vH-Yz-3wE">
+                                <rect key="frame" x="20" y="528" width="374" height="210"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHS-kl-fW3">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                        <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Vb-b3-lCE">
+                                        <rect key="frame" x="0.0" y="42" width="374" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xX8-BI-Fc5">
+                                        <rect key="frame" x="0.0" y="84" width="374" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ccd-2K-3es">
+                                        <rect key="frame" x="0.0" y="126" width="374" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJ1-Od-qhe">
+                                        <rect key="frame" x="0.0" y="168" width="374" height="42"/>
+                                        <color key="tintColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="creditcard" catalog="system"/>
+                                        <connections>
+                                            <action selector="creditCardButtonTapped:" destination="hN8-tt-ZdM" eventType="touchUpInside" id="WFe-OC-mXS"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="210" id="LaO-QP-ycV"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="VB2-b6-Nvo" firstAttribute="bottom" secondItem="2vH-Yz-3wE" secondAttribute="bottom" constant="75" id="6Jp-Oj-6Cd"/>
+                            <constraint firstItem="2vH-Yz-3wE" firstAttribute="top" secondItem="0Ds-oN-TWi" secondAttribute="bottom" constant="20" id="6rS-SF-FM8"/>
+                            <constraint firstItem="0Ds-oN-TWi" firstAttribute="leading" secondItem="VB2-b6-Nvo" secondAttribute="leading" id="C47-ka-KOG"/>
+                            <constraint firstItem="0Ds-oN-TWi" firstAttribute="trailing" secondItem="VB2-b6-Nvo" secondAttribute="trailing" id="HmO-Jj-Urj"/>
+                            <constraint firstItem="2vH-Yz-3wE" firstAttribute="leading" secondItem="VB2-b6-Nvo" secondAttribute="leading" constant="20" id="I3S-YP-yCx"/>
+                            <constraint firstItem="0Ds-oN-TWi" firstAttribute="top" secondItem="VB2-b6-Nvo" secondAttribute="top" id="bEZ-1D-Ih8"/>
+                            <constraint firstItem="VB2-b6-Nvo" firstAttribute="trailing" secondItem="2vH-Yz-3wE" secondAttribute="trailing" constant="20" id="eMv-34-Drm"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VB2-b6-Nvo"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="person.circle" catalog="system" id="d24-5b-Kk4"/>
+                    <connections>
+                        <outlet property="addressLabel" destination="Ccd-2K-3es" id="w9h-vo-HcO"/>
+                        <outlet property="creditCardButton" destination="BJ1-Od-qhe" id="q4S-oy-NcW"/>
+                        <outlet property="emailLabel" destination="4Vb-b3-lCE" id="FA4-G7-7re"/>
+                        <outlet property="imageView" destination="0Ds-oN-TWi" id="i85-tP-5TA"/>
+                        <outlet property="nameLabel" destination="IHS-kl-fW3" id="Zyp-JZ-T4K"/>
+                        <outlet property="phoneNumberLabel" destination="xX8-BI-Fc5" id="tD9-kZ-OgM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OaL-L7-Vzb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1977" y="-2215"/>
+            <point key="canvasLocation" x="1976.8115942028987" y="-2215.1785714285711"/>
         </scene>
         <!--Wash-->
         <scene sceneID="LYx-3Z-6Gf">
@@ -96,6 +158,7 @@
     <resources>
         <image name="barcode.viewfinder" catalog="system" width="128" height="114"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="creditcard" catalog="system" width="128" height="91"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="wind" catalog="system" width="128" height="103"/>
     </resources>
