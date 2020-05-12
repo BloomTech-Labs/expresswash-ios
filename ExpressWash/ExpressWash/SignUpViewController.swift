@@ -113,7 +113,7 @@ class SignUpViewController: UIViewController {
         guard let confirm = confirmTextField.text, !confirm.isEmpty else { return }
 
         if password == confirm {
-            userController.registerUser(with: firstName, lastName: lastName, emailAddress: email, password: password)
+            //Register User
             self.performSegue(withIdentifier: "finishedSignUpSegue", sender: self)
         } else {
             let alertController = UIAlertController(title: "Passwords Don't Match", message: "", preferredStyle: .alert)
