@@ -32,7 +32,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MND-dY-aqs">
-                                <rect key="frame" x="0.0" y="194" width="414" height="619"/>
+                                <rect key="frame" x="0.0" y="234" width="414" height="579"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="receiptCell" rowHeight="147" id="RvP-BV-3Xy">
@@ -46,7 +46,7 @@
                                 </prototypes>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="hOX-Xf-gen">
-                                <rect key="frame" x="20" y="64" width="374" height="110"/>
+                                <rect key="frame" x="20" y="84" width="374" height="110"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="glm-3u-0kc"/>
                                 </constraints>
@@ -54,12 +54,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="MND-dY-aqs" firstAttribute="top" secondItem="hOX-Xf-gen" secondAttribute="bottom" constant="20" id="3oD-LK-n0k"/>
+                            <constraint firstItem="MND-dY-aqs" firstAttribute="top" secondItem="hOX-Xf-gen" secondAttribute="bottom" constant="40" id="3oD-LK-n0k"/>
                             <constraint firstItem="hOX-Xf-gen" firstAttribute="leading" secondItem="jE3-im-1qK" secondAttribute="leading" constant="20" id="4X0-qq-AxF"/>
                             <constraint firstItem="MND-dY-aqs" firstAttribute="leading" secondItem="jE3-im-1qK" secondAttribute="leading" id="7Yv-Ya-Kdb"/>
                             <constraint firstItem="hOX-Xf-gen" firstAttribute="centerX" secondItem="jE3-im-1qK" secondAttribute="centerX" id="D1P-lh-2Ow"/>
                             <constraint firstItem="jE3-im-1qK" firstAttribute="trailing" secondItem="hOX-Xf-gen" secondAttribute="trailing" constant="20" id="Im1-HY-V6Q"/>
-                            <constraint firstItem="hOX-Xf-gen" firstAttribute="top" secondItem="jE3-im-1qK" secondAttribute="top" constant="20" id="hcA-cb-VVc"/>
+                            <constraint firstItem="hOX-Xf-gen" firstAttribute="top" secondItem="jE3-im-1qK" secondAttribute="top" constant="40" id="hcA-cb-VVc"/>
                             <constraint firstItem="MND-dY-aqs" firstAttribute="bottom" secondItem="jE3-im-1qK" secondAttribute="bottom" id="jYU-fo-Na9"/>
                             <constraint firstItem="MND-dY-aqs" firstAttribute="trailing" secondItem="jE3-im-1qK" secondAttribute="trailing" id="t7x-aU-4pG"/>
                         </constraints>
