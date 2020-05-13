@@ -21,8 +21,9 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-
+    @IBOutlet weak var addressTextView: UITextView!
+    @IBOutlet weak var carsCollectionView: UICollectionView!
+    
     // MARK: - Views
 
     override func viewDidLoad() {
