@@ -14,12 +14,14 @@ class ProfileViewController: UIViewController {
 
     // MARK: - Outlets
 
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var bannerImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var creditCardButton: UIButton!
 
     // MARK: - Views
 
@@ -31,7 +33,7 @@ class ProfileViewController: UIViewController {
 
     // MARK: - Actions
 
-    @IBAction func creditCardButtonTapped(_ sender: Any) {
+    @IBAction func editButtonTapped(_ sender: Any) {
     }
 
     // MARK: - Navigation
