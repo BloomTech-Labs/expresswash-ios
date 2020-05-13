@@ -12,7 +12,16 @@ import XCTest
 class UserModelTests: XCTestCase {
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        // test data
+        if let authLoginData = JSONLoader.readFrom(filename: "authLogin") {
+            URLProtocolMock.testURLs[BASEURL.appendingPathComponent(ENDPOINTS.login.rawValue)] = authLoginData
+        }
+
+        // Set URLSession to use Mock Protocol
+        let testConfig = URLSessionConfiguration.ephemeral
+        testConfig.protocolClasses = [URLProtocolMock.self]
+        ExpressWash.SESSION = URLSession(configuration: testConfig)
+        
     }
 
     override func tearDownWithError() throws {
@@ -33,6 +42,29 @@ class UserModelTests: XCTestCase {
         XCTAssert(representation.email == "email@email.com")
         XCTAssert(representation.firstName == "Test")
         XCTAssert(representation.lastName == "User")
+    }
+    
+    func testAuthentication() throws {
+        let authExpectation = expectation(description: "User is logged in")
+        UserController.shared.authenticate(username: "joeltest@test.com", password: "testpasswordtest") { (user, error) in
+            if let error = error {
+                print("Error: \(error)")
+                XCTFail()
+            }
+            
+            guard let user = user else {
+                XCTFail()
+                return
+            }
+            
+            XCTAssert(user.firstName == "Joel")
+            XCTAssert(user.lastName == "Test")
+            XCTAssert(user.userId == 39)
+            XCTAssert(UserController.shared.sessionUser == user)
+            authExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 3.0, handler: nil)
     }
 
 }

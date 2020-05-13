@@ -11,6 +11,8 @@ import Foundation
 let NODATAERROR = 99999
 let INVALIDUSERNAMEORPASSWORD = 99998
 
+var SESSION = URLSession.shared
+
 let BASEURL = URL(string: "http://wowo-env.eba-35bhjsem.us-east-1.elasticbeanstalk.com")!
 
 enum ENDPOINTS: String {

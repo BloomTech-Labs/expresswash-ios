@@ -2,3 +2,4 @@ excluded:
 - Pods
 - ExpressWash/AppDelegate.swift
 - ExpressWash/SceneDelegate.swift
+- ExpressWashTests

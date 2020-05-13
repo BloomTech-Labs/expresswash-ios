@@ -10,9 +10,9 @@ import Foundation
 import CoreData
 
 extension UserController {
-    func authenticate(username: String, password: String, completion: @escaping (User?, String?, Error?) -> Void) {
+    func authenticate(username: String, password: String, completion: @escaping (User?, Error?) -> Void) {
         guard !username.isEmpty && !password.isEmpty else {
-            completion(nil, nil, NSError(domain: "auth", code: INVALIDUSERNAMEORPASSWORD, userInfo: nil))
+            completion(nil, NSError(domain: "auth", code: INVALIDUSERNAMEORPASSWORD, userInfo: nil))
             return
         }
 
@@ -27,31 +27,31 @@ extension UserController {
             let data = try encoder.encode(postBody)
             request.httpBody = data
         } catch {
-            completion(nil, nil, error)
+            completion(nil, error)
             return
         }
 
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        SESSION.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("Error when trying to sign in: \(error)")
-                completion(nil, nil, error)
+                completion(nil, error)
                 return
             }
 
             if let response = response as? HTTPURLResponse {
                 if response.statusCode == 403 {
-                    completion(nil, nil, NSError(domain: "auth-response",
+                    completion(nil, NSError(domain: "auth-response",
                                                  code: INVALIDUSERNAMEORPASSWORD,
                                                  userInfo: nil))
                     return
                 } else if response.statusCode != 200 {
-                    completion(nil, nil, NSError(domain: "auth-response", code: response.statusCode, userInfo: nil))
+                    completion(nil, NSError(domain: "auth-response", code: response.statusCode, userInfo: nil))
                     return
                 }
             }
 
             guard let data = data else {
-                completion(nil, nil, NSError(domain: "auth-response", code: NODATAERROR, userInfo: nil))
+                completion(nil, NSError(domain: "auth-response", code: NODATAERROR, userInfo: nil))
                 return
             }
 
@@ -60,14 +60,14 @@ extension UserController {
             do {
                 let authReturn = try decoder.decode(AuthReturn.self, from: data)
                 self.token = authReturn.token
-                self.sessionUser = self.findUser(byID: authReturn.userRep.userId)
+                self.sessionUser = self.findUser(byID: authReturn.user.userId)
                 if self.sessionUser != nil {
-                    self.update(user: self.sessionUser!, with: authReturn.userRep)
+                    self.update(user: self.sessionUser!, with: authReturn.user)
                 } else {
-                    self.sessionUser = User(representation: authReturn.userRep)
+                    self.sessionUser = User(representation: authReturn.user)
                 }
             } catch {
-                completion(nil, nil, error)
+                completion(nil, error)
                 return
             }
 
@@ -82,6 +82,6 @@ extension UserController {
 
     struct AuthReturn: Decodable {
         var token: String
-        var userRep: UserRepresentation
+        var user: UserRepresentation
     }
 }

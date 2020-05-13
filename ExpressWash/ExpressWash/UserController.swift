@@ -266,7 +266,7 @@ extension UserController {
             return
         }
 
-        URLSession.shared.dataTask(with: request) { (_, _, error) in
+        SESSION.dataTask(with: request) { (_, _, error) in
             if let error = error {
                 print("Error sending entry to server: \(error)")
                 completion(error)
@@ -287,7 +287,7 @@ extension UserController {
         let requestURL = BASEURL.appendingPathComponent(ENDPOINTS.users.rawValue).appendingPathComponent(user.stringID)
         var request = URLRequest(url: requestURL)
         request.httpMethod = "DELETE"
-        URLSession.shared.dataTask(with: request) { (_, _, error) in
+        SESSION.dataTask(with: request) { (_, _, error) in
             if let error = error {
                 print("Error deleting entry from server: \(error)")
                 completion(error)
@@ -308,7 +308,7 @@ extension UserController {
         let requestURL = BASEURL.appendingPathComponent(ENDPOINTS.users.rawValue).appendingPathComponent(String(uid))
         var request = URLRequest(url: requestURL)
         request.httpMethod = "GET"
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        SESSION.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("Error fetching user by ID \(uid): \(error)")
                 completion(nil, error)

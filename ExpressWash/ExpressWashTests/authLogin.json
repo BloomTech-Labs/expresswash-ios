@@ -1,0 +1,22 @@
+{
+  "token": "THISISAFAKETOKEN",
+  "user": {
+    "id": 39,
+    "accountType": "washer",
+    "email": "joeltest@test.com",
+    "firstName": "Joel",
+    "lastName": "Test",
+    "phoneNumber": "1234567890",
+    "stripeUUID": null,
+    "streetAddress": "1051 Market St",
+    "streetAddress2": "APT 240",
+    "city": "San Francisco",
+    "state": "California",
+    "zip": "94103",
+    "profilePicture": "",
+    "bannerImage": "",
+    "creationDate": "2020-05-12T01:28:12.766+00:00",
+    "userRating": null,
+    "userRatingTotal": 1
+  }
+}
