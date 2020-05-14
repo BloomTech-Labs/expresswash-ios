@@ -100,14 +100,14 @@ struct UserRepresentation: Codable {
             let bannerImageURL = URL(string: bannerImageString) {
             self.bannerImage = bannerImageURL
         }
-        
+
         let profileImageString = try container.decodeIfPresent(String.self, forKey: .profilePicture)
         if let profileImageString = profileImageString,
             !profileImageString.isEmpty,
             let profileImageURL = URL(string: profileImageString) {
             self.profilePicture = profileImageURL
         }
-        
+
         self.phoneNumber = try container.decodeIfPresent(String.self, forKey: .phoneNumber)
         self.stripeUUID = try container.decodeIfPresent(String.self, forKey: .stripeUUID)
         self.streetAddress = try container.decodeIfPresent(String.self, forKey: .streetAddress)
@@ -120,11 +120,15 @@ struct UserRepresentation: Codable {
         self.washerRepresentation = try container.decodeIfPresent(WasherRepresentation.self, forKey: .washer)
 
         // If there are any cars owned by this user, decode them
-        var carContainer = try container.nestedUnkeyedContainer(forKey: .cars)
+        do {
+            var carContainer = try container.nestedUnkeyedContainer(forKey: .cars)
 
-        while !carContainer.isAtEnd {
-            let carRep = try carContainer.decode(CarRepresentation.self)
-            carRepresentations.append(carRep)
+            while !carContainer.isAtEnd {
+                let carRep = try carContainer.decode(CarRepresentation.self)
+                carRepresentations.append(carRep)
+            }
+        } catch {
+            // no cars array - we're just going to ignore the error
         }
     }
 

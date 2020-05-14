@@ -225,13 +225,10 @@ class UserController {
     }
 
     func findUser(byID uid: Int, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> User? {
-        findUser(byID: Int32(uid), context: context)
-    }
-
-    func findUser(byID uid: Int32, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> User? {
         var foundUser: User?
+        let obcjUID = NSNumber(value: uid)
         let fetchrequest: NSFetchRequest<User> = User.fetchRequest()
-        fetchrequest.predicate = NSPredicate(format: "userId == %@", uid)
+        fetchrequest.predicate = NSPredicate(format: "userId == %@", obcjUID)
         do {
             let matchedUsers = try context.fetch(fetchrequest)
 
@@ -245,6 +242,10 @@ class UserController {
             print("Error when searching core data for userId \(uid): \(error)")
             return nil
         }
+    }
+
+    func findUser(byID uid: Int32, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> User? {
+        findUser(byID: Int(uid), context: context)
     }
 }
 
