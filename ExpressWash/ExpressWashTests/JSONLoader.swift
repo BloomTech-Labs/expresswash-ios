@@ -17,14 +17,16 @@ class JSONLoader {
             do {
                 data = try Data(contentsOf: fileUrl, options: .mappedIfSafe)
                 print("GOT DATA")
+                print("********")
                 return data
             } catch {
                 print("COULDN'T GET DATA")
                 fatalError("Unable to load JSON test data for \(filename)")
             }
         } else {
-            print("INVALID PATH: \(Bundle.main.url(forResource: filename, withExtension: "json"))")
+            print("INVALID PATH: nil")
         }
+        print("********")
         return nil
     }
 }
