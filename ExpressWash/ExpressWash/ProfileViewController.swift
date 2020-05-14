@@ -22,6 +22,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var emailAddressLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var cityStateZipLabel: UILabel!
     @IBOutlet weak var carsCollectionView: UICollectionView!
 
     // MARK: - Views
