@@ -19,15 +19,19 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var bannerImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
-    @IBOutlet weak var addressTextView: UITextView!
+    @IBOutlet weak var emailAddressLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var carsCollectionView: UICollectionView!
-    
+
     // MARK: - Views
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.height/2
+        profileImageView.layer.borderColor = UIColor.white.cgColor
+        profileImageView.layer.borderWidth = 3.0
     }
 
     // MARK: - Methods
