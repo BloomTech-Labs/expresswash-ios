@@ -66,6 +66,7 @@ extension UserController {
                 } else {
                     self.sessionUser = User(representation: authReturn.user)
                 }
+                completion(self.sessionUser, nil)
             } catch {
                 completion(nil, error)
                 return
