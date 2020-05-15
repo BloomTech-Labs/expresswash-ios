@@ -15,7 +15,6 @@ class SignUpViewController: UIViewController {
     private var passwordButton = UIButton(type: .custom)
     private var confirmButton = UIButton(type: .custom)
     private var currentTappedTextField: UITextField?
-    private var userController = UserController()
 
     // MARK: - Outlets
 
@@ -113,7 +112,14 @@ class SignUpViewController: UIViewController {
         guard let confirm = confirmTextField.text, !confirm.isEmpty else { return }
 
         if password == confirm {
-            userController.registerUser(with: firstName, lastName, email, password)
+            UserController.shared.registerUser(with: firstName, lastName, email, password) { (user, error) in
+                if let error = error {
+                    print("Error registering user: \(error)")
+                    return
+                }
+                guard let user = user else { return }
+                UserController.shared.sessionUser = user
+            }
             self.performSegue(withIdentifier: "finishedSignUpSegue", sender: self)
         } else {
             let alertController = UIAlertController(title: "Passwords Don't Match", message: "", preferredStyle: .alert)

@@ -14,6 +14,12 @@ class ScheduleViewController: UIViewController {
 
     // MARK: - Outlets
 
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var currentLocationButton: UIButton!
+    @IBOutlet weak var washersCollectionView: UICollectionView!
+    @IBOutlet weak var scheduleWashButton: UIButton!
+
     // MARK: - Views
 
     override func viewDidLoad() {
@@ -26,6 +32,13 @@ class ScheduleViewController: UIViewController {
 
     @IBAction func scheduleButtonTapped(_ sender: Any) {
     }
+
+    @IBAction func currentLocationButtonTapped(_ sender: Any) {
+    }
+
+    @IBAction func scheduleWashButtonTapped(_ sender: Any) {
+    }
+
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
