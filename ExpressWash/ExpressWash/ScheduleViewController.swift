@@ -20,7 +20,7 @@ class ScheduleViewController: UIViewController {
     @IBOutlet weak var currentLocationButton: UIButton!
     @IBOutlet weak var washersCollectionView: UICollectionView!
     @IBOutlet weak var scheduleWashButton: UIButton!
-
+    
     // MARK: - Views
 
     override func viewDidLoad() {
@@ -31,15 +31,15 @@ class ScheduleViewController: UIViewController {
 
     // MARK: - Actions
 
-    @IBAction func scheduleButtonTapped(_ sender: Any) {
+    @IBAction func searchButtonTapped(_ sender: Any) {
     }
-
+    
     @IBAction func currentLocationButtonTapped(_ sender: Any) {
     }
-
+    
     @IBAction func scheduleWashButtonTapped(_ sender: Any) {
     }
-
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
