@@ -10,9 +10,9 @@ import Foundation
 
 extension UserController {
 
-    typealias CompletionHandler = (Error?) -> Void
+    typealias CompletionHandler = (User?, Error?) -> Void
 
-    func registerUser(with firstName: String, _ lastName: String, _ emailAddress: String, _ password: String, completion: @escaping CompletionHandler = { _ in }) {
+    func registerUser(with firstName: String, _ lastName: String, _ emailAddress: String, _ password: String, completion: @escaping CompletionHandler) {
 
         let register = ENDPOINTS.registerClient
         let registerUrl = BASEURL.appendingPathComponent(register.rawValue)
@@ -21,24 +21,60 @@ extension UserController {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
+        let encoder = JSONEncoder()
+
         do {
-            let userParams = ["firstName": firstName, "lastName": lastName, "emailAddress": emailAddress, "password": password] as [String: Any]
-            let json = try JSONSerialization.data(withJSONObject: userParams, options: .prettyPrinted)
-            request.httpBody = json
+            let user = RegisteredUser(firstName: firstName, lastName: lastName, emailAddress: emailAddress, password: password)
+            request.httpBody = try encoder.encode(user)
         } catch {
-            print("Error encoding user object: \(error)")
+            completion(nil, error)
+            return
         }
 
-        URLSession.shared.dataTask(with: request) { ( _, response, error) in
-            if let response = response as? HTTPURLResponse,
-                response.statusCode != 200 {
-                completion(NSError(domain: "", code: response.statusCode, userInfo: nil))
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            if let error = error {
+                completion(nil, error)
                 return
             }
 
-            if let error = error { completion(error); return}
+            if let response = response as? HTTPURLResponse,
+                response.statusCode != 200 {
+                completion(nil, NSError(domain: "Registering User", code: response.statusCode, userInfo: nil))
+                return
+            }
 
-            completion(nil)
+            guard let data = data else {
+                completion(nil, NSError(domain: "Registering User", code: NODATAERROR, userInfo: nil))
+                return
+            }
+
+            let decoder = JSONDecoder()
+
+            do {
+                let dataResponse = try decoder.decode(DataResponse.self, from: data)
+                let user = User(representation: dataResponse.user)
+                UserController.shared.token = dataResponse.token
+                UserController.shared.sessionUser = user
+                completion(user, nil)
+            } catch {
+                completion(nil, error)
+                return
+            }
         }.resume()
     }
+
+    struct RegisteredUser: Codable {
+        var firstName: String
+        var lastName: String
+        var emailAddress: String
+        var password: String
+    }
+
+    struct DataResponse: Codable {
+        var message: String
+        var token: String
+        var user: UserRepresentation
+    }
+
 }
