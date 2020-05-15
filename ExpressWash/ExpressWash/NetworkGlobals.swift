@@ -9,8 +9,11 @@
 import Foundation
 
 let NODATAERROR = 99999
+let INVALIDUSERNAMEORPASSWORD = 99998
 
-let BASEURL = URL(string: "https://www.expresswash.us")!
+var SESSION = URLSession.shared
+
+let BASEURL = URL(string: "http://wowo-env.eba-35bhjsem.us-east-1.elasticbeanstalk.com")!
 
 enum ENDPOINTS: String {
     case registerClient = "/auth/RegisterClient"    // POST     Register for a client account.

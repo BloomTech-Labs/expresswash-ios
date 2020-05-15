@@ -11,8 +11,6 @@ import CoreData
 
 class UserController {
 
-    // TODO: - Make login method. Token and User object are at the same level in the results for this endpoint.
-
     static let shared = UserController()
 
     // MARK: - User session
@@ -225,6 +223,30 @@ class UserController {
             }
         }
     }
+
+    func findUser(byID uid: Int, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> User? {
+        var foundUser: User?
+        let obcjUID = NSNumber(value: uid)
+        let fetchrequest: NSFetchRequest<User> = User.fetchRequest()
+        fetchrequest.predicate = NSPredicate(format: "userId == %@", obcjUID)
+        do {
+            let matchedUsers = try context.fetch(fetchrequest)
+
+            if matchedUsers.count == 1 {
+                foundUser = matchedUsers[0]
+            } else {
+                foundUser = nil
+            }
+            return foundUser
+        } catch {
+            print("Error when searching core data for userId \(uid): \(error)")
+            return nil
+        }
+    }
+
+    func findUser(byID uid: Int32, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> User? {
+        findUser(byID: Int(uid), context: context)
+    }
 }
 
 extension UserController {
@@ -245,7 +267,7 @@ extension UserController {
             return
         }
 
-        URLSession.shared.dataTask(with: request) { (_, _, error) in
+        SESSION.dataTask(with: request) { (_, _, error) in
             if let error = error {
                 print("Error sending entry to server: \(error)")
                 completion(error)
@@ -266,7 +288,7 @@ extension UserController {
         let requestURL = BASEURL.appendingPathComponent(ENDPOINTS.users.rawValue).appendingPathComponent(user.stringID)
         var request = URLRequest(url: requestURL)
         request.httpMethod = "DELETE"
-        URLSession.shared.dataTask(with: request) { (_, _, error) in
+        SESSION.dataTask(with: request) { (_, _, error) in
             if let error = error {
                 print("Error deleting entry from server: \(error)")
                 completion(error)
@@ -287,7 +309,7 @@ extension UserController {
         let requestURL = BASEURL.appendingPathComponent(ENDPOINTS.users.rawValue).appendingPathComponent(String(uid))
         var request = URLRequest(url: requestURL)
         request.httpMethod = "GET"
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        SESSION.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("Error fetching user by ID \(uid): \(error)")
                 completion(nil, error)

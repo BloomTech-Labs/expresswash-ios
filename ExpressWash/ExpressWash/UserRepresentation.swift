@@ -94,9 +94,21 @@ struct UserRepresentation: Codable {
         self.lastName = try container.decode(String.self, forKey: .lastName)
 
         // optional attributes
-        self.bannerImage = try container.decodeIfPresent(URL.self, forKey: .bannerImage)
+        let bannerImageString = try container.decodeIfPresent(String.self, forKey: .bannerImage)
+        if let bannerImageString = bannerImageString,
+            !bannerImageString.isEmpty,
+            let bannerImageURL = URL(string: bannerImageString) {
+            self.bannerImage = bannerImageURL
+        }
+
+        let profileImageString = try container.decodeIfPresent(String.self, forKey: .profilePicture)
+        if let profileImageString = profileImageString,
+            !profileImageString.isEmpty,
+            let profileImageURL = URL(string: profileImageString) {
+            self.profilePicture = profileImageURL
+        }
+
         self.phoneNumber = try container.decodeIfPresent(String.self, forKey: .phoneNumber)
-        self.profilePicture = try container.decodeIfPresent(URL.self, forKey: .profilePicture)
         self.stripeUUID = try container.decodeIfPresent(String.self, forKey: .stripeUUID)
         self.streetAddress = try container.decodeIfPresent(String.self, forKey: .streetAddress)
         self.streetAddress2 = try container.decodeIfPresent(String.self, forKey: .streetAddress2)
@@ -108,11 +120,15 @@ struct UserRepresentation: Codable {
         self.washerRepresentation = try container.decodeIfPresent(WasherRepresentation.self, forKey: .washer)
 
         // If there are any cars owned by this user, decode them
-        var carContainer = try container.nestedUnkeyedContainer(forKey: .cars)
+        do {
+            var carContainer = try container.nestedUnkeyedContainer(forKey: .cars)
 
-        while !carContainer.isAtEnd {
-            let carRep = try carContainer.decode(CarRepresentation.self)
-            carRepresentations.append(carRep)
+            while !carContainer.isAtEnd {
+                let carRep = try carContainer.decode(CarRepresentation.self)
+                carRepresentations.append(carRep)
+            }
+        } catch {
+            // no cars array - we're just going to ignore the error
         }
     }
 
