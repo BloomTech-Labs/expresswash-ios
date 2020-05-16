@@ -17,4 +17,10 @@ class ReceiptTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var beforeImageView: UIImageView!
     @IBOutlet weak var afterImageView: UIImageView!
+
+    override func awakeFromNib() {
+        washerImage.layer.cornerRadius = washerImage.frame.size.height/2
+        beforeImageView.layer.cornerRadius = 5.0
+        afterImageView.layer.cornerRadius = 5.0
+    }
 }

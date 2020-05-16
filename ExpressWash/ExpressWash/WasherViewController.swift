@@ -25,11 +25,13 @@ class WasherViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var arrivedCompleteButton: UIButton!
     @IBOutlet weak var arrivedCompleteLabel: UILabel!
-    
+
     // MARK: - Views
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.height/2
     }
 
     // MARK: - Methods
