@@ -22,7 +22,7 @@ extension UserController {
         let encoder = JSONEncoder()
 
         do {
-            let user = RegisteredUser(accountType: type, emailAddress: emailAddress, firstName: firstName, lastName: lastName, password: password)
+            let user = RegisteredUser(accountType: type, email: emailAddress, firstName: firstName, lastName: lastName, password: password)
             let data = try encoder.encode(user)
             request.httpBody = data
         } catch {
@@ -39,7 +39,7 @@ extension UserController {
             }
 
             if let response = response as? HTTPURLResponse {
-                if response.statusCode != 200 {
+                if response.statusCode != 201 {
                     completion(nil, NSError(domain: "Registering User", code: response.statusCode, userInfo: nil))
                     return
                 }
@@ -67,7 +67,7 @@ extension UserController {
 
     struct RegisteredUser: Codable {
         var accountType: String
-        var emailAddress: String
+        var email: String
         var firstName: String
         var lastName: String
         var password: String
