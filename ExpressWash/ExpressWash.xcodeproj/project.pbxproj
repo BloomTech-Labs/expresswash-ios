@@ -37,6 +37,7 @@
 		5D46BE5B244EBE5A0058A660 /* Washer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE53244EBE5A0058A660 /* Washer+CoreDataProperties.swift */; };
 		5D46BE5C244EBE5A0058A660 /* Car+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE54244EBE5A0058A660 /* Car+CoreDataClass.swift */; };
 		5D46BE5D244EBE5A0058A660 /* Car+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE55244EBE5A0058A660 /* Car+CoreDataProperties.swift */; };
+		5D4FD9E6246E3E03009962E4 /* WasherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4FD9E5246E3E03009962E4 /* WasherController.swift */; };
 		5D51383B24639BF000E81AEA /* WasherRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D51383A24639BF000E81AEA /* WasherRepresentation.swift */; };
 		5D51383D2463A13500E81AEA /* Washer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D51383C2463A13500E81AEA /* Washer+Convenience.swift */; };
 		5D605C652453D31100B83420 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D605C642453D31100B83420 /* UserRepresentation.swift */; };
@@ -96,6 +97,7 @@
 		5D46BE53244EBE5A0058A660 /* Washer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Washer+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5D46BE54244EBE5A0058A660 /* Car+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5D46BE55244EBE5A0058A660 /* Car+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5D4FD9E5246E3E03009962E4 /* WasherController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherController.swift; sourceTree = "<group>"; };
 		5D51383A24639BF000E81AEA /* WasherRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherRepresentation.swift; sourceTree = "<group>"; };
 		5D51383C2463A13500E81AEA /* Washer+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Washer+Convenience.swift"; sourceTree = "<group>"; };
 		5D605C642453D31100B83420 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				5DBD0ECE2457C10200ADE10A /* UserController.swift */,
 				5DD4A847246A461000E5FA2B /* UserController+authenticate.swift */,
 				377D1A01246A46FD00CA3AEB /* UserController+Registration.swift */,
+				5D4FD9E5246E3E03009962E4 /* WasherController.swift */,
 			);
 			name = "Model Controllers";
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				377D1A02246A46FD00CA3AEB /* UserController+Registration.swift in Sources */,
 				5DC1B276244FD97C007C11EA /* Car+Convenience.swift in Sources */,
 				5D46BE5B244EBE5A0058A660 /* Washer+CoreDataProperties.swift in Sources */,
+				5D4FD9E6246E3E03009962E4 /* WasherController.swift in Sources */,
 				5DC1B278244FDB79007C11EA /* CarRepresentation.swift in Sources */,
 				5DD4A848246A461000E5FA2B /* UserController+authenticate.swift in Sources */,
 				5D46BE58244EBE5A0058A660 /* Job+CoreDataClass.swift in Sources */,
