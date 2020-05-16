@@ -14,6 +14,18 @@ class WasherViewController: UIViewController {
 
     // MARK: - Outlets
 
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var fullNameLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var largeRateLabel: UILabel!
+    @IBOutlet weak var mediumRateLabel: UILabel!
+    @IBOutlet weak var smallRateLabel: UILabel!
+    @IBOutlet weak var activeSwitch: UISwitch!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var arrivedCompleteButton: UIButton!
+    @IBOutlet weak var arrivedCompleteLabel: UILabel!
+    
     // MARK: - Views
 
     override func viewDidLoad() {
@@ -23,6 +35,15 @@ class WasherViewController: UIViewController {
     // MARK: - Methods
 
     // MARK: - Actions
+
+    @IBAction func editButtonTapped(_ sender: Any) {
+    }
+
+    @IBAction func activeSwitchToggled(_ sender: Any) {
+    }
+
+    @IBAction func arrivedCompleteTapped(_ sender: Any) {
+    }
 
     // MARK: - Navigation
 
