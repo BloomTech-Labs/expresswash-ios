@@ -12,11 +12,9 @@ extension UserController {
 
     typealias CompletionHandler = (User?, Error?) -> Void
 
-    func registerUser(with firstName: String, _ lastName: String, _ emailAddress: String, _ password: String, completion: @escaping CompletionHandler) {
+    func registerUser(account type: String, with emailAddress: String, _ firstName: String, _ lastName: String, _ password: String, completion: @escaping CompletionHandler) {
 
-        let register = ENDPOINTS.registerClient
-        let registerUrl = BASEURL.appendingPathComponent(register.rawValue)
-
+        let registerUrl = BASEURL.appendingPathComponent(ENDPOINTS.registerClient.rawValue)
         var request = URLRequest(url: registerUrl)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -24,8 +22,9 @@ extension UserController {
         let encoder = JSONEncoder()
 
         do {
-            let user = RegisteredUser(firstName: firstName, lastName: lastName, emailAddress: emailAddress, password: password)
-            request.httpBody = try encoder.encode(user)
+            let user = RegisteredUser(accountType: type, emailAddress: emailAddress, firstName: firstName, lastName: lastName, password: password)
+            let data = try encoder.encode(user)
+            request.httpBody = data
         } catch {
             completion(nil, error)
             return
@@ -34,14 +33,16 @@ extension UserController {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
 
             if let error = error {
+                print("Error Registering User: \(error)")
                 completion(nil, error)
                 return
             }
 
-            if let response = response as? HTTPURLResponse,
-                response.statusCode != 200 {
-                completion(nil, NSError(domain: "Registering User", code: response.statusCode, userInfo: nil))
-                return
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode != 200 {
+                    completion(nil, NSError(domain: "Registering User", code: response.statusCode, userInfo: nil))
+                    return
+                }
             }
 
             guard let data = data else {
@@ -65,9 +66,10 @@ extension UserController {
     }
 
     struct RegisteredUser: Codable {
+        var accountType: String
+        var emailAddress: String
         var firstName: String
         var lastName: String
-        var emailAddress: String
         var password: String
     }
 

@@ -112,7 +112,7 @@ class SignUpViewController: UIViewController {
         guard let confirm = confirmTextField.text, !confirm.isEmpty else { return }
 
         if password == confirm {
-            UserController.shared.registerUser(with: firstName, lastName, email, password) { (user, error) in
+            UserController.shared.registerUser(account: "client", with: email, firstName, lastName, password) { (user, error) in
                 if let error = error {
                     print("Error registering user: \(error)")
                     return
