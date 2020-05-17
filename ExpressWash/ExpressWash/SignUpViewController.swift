@@ -22,7 +22,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailAddressTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var confirmTextField: UITextField!
+    @IBOutlet weak var minimumLabel: UILabel!
     @IBOutlet weak var registerButton: UIButton!
 
     // MARK: - Views
@@ -55,19 +55,6 @@ class SignUpViewController: UIViewController {
         passwordButton.addTarget(self, action: #selector(self.unhidePassword), for: .touchUpInside)
         passwordTextField.rightView = passwordButton
         passwordTextField.rightViewMode = .always
-
-        if confirmTextField.isSecureTextEntry {
-            confirmButton.setTitle("●", for: .normal)
-        } else {
-            confirmButton.setTitle("○", for: .normal)
-        }
-
-        confirmButton.setTitleColor(UIColor(named: "Salmon"), for: .normal)
-        confirmButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
-        confirmButton.frame = rect
-        confirmButton.addTarget(self, action: #selector(self.unhideConfirm), for: .touchUpInside)
-        confirmTextField.rightView = confirmButton
-        confirmTextField.rightViewMode = .always
     }
 
     func setupTextFields() {
@@ -75,7 +62,6 @@ class SignUpViewController: UIViewController {
         lastNameTextField.delegate = self
         emailAddressTextField.delegate = self
         passwordTextField.delegate = self
-        confirmTextField.delegate = self
     }
 
     @objc func unhidePassword() {
@@ -90,18 +76,6 @@ class SignUpViewController: UIViewController {
         setupSubviews()
     }
 
-    @objc func unhideConfirm() {
-
-        if confirmButton.titleLabel?.text == "●" {
-            confirmTextField.isSecureTextEntry = false
-            confirmButton.titleLabel?.text = "○"
-        } else {
-            confirmTextField.isSecureTextEntry = true
-            confirmButton.titleLabel?.text = "●"
-        }
-        setupSubviews()
-    }
-
     // MARK: - Actions
 
     @IBAction func registerButtonTapped(_ sender: Any) {
@@ -109,23 +83,16 @@ class SignUpViewController: UIViewController {
         guard let lastName = lastNameTextField.text, !lastName.isEmpty else { return }
         guard let email = emailAddressTextField.text, !email.isEmpty else { return }
         guard let password = passwordTextField.text, !password.isEmpty else { return }
-        guard let confirm = confirmTextField.text, !confirm.isEmpty else { return }
 
-        if password == confirm {
-            UserController.shared.registerUser(account: "client", with: email, firstName, lastName, password) { (user, error) in
-                if let error = error {
-                    print("Error registering user: \(error)")
-                    return
-                }
-                guard let user = user else { return }
-                UserController.shared.sessionUser = user
+        UserController.shared.registerUser(account: "client", with: email, firstName, lastName, password) { (user, error) in
+            if let error = error {
+                print("Error registering user: \(error)")
+                return
             }
-            self.performSegue(withIdentifier: "finishedSignUpSegue", sender: self)
-        } else {
-            let alertController = UIAlertController(title: "Passwords Don't Match", message: "", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "", style: .cancel, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
+            guard let user = user else { return }
+            UserController.shared.sessionUser = user
         }
+        self.performSegue(withIdentifier: "finishedSignUpSegue", sender: self)
     }
 }
 
@@ -148,13 +115,24 @@ extension SignUpViewController: UITextFieldDelegate {
             return true
         } else if textField == passwordTextField {
             textField.resignFirstResponder()
-            confirmTextField.becomeFirstResponder()
-            return true
-        } else if textField == confirmTextField {
-            textField.resignFirstResponder()
             return true
         } else {
             return false
         }
+    }
+
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField == passwordTextField {
+            if let count = textField.text?.count {
+                if count >= 8 {
+                    minimumLabel.textColor = UIColor.systemGreen
+                    registerButton.isEnabled = true
+                } else {
+                    minimumLabel.textColor = UIColor.init(named: "Salmon")
+                    registerButton.isEnabled = false
+                }
+            }
+        }
+        return true
     }
 }

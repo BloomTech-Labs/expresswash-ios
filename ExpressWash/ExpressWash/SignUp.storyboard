@@ -54,21 +54,17 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" secureTextEntry="YES" textContentType="new-password"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dsA-h0-8of">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min: 8 Characters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6T-6c-YVT">
                                         <rect key="frame" x="0.0" y="240" width="314" height="40"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" secureTextEntry="YES" textContentType="new-password"/>
-                                    </textField>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="dsA-h0-8of" firstAttribute="leading" secondItem="nN4-Qo-GzJ" secondAttribute="leading" id="NE5-z9-WIC"/>
                                     <constraint firstItem="5nt-yI-f6k" firstAttribute="leading" secondItem="nN4-Qo-GzJ" secondAttribute="leading" id="SIl-jt-sdF"/>
                                     <constraint firstAttribute="trailing" secondItem="PJ0-mi-ta0" secondAttribute="trailing" id="aC2-sb-0hJ"/>
                                     <constraint firstAttribute="trailing" secondItem="MFP-Ni-flY" secondAttribute="trailing" id="aac-8T-bhs"/>
-                                    <constraint firstAttribute="trailing" secondItem="dsA-h0-8of" secondAttribute="trailing" id="c7Y-Vd-jZP"/>
                                     <constraint firstAttribute="trailing" secondItem="ZU0-5N-QXV" secondAttribute="trailing" id="jAf-9y-hlD"/>
                                     <constraint firstItem="MFP-Ni-flY" firstAttribute="leading" secondItem="nN4-Qo-GzJ" secondAttribute="leading" id="nQC-Z1-Kf9"/>
                                     <constraint firstAttribute="trailing" secondItem="5nt-yI-f6k" secondAttribute="trailing" id="pzT-Ji-hp6"/>
@@ -76,7 +72,7 @@
                                     <constraint firstItem="PJ0-mi-ta0" firstAttribute="leading" secondItem="nN4-Qo-GzJ" secondAttribute="leading" id="wad-SY-ytx"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIh-du-IKM">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIh-du-IKM">
                                 <rect key="frame" x="274" y="673" width="90" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -111,10 +107,10 @@
                         <viewLayoutGuide key="safeArea" id="1h7-bN-c6y"/>
                     </view>
                     <connections>
-                        <outlet property="confirmTextField" destination="dsA-h0-8of" id="YBZ-Uu-l45"/>
                         <outlet property="emailAddressTextField" destination="5nt-yI-f6k" id="rb8-wZ-N8k"/>
                         <outlet property="firstNameTextField" destination="ZU0-5N-QXV" id="cVy-Cv-qpK"/>
                         <outlet property="lastNameTextField" destination="PJ0-mi-ta0" id="pQX-ZX-iJJ"/>
+                        <outlet property="minimumLabel" destination="H6T-6c-YVT" id="B4K-wh-U0t"/>
                         <outlet property="passwordTextField" destination="MFP-Ni-flY" id="YJL-qx-dkR"/>
                         <outlet property="registerButton" destination="pIh-du-IKM" id="RcC-lr-4XC"/>
                         <segue destination="fpM-Xw-fn7" kind="presentation" identifier="finishedSignUpSegue" modalPresentationStyle="fullScreen" id="PSJ-yx-rPh"/>
