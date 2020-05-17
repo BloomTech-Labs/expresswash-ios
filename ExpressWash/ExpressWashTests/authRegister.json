@@ -1,0 +1,23 @@
+{
+  "message": "user created successfully",
+    "token": "Auth token",
+    "user": {
+        "id": 1,
+        "accountType": "client",
+        "email": "testing.testing@testing.testing",
+        "firstName": "testing",
+        "lastName": "testingson",
+        "phoneNumber": "1234567890",
+        "stripeUUID": null,
+        "streetAddress": "1051 Market St",
+        "streetAddress2": "APT 240",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94103",
+        "profilePicture": "some url",
+        "bannerImage": "some url",
+        "creationDate": "date",
+        "userRating": 4,
+        "userRatingTotal": 1
+    }
+}

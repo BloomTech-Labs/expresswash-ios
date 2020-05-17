@@ -1,4 +1,5 @@
 PODS:
+  - IQKeyboardManagerSwift (6.5.5)
   - Mapbox-iOS-SDK (5.8.0):
     - MapboxMobileEvents (= 0.10.2)
   - MapboxMobileEvents (0.10.2)
@@ -7,6 +8,7 @@ PODS:
   - SwiftLint (0.39.2)
 
 DEPENDENCIES:
+  - IQKeyboardManagerSwift
   - Mapbox-iOS-SDK (~> 5.8)
   - PaymentKit
   - Stripe
@@ -14,6 +16,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - IQKeyboardManagerSwift
     - Mapbox-iOS-SDK
     - MapboxMobileEvents
     - PaymentKit
@@ -21,12 +24,13 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
   Mapbox-iOS-SDK: 02590a60fe300810c55432219a0caaa1338fbafb
   MapboxMobileEvents: 2bc0ca2eedb627b73cf403258dce2b2fa98074a6
   PaymentKit: 9bf248ab9a7343ccc65523890428e23678d1bde9
   Stripe: 82a3aab0b1a66866eef581139a00adadcb2e6dc4
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
 
-PODFILE CHECKSUM: 18afe3006c7f0ffbe535648e946032ddb492a522
+PODFILE CHECKSUM: cbcf167c8f1ca997a805e3f5e3b3a03cef9dbbe7
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.8.4

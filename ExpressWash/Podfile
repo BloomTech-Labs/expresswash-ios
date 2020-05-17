@@ -15,4 +15,6 @@ target 'ExpressWash' do
 
 	pod 'PaymentKit'
 
+	pod 'IQKeyboardManagerSwift'
+
 end
