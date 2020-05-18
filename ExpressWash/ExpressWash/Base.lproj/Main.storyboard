@@ -66,7 +66,7 @@
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSB-TO-B0B">
                                 <rect key="frame" x="20" y="186.5" width="374" height="232"/>
-                                <color key="backgroundColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Yuv-YS-GiD">
                                 <rect key="frame" x="20" y="428.5" width="394" height="72"/>
@@ -233,6 +233,7 @@
                     <connections>
                         <outlet property="addressTextField" destination="R81-gH-PDm" id="ERY-A1-ymJ"/>
                         <outlet property="currentLocationButton" destination="yjg-p9-hzT" id="HkM-sa-904"/>
+                        <outlet property="mapView" destination="nSB-TO-B0B" id="g0p-iC-AWj"/>
                         <outlet property="scheduleWashButton" destination="7hd-cB-qGb" id="bW7-CE-pr4"/>
                         <outlet property="searchButton" destination="qXN-zd-PCg" id="A7s-GX-2E4"/>
                         <outlet property="washersCollectionView" destination="xeQ-UX-rZc" id="QBb-UE-UXi"/>
@@ -719,7 +720,7 @@
                                             <constraint firstAttribute="height" constant="30" id="CgY-Ml-7Fx"/>
                                             <constraint firstAttribute="width" constant="30" id="n3F-a2-Xoy"/>
                                         </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" backgroundImage="mappin.and.ellipse" catalog="system"/>
                                         <state key="selected" backgroundImage="checkmark.seal.fill" catalog="system"/>
                                         <connections>
@@ -729,17 +730,17 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="zBO-b9-dNC">
                                         <rect key="frame" x="8" y="8" width="179" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Helper Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnL-V1-3aw">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arrived?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnL-V1-3aw">
                                         <rect key="frame" x="0.0" y="463" width="324" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Lwo-7q-LJM" secondAttribute="bottom" constant="10" id="3Bw-im-tCU"/>
                                     <constraint firstAttribute="centerX" secondItem="zBO-b9-dNC" secondAttribute="trailing" id="9bJ-Lc-NkP"/>
@@ -803,6 +804,7 @@
                         <outlet property="editButton" destination="JEd-Oi-FML" id="NT2-sI-baw"/>
                         <outlet property="fullNameLabel" destination="DgK-j4-vwG" id="sBq-oR-wme"/>
                         <outlet property="largeRateLabel" destination="uCj-Df-sF8" id="tQa-oa-ypY"/>
+                        <outlet property="mapView" destination="dYN-CP-n1b" id="oGh-Z9-OWl"/>
                         <outlet property="mediumRateLabel" destination="utL-3m-rlZ" id="IYF-az-nJE"/>
                         <outlet property="profileImageView" destination="NbW-MF-ct6" id="m41-Ix-FHN"/>
                         <outlet property="ratingLabel" destination="wMJ-zz-3Qa" id="vrh-ig-KzY"/>

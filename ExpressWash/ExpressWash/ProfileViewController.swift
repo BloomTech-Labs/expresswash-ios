@@ -30,12 +30,16 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupSubviews()
+    }
+
+    // MARK: - Methods
+    
+    func setupSubviews() {
         profileImageView.layer.cornerRadius = profileImageView.frame.size.height/2
         profileImageView.layer.borderColor = UIColor.white.cgColor
         profileImageView.layer.borderWidth = 3.0
     }
-
-    // MARK: - Methods
 
     // MARK: - Actions
 

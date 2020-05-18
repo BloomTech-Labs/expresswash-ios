@@ -136,33 +136,3 @@ extension SignUpViewController: UITextFieldDelegate {
         return true
     }
 }
-
-extension SignUpViewController: UITextFieldDelegate {
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.text! == "" {
-            return false
-        } else if textField == firstNameTextField {
-            textField.resignFirstResponder()
-            lastNameTextField.becomeFirstResponder()
-            return true
-        } else if textField == lastNameTextField {
-            textField.resignFirstResponder()
-            emailAddressTextField.becomeFirstResponder()
-            return true
-        } else if textField == emailAddressTextField {
-            textField.resignFirstResponder()
-            passwordTextField.becomeFirstResponder()
-            return true
-        } else if textField == passwordTextField {
-            textField.resignFirstResponder()
-            confirmTextField.becomeFirstResponder()
-            return true
-        } else if textField == confirmTextField {
-            textField.resignFirstResponder()
-            return true
-        } else {
-            return false
-        }
-    }
-}

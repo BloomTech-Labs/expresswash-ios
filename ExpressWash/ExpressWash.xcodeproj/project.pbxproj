@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1C3BA4D3BC35E4F62848175C /* Pods_ExpressWash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A8200D7CB7A1DA0AE0695DE /* Pods_ExpressWash.framework */; };
-		371683A5247074BA000CE78C /* authRegister.json in Resources */ = {isa = PBXBuildFile; fileRef = 371683A4247074BA000CE78C /* authRegister.json */; };
 		371683A324706562000CE78C /* CarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371683A224706562000CE78C /* CarCollectionViewCell.swift */; };
+		371683A5247074BA000CE78C /* authRegister.json in Resources */ = {isa = PBXBuildFile; fileRef = 371683A4247074BA000CE78C /* authRegister.json */; };
 		375D410D2451296E00479C7E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375D410C2451296E00479C7E /* ProfileViewController.swift */; };
 		375D410F2451298200479C7E /* ReceiptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375D410E2451298200479C7E /* ReceiptsViewController.swift */; };
 		375D41112451299500479C7E /* WasherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375D41102451299500479C7E /* WasherViewController.swift */; };
@@ -67,8 +67,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		371683A4247074BA000CE78C /* authRegister.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = authRegister.json; sourceTree = "<group>"; };
 		371683A224706562000CE78C /* CarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCollectionViewCell.swift; sourceTree = "<group>"; };
+		371683A4247074BA000CE78C /* authRegister.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = authRegister.json; sourceTree = "<group>"; };
 		375D410C2451296E00479C7E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		375D410E2451298200479C7E /* ReceiptsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptsViewController.swift; sourceTree = "<group>"; };
 		375D41102451299500479C7E /* WasherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherViewController.swift; sourceTree = "<group>"; };
