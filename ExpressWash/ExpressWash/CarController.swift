@@ -19,9 +19,74 @@ class CarController {
 
     // MARK: - Local Methods
 
+    func addCar(carRepresentation: CarRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+
+        createCar(carRepresentation: carRepresentation) { (car, error) in
+            if let error = error {
+                print("Error creating car: \(error)")
+            }
+
+            guard let car = car else { return }
+
+            UserController.shared.sessionUser?.addToCars(car)
+
+            context.perform {
+                do {
+                    try CoreDataStack.shared.save(context: context)
+                } catch {
+                    print("Unable to save car to user: \(error)")
+                    context.reset()
+                }
+            }
+        }
+    }
+
+    func updateCar(carRepresentation: CarRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+
+        editCar(carRepresentation: carRepresentation) { (car, error) in
+            if let error = error {
+                print("Error updating car: \(error)")
+            }
+
+            guard let car = car else { return }
+
+            guard car == Car(representation: carRepresentation) else { return }
+
+            context.perform {
+                do {
+                    try CoreDataStack.shared.save(context: context)
+                } catch {
+                    print("Unable to update car: \(error)")
+                    context.reset()
+                }
+            }
+        }
+    }
+
+    func deleteCar(car: Car, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+
+        deleteCar(car: car) { (error) in
+            if let error = error {
+                print("Error deleting car: \(error)")
+                return
+            } else {
+                context.perform {
+                    do {
+                        context.delete(car)
+                        try CoreDataStack.shared.save(context: context)
+                    } catch {
+                        print("Could not save after deleting: \(error)")
+                        context.reset()
+                        return
+                    }
+                }
+            }
+        }
+    }
+
     // MARK: - Networking Methods
 
-    func createCar(car: Car, completion: @escaping CompletionHandler) {
+    func createCar(carRepresentation: CarRepresentation, completion: @escaping CompletionHandler) {
 
         let createCarURL = BASEURL.appendingPathComponent("cars/")
         var request = URLRequest(url: createCarURL)
@@ -31,7 +96,7 @@ class CarController {
         let encoder = JSONEncoder()
 
         do {
-            let data = try encoder.encode(car.representation)
+            let data = try encoder.encode(carRepresentation)
             request.httpBody = data
         } catch {
             print("Error Encoding Car: \(error)")
@@ -73,9 +138,9 @@ class CarController {
         }.resume()
     }
 
-    func editCar(car: Car, completion: @escaping CompletionHandler) {
+    func editCar(carRepresentation: CarRepresentation, completion: @escaping CompletionHandler) {
 
-        let editCarURL = BASEURL.appendingPathComponent("cars/\(car.carId)")
+        let editCarURL = BASEURL.appendingPathComponent("cars/\(carRepresentation.carId ?? NOID)")
         var request = URLRequest(url: editCarURL)
         request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -83,7 +148,7 @@ class CarController {
         let encoder = JSONEncoder()
 
         do {
-            let data = try encoder.encode(car.representation)
+            let data = try encoder.encode(carRepresentation)
             request.httpBody = data
         } catch {
             print("Error Encoding Car: \(error)")
