@@ -10,3 +10,4 @@ import Foundation
 
 let NOID = 0
 let NOID32: Int32 = 0
+let BADRELATIONSHIP = 11111 // used when a needed core data relationship is missing

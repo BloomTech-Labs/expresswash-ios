@@ -137,6 +137,28 @@ class WasherController {
 extension WasherController {
     // MARK: - Server methods
     
-   
+    func put(washer: Washer, completion: @escaping (Error?) -> Void = { _ in }) {
+        let washerRep = washer.representation
+        let requestURL = BASEURL.appendingPathComponent(ENDPOINTS.washer.rawValue).appendingPathComponent(washer.stringID)
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "PUT"
+        
+        let encoder = JSONEncoder()
+        do {
+            request.httpBody = try encoder.encode(washerRep)
+        } catch {
+            print("Error encoding washerRep: \(error)")
+            completion(error)
+        }
+        
+        SESSION.dataTask(with: request) { (_, _, error) in
+            if let error = error {
+                print("Error sending washer to server: \(error)")
+                completion(error)
+                return
+            }
+            completion(nil)
+        }.resume()
+    }
 
 }
