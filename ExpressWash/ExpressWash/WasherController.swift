@@ -92,36 +92,51 @@ class WasherController {
         }
     }
     
-    func deleteWasher(washer: Washer,
+    func deleteWasherLocally(washer: Washer,
                            context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
                            completion: @escaping (Error?) -> Void = { _ in }) {
-        deleteFromServer(washer: washer) { error in
-            if let error = error {
-                print("Will not delete local copy of user: \(error)")
+        context.perform {
+            do {
+                context.delete(washer)
+                try CoreDataStack.shared.save(context: context)
+            } catch {
+                print("Could not save after deleting: \(error)")
+                context.reset()
                 completion(error)
                 return
-            } else {
-                context.perform {
-                    do {
-                        context.delete(washer)
-                        try CoreDataStack.shared.save(context: context)
-                    } catch {
-                        print("Could not save after deleting: \(error)")
-                        context.reset()
-                        completion(error)
-                        return
-                    }
-                }
-                completion(nil)
             }
         }
+        completion(nil)
     }
+    
+    func findWasher(byID washerID: Int, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> Washer? {
+        var foundWasher: Washer?
+        let objcUID = NSNumber(value: uid)
+        let fetchrequest: NSFetchRequest<Washer> = Washer.fetchRequest()
+        fetchrequest.predicate = NSPredicate(format: "washerID == %@", objcUID)
+        do {
+            let matchedWashers = try context.fetch(fetchrequest)
+            
+            if matchedWashers.count == 1 {
+                foundWasher = matchedWashers[0]
+            } else {
+                foundWasher = nil
+            }
+            return foundWasher
+        } catch {
+            print("Error when searching core data for washerID \(washerID): \(error)")
+            return nil
+        }
+    }
+    
+    func findWasher(byID washerID: Int32, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> Washer? {
+        findWasher(byID: Int(washerID), context: context)
+    }
+}
 
+extension WasherController {
     // MARK: - Server methods
     
-    func deleteFromServer(washer: Washer,
-                          context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
-                          completion: @escaping (Error?) -> Void = { _ in }) {
-        // TODO: write this func!
-    }
+   
+
 }
