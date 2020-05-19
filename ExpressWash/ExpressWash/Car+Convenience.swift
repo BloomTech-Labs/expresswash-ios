@@ -39,7 +39,7 @@ extension Car {
     convenience init(representation: CarRepresentation,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
-        self.carId = Int32(representation.carId)
+        self.carId = Int32(representation.carId ?? NOID)
         self.make = representation.make
         self.model = representation.model
         self.year = representation.year
@@ -50,7 +50,8 @@ extension Car {
     }
 
     var representation: CarRepresentation? {
-        CarRepresentation(carId: Int(self.carId),
+        CarRepresentation(userId: Int(self.owner!.userId),
+                          carId: Int(self.carId),
                           make: self.make,
                           model: self.model,
                           year: self.year,
