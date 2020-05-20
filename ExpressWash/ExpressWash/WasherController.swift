@@ -160,5 +160,58 @@ extension WasherController {
             completion(nil)
         }.resume()
     }
+    
+    func rate(washer: Washer, rating: Int, completion: @escaping (Error?) -> Void = { _ in }) {
+        let requestURL = BASEURL.appendingPathComponent(ENDPOINTS.washerRating.rawValue).appendingPathComponent(washer.stringID)
+        var request = URLRequest(url: requestURL)
+        request.httpBody = "PUT"
+        
+        let newRating = WasherRating(washerRating: rating)
+        
+        let encoder = JSONEncoder()
+        do {
+            request.httpBody = try encoder.encode(newRating)
+        } catch {
+            print("Error encoding washer rating: \(error)")
+            completion(error)
+            return
+        }
+        
+        SESSION.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                completion(error)
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                  let data = data else {
+                print("No response or no data when rating washer")
+                completion(NSError(domain: "rate washer", code: NODATAERROR, userInfo: nil))
+                return
+            }
+            
+            if response.statusCode != 200 && response.statusCode != 202 {
+                print("Error rating washer: \(response.statusCode)")
+                completion(NSError(domain: "rate washer", code: response.statusCode, userInfo: nil))
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let updatedWasher = try decoder.decode(Washer.self, from: data)
+            } catch {
+                print("Error decoding washer after rating: \(error)")
+                completion(error)
+                nil
+            }
+            
+            completion(nil)
+        }.resume()
+    }
+    
+    struct WasherRating: Encodable {
+        var washerRating: Int
+    }
 
+    
 }
