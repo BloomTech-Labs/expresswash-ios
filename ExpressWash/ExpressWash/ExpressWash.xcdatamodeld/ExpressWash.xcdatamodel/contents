@@ -3,11 +3,12 @@
     <entity name="Car" representedClassName="Car" syncable="YES">
         <attribute name="carId" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="category" attributeType="String"/>
+        <attribute name="clientId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="color" attributeType="String"/>
         <attribute name="licensePlate" attributeType="String"/>
         <attribute name="make" attributeType="String"/>
         <attribute name="model" attributeType="String"/>
-        <attribute name="photo" optional="YES" attributeType="URI"/>
+        <attribute name="photo" optional="YES" attributeType="String"/>
         <attribute name="size" optional="YES" attributeType="String"/>
         <attribute name="year" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="jobs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Job" inverseName="car" inverseEntity="Job"/>
@@ -72,7 +73,7 @@
         <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="washer" inverseEntity="User"/>
     </entity>
     <elements>
-        <element name="Car" positionX="18" positionY="171" width="128" height="208"/>
+        <element name="Car" positionX="18" positionY="171" width="128" height="223"/>
         <element name="Job" positionX="160" positionY="192" width="128" height="343"/>
         <element name="User" positionX="54" positionY="198" width="128" height="343"/>
         <element name="Washer" positionX="18" positionY="153" width="128" height="223"/>

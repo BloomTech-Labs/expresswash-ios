@@ -13,8 +13,8 @@ class SignUpTests: XCTestCase {
 
     override func setUpWithError() throws {
         // test data
-        if let authLoginData = JSONLoader.readFrom(filename: "authRegister") {
-            URLProtocolMock.testURLs[BASEURL.appendingPathComponent(ENDPOINTS.login.rawValue)] = authLoginData
+        if let authRegisterData = JSONLoader.readFrom(filename: "authRegister") {
+            URLProtocolMock.testURLs[BASEURL.appendingPathComponent(ENDPOINTS.registerClient.rawValue)] = authRegisterData
         }
 
         // Set URLSession to use Mock Protocol

@@ -19,16 +19,23 @@ class CarController {
 
     // MARK: - Local Methods
 
-    func addCar(carRepresentation: CarRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    func addCar(carRepresentation: CarRepresentation,
+                context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
+                completion: @escaping CompletionHandler) {
 
         createCar(carRepresentation: carRepresentation) { (car, error) in
             if let error = error {
                 print("Error creating car: \(error)")
+                completion(nil, error)
+                return
             }
 
-            guard let car = car else { return }
+            guard let car = car else {
+                return
+            }
 
             UserController.shared.sessionUser?.addToCars(car)
+            completion(car, nil)
 
             context.perform {
                 do {
@@ -41,7 +48,8 @@ class CarController {
         }
     }
 
-    func updateCar(carRepresentation: CarRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    func updateCar(carRepresentation: CarRepresentation,
+                   context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
 
         editCar(carRepresentation: carRepresentation) { (car, error) in
             if let error = error {

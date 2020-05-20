@@ -7,27 +7,113 @@
 //
 
 import XCTest
+@testable import ExpressWash
 
 class CarControllerTests: XCTestCase {
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        // test data
+        if let CarData = JSONLoader.readFrom(filename: "Car") {
+            URLProtocolMock.testURLs[BASEURL.appendingPathComponent("cars/")] = CarData
+        }
+
+        // Set URLSession to use Mock Protocol
+        let testConfig = URLSessionConfiguration.ephemeral
+        testConfig.protocolClasses = [URLProtocolMock.self]
+        ExpressWash.SESSION = URLSession(configuration: testConfig)
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testCreateCar() throws {
+        
+        let clientId = 6
+        let carId = 0
+        let make = "ford"
+        let model = "mustang"
+        let year: Int16 = 1996
+        let color = "blue"
+        let licensePlate = "xyz 123"
+        let photo = "some url"
+        let category = "car"
+        let size = "small"
+        
+        let carRepresentation = CarRepresentation(clientId: clientId, carId: carId, make: make, model: model, year: year, color: color, licensePlate: licensePlate, photo: photo, category: category, size: size)
+        
+        let expect = expectation(description: "Car Created")
+        
+        
+        CarController.shared.createCar(carRepresentation: carRepresentation) { (car, error) in
+            if let error = error {
+                print("Error: \(error)")
+                XCTFail()
+            }
+            
+            guard let car = car else {
+                XCTFail()
+                return
+            }
+           
+            XCTAssert(car.clientId == clientId)
+            XCTAssert(car.carId == carId)
+            XCTAssert(car.make == make)
+            XCTAssert(car.model == model)
+            XCTAssert(car.year == year)
+            XCTAssert(car.color == color)
+            XCTAssert(car.licensePlate == licensePlate)
+            XCTAssert(car.photo == photo)
+            XCTAssert(car.size == size)
+            expect.fulfill()
         }
+        
+        waitForExpectations(timeout: 3.0, handler: nil)
+        
     }
-
+    
+    func testAddCar() throws {
+        let clientId = 6
+        let carId = 0
+        let make = "ford"
+        let model = "mustang"
+        let year: Int16 = 1996
+        let color = "blue"
+        let licensePlate = "xyz 123"
+        let photo = "some url"
+        let category = "car"
+        let size = "small"
+        
+        let carRepresentation = CarRepresentation(clientId: clientId, carId: carId, make: make, model: model, year: year, color: color, licensePlate: licensePlate, photo: photo, category: category, size: size)
+        
+        let expect = expectation(description: "Car Added")
+        
+        CarController.shared.addCar(carRepresentation: carRepresentation) { (car, error) in
+            if let error = error {
+                print("Error: \(error)")
+                XCTFail()
+            }
+            
+            guard let car = car else {
+                XCTFail()
+                return
+            }
+            
+            XCTAssert(car.clientId == clientId)
+            XCTAssert(car.carId == carId)
+            XCTAssert(car.make == make)
+            XCTAssert(car.model == model)
+            XCTAssert(car.year == year)
+            XCTAssert(car.color == color)
+            XCTAssert(car.licensePlate == licensePlate)
+            XCTAssert(car.photo == photo)
+            XCTAssert(car.size == size)
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
+    
+    func testEditCar() throws {
+        
+    }
 }

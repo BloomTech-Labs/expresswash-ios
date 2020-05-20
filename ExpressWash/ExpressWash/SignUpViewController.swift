@@ -84,7 +84,11 @@ class SignUpViewController: UIViewController {
         guard let email = emailAddressTextField.text, !email.isEmpty else { return }
         guard let password = passwordTextField.text, !password.isEmpty else { return }
 
-        UserController.shared.registerUser(account: "client", with: email, firstName, lastName, password) { (user, error) in
+        UserController.shared.registerUser(account: "client",
+                                           with: email,
+                                           firstName,
+                                           lastName,
+                                           password) { (user, error) in
             if let error = error {
                 print("Error registering user: \(error)")
                 return
