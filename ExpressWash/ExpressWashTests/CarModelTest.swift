@@ -23,8 +23,7 @@ class CarModelTest: XCTestCase {
         let user = User(accountType: "client", email: "email@email.com", firstName: "Test", lastName: "User")
         user.userId = 1
 
-        let car1 = Car(clientId: 1,
-                       carId: 1,
+        let car1 = Car(carId: 1,
                        make: "Ford",
                        model: "Taurus",
                        year: 2016,
@@ -33,8 +32,7 @@ class CarModelTest: XCTestCase {
                        photo: nil,
                        category: "Car",
                        size: CarSize.medium.rawValue)
-        let car2 = Car(clientId: 2,
-                       carId: 2,
+        let car2 = Car(carId: 2,
                        make: "Nissan",
                        model: "Sentra",
                        year: 2020,

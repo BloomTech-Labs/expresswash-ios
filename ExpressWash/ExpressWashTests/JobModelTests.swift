@@ -52,8 +52,7 @@ class JobModelTests: XCTestCase {
                       zip: "92101",
                       jobType: "wash")
 
-        let car1 = Car(clientId: 1,
-                       carId: 1,
+        let car1 = Car(carId: 1,
                        make: "Ford",
                        model: "Taurus",
                        year: 2016,

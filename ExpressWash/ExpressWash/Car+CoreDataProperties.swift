@@ -17,7 +17,6 @@ extension Car {
     }
 
     @NSManaged public var color: String
-    @NSManaged public var clientId: Int32
     @NSManaged public var carId: Int32
     @NSManaged public var licensePlate: String
     @NSManaged public var make: String

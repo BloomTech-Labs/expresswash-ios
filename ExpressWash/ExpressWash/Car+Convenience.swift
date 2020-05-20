@@ -16,8 +16,7 @@ enum CarSize: String {
 }
 
 extension Car {
-    convenience init(clientId: Int32,
-                     carId: Int32 = 0,
+    convenience init(carId: Int32 = 0,
                      make: String,
                      model: String,
                      year: Int16,
@@ -28,7 +27,6 @@ extension Car {
                      size: String,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
-        self.clientId = clientId
         self.carId = carId
         self.make = make
         self.model = model
@@ -43,7 +41,6 @@ extension Car {
     convenience init(representation: CarRepresentation,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
-        self.clientId = Int32(representation.clientId)
         self.carId = Int32(representation.carId ?? NOID)
         self.make = representation.make
         self.model = representation.model
@@ -56,8 +53,7 @@ extension Car {
     }
 
     var representation: CarRepresentation? {
-        CarRepresentation(clientId: Int(self.owner!.userId),
-                          carId: Int(self.carId),
+        CarRepresentation(carId: Int(self.carId),
                           make: self.make,
                           model: self.model,
                           year: self.year,

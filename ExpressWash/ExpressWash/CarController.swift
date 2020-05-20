@@ -215,7 +215,7 @@ class CarController {
             let decoder = JSONDecoder()
 
             do {
-                let dictionary = try decoder.decode([String:String].self, from: data)
+                let dictionary = try decoder.decode([String: String].self, from: data)
                 let message = dictionary.values.first
                 completion(message, nil)
             } catch {

@@ -31,8 +31,7 @@ class CarControllerTests: XCTestCase {
     }
 
     func testCreateCar() throws {
-        
-        let clientId = 6
+
         let carId = 0
         let make = "ford"
         let model = "mustang"
@@ -43,7 +42,7 @@ class CarControllerTests: XCTestCase {
         let category = "car"
         let size = "small"
         
-        let carRepresentation = CarRepresentation(clientId: clientId, carId: carId, make: make, model: model, year: year, color: color, licensePlate: licensePlate, photo: photo, category: category, size: size)
+        let carRepresentation = CarRepresentation(carId: carId, make: make, model: model, year: year, color: color, licensePlate: licensePlate, photo: photo, category: category, size: size)
         
         let expect = expectation(description: "Car Created")
         
@@ -58,8 +57,7 @@ class CarControllerTests: XCTestCase {
                 XCTFail()
                 return
             }
-           
-            XCTAssert(car.clientId == clientId)
+
             XCTAssert(car.carId == carId)
             XCTAssert(car.make == make)
             XCTAssert(car.model == model)
@@ -76,7 +74,7 @@ class CarControllerTests: XCTestCase {
     }
     
     func testAddCar() throws {
-        let clientId = 6
+
         let carId = 0
         let make = "ford"
         let model = "mustang"
@@ -87,7 +85,7 @@ class CarControllerTests: XCTestCase {
         let category = "car"
         let size = "small"
         
-        let carRepresentation = CarRepresentation(clientId: clientId, carId: carId, make: make, model: model, year: year, color: color, licensePlate: licensePlate, photo: photo, category: category, size: size)
+        let carRepresentation = CarRepresentation(carId: carId, make: make, model: model, year: year, color: color, licensePlate: licensePlate, photo: photo, category: category, size: size)
         
         let expect = expectation(description: "Car Added")
         
@@ -101,8 +99,7 @@ class CarControllerTests: XCTestCase {
                 XCTFail()
                 return
             }
-            
-            XCTAssert(car.clientId == clientId)
+
             XCTAssert(car.carId == carId)
             XCTAssert(car.make == make)
             XCTAssert(car.model == model)
@@ -118,7 +115,7 @@ class CarControllerTests: XCTestCase {
     }
     
     func testEditCar() throws {
-        let clientId = 6
+
         let carId = 0
         let make = "ford"
         let model = "fusion"
@@ -129,7 +126,7 @@ class CarControllerTests: XCTestCase {
         let category = "car"
         let size = "small"
         
-        let carRepresentation = CarRepresentation(clientId: clientId, carId: carId, make: make, model: model, year: year, color: color, licensePlate: licensePlate, photo: photo, category: category, size: size)
+        let carRepresentation = CarRepresentation(carId: carId, make: make, model: model, year: year, color: color, licensePlate: licensePlate, photo: photo, category: category, size: size)
         
         let expect = expectation(description: "Car Edited")
         
@@ -143,8 +140,7 @@ class CarControllerTests: XCTestCase {
                  XCTFail()
                  return
              }
-            
-             XCTAssert(car.clientId == clientId)
+
              XCTAssert(car.carId == carId)
              XCTAssert(car.make == make)
              XCTAssert(car.model == model)
@@ -160,7 +156,7 @@ class CarControllerTests: XCTestCase {
     }
     
     func testUpdateCar() throws {
-        let clientId = 6
+        
         let carId = 0
         let make = "ford"
         let model = "fusion"
@@ -171,7 +167,7 @@ class CarControllerTests: XCTestCase {
         let category = "car"
         let size = "small"
         
-        let carRepresentation = CarRepresentation(clientId: clientId, carId: carId, make: make, model: model, year: year, color: color, licensePlate: licensePlate, photo: photo, category: category, size: size)
+        let carRepresentation = CarRepresentation(carId: carId, make: make, model: model, year: year, color: color, licensePlate: licensePlate, photo: photo, category: category, size: size)
         
         let expect = expectation(description: "Car Updated")
         
@@ -186,7 +182,6 @@ class CarControllerTests: XCTestCase {
                 return
             }
             
-            XCTAssert(car.clientId == clientId)
             XCTAssert(car.carId == carId)
             XCTAssert(car.make == make)
             XCTAssert(car.model == model)
@@ -206,7 +201,7 @@ class CarControllerTests: XCTestCase {
             URLProtocolMock.testURLs[BASEURL.appendingPathComponent("cars/\(0)")] = DeleteData
         }
 
-        let car = Car(clientId: 1, carId: 0, make: "", model: "", year: 1996, color: "", licensePlate: "", photo: "", category: "", size: "")
+        let car = Car(carId: 0, make: "", model: "", year: 1996, color: "", licensePlate: "", photo: "", category: "", size: "")
         
         let expect = expectation(description: "Car Deleted")
         
