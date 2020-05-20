@@ -42,6 +42,6 @@ enum ENDPOINTS: String {
     case userRating = "/users/rating"           // PUT  /:id    Updating rating of a user
     case washer = "/users/washer"               // PUT  /:id    Update washer
     case washerRating = "/users/washer/rating"  // PUT  /:id    Update rating of washer
-    
+
     // Need an endpoint to get a list washers who are active and near a job location
 }
