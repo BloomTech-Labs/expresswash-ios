@@ -50,6 +50,8 @@ class WasherController {
                 context.perform {
                     do {
                         try CoreDataStack.shared.save(context: context)
+                        completion(nil)
+                        return
                     } catch {
                         print("Unable to save updated washer: \(error)")
                         context.reset()
@@ -88,6 +90,7 @@ class WasherController {
                 }
             }
         }
+        completion(nil)
     }
 
     func deleteWasherLocally(washer: Washer,
@@ -111,7 +114,7 @@ class WasherController {
         var foundWasher: Washer?
         let objcUID = NSNumber(value: washerID)
         let fetchrequest: NSFetchRequest<Washer> = Washer.fetchRequest()
-        fetchrequest.predicate = NSPredicate(format: "washerID == %@", objcUID)
+        fetchrequest.predicate = NSPredicate(format: "washerId == %@", objcUID)
         do {
             let matchedWashers = try context.fetch(fetchrequest)
 
@@ -186,16 +189,17 @@ extension WasherController {
                 return
             }
 
-            guard let response = response as? HTTPURLResponse,
-                  let data = data else {
-                print("No response or no data when rating washer")
-                completion(NSError(domain: "rate washer", code: NODATAERROR, userInfo: nil))
-                return
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode != 200 && response.statusCode != 201 && response.statusCode != 202 {
+                    print("Error rating washer: \(response.statusCode)")
+                    completion(NSError(domain: "rate washer", code: response.statusCode, userInfo: nil))
+                    return
+                }
             }
 
-            if response.statusCode != 200 && response.statusCode != 202 {
-                print("Error rating washer: \(response.statusCode)")
-                completion(NSError(domain: "rate washer", code: response.statusCode, userInfo: nil))
+            guard let data = data else {
+                print("No data after rating washer")
+                completion(NSError(domain: "rate washer", code: NODATAERROR, userInfo: nil))
                 return
             }
 

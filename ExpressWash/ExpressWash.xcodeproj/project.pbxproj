@@ -25,6 +25,7 @@
 		37B8377E2457CCC3007D65DA /* WasherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8377D2457CCC3007D65DA /* WasherCollectionViewCell.swift */; };
 		5D0685AF246B9FB800C44DEF /* authLogin.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D0971E7246B909000B5492D /* authLogin.json */; };
 		5D0971EA246B913500B5492D /* JSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0971E9246B913500B5492D /* JSONLoader.swift */; };
+		5D41D4FA2474DB6900DC3152 /* washerRating.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D41D4F92474DB6900DC3152 /* washerRating.json */; };
 		5D46BE42244E9E2A0058A660 /* Job+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE41244E9E2A0058A660 /* Job+Convenience.swift */; };
 		5D46BE44244E9EE20058A660 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE43244E9EE20058A660 /* CoreDataStack.swift */; };
 		5D46BE46244EA0950058A660 /* JobRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE45244EA0950058A660 /* JobRepresentation.swift */; };
@@ -85,6 +86,7 @@
 		37B8377D2457CCC3007D65DA /* WasherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherCollectionViewCell.swift; sourceTree = "<group>"; };
 		5D0971E7246B909000B5492D /* authLogin.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = authLogin.json; sourceTree = "<group>"; };
 		5D0971E9246B913500B5492D /* JSONLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLoader.swift; sourceTree = "<group>"; };
+		5D41D4F92474DB6900DC3152 /* washerRating.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = washerRating.json; sourceTree = "<group>"; };
 		5D46BE41244E9E2A0058A660 /* Job+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+Convenience.swift"; sourceTree = "<group>"; };
 		5D46BE43244E9EE20058A660 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		5D46BE45244EA0950058A660 /* JobRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRepresentation.swift; sourceTree = "<group>"; };
@@ -287,6 +289,9 @@
 		5D0971E6246B902500B5492D /* ModelData */ = {
 			isa = PBXGroup;
 			children = (
+				5D0971E7246B909000B5492D /* authLogin.json */,
+				371683A4247074BA000CE78C /* authRegister.json */,
+				5D41D4F92474DB6900DC3152 /* washerRating.json */,
 			);
 			name = ModelData;
 			sourceTree = "<group>";
@@ -306,8 +311,6 @@
 		5DA0A8A924592A3100992692 /* ExpressWashTests */ = {
 			isa = PBXGroup;
 			children = (
-				5D0971E7246B909000B5492D /* authLogin.json */,
-				371683A4247074BA000CE78C /* authRegister.json */,
 				5DD4A84D246B8D7200E5FA2B /* URLProcotolMock.swift */,
 				5D0971E9246B913500B5492D /* JSONLoader.swift */,
 				377D1A05246A48A500CA3AEB /* SignUpTests */,
@@ -421,6 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				371683A5247074BA000CE78C /* authRegister.json in Resources */,
+				5D41D4FA2474DB6900DC3152 /* washerRating.json in Resources */,
 				5D0685AF246B9FB800C44DEF /* authLogin.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

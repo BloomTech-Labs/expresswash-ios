@@ -12,14 +12,26 @@ import XCTest
 class WasherModelTests: XCTestCase {
 
     let testAboutMe = "I'm a washer"
+    let updatedAboutMe = "I'm an updated washer!"
     let testLat = 35.8609
     let testLon = -120.8200
+    let updatedLat = 37.1234
+    let updatedLon = -122.0987
     let testRateSmall = 25.0
     let testRateMedium = 40.0
     let testRateLarge = 55.0
+    let updatedRateLarge = 60.0
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        if let rateWasherData = JSONLoader.readFrom(filename: "washerRating") {
+            // test data
+            URLProtocolMock.testURLs[BASEURL.appendingPathComponent(ENDPOINTS.washerRating.rawValue).appendingPathComponent("2")] = rateWasherData
+            
+            // Set URLSession to use Mock Protocol
+            let testConfig = URLSessionConfiguration.ephemeral
+            testConfig.protocolClasses = [URLProtocolMock.self]
+            ExpressWash.SESSION = URLSession(configuration: testConfig)
+        }
     }
 
     override func tearDownWithError() throws {
@@ -72,5 +84,78 @@ class WasherModelTests: XCTestCase {
         XCTAssert(representation.washerRating == 3)
         XCTAssert(representation.washerRatingTotal == 3)
         XCTAssert(representation.userId == 1)
+    }
+    
+    func testWasherController() throws {
+        let user = User(accountType: "washer",
+                        email: "washer@email.com",
+                        firstName: "Test",
+                        lastName: "User")
+        user.userId = 1
+        var washerRep = WasherRepresentation(aboutMe: testAboutMe,
+                                             available: false,
+                                             currentLocationLat: testLat,
+                                             currentLocationLon: testLon,
+                                             rateSmall: testRateSmall,
+                                             rateMedium: testRateMedium,
+                                             rateLarge: testRateLarge,
+                                             washerId: 7,
+                                             washerRating: 3,
+                                             washerRatingTotal: 3,
+                                             userId: Int(user.userId))
+
+        let washerController = WasherController()
+        washerController.createLocalWasher(from: washerRep)
+        
+        guard let washer = washerController.findWasher(byID: Int32(7)) else {
+            XCTFail()
+            return
+        }
+        
+        washerRep.washerId = 987
+        washerRep.aboutMe = updatedAboutMe
+        washerRep.currentLocationLat = updatedLat
+        washerRep.currentLocationLon = updatedLon
+        washerRep.rateLarge = updatedRateLarge
+        
+        let washerExpectation = expectation(description: "Washer is updated")
+        washerController.updateWasher(washer, with: washerRep) { (error) in
+            if let error = error {
+                XCTFail(error.localizedDescription)
+                return
+            }
+            
+            XCTAssert(washer.washerId == 987)
+            XCTAssert(washer.aboutMe == self.updatedAboutMe)
+            XCTAssert(washer.currentLocationLat == self.updatedLat)
+            XCTAssert(washer.currentLocationLon == self.updatedLon)
+            XCTAssert(washer.rateLarge == self.updatedRateLarge)
+            
+            washerExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 3.0, handler: nil)
+        
+        washerController.deleteWasherLocally(washer: washer) { error in
+            XCTAssertNil(error)
+        }
+    }
+    
+    func testRateWasher() throws {
+        let user = User(accountType: "washer", email: "test@email.com", firstName: "test", lastName: "washer")
+        let washer = Washer(aboutMe: testAboutMe, currentLocationLat: testLat, currentLocationLon: testLon, rateSmall: testRateSmall, rateMedium: testRateMedium, rateLarge: testRateLarge, washerId: 8, washerRating: 3, washerRatingTotal: 1, user: user)
+        let washerController = WasherController()
+        
+        washer.washerId = 2
+        
+        let rateExpectation = expectation(description: "Rating updated to 4")
+        washerController.rate(washer: washer, rating: 5) { error in
+            XCTAssertNil(error)
+            XCTAssert(washer.washerRating == 4)
+            XCTAssert(washer.washerRatingTotal == 2)
+            rateExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 3.0, handler: nil)
     }
 }
