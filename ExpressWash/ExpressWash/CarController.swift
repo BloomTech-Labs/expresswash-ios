@@ -49,16 +49,19 @@ class CarController {
     }
 
     func updateCar(carRepresentation: CarRepresentation,
-                   context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+                   context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
+                   completion: @escaping CompletionHandler) {
 
         editCar(carRepresentation: carRepresentation) { (car, error) in
             if let error = error {
                 print("Error updating car: \(error)")
+                completion(nil, error)
+                return
             }
 
             guard let car = car else { return }
 
-            guard car == Car(representation: carRepresentation) else { return }
+            completion(car, nil)
 
             context.perform {
                 do {
@@ -73,7 +76,7 @@ class CarController {
 
     func deleteCar(car: Car, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
 
-        deleteCar(car: car) { (error) in
+        deleteCar(car: car) { _, error  in
             if let error = error {
                 print("Error deleting car: \(error)")
                 return
@@ -164,7 +167,7 @@ class CarController {
             return
         }
 
-        SESSION.dataTask(with: request) { (data, response, error) in
+        SESSION.dataTask(with: request) { (data, _, error) in
 
             if let error = error {
                 print("Error Editing Car: \(error)")
@@ -172,45 +175,53 @@ class CarController {
                 return
             }
 
-            if let response = response as? HTTPURLResponse {
-                if response.statusCode != 200 {
-                    completion(nil, NSError(domain: "Editing Car", code: response.statusCode, userInfo: nil))
-                    return
-                }
+            guard let data = data else {
+                completion(nil, error)
+                return
+            }
 
-                guard let data = data else {
-                    completion(nil, NSError(domain: "Editing Car", code: response.statusCode, userInfo: nil))
-                    return
-                }
+            let decoder = JSONDecoder()
 
-                let decoder = JSONDecoder()
-
-                do {
-                    let editedCarRepresentation = try decoder.decode(CarRepresentation.self, from: data)
-                    let car = Car(representation: editedCarRepresentation)
-                    completion(car, nil)
-                } catch {
-                    print("Error Decoding Car: \(error)")
-                    completion(nil, error)
-                    return
-                }
+            do {
+                let editedCarRepresentation = try decoder.decode(CarRepresentation.self, from: data)
+                let car = Car(representation: editedCarRepresentation)
+                completion(car, nil)
+            } catch {
+                print("Error Decoding Car: \(error)")
+                completion(nil, error)
+                return
             }
         }.resume()
     }
 
-    func deleteCar(car: Car, completion: @escaping (Error?) -> Void) {
+    func deleteCar(car: Car, completion: @escaping (String?, Error?) -> Void) {
 
         let deleteCarURL = BASEURL.appendingPathComponent("cars/\(car.carId)")
         var request = URLRequest(url: deleteCarURL)
         request.httpMethod = "DELETE"
 
-        SESSION.dataTask(with: request) { (_, _, error) in
+        SESSION.dataTask(with: request) { (data, _, error) in
             if let error = error {
                 print("Error Deleting Car: \(error)")
-                completion(error)
+                completion(nil, error)
                 return
             }
-        }
-    }
 
+            guard let data = data else {
+                completion(nil, error)
+                return
+            }
+
+            let decoder = JSONDecoder()
+
+            do {
+                let dictionary = try decoder.decode([String:String].self, from: data)
+                let message = dictionary.values.first
+                completion(message, nil)
+            } catch {
+                print("Error decoding message: \(error)")
+                return
+            }
+        }.resume()
+    }
 }

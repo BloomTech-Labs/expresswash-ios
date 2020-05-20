@@ -1,0 +1,12 @@
+{
+    "carId": 0,
+    "clientId": 6,
+    "make": "ford",
+    "model": "fusion",
+    "year": 1996,
+    "color": "blue",
+    "licensePlate": "xyz 123",
+    "photo": "some url",
+    "category": "car",
+    "size": "small"
+}
