@@ -10,7 +10,9 @@ import Foundation
 import CoreData
 
 extension UserController {
-    func authenticate(username: String, password: String, completion: @escaping (User?, Error?) -> Void) {
+    func authenticate(username: String,
+                      password: String,
+                      completion: @escaping (User?, Error?) -> Void) {
         guard !username.isEmpty && !password.isEmpty else {
             completion(nil, NSError(domain: "auth", code: INVALIDUSERNAMEORPASSWORD, userInfo: nil))
             return
@@ -19,7 +21,6 @@ extension UserController {
         let authURL = BASEURL.appendingPathComponent(ENDPOINTS.login.rawValue)
         var request = URLRequest(url: authURL)
         request.httpMethod = "POST"
-
         let postBody = PostBody(email: username, password: password)
 
         let encoder = JSONEncoder()
@@ -37,7 +38,6 @@ extension UserController {
                 completion(nil, error)
                 return
             }
-
             if let response = response as? HTTPURLResponse {
                 if response.statusCode == 403 {
                     completion(nil, NSError(domain: "auth-response",
@@ -54,9 +54,7 @@ extension UserController {
                 completion(nil, NSError(domain: "auth-response", code: NODATAERROR, userInfo: nil))
                 return
             }
-
             let decoder = JSONDecoder()
-
             do {
                 let authReturn = try decoder.decode(AuthReturn.self, from: data)
                 self.token = authReturn.token
@@ -71,9 +69,7 @@ extension UserController {
                 completion(nil, error)
                 return
             }
-
         }.resume()
-
     }
 
     struct PostBody: Encodable {

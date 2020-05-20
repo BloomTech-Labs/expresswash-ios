@@ -1,0 +1,14 @@
+{
+  "washerId": 2,
+  "userId": 26,
+  "available": true,
+  "workStatus": true,
+  "rateSmall": 30.00,
+  "rateMedium": 50.00,
+  "rateLarge": 75.00,
+  "aboutMe": "I am a washer",
+  "currentLocationLat": 55.777,
+  "currentLocationLon": 35.555,
+  "washerRating": 4,
+  "washerRatingTotal": 2
+}

@@ -27,6 +27,7 @@
 		37B8377E2457CCC3007D65DA /* WasherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8377D2457CCC3007D65DA /* WasherCollectionViewCell.swift */; };
 		5D0685AF246B9FB800C44DEF /* authLogin.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D0971E7246B909000B5492D /* authLogin.json */; };
 		5D0971EA246B913500B5492D /* JSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0971E9246B913500B5492D /* JSONLoader.swift */; };
+		5D41D4FA2474DB6900DC3152 /* washerRating.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D41D4F92474DB6900DC3152 /* washerRating.json */; };
 		5D46BE42244E9E2A0058A660 /* Job+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE41244E9E2A0058A660 /* Job+Convenience.swift */; };
 		5D46BE44244E9EE20058A660 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE43244E9EE20058A660 /* CoreDataStack.swift */; };
 		5D46BE46244EA0950058A660 /* JobRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE45244EA0950058A660 /* JobRepresentation.swift */; };
@@ -39,6 +40,7 @@
 		5D46BE5B244EBE5A0058A660 /* Washer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE53244EBE5A0058A660 /* Washer+CoreDataProperties.swift */; };
 		5D46BE5C244EBE5A0058A660 /* Car+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE54244EBE5A0058A660 /* Car+CoreDataClass.swift */; };
 		5D46BE5D244EBE5A0058A660 /* Car+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE55244EBE5A0058A660 /* Car+CoreDataProperties.swift */; };
+		5D4FD9E6246E3E03009962E4 /* WasherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4FD9E5246E3E03009962E4 /* WasherController.swift */; };
 		5D51383B24639BF000E81AEA /* WasherRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D51383A24639BF000E81AEA /* WasherRepresentation.swift */; };
 		5D51383D2463A13500E81AEA /* Washer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D51383C2463A13500E81AEA /* Washer+Convenience.swift */; };
 		5D605C652453D31100B83420 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D605C642453D31100B83420 /* UserRepresentation.swift */; };
@@ -88,6 +90,7 @@
 		37B8377D2457CCC3007D65DA /* WasherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherCollectionViewCell.swift; sourceTree = "<group>"; };
 		5D0971E7246B909000B5492D /* authLogin.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = authLogin.json; sourceTree = "<group>"; };
 		5D0971E9246B913500B5492D /* JSONLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLoader.swift; sourceTree = "<group>"; };
+		5D41D4F92474DB6900DC3152 /* washerRating.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = washerRating.json; sourceTree = "<group>"; };
 		5D46BE41244E9E2A0058A660 /* Job+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+Convenience.swift"; sourceTree = "<group>"; };
 		5D46BE43244E9EE20058A660 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		5D46BE45244EA0950058A660 /* JobRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRepresentation.swift; sourceTree = "<group>"; };
@@ -100,6 +103,7 @@
 		5D46BE53244EBE5A0058A660 /* Washer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Washer+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5D46BE54244EBE5A0058A660 /* Car+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5D46BE55244EBE5A0058A660 /* Car+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5D4FD9E5246E3E03009962E4 /* WasherController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherController.swift; sourceTree = "<group>"; };
 		5D51383A24639BF000E81AEA /* WasherRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherRepresentation.swift; sourceTree = "<group>"; };
 		5D51383C2463A13500E81AEA /* Washer+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Washer+Convenience.swift"; sourceTree = "<group>"; };
 		5D605C642453D31100B83420 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 				5DBD0ECE2457C10200ADE10A /* UserController.swift */,
 				5DD4A847246A461000E5FA2B /* UserController+authenticate.swift */,
 				377D1A01246A46FD00CA3AEB /* UserController+Registration.swift */,
+				5D4FD9E5246E3E03009962E4 /* WasherController.swift */,
 			);
 			name = "Model Controllers";
 			sourceTree = "<group>";
@@ -290,6 +295,9 @@
 		5D0971E6246B902500B5492D /* ModelData */ = {
 			isa = PBXGroup;
 			children = (
+				5D0971E7246B909000B5492D /* authLogin.json */,
+				371683A4247074BA000CE78C /* authRegister.json */,
+				5D41D4F92474DB6900DC3152 /* washerRating.json */,
 			);
 			name = ModelData;
 			sourceTree = "<group>";
@@ -309,8 +317,6 @@
 		5DA0A8A924592A3100992692 /* ExpressWashTests */ = {
 			isa = PBXGroup;
 			children = (
-				5D0971E7246B909000B5492D /* authLogin.json */,
-				371683A4247074BA000CE78C /* authRegister.json */,
 				5DD4A84D246B8D7200E5FA2B /* URLProcotolMock.swift */,
 				5D0971E9246B913500B5492D /* JSONLoader.swift */,
 				377D1A05246A48A500CA3AEB /* SignUpTests */,
@@ -424,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				371683A5247074BA000CE78C /* authRegister.json in Resources */,
+				5D41D4FA2474DB6900DC3152 /* washerRating.json in Resources */,
 				5D0685AF246B9FB800C44DEF /* authLogin.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,6 +528,7 @@
 				377D1A02246A46FD00CA3AEB /* UserController+Registration.swift in Sources */,
 				5DC1B276244FD97C007C11EA /* Car+Convenience.swift in Sources */,
 				5D46BE5B244EBE5A0058A660 /* Washer+CoreDataProperties.swift in Sources */,
+				5D4FD9E6246E3E03009962E4 /* WasherController.swift in Sources */,
 				5DC1B278244FDB79007C11EA /* CarRepresentation.swift in Sources */,
 				5DD4A848246A461000E5FA2B /* UserController+authenticate.swift in Sources */,
 				5D46BE58244EBE5A0058A660 /* Job+CoreDataClass.swift in Sources */,
