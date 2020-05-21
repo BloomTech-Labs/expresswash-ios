@@ -20,15 +20,79 @@ class JobController {
     func addJob(jobRepresentation: JobRepresentation,
                 context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
                 completion: @escaping CompletionHandler) {
+        
+        createJob(jobRepresentation: jobRepresentation) { (job, error) in
+            if let error = error {
+                print("Error creating job: \(error)")
+                completion(nil, error)
+                return
+            }
+            
+            guard let job = job else {
+                return
+            }
+            
+            completion(job, nil)
+            
+            context.perform {
+                do {
+                    try CoreDataStack.shared.save(context: context)
+                } catch {
+                    print("Unable to save car to user: \(error)")
+                    context.reset()
+                    return
+                }
+            }
+        }
     }
     
     func updateJob(jobRepresentation: JobRepresentation,
                    context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
                    completion: @escaping CompletionHandler) {
+        
+        editJob(jobRepresentation: jobRepresentation) { (job, error) in
+            if let error = error {
+                print("Error updating job: \(error)")
+                completion(nil, error)
+                return
+            }
+            
+            guard let job = job else { return }
+            
+            completion(job, nil)
+            
+            context.perform {
+                do {
+                    try CoreDataStack.shared.save(context: context)
+                } catch {
+                    print("Unable to update job: \(error)")
+                    context.reset()
+                    return
+                }
+            }
+        }
     }
     
-    func deleteJob(jobRepresentation: JobRepresentation,
+    func deleteJob(job: Job,
                    context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        
+        deleteJob(job: job) { _, error in
+            if let error = error {
+                print("Error deleting job: \(error)")
+                return
+            } else {
+                context.perform {
+                    do {
+                        context.delete(job)
+                        try CoreDataStack.shared.save(context: context)
+                    } catch {
+                        print("Could not save after deleting: \(error)")
+                        context.reset()
+                        return
+                    }
+                }
+            }
+        }
     }
     
     // MARK: - Network Methods
@@ -48,6 +112,10 @@ class JobController {
     func editJob(jobRepresentation: JobRepresentation, completion: @escaping CompletionHandler) {
     }
     
-    func deleteJob(jobRepresentation: JobRepresentation, completion: @escaping (String?, Error?) -> Void) {
+    func deleteJob(job: Job, completion: @escaping (String?, Error?) -> Void) {
+    }
+    
+    struct WasherID: Codable {
+        var washerID: Int
     }
 }
