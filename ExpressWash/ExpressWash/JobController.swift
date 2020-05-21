@@ -106,6 +106,7 @@ extension JobController {
         var request = URLRequest(url: createJobURL)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
 
         let encoder = JSONEncoder()
 
@@ -159,6 +160,7 @@ extension JobController {
         var request = URLRequest(url: jobInfoURL)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
 
         SESSION.dataTask(with: request) { (data, response, error) in
             if let error = error {
@@ -200,6 +202,7 @@ extension JobController {
         var request = URLRequest(url: getJobsURL)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
 
         SESSION.dataTask(with: request) { (data, response, error) in
             if let error = error {
@@ -240,6 +243,7 @@ extension JobController {
         var request = URLRequest(url: jobURL)
         request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
 
         let encoder = JSONEncoder()
 
@@ -296,6 +300,7 @@ extension JobController {
         var request = URLRequest(url: editJobURL)
         request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
 
         let encoder = JSONEncoder()
 
@@ -343,6 +348,7 @@ extension JobController {
         let deleteJobURL = baseURL.appendingPathComponent("\(job.jobId)")
         var request = URLRequest(url: deleteJobURL)
         request.httpMethod = "DELETE"
+        request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
 
         SESSION.dataTask(with: request) { (data, _, error) in
             if let error = error {

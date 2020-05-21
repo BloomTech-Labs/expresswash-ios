@@ -103,6 +103,7 @@ class CarController {
         var request = URLRequest(url: createCarURL)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
 
         let encoder = JSONEncoder()
 
@@ -155,6 +156,7 @@ class CarController {
         var request = URLRequest(url: editCarURL)
         request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
 
         let encoder = JSONEncoder()
 
@@ -199,6 +201,7 @@ class CarController {
         let deleteCarURL = BASEURL.appendingPathComponent("cars/\(car.carId)")
         var request = URLRequest(url: deleteCarURL)
         request.httpMethod = "DELETE"
+        request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
 
         SESSION.dataTask(with: request) { (data, _, error) in
             if let error = error {
