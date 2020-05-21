@@ -308,20 +308,12 @@ extension JobController {
             return
         }
 
-        SESSION.dataTask(with: request) { (data, response, error) in
+        SESSION.dataTask(with: request) { (data, _, error) in
 
             if let error = error {
                 print("Error editing job: \(error)")
                 completion(nil, error)
                 return
-            }
-
-            if let response = response as? HTTPURLResponse {
-                print("\(response.statusCode)")
-                if response.statusCode != 200 && response.statusCode != 201 && response.statusCode != 202 {
-                    completion(nil, NSError(domain: "Editing Job", code: response.statusCode, userInfo: nil))
-                    return
-                }
             }
 
             guard let data = data else {
@@ -332,9 +324,11 @@ extension JobController {
             let decoder = JSONDecoder()
 
             do {
-                let editedJobRepresentation = try decoder.decode(JobRepresentation.self, from: data)
-                let job = Job(representation: editedJobRepresentation)
-                completion(job, nil)
+                let editedJobRepresentations = try decoder.decode([JobRepresentation].self, from: data)
+                if let jobRepresentation = editedJobRepresentations.first {
+                    let job = Job(representation: jobRepresentation)
+                    completion(job, nil)
+                }
             } catch {
                 print("Error decoding job: \(error)")
                 completion(nil, error)
@@ -350,19 +344,11 @@ extension JobController {
         var request = URLRequest(url: deleteJobURL)
         request.httpMethod = "DELETE"
 
-        SESSION.dataTask(with: request) { (data, response, error) in
+        SESSION.dataTask(with: request) { (data, _, error) in
             if let error = error {
                 print("Error deleting job: \(error)")
                 completion(nil, error)
                 return
-            }
-
-            if let response = response as? HTTPURLResponse {
-                print("\(response.statusCode)")
-                if response.statusCode != 200 && response.statusCode != 201 && response.statusCode != 202 {
-                    completion(nil, NSError(domain: "Deleting Job", code: response.statusCode, userInfo: nil))
-                    return
-                }
             }
 
             guard let data = data else {

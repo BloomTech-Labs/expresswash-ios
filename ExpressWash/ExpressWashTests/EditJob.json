@@ -1,4 +1,4 @@
-{
+[{
   "jobId": 2,
   "washAddress": "42 Wallaby Way Sydney",
   "scheduled": true,
@@ -21,4 +21,4 @@
   "photoAfterJob": null,
   "timeRequested": "12:00 PM",
   "timeCompleted": null
-}
+}]
