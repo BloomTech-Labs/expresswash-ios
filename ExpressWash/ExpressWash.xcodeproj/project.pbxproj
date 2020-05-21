@@ -31,6 +31,9 @@
 		37B747F0244FF997004AD2FE /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B747EF244FF997004AD2FE /* ScheduleViewController.swift */; };
 		37B8377E2457CCC3007D65DA /* WasherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8377D2457CCC3007D65DA /* WasherCollectionViewCell.swift */; };
 		37C3A1ED2475FE64008ECB90 /* JobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C3A1EC2475FE64008ECB90 /* JobController.swift */; };
+		37C3A1EF247629D2008ECB90 /* Job.json in Resources */ = {isa = PBXBuildFile; fileRef = 37C3A1EE247629D2008ECB90 /* Job.json */; };
+		37C3A1F1247629EC008ECB90 /* DeleteJob.json in Resources */ = {isa = PBXBuildFile; fileRef = 37C3A1F0247629EC008ECB90 /* DeleteJob.json */; };
+		37C3A1F424762A4F008ECB90 /* JobTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C3A1F324762A4F008ECB90 /* JobTests.swift */; };
 		5D0685AF246B9FB800C44DEF /* authLogin.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D0971E7246B909000B5492D /* authLogin.json */; };
 		5D0971EA246B913500B5492D /* JSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0971E9246B913500B5492D /* JSONLoader.swift */; };
 		5D41D4FA2474DB6900DC3152 /* washerRating.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D41D4F92474DB6900DC3152 /* washerRating.json */; };
@@ -102,6 +105,9 @@
 		37B747EF244FF997004AD2FE /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		37B8377D2457CCC3007D65DA /* WasherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherCollectionViewCell.swift; sourceTree = "<group>"; };
 		37C3A1EC2475FE64008ECB90 /* JobController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobController.swift; sourceTree = "<group>"; };
+		37C3A1EE247629D2008ECB90 /* Job.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Job.json; sourceTree = "<group>"; };
+		37C3A1F0247629EC008ECB90 /* DeleteJob.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DeleteJob.json; sourceTree = "<group>"; };
+		37C3A1F324762A4F008ECB90 /* JobTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTests.swift; sourceTree = "<group>"; };
 		5D0971E7246B909000B5492D /* authLogin.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = authLogin.json; sourceTree = "<group>"; };
 		5D0971E9246B913500B5492D /* JSONLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLoader.swift; sourceTree = "<group>"; };
 		5D41D4F92474DB6900DC3152 /* washerRating.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = washerRating.json; sourceTree = "<group>"; };
@@ -313,6 +319,14 @@
 			name = CarTests;
 			sourceTree = "<group>";
 		};
+		37C3A1F224762A3A008ECB90 /* JobTests */ = {
+			isa = PBXGroup;
+			children = (
+				37C3A1F324762A4F008ECB90 /* JobTests.swift */,
+			);
+			name = JobTests;
+			sourceTree = "<group>";
+		};
 		39C68DA884EC6C2CC46D9DFC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,10 +364,13 @@
 				371DFE3C2474AE05008EAAE0 /* Car.json */,
 				371DFE3E2474CAB1008EAAE0 /* EditCar.json */,
 				371DFE402474D98B008EAAE0 /* DeleteCar.json */,
+				37C3A1EE247629D2008ECB90 /* Job.json */,
+				37C3A1F0247629EC008ECB90 /* DeleteJob.json */,
 				5DD4A84D246B8D7200E5FA2B /* URLProcotolMock.swift */,
 				5D0971E9246B913500B5492D /* JSONLoader.swift */,
 				377D1A05246A48A500CA3AEB /* SignUpTests */,
 				378CE7C82473A28C00486754 /* CarTests */,
+				37C3A1F224762A3A008ECB90 /* JobTests */,
 				5D9962512465021C00D4151F /* Modeltests */,
 				5DA0A8AC24592A3100992692 /* Info.plist */,
 			);
@@ -465,8 +482,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				371DFE3F2474CAB1008EAAE0 /* EditCar.json in Resources */,
+				37C3A1EF247629D2008ECB90 /* Job.json in Resources */,
 				371DFE3D2474AE05008EAAE0 /* Car.json in Resources */,
 				371683A5247074BA000CE78C /* authRegister.json in Resources */,
+				37C3A1F1247629EC008ECB90 /* DeleteJob.json in Resources */,
 				5D41D4FA2474DB6900DC3152 /* washerRating.json in Resources */,
 				5D0685AF246B9FB800C44DEF /* authLogin.json in Resources */,
 				371DFE412474D98B008EAAE0 /* DeleteCar.json in Resources */,
@@ -587,6 +606,7 @@
 				378CE7CA2473A2C100486754 /* CarControllerTests.swift in Sources */,
 				5D99624E2464FFE900D4151F /* CarModelTest.swift in Sources */,
 				5D99624A2464FFB700D4151F /* WasherModelTests.swift in Sources */,
+				37C3A1F424762A4F008ECB90 /* JobTests.swift in Sources */,
 				5D0971EA246B913500B5492D /* JSONLoader.swift in Sources */,
 				377D1A07246A4A3D00CA3AEB /* SignUpTests.swift in Sources */,
 				5D9962502465017600D4151F /* UserModelTests.swift in Sources */,
