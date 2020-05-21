@@ -106,7 +106,7 @@ class JobController {
     func getUserJobs(user: User, completion: @escaping ([Job?], Error?) -> Void) {
     }
     
-    func assignWasher(jobRepresentation: JobRepresentation, washerID: Int, completion: @escaping CompletionHandler) {
+    func assignWasher(jobRepresentation: JobRepresentation, washerID: WasherID, completion: @escaping CompletionHandler) {
     }
     
     func editJob(jobRepresentation: JobRepresentation, completion: @escaping CompletionHandler) {
