@@ -10,10 +10,13 @@ import UIKit
 
 class SignInViewController: UIViewController {
 
+    // MARK: - Outlets
+
     @IBOutlet var tapExpressWash: UITapGestureRecognizer!
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var btnSignIn: UIButton!
+    @IBOutlet weak var segSavePassword: UISegmentedControl!
     @IBOutlet var tapSignUp: UITapGestureRecognizer!
     @IBOutlet var tapForgotPassword: UITapGestureRecognizer!
 
@@ -21,15 +24,17 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
 
         btnSignIn.layer.cornerRadius = 5.0
+        txtPassword.text = UserController.shared.password
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         // check to see if a valid token is already available
-        if UserController.shared.token != nil {
-            // TODO: after web team gives info about checking token validity, add it here
-            self.performSegue(withIdentifier: "segueToMain", sender: self)
+        UserController.shared.validateToken { valid in
+            if valid {
+                self.performSegue(withIdentifier: "segueToMain", sender: self)
+            }
         }
     }
 
@@ -47,6 +52,13 @@ class SignInViewController: UIViewController {
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { _ in }))
         present(alert, animated: true, completion: nil)
+    }
+
+    @IBAction func savePasswordChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 1 {
+            // if the user doesn't want to save their password
+            UserController.shared.password = nil
+        }
     }
 
     @IBAction func signInTapped(_ sender: Any) {
@@ -68,6 +80,10 @@ class SignInViewController: UIViewController {
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 } else {
+                    if self.segSavePassword.selectedSegmentIndex == 0 {
+                        // if the user wants to save their password
+                        UserController.shared.password = password
+                    }
                     self.performSegue(withIdentifier: "segueToMain", sender: self)
                 }
             }

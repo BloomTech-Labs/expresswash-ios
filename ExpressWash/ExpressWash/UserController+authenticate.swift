@@ -8,8 +8,11 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 extension UserController {
+    var bearerToken: String { "Bearer \(token ?? "")" }
+
     func authenticate(username: String,
                       password: String,
                       completion: @escaping (User?, Error?) -> Void) {
@@ -81,5 +84,84 @@ extension UserController {
     struct AuthReturn: Decodable {
         var token: String
         var user: UserRepresentation
+    }
+
+    func validateToken(completion: @escaping (Bool) -> Void) {
+        guard token != nil else {
+            completion(false)
+            return
+        }
+        let requestURL = BASEURL.appendingPathComponent(ENDPOINTS.users.rawValue)
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "GET"
+        request.setValue(bearerToken, forHTTPHeaderField: "Authorization")
+        SESSION.dataTask(with: request) { (_, response, error) in
+            if error != nil {
+                completion(false)
+                return
+            }
+
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode == 200 {
+                    completion(true)
+                    return
+                }
+            }
+            completion(false)
+        }
+    }
+
+    func reAuthenticate(sender: UIViewController,
+                        completion: @escaping (Error?) -> Void) {
+
+        // if the user has saved their password
+        if let password = password, let email = sessionUser?.email {
+
+            authenticate(username: email, password: password) { (_, error) in
+                if error != nil {
+                    completion(error)
+                    return
+                }
+                completion(nil)
+            }
+        }
+
+        // if the user did not save their password...
+
+        //create an alert asking for their email and password
+        let alert = UIAlertController(title: "Session expired", message: "Pkease sign in again", preferredStyle: .alert)
+        alert.addTextField { txt in
+            txt.placeholder = "email"
+        }
+        alert.addTextField { txt in
+            txt.placeholder = "password"
+        }
+
+        // if they tap OK, try to sign in
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            if let email = alert.textFields?[0].text,
+                let password = alert.textFields?[1].text {
+                self.authenticate(username: email,
+                                  password: password) { (user, error) in
+                    if error != nil {
+                        completion(error)
+                        return
+                    }
+                    completion(nil)
+                }
+            } else {
+                self.reAuthenticate(sender: sender, completion: completion)
+            }
+        }))
+
+        // if they tap cancel, sign them out
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { _ in
+            self.token = nil
+            self.sessionUser = nil
+            completion(NSError(domain: "re-authenticate", code: CANCELLED, userInfo: nil))
+            sender.dismiss(animated: true, completion: nil)
+        }))
+
+        sender.present(alert, animated: true, completion: nil)
     }
 }

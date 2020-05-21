@@ -20,6 +20,11 @@ class UserController {
         }
     }
     var token: String?
+    var password: String? {
+        didSet {
+            saveToPersistentStore()
+        }
+    }
 
     private lazy var localStoreURL: URL? = {
         let fileManager = FileManager.default
@@ -30,6 +35,7 @@ class UserController {
     init() {
         if UserDefaults.standard.bool(forKey: "Session") {
             token = UserDefaults.standard.string(forKey: "Token")
+            password = UserDefaults.standard.string(forKey: "Password")
             loadFromPersistentStore()
         }
     }
@@ -41,6 +47,7 @@ class UserController {
         else {
             UserDefaults.standard.set(false, forKey: "Session")
             UserDefaults.standard.set("", forKey: "Token")
+            UserDefaults.standard.set("", forKey: "Password")
             return
         }
 
@@ -50,6 +57,7 @@ class UserController {
             try userData.write(to: url)
             UserDefaults.standard.set(true, forKey: "Session")
             UserDefaults.standard.set(token, forKey: "Token")
+            UserDefaults.standard.set(password, forKey: "Password")
         } catch {
             print("Error saving user session data: \(error)")
         }
@@ -257,6 +265,7 @@ extension UserController {
         let requestURL = BASEURL.appendingPathComponent(ENDPOINTS.users.rawValue).appendingPathComponent(user.stringID)
         var request = URLRequest(url: requestURL)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
         request.httpMethod = "PUT"
 
         let encoder = JSONEncoder()
@@ -289,6 +298,7 @@ extension UserController {
         let requestURL = BASEURL.appendingPathComponent(ENDPOINTS.users.rawValue).appendingPathComponent(user.stringID)
         var request = URLRequest(url: requestURL)
         request.httpMethod = "DELETE"
+        request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
         SESSION.dataTask(with: request) { (_, _, error) in
             if let error = error {
                 print("Error deleting entry from server: \(error)")
@@ -310,6 +320,7 @@ extension UserController {
         let requestURL = BASEURL.appendingPathComponent(ENDPOINTS.users.rawValue).appendingPathComponent(String(uid))
         var request = URLRequest(url: requestURL)
         request.httpMethod = "GET"
+        request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
         SESSION.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("Error fetching user by ID \(uid): \(error)")

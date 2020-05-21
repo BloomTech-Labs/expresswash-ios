@@ -48,46 +48,6 @@
                                     <outletCollection property="gestureRecognizers" destination="8cF-4u-33C" appends="YES" id="pW6-Mw-X70"/>
                                 </connections>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFu-eb-Y2l" userLabel="Sign Up Translucent">
-                                <rect key="frame" x="0.0" y="385" width="375" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="b2z-vh-0zN"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account? Sign up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQJ-NA-J5O">
-                                <rect key="frame" x="0.0" y="385" width="375" height="50"/>
-                                <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                <color key="textColor" red="0.97801905870000005" green="0.3708785772" blue="0.33409312369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Vbg-4U-cIm" appends="YES" id="MQB-GS-LNd"/>
-                                </connections>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEg-pM-PUu" userLabel="Forgot Password Translucent">
-                                <rect key="frame" x="0.0" y="451" width="375" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="1DK-JH-SHB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot your password?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hr-aP-Tk1">
-                                <rect key="frame" x="0.0" y="451" width="375" height="50"/>
-                                <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                <color key="textColor" red="0.97801905870000005" green="0.3708785772" blue="0.33409312369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="3Sl-ht-3TO" appends="YES" id="Mie-Tm-8uE"/>
-                                </connections>
-                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EkV-Vn-2sh">
                                 <rect key="frame" x="65.5" y="170" width="244" height="43"/>
                                 <color key="backgroundColor" red="0.73983293770000003" green="0.83622783420000002" blue="0.91592353579999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -106,7 +66,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES" smartDashesType="no" smartQuotesType="no" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Cy-Id-UAE">
-                                <rect key="frame" x="65.5" y="303" width="244" height="46"/>
+                                <rect key="frame" x="65.5" y="358" width="244" height="46"/>
                                 <color key="backgroundColor" red="0.2846649289" green="0.34687080980000001" blue="0.40268856289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <state key="normal" title="Sign in">
@@ -116,6 +76,58 @@
                                     <action selector="signInTapped:" destination="JbG-16-B74" eventType="touchUpInside" id="HVZ-QR-hf2"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="imu-VG-ekA">
+                                <rect key="frame" x="65.5" y="303" width="244" height="32"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <segments>
+                                    <segment title="save password"/>
+                                    <segment title="don't save"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="savePasswordChanged:" destination="JbG-16-B74" eventType="valueChanged" id="pwl-fz-CoS"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFu-eb-Y2l" userLabel="Sign Up Translucent">
+                                <rect key="frame" x="0.0" y="440" width="375" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="b2z-vh-0zN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account? Sign up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQJ-NA-J5O">
+                                <rect key="frame" x="0.0" y="440" width="375" height="50"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <color key="textColor" red="0.97801905870000005" green="0.3708785772" blue="0.33409312369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Vbg-4U-cIm" appends="YES" id="MQB-GS-LNd"/>
+                                </connections>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEg-pM-PUu" userLabel="Forgot Password Translucent">
+                                <rect key="frame" x="0.0" y="506" width="375" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1DK-JH-SHB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot your password?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hr-aP-Tk1">
+                                <rect key="frame" x="0.0" y="506" width="375" height="50"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <color key="textColor" red="0.97801905870000005" green="0.3708785772" blue="0.33409312369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="3Sl-ht-3TO" appends="YES" id="Mie-Tm-8uE"/>
+                                </connections>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -124,7 +136,9 @@
                             <constraint firstItem="0hr-aP-Tk1" firstAttribute="top" secondItem="dEg-pM-PUu" secondAttribute="top" id="7g3-xN-6oU"/>
                             <constraint firstItem="Dy6-M9-Ypy" firstAttribute="leading" secondItem="98O-u0-Ywv" secondAttribute="leading" id="9US-Tn-jnL"/>
                             <constraint firstItem="0hr-aP-Tk1" firstAttribute="trailing" secondItem="98O-u0-Ywv" secondAttribute="trailing" id="Bcd-8v-9I3"/>
+                            <constraint firstItem="0Cy-Id-UAE" firstAttribute="top" secondItem="imu-VG-ekA" secondAttribute="bottom" constant="24" id="Dsg-Yf-xeJ"/>
                             <constraint firstItem="iQJ-NA-J5O" firstAttribute="leading" secondItem="SFu-eb-Y2l" secondAttribute="leading" id="E5z-mo-fag"/>
+                            <constraint firstItem="imu-VG-ekA" firstAttribute="top" secondItem="gRT-dK-KGu" secondAttribute="bottom" constant="24" id="EZs-WN-CWD"/>
                             <constraint firstItem="SFu-eb-Y2l" firstAttribute="top" secondItem="0Cy-Id-UAE" secondAttribute="bottom" constant="36" id="FDI-Uf-Gv8"/>
                             <constraint firstItem="0Cy-Id-UAE" firstAttribute="leading" secondItem="gRT-dK-KGu" secondAttribute="leading" id="G71-6n-jEJ"/>
                             <constraint firstItem="EkV-Vn-2sh" firstAttribute="top" secondItem="l4D-vo-AWE" secondAttribute="bottom" constant="40" id="Hk0-TC-EIB"/>
@@ -149,23 +163,25 @@
                             <constraint firstItem="Dy6-M9-Ypy" firstAttribute="top" secondItem="aWz-V3-rpo" secondAttribute="top" id="hyK-5T-adl"/>
                             <constraint firstItem="JBW-Xm-jbG" firstAttribute="leading" secondItem="aWz-V3-rpo" secondAttribute="leading" id="jN7-mw-VWu"/>
                             <constraint firstItem="gRT-dK-KGu" firstAttribute="top" secondItem="EkV-Vn-2sh" secondAttribute="bottom" constant="24" id="jvB-kw-hbF"/>
+                            <constraint firstItem="imu-VG-ekA" firstAttribute="trailing" secondItem="gRT-dK-KGu" secondAttribute="trailing" id="n2U-Rf-D2G"/>
                             <constraint firstItem="iQJ-NA-J5O" firstAttribute="trailing" secondItem="SFu-eb-Y2l" secondAttribute="trailing" id="oeN-Wv-zrR"/>
                             <constraint firstItem="0hr-aP-Tk1" firstAttribute="leading" secondItem="98O-u0-Ywv" secondAttribute="leading" id="p8c-xy-aXF"/>
                             <constraint firstItem="JBW-Xm-jbG" firstAttribute="leading" secondItem="aWz-V3-rpo" secondAttribute="leading" id="px6-ba-x6l"/>
                             <constraint firstItem="l4D-vo-AWE" firstAttribute="leading" secondItem="9U6-3N-LTf" secondAttribute="leading" id="pyb-kR-rpX"/>
                             <constraint firstItem="JBW-Xm-jbG" firstAttribute="top" secondItem="aWz-V3-rpo" secondAttribute="top" id="rFv-SM-vUJ"/>
+                            <constraint firstItem="imu-VG-ekA" firstAttribute="leading" secondItem="gRT-dK-KGu" secondAttribute="leading" id="rMr-YW-N8l"/>
                             <constraint firstItem="9U6-3N-LTf" firstAttribute="top" secondItem="98O-u0-Ywv" secondAttribute="top" constant="80" id="rcs-Rc-nIv"/>
                             <constraint firstItem="iQJ-NA-J5O" firstAttribute="top" secondItem="SFu-eb-Y2l" secondAttribute="top" id="rw2-yz-w7Q"/>
                             <constraint firstItem="SFu-eb-Y2l" firstAttribute="leading" secondItem="98O-u0-Ywv" secondAttribute="leading" id="uP3-zh-xVv"/>
                             <constraint firstItem="l4D-vo-AWE" firstAttribute="top" secondItem="9U6-3N-LTf" secondAttribute="top" id="ubb-YQ-J3K"/>
                             <constraint firstItem="0hr-aP-Tk1" firstAttribute="trailing" secondItem="dEg-pM-PUu" secondAttribute="trailing" id="uio-aA-tnW"/>
-                            <constraint firstItem="0Cy-Id-UAE" firstAttribute="top" secondItem="gRT-dK-KGu" secondAttribute="bottom" constant="24" id="wp9-BP-eXb"/>
                             <constraint firstItem="l4D-vo-AWE" firstAttribute="trailing" secondItem="9U6-3N-LTf" secondAttribute="trailing" id="xYg-8B-TpK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="98O-u0-Ywv"/>
                     </view>
                     <connections>
                         <outlet property="btnSignIn" destination="0Cy-Id-UAE" id="s7v-n5-Vhq"/>
+                        <outlet property="segSavePassword" destination="imu-VG-ekA" id="UuN-6K-rMk"/>
                         <outlet property="tapExpressWash" destination="8cF-4u-33C" id="FIE-Od-fAK"/>
                         <outlet property="tapForgotPassword" destination="3Sl-ht-3TO" id="xWl-Wj-hCz"/>
                         <outlet property="tapSignUp" destination="Vbg-4U-cIm" id="ToL-10-kNM"/>
@@ -192,7 +208,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-346.37681159420293" y="153.34821428571428"/>
+            <point key="canvasLocation" x="-346.39999999999998" y="152.47376311844079"/>
         </scene>
         <!--Main-->
         <scene sceneID="vde-84-4Ec">
