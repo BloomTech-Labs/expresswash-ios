@@ -94,6 +94,9 @@ class JobController {
             }
         }
     }
+}
+
+extension JobController {
 
     // MARK: - Network Methods
 
@@ -171,7 +174,7 @@ class JobController {
                     return
                 }
             }
-            
+
             guard let data = data else {
                 completion(nil, NSError(domain: "Getting Job Info", code: NODATAERROR, userInfo: nil))
                 return
@@ -197,14 +200,14 @@ class JobController {
         var request = URLRequest(url: getJobsURL)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+
         SESSION.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("Error getting users jobs: \(error)")
                 completion(nil, error)
                 return
             }
-            
+
             if let response = response as? HTTPURLResponse {
                 print("\(response.statusCode)")
                 if response.statusCode != 200 && response.statusCode != 201 && response.statusCode != 202 {
@@ -212,14 +215,14 @@ class JobController {
                     return
                 }
             }
-            
+
             guard let data = data else {
                 completion(nil, NSError(domain: "Getting Users Jobs", code: NODATAERROR, userInfo: nil))
                 return
             }
-            
+
             let decoder = JSONDecoder()
-            
+
             do {
                 let jobRepresentations = try decoder.decode([JobRepresentation].self, from: data)
                 completion(jobRepresentations, nil)
@@ -237,9 +240,9 @@ class JobController {
         var request = URLRequest(url: jobURL)
         request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+
         let encoder = JSONEncoder()
-        
+
         do {
             let washerID = WasherID(washerID: washerID)
             let data = try encoder.encode(washerID)
@@ -249,29 +252,31 @@ class JobController {
             completion(nil, error)
             return
         }
-        
+
         SESSION.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("Error assigning washer to job: \(error)")
                 completion(nil, error)
                 return
             }
-            
+
             if let response = response as? HTTPURLResponse {
                 print("\(response.statusCode)")
                 if response.statusCode != 200 && response.statusCode != 201 && response.statusCode != 202 {
-                    completion(nil, NSError(domain: "Assigning Washer To Job", code: response.statusCode, userInfo: nil))
+                    completion(nil, NSError(domain: "Assigning Washer To Job",
+                                            code: response.statusCode,
+                                            userInfo: nil))
                     return
                 }
             }
-            
+
             guard let data = data else {
                 completion(nil, NSError(domain: "Assigning Washer To Job", code: NODATAERROR, userInfo: nil))
                 return
             }
-            
+
             let decoder = JSONDecoder()
-            
+
             do {
                 let jobRepresentation = try decoder.decode(JobRepresentation.self, from: data)
                 let job = Job(representation: jobRepresentation)
@@ -310,7 +315,7 @@ class JobController {
                 completion(nil, error)
                 return
             }
-            
+
             if let response = response as? HTTPURLResponse {
                 print("\(response.statusCode)")
                 if response.statusCode != 200 && response.statusCode != 201 && response.statusCode != 202 {
@@ -351,7 +356,7 @@ class JobController {
                 completion(nil, error)
                 return
             }
-            
+
             if let response = response as? HTTPURLResponse {
                 print("\(response.statusCode)")
                 if response.statusCode != 200 && response.statusCode != 201 && response.statusCode != 202 {
