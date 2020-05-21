@@ -21,6 +21,7 @@ extension UserController {
         let authURL = BASEURL.appendingPathComponent(ENDPOINTS.login.rawValue)
         var request = URLRequest(url: authURL)
         request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let postBody = PostBody(email: username, password: password)
 
         let encoder = JSONEncoder()

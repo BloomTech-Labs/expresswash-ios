@@ -58,7 +58,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account? Sign up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQJ-NA-J5O">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account? Sign up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQJ-NA-J5O">
                                 <rect key="frame" x="0.0" y="385" width="375" height="50"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
@@ -78,7 +78,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot your password?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hr-aP-Tk1">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot your password?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hr-aP-Tk1">
                                 <rect key="frame" x="0.0" y="451" width="375" height="50"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
@@ -171,6 +171,7 @@
                         <outlet property="tapSignUp" destination="Vbg-4U-cIm" id="ToL-10-kNM"/>
                         <outlet property="txtEmail" destination="EkV-Vn-2sh" id="iJ7-Fk-O76"/>
                         <outlet property="txtPassword" destination="gRT-dK-KGu" id="QuT-Hm-8Fw"/>
+                        <segue destination="lhQ-oF-n5L" kind="presentation" identifier="segueToMain" destinationCreationSelector="segueToMain" modalPresentationStyle="fullScreen" id="6Mw-Do-NqM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z4V-22-kbn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -182,6 +183,7 @@
                 <tapGestureRecognizer id="Vbg-4U-cIm" userLabel="Tap Sign Up">
                     <connections>
                         <action selector="lblSignUpTapped:" destination="JbG-16-B74" id="WSA-J6-FUW"/>
+                        <segue destination="19z-hv-b2R" kind="presentation" identifier="segueToSignUp" modalPresentationStyle="fullScreen" id="Y4V-pU-0mm"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="3Sl-ht-3TO" userLabel="Tap Forgot Password">
@@ -191,6 +193,24 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-346.37681159420293" y="153.34821428571428"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="vde-84-4Ec">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="lhQ-oF-n5L" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="5xs-wD-trL"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DWB-Rw-PFO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="262" y="129"/>
+        </scene>
+        <!--SignUp-->
+        <scene sceneID="L7I-1u-VV8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignUp" id="19z-hv-b2R" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ghj-QF-QRa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="272" y="221"/>
         </scene>
     </scenes>
     <resources>
