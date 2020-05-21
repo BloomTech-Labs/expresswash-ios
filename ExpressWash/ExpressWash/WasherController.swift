@@ -146,6 +146,8 @@ extension WasherController {
             .appendingPathComponent(washer.stringID)
         var request = URLRequest(url: requestURL)
         request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
 
         let encoder = JSONEncoder()
         do {
@@ -171,6 +173,8 @@ extension WasherController {
             .appendingPathComponent(washer.stringID)
         var request = URLRequest(url: requestURL)
         request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
 
         let newRating = WasherRating(washerRating: rating)
 

@@ -10,6 +10,7 @@ import Foundation
 
 let NODATAERROR = 99999
 let INVALIDUSERNAMEORPASSWORD = 99998
+let CANCELLED = 99997
 
 var SESSION = URLSession.shared
 

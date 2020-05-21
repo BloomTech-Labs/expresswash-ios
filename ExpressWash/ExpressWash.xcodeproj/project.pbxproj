@@ -61,6 +61,8 @@
 		5DC1B278244FDB79007C11EA /* CarRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC1B277244FDB79007C11EA /* CarRepresentation.swift */; };
 		5DD4A848246A461000E5FA2B /* UserController+authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD4A847246A461000E5FA2B /* UserController+authenticate.swift */; };
 		5DD4A84E246B8D7200E5FA2B /* URLProcotolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD4A84D246B8D7200E5FA2B /* URLProcotolMock.swift */; };
+		5DC1B27A24512563007C11EA /* SignInScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DC1B27924512563007C11EA /* SignInScreen.storyboard */; };
+		5DC3040C245285D2000C5631 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3040B245285D2000C5631 /* SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +133,9 @@
 		5DC1B277244FDB79007C11EA /* CarRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRepresentation.swift; sourceTree = "<group>"; };
 		5DD4A847246A461000E5FA2B /* UserController+authenticate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserController+authenticate.swift"; sourceTree = "<group>"; };
 		5DD4A84D246B8D7200E5FA2B /* URLProcotolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProcotolMock.swift; sourceTree = "<group>"; };
+		5DC1B27924512563007C11EA /* SignInScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInScreen.storyboard; sourceTree = "<group>"; };
+		5DC1B27B24512746007C11EA /* ColorPalette.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ColorPalette.md; sourceTree = "<group>"; };
+		5DC3040B245285D2000C5631 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = SOURCE_ROOT; };
 		784D55BC02CE141CBBA94DD7 /* Pods-ExpressWash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpressWash.release.xcconfig"; path = "Target Support Files/Pods-ExpressWash/Pods-ExpressWash.release.xcconfig"; sourceTree = "<group>"; };
 		7A8200D7CB7A1DA0AE0695DE /* Pods_ExpressWash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpressWash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22957D25B9EF61851B91CB3 /* Pods-ExpressWash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpressWash.debug.xcconfig"; path = "Target Support Files/Pods-ExpressWash/Pods-ExpressWash.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,6 +200,7 @@
 			children = (
 				375DB3E2244A5AE800C889F2 /* Assets.xcassets */,
 				375DB3E7244A5AE800C889F2 /* Info.plist */,
+				5DC1B27B24512746007C11EA /* ColorPalette.md */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -205,6 +211,7 @@
 				375DB3DF244A5AE500C889F2 /* Main.storyboard */,
 				378BB365244E837000A2DCDA /* SignUp.storyboard */,
 				375DB3E4244A5AE800C889F2 /* LaunchScreen.storyboard */,
+				5DC1B27924512563007C11EA /* SignInScreen.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -217,6 +224,7 @@
 				37B747EF244FF997004AD2FE /* ScheduleViewController.swift */,
 				375D410E2451298200479C7E /* ReceiptsViewController.swift */,
 				375D41102451299500479C7E /* WasherViewController.swift */,
+				5DC3040B245285D2000C5631 /* SignInViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -445,6 +453,7 @@
 			files = (
 				375DB3E6244A5AE800C889F2 /* LaunchScreen.storyboard in Resources */,
 				375DB3E3244A5AE800C889F2 /* Assets.xcassets in Resources */,
+				5DC1B27A24512563007C11EA /* SignInScreen.storyboard in Resources */,
 				378BB366244E837000A2DCDA /* SignUp.storyboard in Resources */,
 				375DB3E1244A5AE500C889F2 /* Main.storyboard in Resources */,
 			);
@@ -565,6 +574,7 @@
 				5D46BE56244EBE5A0058A660 /* User+CoreDataClass.swift in Sources */,
 				5D46BE5A244EBE5A0058A660 /* Washer+CoreDataClass.swift in Sources */,
 				37B747F0244FF997004AD2FE /* ScheduleViewController.swift in Sources */,
+				5DC3040C245285D2000C5631 /* SignInViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
