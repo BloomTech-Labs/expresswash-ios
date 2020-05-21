@@ -30,6 +30,7 @@
 		37A04F9C246B9AC60045E7C8 /* ReceiptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A04F9B246B9AC60045E7C8 /* ReceiptTableViewCell.swift */; };
 		37B747F0244FF997004AD2FE /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B747EF244FF997004AD2FE /* ScheduleViewController.swift */; };
 		37B8377E2457CCC3007D65DA /* WasherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8377D2457CCC3007D65DA /* WasherCollectionViewCell.swift */; };
+		37C3A1ED2475FE64008ECB90 /* JobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C3A1EC2475FE64008ECB90 /* JobController.swift */; };
 		5D0685AF246B9FB800C44DEF /* authLogin.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D0971E7246B909000B5492D /* authLogin.json */; };
 		5D0971EA246B913500B5492D /* JSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0971E9246B913500B5492D /* JSONLoader.swift */; };
 		5D41D4FA2474DB6900DC3152 /* washerRating.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D41D4F92474DB6900DC3152 /* washerRating.json */; };
@@ -98,6 +99,7 @@
 		37A04F9B246B9AC60045E7C8 /* ReceiptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptTableViewCell.swift; sourceTree = "<group>"; };
 		37B747EF244FF997004AD2FE /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		37B8377D2457CCC3007D65DA /* WasherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherCollectionViewCell.swift; sourceTree = "<group>"; };
+		37C3A1EC2475FE64008ECB90 /* JobController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobController.swift; sourceTree = "<group>"; };
 		5D0971E7246B909000B5492D /* authLogin.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = authLogin.json; sourceTree = "<group>"; };
 		5D0971E9246B913500B5492D /* JSONLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLoader.swift; sourceTree = "<group>"; };
 		5D41D4F92474DB6900DC3152 /* washerRating.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = washerRating.json; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				377D1A01246A46FD00CA3AEB /* UserController+Registration.swift */,
 				5D4FD9E5246E3E03009962E4 /* WasherController.swift */,
 				378CE7C62473655400486754 /* CarController.swift */,
+				37C3A1EC2475FE64008ECB90 /* JobController.swift */,
 			);
 			name = "Model Controllers";
 			sourceTree = "<group>";
@@ -314,8 +317,6 @@
 		5D0971E6246B902500B5492D /* ModelData */ = {
 			isa = PBXGroup;
 			children = (
-				5D0971E7246B909000B5492D /* authLogin.json */,
-				371683A4247074BA000CE78C /* authRegister.json */,
 				5D41D4F92474DB6900DC3152 /* washerRating.json */,
 			);
 			name = ModelData;
@@ -530,6 +531,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DBD0ED12457DF0F00ADE10A /* DataModelGlobals.swift in Sources */,
+				37C3A1ED2475FE64008ECB90 /* JobController.swift in Sources */,
 				37A04F9C246B9AC60045E7C8 /* ReceiptTableViewCell.swift in Sources */,
 				5DA0A8A32459141E00992692 /* NetworkGlobals.swift in Sources */,
 				5DBD0ECF2457C10200ADE10A /* UserController.swift in Sources */,
