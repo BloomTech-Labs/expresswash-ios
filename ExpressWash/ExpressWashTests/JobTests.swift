@@ -40,7 +40,6 @@ class JobTests: XCTestCase {
             URLProtocolMock.testURLs[BASEURL.appendingPathComponent("\(ENDPOINTS.jobInfo.rawValue)/\(jobId)")] = JobData
             
             URLProtocolMock.testURLs[BASEURL.appendingPathComponent(ENDPOINTS.jobSelect.rawValue)] = JobData
-            
         }
         
         // Set URLSession to use Mock Protocol
