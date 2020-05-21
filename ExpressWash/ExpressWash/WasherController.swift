@@ -146,6 +146,7 @@ extension WasherController {
             .appendingPathComponent(washer.stringID)
         var request = URLRequest(url: requestURL)
         request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let encoder = JSONEncoder()
         do {
@@ -171,6 +172,7 @@ extension WasherController {
             .appendingPathComponent(washer.stringID)
         var request = URLRequest(url: requestURL)
         request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let newRating = WasherRating(washerRating: rating)
 

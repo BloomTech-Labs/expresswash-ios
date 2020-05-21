@@ -256,6 +256,7 @@ extension UserController {
         let representation = user.representation
         let requestURL = BASEURL.appendingPathComponent(ENDPOINTS.users.rawValue).appendingPathComponent(user.stringID)
         var request = URLRequest(url: requestURL)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "PUT"
 
         let encoder = JSONEncoder()
