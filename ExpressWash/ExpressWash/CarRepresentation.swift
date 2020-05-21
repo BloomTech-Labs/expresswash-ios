@@ -9,22 +9,25 @@
 import Foundation
 
 struct CarRepresentation: Codable {
-    var carId: Int
+
+    var carId: Int?
     var make: String
     var model: String
     var year: Int16
     var color: String
     var licensePlate: String
-    var photo: URL?
+    var photo: String?
+    var category: String
     var size: String
 
-    init(carId: Int = 0,
+    init(carId: Int?,
          make: String,
          model: String,
          year: Int16,
          color: String,
          licensePlate: String,
-         photo: URL?,
+         photo: String?,
+         category: String,
          size: String) {
         self.carId = carId
         self.make = make
@@ -33,6 +36,7 @@ struct CarRepresentation: Codable {
         self.color = color
         self.licensePlate = licensePlate
         self.photo = photo
+        self.category = category
         self.size = size
     }
 }

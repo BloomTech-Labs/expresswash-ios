@@ -22,7 +22,8 @@ extension Car {
                      year: Int16,
                      color: String,
                      licensePlate: String,
-                     photo: URL?,
+                     photo: String?,
+                     category: String,
                      size: String,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
@@ -33,19 +34,21 @@ extension Car {
         self.color = color
         self.licensePlate = licensePlate
         self.photo = photo
+        self.category = category
         self.size = size
     }
 
     convenience init(representation: CarRepresentation,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
-        self.carId = Int32(representation.carId)
+        self.carId = Int32(representation.carId ?? NOID)
         self.make = representation.make
         self.model = representation.model
         self.year = representation.year
         self.color = representation.color
         self.licensePlate = representation.licensePlate
         self.photo = representation.photo
+        self.category = representation.category
         self.size = representation.size
     }
 
@@ -57,6 +60,7 @@ extension Car {
                           color: self.color,
                           licensePlate: self.licensePlate,
                           photo: self.photo,
+                          category: self.category,
                           size: self.size)
     }
 }

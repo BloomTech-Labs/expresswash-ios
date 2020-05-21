@@ -34,7 +34,7 @@ class ProfileViewController: UIViewController {
     }
 
     // MARK: - Methods
-    
+
     func setupSubviews() {
         profileImageView.layer.cornerRadius = profileImageView.frame.size.height/2
         profileImageView.layer.borderColor = UIColor.white.cgColor

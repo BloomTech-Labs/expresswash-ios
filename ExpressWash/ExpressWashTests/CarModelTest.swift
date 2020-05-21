@@ -30,6 +30,7 @@ class CarModelTest: XCTestCase {
                        color: "White",
                        licensePlate: "1ABC234",
                        photo: nil,
+                       category: "Car",
                        size: CarSize.medium.rawValue)
         let car2 = Car(carId: 2,
                        make: "Nissan",
@@ -38,6 +39,7 @@ class CarModelTest: XCTestCase {
                        color: "Silver",
                        licensePlate: "2DEF345",
                        photo: nil,
+                       category: "Car",
                        size: CarSize.medium.rawValue)
 
         XCTAssert(car1.carId == 1)

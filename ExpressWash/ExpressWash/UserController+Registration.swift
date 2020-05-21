@@ -12,7 +12,12 @@ extension UserController {
 
     typealias CompletionHandler = (User?, Error?) -> Void
 
-    func registerUser(account type: String, with emailAddress: String, _ firstName: String, _ lastName: String, _ password: String, completion: @escaping CompletionHandler) {
+    func registerUser(account type: String,
+                      with emailAddress: String,
+                      _ firstName: String,
+                      _ lastName: String,
+                      _ password: String,
+                      completion: @escaping CompletionHandler) {
 
         let registerUrl = BASEURL.appendingPathComponent(ENDPOINTS.registerClient.rawValue)
         var request = URLRequest(url: registerUrl)
@@ -22,7 +27,11 @@ extension UserController {
         let encoder = JSONEncoder()
 
         do {
-            let user = RegisteredUser(accountType: type, email: emailAddress, firstName: firstName, lastName: lastName, password: password)
+            let user = RegisteredUser(accountType: type,
+                                      email: emailAddress,
+                                      firstName: firstName,
+                                      lastName: lastName,
+                                      password: password)
             let data = try encoder.encode(user)
             request.httpBody = data
         } catch {

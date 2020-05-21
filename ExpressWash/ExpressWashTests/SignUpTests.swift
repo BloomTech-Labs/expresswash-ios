@@ -13,8 +13,8 @@ class SignUpTests: XCTestCase {
 
     override func setUpWithError() throws {
         // test data
-        if let authLoginData = JSONLoader.readFrom(filename: "authRegister") {
-            URLProtocolMock.testURLs[BASEURL.appendingPathComponent(ENDPOINTS.login.rawValue)] = authLoginData
+        if let authRegisterData = JSONLoader.readFrom(filename: "authRegister") {
+            URLProtocolMock.testURLs[BASEURL.appendingPathComponent(ENDPOINTS.registerClient.rawValue)] = authRegisterData
         }
 
         // Set URLSession to use Mock Protocol
@@ -29,7 +29,7 @@ class SignUpTests: XCTestCase {
     func testRegistration() throws {
 
         let accountType = "client"
-        let email = "test.testerson@teser.com1"
+        let email = "test.testerson@teser.com4"
         let firstName = "tester"
         let lastName = "testerson"
         let password = "123456789"

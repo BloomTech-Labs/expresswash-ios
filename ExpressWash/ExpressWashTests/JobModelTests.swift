@@ -59,6 +59,7 @@ class JobModelTests: XCTestCase {
                        color: "White",
                        licensePlate: "1ABC234",
                        photo: nil,
+                       category: "Car",
                        size: CarSize.medium.rawValue)
         user.addToCars(car1)
 
