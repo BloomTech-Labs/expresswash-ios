@@ -231,7 +231,7 @@ extension JobController {
                 completion(nil, error)
                 return
             }
-        }
+        }.resume()
     }
 
     func assignWasher(jobRepresentation: JobRepresentation, washerID: Int, completion: @escaping CompletionHandler) {
