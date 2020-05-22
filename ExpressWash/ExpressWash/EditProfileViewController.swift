@@ -10,21 +10,53 @@ import UIKit
 
 class EditProfileViewController: UIViewController {
 
+    //MARK: - Properties
+    
+    var user: User?
+    
+    //MARK: - Outlets
+    
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var fullNameTextField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: UITextField!
+    @IBOutlet weak var emailAddressTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var cityStateZipTextField: UITextField!
+    @IBOutlet weak var addCarsButton: UIButton!
+    
+    //MARK: - Views
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        updateViews()
     }
     
+    //MARK: - Methods
+    
+    private func updateViews() {
+        guard let user = user else { return }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+            let url = user.profilePicture
+            if let data = try? Data(contentsOf: url!)
+            {
+                let image: UIImage = UIImage(data: data)!
+                profileImageView.image = image
+            }
+            
+            fullNameTextField.text = "\(user.firstName.capitalized) \(user.lastName.capitalized)"
+            phoneNumberTextField.text = user.phoneNumber
+            emailAddressTextField.text = user.email
+            addressTextField.text = user.streetAddress
+            cityStateZipTextField.text = "\(user.city ?? "city"), \(user.state ?? "state"), \(user.zip ?? "zip")"
     }
-    */
-
+    
+    //MARK: - Actions
+    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func addCarsButtonTapped(_ sender: Any) {
+    }
 }

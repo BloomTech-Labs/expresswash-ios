@@ -101,6 +101,11 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // pass the user when segue is performed
+        if segue.identifier == "editProfileSegue" {
+            if let editProfileVC = segue.destination as? EditProfileViewController {
+                guard let user = UserController.shared.sessionUser else { return }
+                editProfileVC.user = user
+            }
+        }
     }
 }

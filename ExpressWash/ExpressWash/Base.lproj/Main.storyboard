@@ -667,6 +667,9 @@
                                         <state key="normal" title="Add Cars">
                                             <color key="titleColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addCarsButtonTapped:" destination="sAm-im-ifD" eventType="touchUpInside" id="1Es-dO-nj1"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -681,6 +684,9 @@
                                 <state key="normal" backgroundImage="square.and.arrow.down" catalog="system">
                                     <color key="titleColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="sAm-im-ifD" eventType="touchUpInside" id="0hz-Pz-TR4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -698,6 +704,16 @@
                         <viewLayoutGuide key="safeArea" id="P56-1b-oay"/>
                     </view>
                     <navigationItem key="navigationItem" id="2R3-BG-Hhd"/>
+                    <connections>
+                        <outlet property="addCarsButton" destination="vid-xt-lOs" id="3Eb-gF-jGc"/>
+                        <outlet property="addressTextField" destination="FmX-Lc-aAT" id="p5m-j3-fvU"/>
+                        <outlet property="cityStateZipTextField" destination="UkV-IQ-JZr" id="Gsh-nR-iIj"/>
+                        <outlet property="emailAddressTextField" destination="9Ni-jm-kJT" id="38y-al-sX1"/>
+                        <outlet property="fullNameTextField" destination="Hbg-hg-Cqp" id="yJ5-QU-J1G"/>
+                        <outlet property="phoneNumberTextField" destination="A5p-sa-StU" id="6R8-JZ-kjb"/>
+                        <outlet property="profileImageView" destination="jfh-4l-Xm4" id="R7T-DV-8id"/>
+                        <outlet property="saveButton" destination="Xsu-tk-v6w" id="zvb-Ix-LiX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="26V-Bg-Z6R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="3VR-X8-mzL"/>
