@@ -17,7 +17,6 @@ extension Job {
     }
 
     // Attributes
-    @NSManaged public var washAddress: String
     @NSManaged public var address: String
     @NSManaged public var address2: String?
     @NSManaged public var city: String

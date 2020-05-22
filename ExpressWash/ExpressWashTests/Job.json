@@ -1,6 +1,5 @@
 {
   "jobId": 2,
-  "washAddress": "42 Wallaby Way Sydney",
   "scheduled": true,
   "completed": false,
   "paid": false,

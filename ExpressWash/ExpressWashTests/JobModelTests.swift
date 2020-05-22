@@ -44,7 +44,7 @@ class JobModelTests: XCTestCase {
                             washerRatingTotal: 3,
                             user: washerUser)
 
-        let job = Job(jobId: 1, jobLocationLat: nil ?? 0.0, jobLocationLon: nil ?? 0.0, washAddress: "42 Wallaby Way Sydney", address: "123 First St", address2: "APT 2", city: "tampa", state: "FL", zip: "60184", notes: nil, completed: false, jobType: "basic", paid: false, photoBeforeJob: nil, photoAfterJob: nil, scheduled: true, timeCompleted: nil, timeRequested: "12:00 PM")
+        let job = Job(jobId: 1, jobLocationLat: nil ?? 0.0, jobLocationLon: nil ?? 0.0, address: "123 First St", address2: "APT 2", city: "tampa", state: "FL", zip: "60184", notes: nil, completed: false, jobType: "basic", paid: false, photoBeforeJob: nil, photoAfterJob: nil, scheduled: true, timeCompleted: nil, timeRequested: "12:00 PM")
 
         let car1 = Car(carId: 1,
                        make: "Ford",
@@ -59,7 +59,6 @@ class JobModelTests: XCTestCase {
 
         XCTAssert(job.jobLocationLat == 0.0)
         XCTAssert(job.jobLocationLon == 0.0)
-        XCTAssert(job.washAddress == "42 Wallaby Way Sydney")
         XCTAssert(job.address == "123 First St")
         XCTAssert(job.address2 == "APT 2")
         XCTAssert(job.city == "tampa")

@@ -9,7 +9,6 @@
 import Foundation
 
 struct JobRepresentation: Codable {
-    var washAddress: String
     var address: String
     var address2: String?
     var city: String
@@ -31,7 +30,6 @@ struct JobRepresentation: Codable {
     init(jobId: Int = 0,
          jobLocationLat: Float,
          jobLocationLon: Float,
-         washAddress: String,
          address: String,
          address2: String?,
          city: String,
@@ -46,7 +44,6 @@ struct JobRepresentation: Codable {
          photoAfterJob: String? = nil,
          timeRequested: String,
          timeCompleted: String? = nil) {
-        self.washAddress = washAddress
         self.address = address
         self.address2 = address2
         self.city = city
@@ -67,7 +64,6 @@ struct JobRepresentation: Codable {
     }
 
     enum JobKeys: String, CodingKey {
-        case washAddress
         case address
         case address2
         case city
@@ -91,7 +87,6 @@ struct JobRepresentation: Codable {
         let container = try decoder.container(keyedBy: JobKeys.self)
 
         jobId           = try container.decode(Int.self, forKey: .jobId)
-        washAddress     = try container.decode(String.self, forKey: .washAddress)
         scheduled       = try container.decode(Bool.self, forKey: .scheduled)
         completed       = try container.decode(Bool.self, forKey: .completed)
         paid            = try container.decode(Bool.self, forKey: .paid)
@@ -113,7 +108,6 @@ struct JobRepresentation: Codable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: JobKeys.self)
 
-        try container.encode(washAddress, forKey: .washAddress)
         try container.encode(scheduled, forKey: .scheduled)
         try container.encode(completed, forKey: .completed)
         try container.encode(paid, forKey: .paid)

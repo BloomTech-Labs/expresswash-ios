@@ -11,7 +11,6 @@ import XCTest
 
 class JobTests: XCTestCase {
     
-    let washAddress = "42 Wallaby Way Sydney"
     let address = "123 First St"
     let address2 = "APT 2"
     let city = "tampa"
@@ -52,7 +51,7 @@ class JobTests: XCTestCase {
     }
 
     func testCreateJob() throws {
-        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat ?? 0.0, jobLocationLon: jobLocationLon ?? 0.0, washAddress: washAddress, address: address, address2: address2, city: city, state: state, zip: zip, notes: notes, jobType: jobType, completed: completed, paid: paid, scheduled: scheduled, photoBeforeJob: photoBeforeJob, photoAfterJob: photoAfterJob, timeRequested: timeRequested, timeCompleted: timeCompleted)
+        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat ?? 0.0, jobLocationLon: jobLocationLon ?? 0.0, address: address, address2: address2, city: city, state: state, zip: zip, notes: notes, jobType: jobType, completed: completed, paid: paid, scheduled: scheduled, photoBeforeJob: photoBeforeJob, photoAfterJob: photoAfterJob, timeRequested: timeRequested, timeCompleted: timeCompleted)
         
         let expect = expectation(description: "Job Created")
         
@@ -73,7 +72,6 @@ class JobTests: XCTestCase {
             XCTAssert(job.address2 == self.address2)
             XCTAssert(job.jobLocationLat == self.jobLocationLat)
             XCTAssert(job.jobLocationLon == self.jobLocationLon)
-            XCTAssert(job.washAddress == self.washAddress)
             XCTAssert(job.city == self.city)
             XCTAssert(job.state == self.state)
             XCTAssert(job.zip == self.zip)
@@ -93,7 +91,7 @@ class JobTests: XCTestCase {
     }
     
     func testAddJob() throws {
-        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat ?? 0.0, jobLocationLon: jobLocationLon ?? 0.0, washAddress: washAddress, address: address, address2: address2, city: city, state: state, zip: zip, notes: notes, jobType: jobType, completed: completed, paid: paid, scheduled: scheduled, photoBeforeJob: photoBeforeJob, photoAfterJob: photoAfterJob, timeRequested: timeRequested, timeCompleted: timeCompleted)
+        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat ?? 0.0, jobLocationLon: jobLocationLon ?? 0.0, address: address, address2: address2, city: city, state: state, zip: zip, notes: notes, jobType: jobType, completed: completed, paid: paid, scheduled: scheduled, photoBeforeJob: photoBeforeJob, photoAfterJob: photoAfterJob, timeRequested: timeRequested, timeCompleted: timeCompleted)
         
         let expect = expectation(description: "Job Added")
         
@@ -114,7 +112,6 @@ class JobTests: XCTestCase {
             XCTAssert(job.address2 == self.address2)
             XCTAssert(job.jobLocationLat == self.jobLocationLat)
             XCTAssert(job.jobLocationLon == self.jobLocationLon)
-            XCTAssert(job.washAddress == self.washAddress)
             XCTAssert(job.city == self.city)
             XCTAssert(job.state == self.state)
             XCTAssert(job.zip == self.zip)
@@ -139,7 +136,7 @@ class JobTests: XCTestCase {
             URLProtocolMock.testURLs[BASEURL.appendingPathComponent("jobs/job/\(jobId)")] = EditData
         }
         
-        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat!, jobLocationLon: jobLocationLon!, washAddress: washAddress, address: address, address2: nil, city: city, state: state, zip: zip, notes: nil, jobType: jobType, completed: false, paid: false, scheduled: true, photoBeforeJob: nil, photoAfterJob: nil, timeRequested: timeRequested, timeCompleted: nil)
+        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat!, jobLocationLon: jobLocationLon!, address: address, address2: nil, city: city, state: state, zip: zip, notes: nil, jobType: jobType, completed: false, paid: false, scheduled: true, photoBeforeJob: nil, photoAfterJob: nil, timeRequested: timeRequested, timeCompleted: nil)
 
         let expect = expectation(description: "Job Edited")
 
@@ -160,7 +157,6 @@ class JobTests: XCTestCase {
             XCTAssert(job.address2 == self.address2)
             XCTAssert(job.jobLocationLat == self.jobLocationLat)
             XCTAssert(job.jobLocationLon == self.jobLocationLon)
-            XCTAssert(job.washAddress == self.washAddress)
             XCTAssert(job.city == self.city)
             XCTAssert(job.state == self.state)
             XCTAssert(job.zip == self.zip)
@@ -184,7 +180,7 @@ class JobTests: XCTestCase {
             URLProtocolMock.testURLs[BASEURL.appendingPathComponent("jobs/job/\(jobId)")] = EditData
         }
         
-        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat!, jobLocationLon: jobLocationLon!, washAddress: washAddress, address: address, address2: nil, city: city, state: state, zip: zip, notes: nil, jobType: jobType, completed: false, paid: false, scheduled: true, photoBeforeJob: nil, photoAfterJob: nil, timeRequested: timeRequested, timeCompleted: nil)
+        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat!, jobLocationLon: jobLocationLon!, address: address, address2: nil, city: city, state: state, zip: zip, notes: nil, jobType: jobType, completed: false, paid: false, scheduled: true, photoBeforeJob: nil, photoAfterJob: nil, timeRequested: timeRequested, timeCompleted: nil)
 
         let expect = expectation(description: "Job Edited")
 
@@ -205,7 +201,6 @@ class JobTests: XCTestCase {
             XCTAssert(job.address2 == self.address2)
             XCTAssert(job.jobLocationLat == self.jobLocationLat)
             XCTAssert(job.jobLocationLon == self.jobLocationLon)
-            XCTAssert(job.washAddress == self.washAddress)
             XCTAssert(job.city == self.city)
             XCTAssert(job.state == self.state)
             XCTAssert(job.zip == self.zip)
@@ -229,7 +224,7 @@ class JobTests: XCTestCase {
             URLProtocolMock.testURLs[BASEURL.appendingPathComponent("jobs/job/\(jobId)")] = DeleteData
         }
         
-        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat!, jobLocationLon: jobLocationLon!, washAddress: washAddress, address: address, address2: nil, city: city, state: state, zip: zip, notes: nil, jobType: jobType, completed: false, paid: false, scheduled: true, photoBeforeJob: nil, photoAfterJob: nil, timeRequested: timeRequested, timeCompleted: nil)
+        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat!, jobLocationLon: jobLocationLon!, address: address, address2: nil, city: city, state: state, zip: zip, notes: nil, jobType: jobType, completed: false, paid: false, scheduled: true, photoBeforeJob: nil, photoAfterJob: nil, timeRequested: timeRequested, timeCompleted: nil)
         
         let expect = expectation(description: "Job Deleted")
         
@@ -254,7 +249,7 @@ class JobTests: XCTestCase {
     }
     
     func testJobInfo() throws {
-        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat ?? 0.0, jobLocationLon: jobLocationLon ?? 0.0, washAddress: washAddress, address: address, address2: address2, city: city, state: state, zip: zip, notes: notes, jobType: jobType, completed: completed, paid: paid, scheduled: scheduled, photoBeforeJob: photoBeforeJob, photoAfterJob: photoAfterJob, timeRequested: timeRequested, timeCompleted: timeCompleted)
+        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat ?? 0.0, jobLocationLon: jobLocationLon ?? 0.0, address: address, address2: address2, city: city, state: state, zip: zip, notes: notes, jobType: jobType, completed: completed, paid: paid, scheduled: scheduled, photoBeforeJob: photoBeforeJob, photoAfterJob: photoAfterJob, timeRequested: timeRequested, timeCompleted: timeCompleted)
 
         let expect = expectation(description: "Job Info Received")
 
@@ -275,7 +270,6 @@ class JobTests: XCTestCase {
             XCTAssert(job.address2 == self.address2)
             XCTAssert(job.jobLocationLat == self.jobLocationLat)
             XCTAssert(job.jobLocationLon == self.jobLocationLon)
-            XCTAssert(job.washAddress == self.washAddress)
             XCTAssert(job.city == self.city)
             XCTAssert(job.state == self.state)
             XCTAssert(job.zip == self.zip)
