@@ -587,11 +587,122 @@
                         <outlet property="phoneNumberLabel" destination="iJN-ww-gjq" id="1uo-dH-ErK"/>
                         <outlet property="profileImageView" destination="gWT-q2-msq" id="O80-Y7-b39"/>
                         <outlet property="ratingLabel" destination="uLC-21-vpx" id="uEI-KT-FWs"/>
+                        <segue destination="sAm-im-ifD" kind="show" identifier="editProfileSegue" id="RMJ-sL-eHd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OaL-L7-Vzb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1968.1159420289857" y="-2220.5357142857142"/>
+        </scene>
+        <!--Edit Profile View Controller-->
+        <scene sceneID="R5u-2Y-r0W">
+            <objects>
+                <viewController id="sAm-im-ifD" customClass="EditProfileViewController" customModule="ExpressWash" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bY5-8e-ud8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jfh-4l-Xm4">
+                                <rect key="frame" x="30" y="146" width="125" height="124"/>
+                                <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="125" id="IIX-VC-icN"/>
+                                    <constraint firstAttribute="width" secondItem="jfh-4l-Xm4" secondAttribute="height" multiplier="1:1" id="ngY-0N-3Jv"/>
+                                    <constraint firstAttribute="width" constant="125" id="q3u-E0-jkd"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="3VR-X8-mzL" appends="YES" id="TmQ-vp-XNB"/>
+                                </connections>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nx9-X3-Pzc">
+                                <rect key="frame" x="30" y="310.5" width="364" height="267.5"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hbg-hg-Cqp">
+                                        <rect key="frame" x="0.0" y="0.0" width="364" height="37.5"/>
+                                        <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A5p-sa-StU">
+                                        <rect key="frame" x="0.0" y="57.5" width="364" height="37.5"/>
+                                        <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Ni-jm-kJT">
+                                        <rect key="frame" x="0.0" y="115" width="364" height="37.5"/>
+                                        <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FmX-Lc-aAT">
+                                        <rect key="frame" x="0.0" y="172.5" width="364" height="37.5"/>
+                                        <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City, State, Zip" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UkV-IQ-JZr">
+                                        <rect key="frame" x="0.0" y="230" width="364" height="37.5"/>
+                                        <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jfw-DN-SGn">
+                                <rect key="frame" x="30" y="598" width="220" height="75"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="xMa-DS-ELJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="75" id="JXq-84-QQp"/>
+                                            <constraint firstAttribute="width" constant="100" id="nhI-hr-zO0"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vid-xt-lOs">
+                                        <rect key="frame" x="120" y="0.0" width="100" height="75"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                        <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Add Cars">
+                                            <color key="titleColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xsu-tk-v6w">
+                                <rect key="frame" x="324" y="183" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Lws-Oq-Nfe"/>
+                                    <constraint firstAttribute="width" constant="50" id="Ogg-9K-0hE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" backgroundImage="square.and.arrow.down" catalog="system">
+                                    <color key="titleColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Xsu-tk-v6w" firstAttribute="centerY" secondItem="jfh-4l-Xm4" secondAttribute="centerY" id="3Vf-MG-jrj"/>
+                            <constraint firstItem="nx9-X3-Pzc" firstAttribute="leading" secondItem="P56-1b-oay" secondAttribute="leading" constant="30" id="3e9-nk-dJ4"/>
+                            <constraint firstItem="nx9-X3-Pzc" firstAttribute="top" secondItem="jfh-4l-Xm4" secondAttribute="bottom" constant="40" id="4o5-Iy-q4f"/>
+                            <constraint firstItem="nx9-X3-Pzc" firstAttribute="centerY" secondItem="P56-1b-oay" secondAttribute="centerY" constant="40" id="FcY-SZ-7El"/>
+                            <constraint firstItem="jfw-DN-SGn" firstAttribute="top" secondItem="nx9-X3-Pzc" secondAttribute="bottom" constant="20" id="O9n-4i-ao2"/>
+                            <constraint firstItem="jfw-DN-SGn" firstAttribute="leading" secondItem="nx9-X3-Pzc" secondAttribute="leading" id="bSa-Za-Nbg"/>
+                            <constraint firstItem="jfh-4l-Xm4" firstAttribute="leading" secondItem="nx9-X3-Pzc" secondAttribute="leading" id="sZR-aM-msf"/>
+                            <constraint firstItem="P56-1b-oay" firstAttribute="trailing" secondItem="nx9-X3-Pzc" secondAttribute="trailing" constant="20" id="tXw-7I-JFS"/>
+                            <constraint firstAttribute="trailing" secondItem="Xsu-tk-v6w" secondAttribute="trailing" constant="40" id="xXp-Hq-R8h"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="P56-1b-oay"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2R3-BG-Hhd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="26V-Bg-Z6R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="3VR-X8-mzL"/>
+            </objects>
+            <point key="canvasLocation" x="2821.739130434783" y="-2221.2053571428569"/>
         </scene>
         <!--Wash-->
         <scene sceneID="LYx-3Z-6Gf">
@@ -852,6 +963,7 @@
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="phone" catalog="system" width="128" height="115"/>
         <image name="plus.app" catalog="system" width="128" height="114"/>
+        <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
         <image name="wind" catalog="system" width="128" height="103"/>
         <namedColor name="Salmon">
             <color red="0.99607843137254903" green="0.37254901960784315" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

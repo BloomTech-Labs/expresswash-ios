@@ -27,6 +27,7 @@
 		378BB368244E8C6100A2DCDA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378BB367244E8C6100A2DCDA /* SignUpViewController.swift */; };
 		378CE7C72473655400486754 /* CarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378CE7C62473655400486754 /* CarController.swift */; };
 		378CE7CA2473A2C100486754 /* CarControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378CE7C92473A2C100486754 /* CarControllerTests.swift */; };
+		379E19C024776C3500CC2549 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379E19BF24776C3500CC2549 /* EditProfileViewController.swift */; };
 		37A04F9C246B9AC60045E7C8 /* ReceiptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A04F9B246B9AC60045E7C8 /* ReceiptTableViewCell.swift */; };
 		37B747F0244FF997004AD2FE /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B747EF244FF997004AD2FE /* ScheduleViewController.swift */; };
 		37B8377E2457CCC3007D65DA /* WasherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8377D2457CCC3007D65DA /* WasherCollectionViewCell.swift */; };
@@ -64,10 +65,10 @@
 		5DBD0ED12457DF0F00ADE10A /* DataModelGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBD0ED02457DF0F00ADE10A /* DataModelGlobals.swift */; };
 		5DC1B276244FD97C007C11EA /* Car+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC1B275244FD97C007C11EA /* Car+Convenience.swift */; };
 		5DC1B278244FDB79007C11EA /* CarRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC1B277244FDB79007C11EA /* CarRepresentation.swift */; };
-		5DD4A848246A461000E5FA2B /* UserController+authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD4A847246A461000E5FA2B /* UserController+authenticate.swift */; };
-		5DD4A84E246B8D7200E5FA2B /* URLProcotolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD4A84D246B8D7200E5FA2B /* URLProcotolMock.swift */; };
 		5DC1B27A24512563007C11EA /* SignInScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DC1B27924512563007C11EA /* SignInScreen.storyboard */; };
 		5DC3040C245285D2000C5631 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3040B245285D2000C5631 /* SignInViewController.swift */; };
+		5DD4A848246A461000E5FA2B /* UserController+authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD4A847246A461000E5FA2B /* UserController+authenticate.swift */; };
+		5DD4A84E246B8D7200E5FA2B /* URLProcotolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD4A84D246B8D7200E5FA2B /* URLProcotolMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		378BB367244E8C6100A2DCDA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		378CE7C62473655400486754 /* CarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarController.swift; sourceTree = "<group>"; };
 		378CE7C92473A2C100486754 /* CarControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarControllerTests.swift; sourceTree = "<group>"; };
+		379E19BF24776C3500CC2549 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		37A04F9B246B9AC60045E7C8 /* ReceiptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptTableViewCell.swift; sourceTree = "<group>"; };
 		37B747EF244FF997004AD2FE /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		37B8377D2457CCC3007D65DA /* WasherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -141,11 +143,11 @@
 		5DBD0ED02457DF0F00ADE10A /* DataModelGlobals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelGlobals.swift; sourceTree = "<group>"; };
 		5DC1B275244FD97C007C11EA /* Car+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+Convenience.swift"; sourceTree = "<group>"; };
 		5DC1B277244FDB79007C11EA /* CarRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRepresentation.swift; sourceTree = "<group>"; };
-		5DD4A847246A461000E5FA2B /* UserController+authenticate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserController+authenticate.swift"; sourceTree = "<group>"; };
-		5DD4A84D246B8D7200E5FA2B /* URLProcotolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProcotolMock.swift; sourceTree = "<group>"; };
 		5DC1B27924512563007C11EA /* SignInScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInScreen.storyboard; sourceTree = "<group>"; };
 		5DC1B27B24512746007C11EA /* ColorPalette.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ColorPalette.md; sourceTree = "<group>"; };
 		5DC3040B245285D2000C5631 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = SOURCE_ROOT; };
+		5DD4A847246A461000E5FA2B /* UserController+authenticate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserController+authenticate.swift"; sourceTree = "<group>"; };
+		5DD4A84D246B8D7200E5FA2B /* URLProcotolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProcotolMock.swift; sourceTree = "<group>"; };
 		784D55BC02CE141CBBA94DD7 /* Pods-ExpressWash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpressWash.release.xcconfig"; path = "Target Support Files/Pods-ExpressWash/Pods-ExpressWash.release.xcconfig"; sourceTree = "<group>"; };
 		7A8200D7CB7A1DA0AE0695DE /* Pods_ExpressWash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpressWash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22957D25B9EF61851B91CB3 /* Pods-ExpressWash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpressWash.debug.xcconfig"; path = "Target Support Files/Pods-ExpressWash/Pods-ExpressWash.debug.xcconfig"; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 			children = (
 				378BB367244E8C6100A2DCDA /* SignUpViewController.swift */,
 				375D410C2451296E00479C7E /* ProfileViewController.swift */,
+				379E19BF24776C3500CC2549 /* EditProfileViewController.swift */,
 				37B747EF244FF997004AD2FE /* ScheduleViewController.swift */,
 				375D410E2451298200479C7E /* ReceiptsViewController.swift */,
 				375D41102451299500479C7E /* WasherViewController.swift */,
@@ -588,6 +591,7 @@
 				375DB3DC244A5AE500C889F2 /* SceneDelegate.swift in Sources */,
 				37B747F0244FF997004AD2FE /* ScheduleViewController.swift in Sources */,
 				377D1A02246A46FD00CA3AEB /* UserController+Registration.swift in Sources */,
+				379E19C024776C3500CC2549 /* EditProfileViewController.swift in Sources */,
 				5DC1B276244FD97C007C11EA /* Car+Convenience.swift in Sources */,
 				378CE7C72473655400486754 /* CarController.swift in Sources */,
 				5D46BE5B244EBE5A0058A660 /* Washer+CoreDataProperties.swift in Sources */,

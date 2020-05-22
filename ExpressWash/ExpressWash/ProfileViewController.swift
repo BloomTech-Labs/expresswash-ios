@@ -33,6 +33,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         setupSubviews()
         updateViews()
         carsCollectionView.delegate = self
+        carsCollectionView.dataSource = self
     }
     
     // MARK: - CollectionView Data Source
@@ -76,7 +77,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             profileImageView.image = image
         }
         
-        ratingLabel.text = "\(user.userRating)"
+        ratingLabel.text = "★ \(user.userRating)"
         
         let bannerURL = user.bannerImage
         if let data = try? Data(contentsOf: bannerURL!) {
@@ -88,13 +89,13 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         phoneNumberLabel.text = user.phoneNumber
         emailAddressLabel.text = user.email
         addressLabel.text = user.streetAddress
-        cityStateZipLabel.text = "\(String(describing: user.city)), \(String(describing: user.state)), \(String(describing: user.zip))"
+        cityStateZipLabel.text = "\(user.city ?? "city"), \(user.state ?? "state"), \(user.zip ?? "zip")"
     }
 
     // MARK: - Actions
 
     @IBAction func editButtonTapped(_ sender: Any) {
-        //Segue to edit screen
+        self.performSegue(withIdentifier: "editProfileSegue", sender: self)
     }
 
     // MARK: - Navigation
