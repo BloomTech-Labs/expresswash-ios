@@ -17,6 +17,7 @@ class EditProfileViewController: UIViewController {
     // MARK: - Outlets
 
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var fullNameTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
@@ -53,6 +54,9 @@ class EditProfileViewController: UIViewController {
 
     // MARK: - Actions
 
+    @IBAction func profilePhotoTapped(_ sender: Any) {
+    }
+    
     @IBAction func saveButtonTapped(_ sender: Any) {
     }
 
