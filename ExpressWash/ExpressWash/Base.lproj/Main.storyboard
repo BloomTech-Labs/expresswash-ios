@@ -651,24 +651,25 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jfw-DN-SGn">
-                                <rect key="frame" x="30" y="598" width="220" height="75"/>
+                                <rect key="frame" x="30" y="598" width="180" height="65"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="xMa-DS-ELJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="75"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="65"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="JXq-84-QQp"/>
-                                            <constraint firstAttribute="width" constant="100" id="nhI-hr-zO0"/>
+                                            <constraint firstAttribute="height" constant="65" id="JXq-84-QQp"/>
+                                            <constraint firstAttribute="width" constant="80" id="nhI-hr-zO0"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vid-xt-lOs">
-                                        <rect key="frame" x="120" y="0.0" width="100" height="75"/>
-                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                        <rect key="frame" x="100" y="0.0" width="80" height="65"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="19"/>
                                         <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Add Cars">
                                             <color key="titleColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="addCarsButtonTapped:" destination="sAm-im-ifD" eventType="touchUpInside" id="1Es-dO-nj1"/>
+                                            <segue destination="1qv-l3-36y" kind="show" identifier="addCarsSegue" id="aoG-J1-i9d"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -719,6 +720,22 @@
                 <tapGestureRecognizer id="3VR-X8-mzL"/>
             </objects>
             <point key="canvasLocation" x="2821.739130434783" y="-2221.2053571428569"/>
+        </scene>
+        <!--Add Cars View Controller-->
+        <scene sceneID="M6t-9j-uof">
+            <objects>
+                <viewController id="1qv-l3-36y" customClass="AddCarsViewController" customModule="ExpressWash" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cRq-Kq-UYN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Mhe-ZQ-3PN"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="mFU-2H-8Qc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XLk-5z-mbK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3645" y="-2221"/>
         </scene>
         <!--Wash-->
         <scene sceneID="LYx-3Z-6Gf">
