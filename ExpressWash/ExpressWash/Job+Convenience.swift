@@ -11,8 +11,8 @@ import CoreData
 
 extension Job {
     convenience init(jobId: Int32 = 0,
-                     jobLocationLat: Double,
-                     jobLocationLon: Double,
+                     jobLocationLat: Float,
+                     jobLocationLon: Float,
                      address: String,
                      address2: String? = nil,
                      city: String,
@@ -22,11 +22,11 @@ extension Job {
                      completed: Bool = false,
                      jobType: String,
                      paid: Bool = false,
-                     photoBeforeJob: URL? = nil,
-                     photoAfterJob: URL? = nil,
+                     photoBeforeJob: String? = nil,
+                     photoAfterJob: String? = nil,
                      scheduled: Bool = true,
-                     timeCompleted: Date? = nil,
-                     timeRequested: Date = Date(),
+                     timeCompleted: String? = nil,
+                     timeRequested: String,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.jobId = jobId

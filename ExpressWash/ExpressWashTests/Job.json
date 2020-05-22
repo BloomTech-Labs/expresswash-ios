@@ -1,0 +1,23 @@
+{
+  "jobId": 2,
+  "scheduled": true,
+  "completed": false,
+  "paid": false,
+  "clientId": 4,
+  "washerId": 2,
+  "creationDate": "time stamp",
+  "carId": 1,
+  "address": "123 First St",
+  "address2": "APT 2",
+  "jobLocationLat": 0.0,
+  "jobLocationLon": 0.0,
+  "city": "tampa",
+  "state": "FL",
+  "zip": "60184",
+  "notes": null,
+  "jobType": "basic",
+  "photoBeforeJob": null,
+  "photoAfterJob": null,
+  "timeRequested": "12:00 PM",
+  "timeCompleted": null
+}

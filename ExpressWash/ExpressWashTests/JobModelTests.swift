@@ -44,13 +44,7 @@ class JobModelTests: XCTestCase {
                             washerRatingTotal: 3,
                             user: washerUser)
 
-        let job = Job(jobLocationLat: 32.7353,
-                      jobLocationLon: -117.1490,
-                      address: "2920 Zoo Dr.",
-                      city: "San Diego",
-                      state: "CA",
-                      zip: "92101",
-                      jobType: "wash")
+        let job = Job(jobId: 1, jobLocationLat: nil ?? 0.0, jobLocationLon: nil ?? 0.0, address: "123 First St", address2: "APT 2", city: "tampa", state: "FL", zip: "60184", notes: nil, completed: false, jobType: "basic", paid: false, photoBeforeJob: nil, photoAfterJob: nil, scheduled: true, timeCompleted: nil, timeRequested: "12:00 PM")
 
         let car1 = Car(carId: 1,
                        make: "Ford",
@@ -63,13 +57,16 @@ class JobModelTests: XCTestCase {
                        size: CarSize.medium.rawValue)
         user.addToCars(car1)
 
-        XCTAssert(job.jobLocationLat == 32.7353)
-        XCTAssert(job.jobLocationLon == -117.1490)
-        XCTAssert(job.address == "2920 Zoo Dr.")
-        XCTAssert(job.city == "San Diego")
-        XCTAssert(job.state == "CA")
-        XCTAssert(job.zip == "92101")
-        XCTAssert(job.jobType == "wash")
+        XCTAssert(job.jobLocationLat == 0.0)
+        XCTAssert(job.jobLocationLon == 0.0)
+        XCTAssert(job.address == "123 First St")
+        XCTAssert(job.address2 == "APT 2")
+        XCTAssert(job.city == "tampa")
+        XCTAssert(job.state == "FL")
+        XCTAssert(job.zip == "60184")
+        XCTAssert(job.jobType == "basic")
+        XCTAssert(job.timeRequested == "12:00 PM")
+        
 
         job.client = user
         job.washer = washer
@@ -78,8 +75,8 @@ class JobModelTests: XCTestCase {
         XCTAssert(user.jobs!.contains(job))
         XCTAssert(washer.jobs!.contains(job))
         XCTAssert(car1.jobs!.contains(job))
-        XCTAssert(job.washer.user == washerUser)
-        XCTAssert(user.cars!.contains(job.car))
+        XCTAssert(job.washer!.user == washerUser)
+        XCTAssert(user.cars!.contains(job.car!))
 
     }
 
