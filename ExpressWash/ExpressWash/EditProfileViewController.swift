@@ -56,7 +56,7 @@ class EditProfileViewController: UIViewController {
 
     @IBAction func profilePhotoTapped(_ sender: Any) {
     }
-    
+
     @IBAction func saveButtonTapped(_ sender: Any) {
     }
 
