@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     // MARK: - Properties
 
@@ -31,7 +31,32 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
 
         setupSubviews()
+        updateViews()
+        carsCollectionView.delegate = self
     }
+    
+    // MARK: - CollectionView Data Source
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let user = UserController.shared.sessionUser, let cars = user.cars else { return 0 }
+        
+        return cars.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "carCell", for: indexPath) as? CarCollectionViewCell, let user = UserController.shared.sessionUser, let cars = user.cars else { return UICollectionViewCell() }
+        
+        if let car = cars[indexPath.row] as? Car {
+            if let photo = car.photo {
+                cell.imageView.image = UIImage(contentsOfFile: photo)
+            }
+        }
+        
+        cell.layer.cornerRadius = 10.0
+        
+        return cell
+    }
+    
 
     // MARK: - Methods
 
@@ -40,15 +65,41 @@ class ProfileViewController: UIViewController {
         profileImageView.layer.borderColor = UIColor.white.cgColor
         profileImageView.layer.borderWidth = 3.0
     }
+    
+    func updateViews() {
+        guard let user = UserController.shared.sessionUser else { return }
+        
+        let url = user.profilePicture
+        if let data = try? Data(contentsOf: url!)
+        {
+            let image: UIImage = UIImage(data: data)!
+            profileImageView.image = image
+        }
+        
+        ratingLabel.text = "\(user.userRating)"
+        
+        let bannerURL = user.bannerImage
+        if let data = try? Data(contentsOf: bannerURL!) {
+            let image = UIImage(data: data)
+            bannerImageView.image = image
+        }
+        
+        nameLabel.text = "\(user.firstName.capitalized) \(user.lastName.capitalized)"
+        phoneNumberLabel.text = user.phoneNumber
+        emailAddressLabel.text = user.email
+        addressLabel.text = user.streetAddress
+        cityStateZipLabel.text = "\(String(describing: user.city)), \(String(describing: user.state)), \(String(describing: user.zip))"
+    }
 
     // MARK: - Actions
 
     @IBAction func editButtonTapped(_ sender: Any) {
+        //Segue to edit screen
     }
 
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        // pass the user when segue is performed
     }
 }
