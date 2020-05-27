@@ -12,6 +12,8 @@ import Mapbox
 class WasherViewController: UIViewController, MGLMapViewDelegate {
 
     // MARK: - Properties
+    var washer: Washer?
+    var job: Job?
 
     // MARK: - Outlets
 
@@ -51,13 +53,44 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
         mapView.addSubview(map)
         map.delegate = self
     }
+    
+    func updateViews() {
+        guard isViewLoaded else { return }
+        guard let washer = washer,
+            let wUser = washer.user
+        else {
+            fullNameLabel.text = "No washer :("
+            return
+        }
+
+        fullNameLabel.text = "\(wUser.firstName) \(wUser.lastName)"
+        var starRating = ""
+        for _ in 1...washer.washerRating {
+            starRating += "★"
+        }
+        ratingLabel.text = starRating
+
+        activeSwitch.isOn = washer.workStatus
+        smallRateLabel.text = "$\(washer.rateSmall)"
+        mediumRateLabel.text = "$\(washer.rateMedium)"
+        largeRateLabel.text = "$\(washer.rateLarge)"
+
+        guard let job = job,
+            let client = job.client
+        else {
+            return
+        }
+        
+    }
 
     // MARK: - Actions
 
     @IBAction func editButtonTapped(_ sender: Any) {
+        // segue to EditWasherViewController
     }
 
     @IBAction func activeSwitchToggled(_ sender: Any) {
+        
     }
 
     @IBAction func arrivedCompleteTapped(_ sender: Any) {

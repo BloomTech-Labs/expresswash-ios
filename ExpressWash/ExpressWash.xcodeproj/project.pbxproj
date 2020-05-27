@@ -37,6 +37,8 @@
 		37C3A1F82476D852008ECB90 /* EditJob.json in Resources */ = {isa = PBXBuildFile; fileRef = 37C3A1F72476D852008ECB90 /* EditJob.json */; };
 		5D0685AF246B9FB800C44DEF /* authLogin.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D0971E7246B909000B5492D /* authLogin.json */; };
 		5D0971EA246B913500B5492D /* JSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0971E9246B913500B5492D /* JSONLoader.swift */; };
+		5D2370F0247762A7007A7AB8 /* EditWasher.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D2370EF247762A7007A7AB8 /* EditWasher.storyboard */; };
+		5D2370F224776C4B007A7AB8 /* EditWasherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2370F124776C4B007A7AB8 /* EditWasherViewController.swift */; };
 		5D41D4FA2474DB6900DC3152 /* washerRating.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D41D4F92474DB6900DC3152 /* washerRating.json */; };
 		5D46BE42244E9E2A0058A660 /* Job+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE41244E9E2A0058A660 /* Job+Convenience.swift */; };
 		5D46BE44244E9EE20058A660 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46BE43244E9EE20058A660 /* CoreDataStack.swift */; };
@@ -112,6 +114,8 @@
 		37C3A1F72476D852008ECB90 /* EditJob.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EditJob.json; sourceTree = "<group>"; };
 		5D0971E7246B909000B5492D /* authLogin.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = authLogin.json; sourceTree = "<group>"; };
 		5D0971E9246B913500B5492D /* JSONLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLoader.swift; sourceTree = "<group>"; };
+		5D2370EF247762A7007A7AB8 /* EditWasher.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditWasher.storyboard; sourceTree = "<group>"; };
+		5D2370F124776C4B007A7AB8 /* EditWasherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWasherViewController.swift; sourceTree = "<group>"; };
 		5D41D4F92474DB6900DC3152 /* washerRating.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = washerRating.json; sourceTree = "<group>"; };
 		5D46BE41244E9E2A0058A660 /* Job+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+Convenience.swift"; sourceTree = "<group>"; };
 		5D46BE43244E9EE20058A660 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 				375DB3EF244A5AF700C889F2 /* View Controllers */,
 				375DB3EE244A5AF400C889F2 /* Storyboards */,
 				375DB3ED244A5AF000C889F2 /* Resources */,
+				5DA1164B247E0486003CE32A /* Helpers */,
 			);
 			path = ExpressWash;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 				378BB365244E837000A2DCDA /* SignUp.storyboard */,
 				375DB3E4244A5AE800C889F2 /* LaunchScreen.storyboard */,
 				5DC1B27924512563007C11EA /* SignInScreen.storyboard */,
+				5D2370EF247762A7007A7AB8 /* EditWasher.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -235,6 +241,7 @@
 				375D410E2451298200479C7E /* ReceiptsViewController.swift */,
 				375D41102451299500479C7E /* WasherViewController.swift */,
 				5DC3040B245285D2000C5631 /* SignInViewController.swift */,
+				5D2370F124776C4B007A7AB8 /* EditWasherViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -380,6 +387,13 @@
 			path = ExpressWashTests;
 			sourceTree = "<group>";
 		};
+		5DA1164B247E0486003CE32A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		B41FE9FEE225BA7775004AA3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -474,6 +488,7 @@
 			files = (
 				375DB3E6244A5AE800C889F2 /* LaunchScreen.storyboard in Resources */,
 				375DB3E3244A5AE800C889F2 /* Assets.xcassets in Resources */,
+				5D2370F0247762A7007A7AB8 /* EditWasher.storyboard in Resources */,
 				5DC1B27A24512563007C11EA /* SignInScreen.storyboard in Resources */,
 				378BB366244E837000A2DCDA /* SignUp.storyboard in Resources */,
 				375DB3E1244A5AE500C889F2 /* Main.storyboard in Resources */,
@@ -568,6 +583,7 @@
 				5DA0A8A32459141E00992692 /* NetworkGlobals.swift in Sources */,
 				5DBD0ECF2457C10200ADE10A /* UserController.swift in Sources */,
 				5D51383D2463A13500E81AEA /* Washer+Convenience.swift in Sources */,
+				5D2370F224776C4B007A7AB8 /* EditWasherViewController.swift in Sources */,
 				5D46BE44244E9EE20058A660 /* CoreDataStack.swift in Sources */,
 				5D51383B24639BF000E81AEA /* WasherRepresentation.swift in Sources */,
 				5D46BE46244EA0950058A660 /* JobRepresentation.swift in Sources */,
