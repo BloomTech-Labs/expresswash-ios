@@ -7,8 +7,18 @@
 //
 
 import UIKit
+import AVFoundation
 
-class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ProfileViewController: UIViewController,
+                             UICollectionViewDelegate,
+                             UICollectionViewDataSource,
+                             UIImagePickerControllerDelegate &
+                             UINavigationControllerDelegate {
+
+    // MARK: - Properties
+
+    var profileImagePicker = UIImagePickerController()
+    var bannerImagePicker = UIImagePickerController()
 
     // MARK: - Outlets
 
@@ -187,23 +197,107 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         carsCollectionView.alpha = 1
     }
 
+    func imagePickerController(picker: UIImagePickerController!,
+                               didFinishPickingImage image: UIImage!,
+                               editingInfo: NSDictionary!) {
+
+        self.dismiss(animated: true, completion: nil)
+
+        if picker == profileImagePicker {
+            profileImageView.image = image
+        } else {
+            bannerImageView.image = image
+        }
+    }
+
     // MARK: - Actions
 
     @IBAction func editButtonTapped(_ sender: Any) {
+        guard let user = UserController.shared.sessionUser else { return }
 
         if editButton.isSelected == false {
             editEnabled()
         } else {
+            // FIX FIRSTNAME, LASTNAME, CITY, STATE, ZIP, PHOTOS, & STRIPE
+            guard let firstName = fullNameTextField.text else { return }
+            guard let lastName = fullNameTextField.text else { return }
+            guard let phoneNumber = phoneNumberTextField.text else { return }
+            guard let emailAddress = emailAddressTextField.text else { return }
+            guard let address = addressTextField.text else { return }
+            guard let city = cityStateZipTextField.text else { return }
+            guard let state = cityStateZipTextField.text else { return }
+            guard let zip = cityStateZipTextField.text else { return }
+
+            let userRepresentation = UserRepresentation(userId: Int(user.userId),
+                                                        accountType: user.accountType,
+                                                        email: emailAddress,
+                                                        firstName: firstName,
+                                                        lastName: lastName,
+                                                        bannerImage: user.bannerImage,
+                                                        phoneNumber: phoneNumber,
+                                                        profilePicture: user.profilePicture,
+                                                        stripeUUID: user.stripeUUID,
+                                                        streetAddress: address,
+                                                        streetAddress2: nil,
+                                                        city: city,
+                                                        state: state,
+                                                        zip: zip,
+                                                        userRating: Int(user.userRating),
+                                                        userRatingTotal: Int(user.userRatingTotal))
+
+            UserController.shared.updateUser(user, with: userRepresentation)
             editDisabled()
         }
     }
 
     @IBAction func profileImageTapped(_ sender: Any) {
+
+        if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
+            profileImagePicker.delegate = self
+            profileImagePicker.sourceType = .savedPhotosAlbum
+            profileImagePicker.allowsEditing = false
+
+            present(profileImagePicker, animated: true, completion: nil)
+        } else {
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
+                if granted {
+                    self.profileImagePicker.delegate = self
+                    self.profileImagePicker.sourceType = .savedPhotosAlbum
+                    self.profileImagePicker.allowsEditing = false
+
+                    self.present(self.profileImagePicker, animated: true, completion: nil)
+                } else {
+                    return
+                }
+            })
+        }
     }
 
     @IBAction func addCarsButtonTapped(_ sender: Any) {
     }
 
     @IBAction func addBannerImageButtonTapped(_ sender: Any) {
+
+        if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
+            bannerImagePicker.delegate = self
+            bannerImagePicker.sourceType = .savedPhotosAlbum
+            bannerImagePicker.allowsEditing = false
+
+            present(bannerImagePicker, animated: true, completion: nil)
+        } else {
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
+                if granted {
+                    DispatchQueue.main.async {
+                        self.bannerImagePicker.delegate = self
+                        self.bannerImagePicker.sourceType = .savedPhotosAlbum
+                        self.bannerImagePicker.allowsEditing = false
+
+                        self.present(self.bannerImagePicker, animated: true, completion: nil)
+                    }
+                } else {
+                    return
+                }
+            })
+        }
     }
 }
