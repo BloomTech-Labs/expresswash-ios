@@ -37,6 +37,8 @@
 		37C3A1F82476D852008ECB90 /* EditJob.json in Resources */ = {isa = PBXBuildFile; fileRef = 37C3A1F72476D852008ECB90 /* EditJob.json */; };
 		5D0685AF246B9FB800C44DEF /* authLogin.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D0971E7246B909000B5492D /* authLogin.json */; };
 		5D0971EA246B913500B5492D /* JSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0971E9246B913500B5492D /* JSONLoader.swift */; };
+		5D16D46F247F650200ED6F43 /* NumberFormatter+Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D16D46E247F650200ED6F43 /* NumberFormatter+Dollar.swift */; };
+		5D16D471247F69BE00ED6F43 /* DateFormatter+Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D16D470247F69BE00ED6F43 /* DateFormatter+Clock.swift */; };
 		5D2370F0247762A7007A7AB8 /* EditWasher.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D2370EF247762A7007A7AB8 /* EditWasher.storyboard */; };
 		5D2370F224776C4B007A7AB8 /* EditWasherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2370F124776C4B007A7AB8 /* EditWasherViewController.swift */; };
 		5D41D4FA2474DB6900DC3152 /* washerRating.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D41D4F92474DB6900DC3152 /* washerRating.json */; };
@@ -114,6 +116,8 @@
 		37C3A1F72476D852008ECB90 /* EditJob.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EditJob.json; sourceTree = "<group>"; };
 		5D0971E7246B909000B5492D /* authLogin.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = authLogin.json; sourceTree = "<group>"; };
 		5D0971E9246B913500B5492D /* JSONLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLoader.swift; sourceTree = "<group>"; };
+		5D16D46E247F650200ED6F43 /* NumberFormatter+Dollar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Dollar.swift"; sourceTree = "<group>"; };
+		5D16D470247F69BE00ED6F43 /* DateFormatter+Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Clock.swift"; sourceTree = "<group>"; };
 		5D2370EF247762A7007A7AB8 /* EditWasher.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditWasher.storyboard; sourceTree = "<group>"; };
 		5D2370F124776C4B007A7AB8 /* EditWasherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWasherViewController.swift; sourceTree = "<group>"; };
 		5D41D4F92474DB6900DC3152 /* washerRating.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = washerRating.json; sourceTree = "<group>"; };
@@ -390,6 +394,8 @@
 		5DA1164B247E0486003CE32A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				5D16D46E247F650200ED6F43 /* NumberFormatter+Dollar.swift */,
+				5D16D470247F69BE00ED6F43 /* DateFormatter+Clock.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -590,6 +596,7 @@
 				5D46BE5D244EBE5A0058A660 /* Car+CoreDataProperties.swift in Sources */,
 				5D46BE57244EBE5A0058A660 /* User+CoreDataProperties.swift in Sources */,
 				5D46BE5C244EBE5A0058A660 /* Car+CoreDataClass.swift in Sources */,
+				5D16D471247F69BE00ED6F43 /* DateFormatter+Clock.swift in Sources */,
 				378BB368244E8C6100A2DCDA /* SignUpViewController.swift in Sources */,
 				375D41112451299500479C7E /* WasherViewController.swift in Sources */,
 				37B8377E2457CCC3007D65DA /* WasherCollectionViewCell.swift in Sources */,
@@ -598,6 +605,7 @@
 				5D46BE4D244EBAA80058A660 /* ExpressWash.xcdatamodeld in Sources */,
 				5D605C652453D31100B83420 /* UserRepresentation.swift in Sources */,
 				5D605C672453DEB700B83420 /* User+Convenience.swift in Sources */,
+				5D16D46F247F650200ED6F43 /* NumberFormatter+Dollar.swift in Sources */,
 				371683A324706562000CE78C /* CarCollectionViewCell.swift in Sources */,
 				5D46BE59244EBE5A0058A660 /* Job+CoreDataProperties.swift in Sources */,
 				375D410D2451296E00479C7E /* ProfileViewController.swift in Sources */,

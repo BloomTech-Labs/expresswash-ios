@@ -14,7 +14,7 @@ extension NumberFormatter {
         formatter.currencyCode = "USD"
         return formatter
     }()
-    
+
     static func dollarString(_ amount: Double) -> String {
         var dollarValue = "$"
         if let strValue = NumberFormatter.Dollar.string(from: NSNumber(value: amount)) {

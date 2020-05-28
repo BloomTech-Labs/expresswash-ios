@@ -27,7 +27,7 @@ class EditWasherViewController: UIViewController {
 
         updateViews()
     }
-    
+
     func updateViews() {
         guard isViewLoaded else { return }
 
@@ -57,5 +57,5 @@ class EditWasherViewController: UIViewController {
 
     @IBAction func cancelTapped(_ sender: Any) {
     }
-    
+
 }
