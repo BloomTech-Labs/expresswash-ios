@@ -91,15 +91,111 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
 
         fullNameTextField.text = "\(user.firstName.capitalized) \(user.lastName.capitalized)"
-        phoneNumberTextField.text = user.phoneNumber
+
+        if user.phoneNumber == nil {
+            phoneNumberTextField.text = "Phone Number"
+        } else {
+            phoneNumberTextField.text = user.phoneNumber
+        }
+
         emailAddressTextField.text = user.email
-        addressTextField.text = user.streetAddress
+
+        if user.streetAddress == nil {
+            addressTextField.text = "Address"
+        } else {
+            addressTextField.text = user.streetAddress
+        }
+
         cityStateZipTextField.text = "\(user.city ?? "city"), \(user.state ?? "state"), \(user.zip ?? "zip")"
+    }
+
+    func editEnabled() {
+        editButton.setBackgroundImage(UIImage(systemName: "square.and.arrow.down"), for: .normal)
+        editButton.isSelected = true
+
+        if profileImageView.image == UIImage(systemName: "person.circle") {
+            profileImageView.image = UIImage(systemName: "plus.app")
+        }
+
+        if fullNameTextField.text == "Full Name" {
+            fullNameTextField.text = nil
+        }
+
+        if phoneNumberTextField.text == "Phone Number" {
+            phoneNumberTextField.text = nil
+        }
+
+        if emailAddressTextField.text == "Email Address" {
+            emailAddressTextField.text = nil
+        }
+
+        if addressTextField.text == "Address" {
+            addressTextField.text = nil
+        }
+
+        if cityStateZipTextField.text == "city, state, zip" {
+            cityStateZipTextField.text = nil
+        }
+
+        bannerImageButton.alpha = 1
+        bannerImageButton.isEnabled = true
+        profileTapGesture.isEnabled = true
+        fullNameTextField.isEnabled = true
+        phoneNumberTextField.isEnabled = true
+        emailAddressTextField.isEnabled = true
+        addressTextField.isEnabled = true
+        cityStateZipTextField.isEnabled = true
+        carsCollectionView.alpha = 0
+        addCarsButton.alpha = 1
+        addCarsButton.isEnabled = true
+    }
+
+    func editDisabled() {
+        editButton.setBackgroundImage(UIImage(systemName: "pencil"), for: .normal)
+        editButton.isSelected = false
+
+        if fullNameTextField.text == "" {
+            fullNameTextField.text = "Full Name"
+        }
+
+        if phoneNumberTextField.text == "" {
+            phoneNumberTextField.text = "Phone Number"
+        }
+
+        if emailAddressTextField.text == "" {
+            emailAddressTextField.text = "Email Address"
+        }
+
+        if addressTextField.text == "" {
+            addressTextField.text = "Address"
+        }
+
+        if cityStateZipTextField.text == "" {
+            cityStateZipTextField.text = "city, state, zip"
+        }
+
+        bannerImageButton.alpha = 0
+        bannerImageButton.isEnabled = false
+        profileTapGesture.isEnabled = false
+        fullNameTextField.isEnabled = false
+        phoneNumberTextField.isEnabled = false
+        emailAddressTextField.isEnabled = false
+        addressTextField.isEnabled = false
+        cityStateZipTextField.isEnabled = false
+        addCarsButton.alpha = 0
+        addCarsButton.isEnabled = false
+        carsCollectionView.alpha = 1
     }
 
     // MARK: - Actions
 
     @IBAction func editButtonTapped(_ sender: Any) {
+
+        if editButton.isSelected == false {
+            editEnabled()
+        } else {
+            editDisabled()
+        }
     }
 
     @IBAction func profileImageTapped(_ sender: Any) {
