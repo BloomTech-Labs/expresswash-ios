@@ -846,7 +846,7 @@
                         <outlet property="addressLabel" destination="zBO-b9-dNC" id="Mp8-na-9gC"/>
                         <outlet property="arrivedCompleteButton" destination="Lwo-7q-LJM" id="TbF-tp-hhr"/>
                         <outlet property="arrivedCompleteLabel" destination="pnL-V1-3aw" id="JGj-uP-VvP"/>
-                        <outlet property="carImageLabel" destination="1Qm-YK-iIe" id="jqN-2u-aRI"/>
+                        <outlet property="carImageView" destination="1Qm-YK-iIe" id="mg2-Kt-Fgh"/>
                         <outlet property="colorYearLabel" destination="kxh-wh-Cbe" id="aOT-b1-4vf"/>
                         <outlet property="editButton" destination="JEd-Oi-FML" id="NT2-sI-baw"/>
                         <outlet property="fullNameLabel" destination="DgK-j4-vwG" id="sBq-oR-wme"/>
