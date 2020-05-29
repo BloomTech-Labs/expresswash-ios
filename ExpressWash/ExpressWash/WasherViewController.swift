@@ -12,6 +12,7 @@ import Mapbox
 class WasherViewController: UIViewController, MGLMapViewDelegate {
 
     // MARK: - Properties
+    var washerController = WasherController()
     var washer: Washer?
     var job: Job?
 
@@ -136,10 +137,32 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
     }
 
     @IBAction func activeSwitchToggled(_ sender: Any) {
-        
+        guard let washer = washer else {
+            activeSwitch.isOn = false
+            return
+        }
+
+        var washerRep = washer.representation
+        washerRep.workStatus = activeSwitch.isOn
+        // TODO: Get current location from phone and assign it to the rep
+
+        washerController.put(washerRep: washerRep) { (error) in
+            if let error = error {
+                print("Couldn't update washer active status: \(error)")
+                self.activeSwitch.isOn = washer.workStatus
+                let alert = UIAlertController()
+                alert.title = "Unable to update"
+                alert.message = "An error occurred while updating your active status: \(error)"
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                self.washerController.updateWasher(washer, with: washerRep)
+            }
+        }
     }
 
     @IBAction func arrivedCompleteTapped(_ sender: Any) {
+        // TODO: Show camera, upload before or after photo of the car
     }
 
     // MARK: - Navigation
