@@ -129,7 +129,7 @@ extension UserController {
         // if the user did not save their password...
 
         //create an alert asking for their email and password
-        let alert = UIAlertController(title: "Session expired", message: "Pkease sign in again", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Session expired", message: "Please sign in again", preferredStyle: .alert)
         alert.addTextField { txt in
             txt.placeholder = "email"
         }

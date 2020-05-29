@@ -28,7 +28,7 @@ class WasherController {
     func updateWasher(_ washer: Washer,
                       with rep: WasherRepresentation,
                       context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
-                      completion: @escaping (Error?) -> Void) {
+                      completion: @escaping (Error?) -> Void = { _ -> Void in }) {
         washer.aboutMe = rep.aboutMe
         washer.workStatus = rep.workStatus
         washer.currentLocationLat = rep.currentLocationLat
@@ -139,11 +139,10 @@ class WasherController {
 extension WasherController {
     // MARK: - Server methods
 
-    func put(washer: Washer, completion: @escaping (Error?) -> Void = { _ in }) {
-        let washerRep = washer.representation
+    func put(washerRep: WasherRepresentation, completion: @escaping (Error?) -> Void = { _ in }) {
         let requestURL = BASEURL
             .appendingPathComponent(ENDPOINTS.washer.rawValue)
-            .appendingPathComponent(washer.stringID)
+            .appendingPathComponent("\(washerRep.washerId)")
         var request = URLRequest(url: requestURL)
         request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -165,6 +164,10 @@ extension WasherController {
             }
             completion(nil)
         }.resume()
+    }
+
+    func put(washer: Washer, completion: @escaping (Error?) -> Void = { _ in }) {
+        put(washerRep: washer.representation, completion: completion)
     }
 
     func rate(washer: Washer, rating: Int, completion: @escaping (Error?) -> Void = { _ in }) {
