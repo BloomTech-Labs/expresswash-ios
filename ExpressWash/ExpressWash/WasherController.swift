@@ -28,7 +28,7 @@ class WasherController {
     func updateWasher(_ washer: Washer,
                       with rep: WasherRepresentation,
                       context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
-                      completion: @escaping (Error?) -> Void) {
+                      completion: @escaping (Error?) -> Void = { _ -> Void in }) {
         washer.aboutMe = rep.aboutMe
         washer.workStatus = rep.workStatus
         washer.currentLocationLat = rep.currentLocationLat
