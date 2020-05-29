@@ -215,7 +215,7 @@ class ProfileViewController: UIViewController,
     @IBAction func editButtonTapped(_ sender: Any) {
         guard let user = UserController.shared.sessionUser else { return }
 
-        if editButton.isSelected == false {
+        if !editButton.isSelected {
             editEnabled()
         } else {
             // FIX FIRSTNAME, LASTNAME, CITY, STATE, ZIP, PHOTOS, & STRIPE
@@ -274,6 +274,7 @@ class ProfileViewController: UIViewController,
     }
 
     @IBAction func addCarsButtonTapped(_ sender: Any) {
+        // Present the addCarsVC
     }
 
     @IBAction func addBannerImageButtonTapped(_ sender: Any) {
