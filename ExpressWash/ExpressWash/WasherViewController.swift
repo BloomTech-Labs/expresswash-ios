@@ -13,7 +13,7 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
 
     // MARK: - Properties
     var washerController = WasherController()
-    var washer: Washer?
+    var washer = UserController.shared.sessionUser?.washer
     var job: Job?
 
     // MARK: - Outlets
@@ -43,6 +43,7 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
 
         setupSubviews()
         setUpMap()
+        updateViews()
     }
 
     // MARK: - Methods
@@ -77,7 +78,14 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
         guard let washer = washer,
             let wUser = washer.user
         else {
-            fullNameLabel.text = "No washer :("
+            fullNameLabel.text = "Do you want to be a washer?"
+            let alert = UIAlertController()
+            alert.title = "Become a washer"
+            alert.message = "Would you like to wash some cars? Visit our website to become a washer! www.expresswash.us"
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                self.tabBarController?.selectedIndex = 0
+            }))
+            self.present(alert, animated: true, completion: nil)
             return
         }
 
