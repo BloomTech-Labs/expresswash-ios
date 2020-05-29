@@ -81,11 +81,7 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
         }
 
         fullNameLabel.text = "\(wUser.firstName) \(wUser.lastName)"
-        var starRating = ""
-        for _ in 1...washer.washerRating {
-            starRating += "★"
-        }
-        ratingLabel.text = starRating
+        ratingLabel.text = "★ \(washer.washerRating)"
         activeSwitch.isOn = washer.workStatus
         rateLargeLabel.text = "Lg. " + NumberFormatter.dollarString(washer.rateLarge)
         rateMediumLabel.text = "Md. " + NumberFormatter.dollarString(washer.rateMedium)
