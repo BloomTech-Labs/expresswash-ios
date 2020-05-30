@@ -59,6 +59,7 @@
 		5D51383D2463A13500E81AEA /* Washer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D51383C2463A13500E81AEA /* Washer+Convenience.swift */; };
 		5D605C652453D31100B83420 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D605C642453D31100B83420 /* UserRepresentation.swift */; };
 		5D605C672453DEB700B83420 /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D605C662453DEB700B83420 /* User+Convenience.swift */; };
+		5D84F2942481EE3700CE7A4C /* UIImage+cached.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84F2932481EE3700CE7A4C /* UIImage+cached.swift */; };
 		5D99624A2464FFB700D4151F /* WasherModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9962492464FFB700D4151F /* WasherModelTests.swift */; };
 		5D99624C2464FFDB00D4151F /* JobModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D99624B2464FFDB00D4151F /* JobModelTests.swift */; };
 		5D99624E2464FFE900D4151F /* CarModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D99624D2464FFE900D4151F /* CarModelTest.swift */; };
@@ -138,6 +139,7 @@
 		5D51383C2463A13500E81AEA /* Washer+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Washer+Convenience.swift"; sourceTree = "<group>"; };
 		5D605C642453D31100B83420 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
 		5D605C662453DEB700B83420 /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
+		5D84F2932481EE3700CE7A4C /* UIImage+cached.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+cached.swift"; sourceTree = "<group>"; };
 		5D9962492464FFB700D4151F /* WasherModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherModelTests.swift; sourceTree = "<group>"; };
 		5D99624B2464FFDB00D4151F /* JobModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobModelTests.swift; sourceTree = "<group>"; };
 		5D99624D2464FFE900D4151F /* CarModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModelTest.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 			children = (
 				5D16D46E247F650200ED6F43 /* NumberFormatter+Dollar.swift */,
 				5D16D470247F69BE00ED6F43 /* DateFormatter+Clock.swift */,
+				5D84F2932481EE3700CE7A4C /* UIImage+cached.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -616,6 +619,7 @@
 				378CE7C72473655400486754 /* CarController.swift in Sources */,
 				5D46BE5B244EBE5A0058A660 /* Washer+CoreDataProperties.swift in Sources */,
 				5D4FD9E6246E3E03009962E4 /* WasherController.swift in Sources */,
+				5D84F2942481EE3700CE7A4C /* UIImage+cached.swift in Sources */,
 				5DC1B278244FDB79007C11EA /* CarRepresentation.swift in Sources */,
 				5DD4A848246A461000E5FA2B /* UserController+authenticate.swift in Sources */,
 				5D46BE58244EBE5A0058A660 /* Job+CoreDataClass.swift in Sources */,
