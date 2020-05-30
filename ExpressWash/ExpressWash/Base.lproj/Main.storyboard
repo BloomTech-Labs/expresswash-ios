@@ -622,6 +622,8 @@
                         <outlet property="profileImageView" destination="gWT-q2-msq" id="O80-Y7-b39"/>
                         <outlet property="profileTapGesture" destination="CBU-Nc-ftn" id="SwG-fc-FVc"/>
                         <outlet property="ratingLabel" destination="uLC-21-vpx" id="uEI-KT-FWs"/>
+                        <outlet property="stateTextField" destination="PCv-ua-8dV" id="kTf-2t-l37"/>
+                        <segue destination="3Fh-nV-t4J" kind="show" identifier="addCarSegue" id="tV7-fM-UfE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OaL-L7-Vzb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -632,6 +634,22 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1968.1159420289857" y="-2220.5357142857142"/>
+        </scene>
+        <!--Add Car View Controller-->
+        <scene sceneID="V5H-8h-bLe">
+            <objects>
+                <viewController id="3Fh-nV-t4J" customClass="AddCarViewController" customModule="ExpressWash" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mbg-kG-Idq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="eUQ-0l-mUT"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="af8-aI-7GY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3eE-0c-6hl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2803" y="-2221"/>
         </scene>
         <!--Wash-->
         <scene sceneID="LYx-3Z-6Gf">
