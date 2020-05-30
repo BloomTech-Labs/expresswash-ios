@@ -643,7 +643,7 @@
                         <outlet property="profileTapGesture" destination="CBU-Nc-ftn" id="SwG-fc-FVc"/>
                         <outlet property="ratingLabel" destination="uLC-21-vpx" id="uEI-KT-FWs"/>
                         <outlet property="stateTextField" destination="yjq-lX-28y" id="e9E-MQ-0BE"/>
-                        <segue destination="3Fh-nV-t4J" kind="show" identifier="addCarSegue" id="tV7-fM-UfE"/>
+                        <segue destination="Co2-w8-3kU" kind="show" identifier="addCarSegue" id="hzi-MB-L81"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OaL-L7-Vzb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -655,21 +655,15 @@
             </objects>
             <point key="canvasLocation" x="1968.1159420289857" y="-2220.5357142857142"/>
         </scene>
-        <!--Add Car View Controller-->
-        <scene sceneID="V5H-8h-bLe">
+        <!--AddCar-->
+        <scene sceneID="XDE-hG-3lT">
             <objects>
-                <viewController id="3Fh-nV-t4J" customClass="AddCarViewController" customModule="ExpressWash" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Mbg-kG-Idq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="eUQ-0l-mUT"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="af8-aI-7GY"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3eE-0c-6hl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="AddCar" id="Co2-w8-3kU" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="zLe-D0-nvk"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GpG-xg-FLe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2803" y="-2221"/>
+            <point key="canvasLocation" x="2646" y="-2221"/>
         </scene>
         <!--Wash-->
         <scene sceneID="LYx-3Z-6Gf">
@@ -906,11 +900,22 @@
                         <outlet property="rateMediumLabel" destination="F8h-RP-QrO" id="dFR-6I-DP0"/>
                         <outlet property="rateSmallLabel" destination="lcD-Cx-mQk" id="V1U-fy-a4Q"/>
                         <outlet property="ratingLabel" destination="wMJ-zz-3Qa" id="vrh-ig-KzY"/>
+                        <segue destination="54P-vV-kEB" kind="show" identifier="editWasherSegue" id="2zG-xu-KWf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3S7-UO-F3V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1975.36231884058" y="-158.70535714285714"/>
+        </scene>
+        <!--EditWasher-->
+        <scene sceneID="Spi-Y4-H6g">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EditWasher" id="54P-vV-kEB" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="3rL-Z9-fhy"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ORj-YF-QJa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2631" y="-159"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="cSi-Qc-kg9">

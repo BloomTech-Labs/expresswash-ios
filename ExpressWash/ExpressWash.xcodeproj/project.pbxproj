@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C3BA4D3BC35E4F62848175C /* Pods_ExpressWash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A8200D7CB7A1DA0AE0695DE /* Pods_ExpressWash.framework */; };
 		370E67632482008500297018 /* AddCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E67622482008500297018 /* AddCarViewController.swift */; };
+		370E676524820FB500297018 /* AddCar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 370E676424820FB500297018 /* AddCar.storyboard */; };
 		371683A324706562000CE78C /* CarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371683A224706562000CE78C /* CarCollectionViewCell.swift */; };
 		371683A5247074BA000CE78C /* authRegister.json in Resources */ = {isa = PBXBuildFile; fileRef = 371683A4247074BA000CE78C /* authRegister.json */; };
 		371DFE3D2474AE05008EAAE0 /* Car.json in Resources */ = {isa = PBXBuildFile; fileRef = 371DFE3C2474AE05008EAAE0 /* Car.json */; };
@@ -88,6 +89,7 @@
 
 /* Begin PBXFileReference section */
 		370E67622482008500297018 /* AddCarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCarViewController.swift; sourceTree = "<group>"; };
+		370E676424820FB500297018 /* AddCar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddCar.storyboard; sourceTree = "<group>"; };
 		371683A224706562000CE78C /* CarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCollectionViewCell.swift; sourceTree = "<group>"; };
 		371683A4247074BA000CE78C /* authRegister.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = authRegister.json; sourceTree = "<group>"; };
 		371DFE3C2474AE05008EAAE0 /* Car.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Car.json; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				375DB3E4244A5AE800C889F2 /* LaunchScreen.storyboard */,
 				5DC1B27924512563007C11EA /* SignInScreen.storyboard */,
 				5D2370EF247762A7007A7AB8 /* EditWasher.storyboard */,
+				370E676424820FB500297018 /* AddCar.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				370E676524820FB500297018 /* AddCar.storyboard in Resources */,
 				375DB3E6244A5AE800C889F2 /* LaunchScreen.storyboard in Resources */,
 				375DB3E3244A5AE800C889F2 /* Assets.xcassets in Resources */,
 				5D2370F0247762A7007A7AB8 /* EditWasher.storyboard in Resources */,
