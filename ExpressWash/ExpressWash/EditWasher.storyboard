@@ -172,6 +172,7 @@
                         <viewLayoutGuide key="safeArea" id="gzl-bp-OZD"/>
                     </view>
                     <connections>
+                        <outlet property="btnSave" destination="4yc-Qs-yaB" id="PUr-YA-PTs"/>
                         <outlet property="imgProfilePic" destination="v0A-3U-Hjy" id="knQ-sr-bpd"/>
                         <outlet property="lblFullName" destination="Roe-vx-WRp" id="lry-nC-JUr"/>
                         <outlet property="txtRateLarge" destination="ev6-G7-CbF" id="qtX-fJ-B14"/>
@@ -182,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NqT-4t-CTN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="121.73913043478262" y="145.98214285714286"/>
+            <point key="canvasLocation" x="86" y="63"/>
         </scene>
     </scenes>
     <resources>
