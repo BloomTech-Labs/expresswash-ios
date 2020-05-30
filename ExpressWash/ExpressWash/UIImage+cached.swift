@@ -12,6 +12,10 @@ import UIKit
 extension UIImage {
     static var cache: [String: UIImage] = [:]
 
+    // Use UIImage.cached to get an image you may want to download more than
+    // once. The optional `defaultTitle` parameter takes a string representing
+    // a named image in the application bundle.
+
     static func cached(from urlString: String, defaultTitle: String? = nil) -> UIImage? {
         var returnImage: UIImage?
 
