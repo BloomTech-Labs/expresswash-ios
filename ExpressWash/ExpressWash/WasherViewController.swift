@@ -89,6 +89,8 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
             return
         }
 
+        profileImageView.image = UIImage.cached(from: wUser.profilePicture?.absoluteString ?? "",
+                                                defaultTitle: "person.circle")
         fullNameLabel.text = "\(wUser.firstName) \(wUser.lastName)"
         ratingLabel.text = "★ \(washer.washerRating)"
         activeSwitch.isOn = washer.workStatus
@@ -108,8 +110,7 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
         licPlateLabel.text = car.licensePlate
         makeModelLabel.text = "\(car.make) \(car.model)"
         colorYearLabel.text = "\(car.color), \(car.year)"
-
-        // TODO: Add car photo once back-end allows for it
+        carImageView.image = UIImage.cached(from: car.photo ?? "", defaultTitle: "Logo")
 
         switch car.size {
         case "small":
