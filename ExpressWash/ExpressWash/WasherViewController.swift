@@ -177,6 +177,11 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        if segue.identifier == "editWasherSegue" {
+            if let vc = segue.destination as? EditWasherViewController {
+                vc.washerController = washerController
+                vc.washer = washer
+            }
+        }
     }
 }
