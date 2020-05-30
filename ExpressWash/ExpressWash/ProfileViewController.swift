@@ -28,11 +28,13 @@ class ProfileViewController: UIViewController,
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var bannerImageView: UIImageView!
     @IBOutlet weak var bannerImageButton: UIButton!
-    @IBOutlet weak var fullNameTextField: UITextField!
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var emailAddressTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
-    @IBOutlet weak var cityStateZipTextField: UITextField!
+    @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var stateTextField: UITextField!
     @IBOutlet weak var addCarsButton: UIButton!
     @IBOutlet weak var carsCollectionView: UICollectionView!
 
@@ -100,7 +102,8 @@ class ProfileViewController: UIViewController,
             }
         }
 
-        fullNameTextField.text = "\(user.firstName.capitalized) \(user.lastName.capitalized)"
+        firstNameTextField.text = user.firstName.capitalized
+        lastNameTextField.text = user.lastName.capitalized
 
         if user.phoneNumber == nil {
             phoneNumberTextField.text = "Phone Number"
@@ -116,19 +119,26 @@ class ProfileViewController: UIViewController,
             addressTextField.text = user.streetAddress
         }
 
-        cityStateZipTextField.text = "\(user.city ?? "city"), \(user.state ?? "state"), \(user.zip ?? "zip")"
+        cityTextField.text = user.city
+        stateTextField.text = user.state
+
+        editDisabled()
     }
 
     func editEnabled() {
         editButton.setBackgroundImage(UIImage(systemName: "square.and.arrow.down"), for: .normal)
         editButton.isSelected = true
 
-        if profileImageView.image == UIImage(systemName: "person.circle") {
-            profileImageView.image = UIImage(systemName: "plus.app")
+        if !profileTapGesture.isEnabled {
+            profileImageView.image = UIImage(systemName: "plus.circle")
         }
 
-        if fullNameTextField.text == "Full Name" {
-            fullNameTextField.text = nil
+        if firstNameTextField.text == "First" {
+            firstNameTextField.text = nil
+        }
+
+        if lastNameTextField.text == "Last" {
+            lastNameTextField.text = nil
         }
 
         if phoneNumberTextField.text == "Phone Number" {
@@ -143,18 +153,24 @@ class ProfileViewController: UIViewController,
             addressTextField.text = nil
         }
 
-        if cityStateZipTextField.text == "city, state, zip" {
-            cityStateZipTextField.text = nil
+        if cityTextField.text == "City" {
+            cityTextField.text = nil
+        }
+
+        if stateTextField.text == "State" {
+            stateTextField.text = nil
         }
 
         bannerImageButton.alpha = 1
         bannerImageButton.isEnabled = true
         profileTapGesture.isEnabled = true
-        fullNameTextField.isEnabled = true
+        firstNameTextField.isEnabled = true
+        lastNameTextField.isEnabled = true
         phoneNumberTextField.isEnabled = true
         emailAddressTextField.isEnabled = true
         addressTextField.isEnabled = true
-        cityStateZipTextField.isEnabled = true
+        cityTextField.isEnabled = true
+        stateTextField.isEnabled = true
         carsCollectionView.alpha = 0
         addCarsButton.alpha = 1
         addCarsButton.isEnabled = true
@@ -164,8 +180,16 @@ class ProfileViewController: UIViewController,
         editButton.setBackgroundImage(UIImage(systemName: "pencil"), for: .normal)
         editButton.isSelected = false
 
-        if fullNameTextField.text == "" {
-            fullNameTextField.text = "Full Name"
+        if profileTapGesture.isEnabled {
+            profileImageView.image = UIImage(systemName: "person.circle")
+        }
+
+        if firstNameTextField.text == "" {
+            firstNameTextField.text = "First"
+        }
+
+        if lastNameTextField.text == "" {
+            lastNameTextField.text = "Last"
         }
 
         if phoneNumberTextField.text == "" {
@@ -180,18 +204,24 @@ class ProfileViewController: UIViewController,
             addressTextField.text = "Address"
         }
 
-        if cityStateZipTextField.text == "" {
-            cityStateZipTextField.text = "city, state, zip"
+        if cityTextField.text == "" {
+            cityTextField.text = "City"
+        }
+
+        if stateTextField.text == "" {
+            stateTextField.text = "State"
         }
 
         bannerImageButton.alpha = 0
         bannerImageButton.isEnabled = false
         profileTapGesture.isEnabled = false
-        fullNameTextField.isEnabled = false
+        firstNameTextField.isEnabled = false
+        lastNameTextField.isEnabled = false
         phoneNumberTextField.isEnabled = false
         emailAddressTextField.isEnabled = false
         addressTextField.isEnabled = false
-        cityStateZipTextField.isEnabled = false
+        cityTextField.isEnabled = false
+        stateTextField.isEnabled = false
         addCarsButton.alpha = 0
         addCarsButton.isEnabled = false
         carsCollectionView.alpha = 1
@@ -218,15 +248,14 @@ class ProfileViewController: UIViewController,
         if !editButton.isSelected {
             editEnabled()
         } else {
-            // FIX FIRSTNAME, LASTNAME, CITY, STATE, ZIP, PHOTOS, & STRIPE
-            guard let firstName = fullNameTextField.text else { return }
-            guard let lastName = fullNameTextField.text else { return }
+            // FIX PHOTOS, & STRIPE
+            guard let firstName = firstNameTextField.text else { return }
+            guard let lastName = lastNameTextField.text else { return }
             guard let phoneNumber = phoneNumberTextField.text else { return }
             guard let emailAddress = emailAddressTextField.text else { return }
             guard let address = addressTextField.text else { return }
-            guard let city = cityStateZipTextField.text else { return }
-            guard let state = cityStateZipTextField.text else { return }
-            guard let zip = cityStateZipTextField.text else { return }
+            guard let city = cityTextField.text else { return }
+            guard let state = stateTextField.text else { return }
 
             let userRepresentation = UserRepresentation(userId: Int(user.userId),
                                                         accountType: user.accountType,
@@ -241,7 +270,7 @@ class ProfileViewController: UIViewController,
                                                         streetAddress2: nil,
                                                         city: city,
                                                         state: state,
-                                                        zip: zip,
+                                                        zip: nil,
                                                         userRating: Int(user.userRating),
                                                         userRatingTotal: Int(user.userRatingTotal))
 
