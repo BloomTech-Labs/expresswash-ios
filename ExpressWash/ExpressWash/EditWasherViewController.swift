@@ -17,9 +17,11 @@ class EditWasherViewController: UIViewController {
     @IBOutlet weak var txtRateLarge: UITextField!
     @IBOutlet weak var txtRateMedium: UITextField!
     @IBOutlet weak var txtRateSmall: UITextField!
+    @IBOutlet weak var btnSave: UIButton!
 
     // MARK: - Properties
     var washer: Washer? { didSet { updateViews() } }
+    var washerController: WasherController?
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -32,13 +34,16 @@ class EditWasherViewController: UIViewController {
         guard isViewLoaded else { return }
 
         guard let washer = washer,
-            let user = washer.user else { return }
+            let user = washer.user else {
+                btnSave.isEnabled = false
+                return
+        }
 
+        btnSave.isEnabled = true
         lblFullName.text = "\(user.firstName) \(user.lastName)"
         if let profilePicture = user.profilePicture {
-            if let data = try? Data(contentsOf: profilePicture) {
-                imgProfilePic.image = UIImage(data: data)
-            }
+            imgProfilePic.image = UIImage.cached(from: profilePicture,
+                                                 defaultTitle: "person.circle")
         }
 
         if let aboutMe = washer.aboutMe {
@@ -53,9 +58,52 @@ class EditWasherViewController: UIViewController {
     // MARK: - Actions
 
     @IBAction func saveTapped(_ sender: Any) {
+        guard let washer = washer,
+            let washerController = washerController else {
+            return
+        }
+
+        var washerRep = washer.representation
+        guard let aboutMe = txtvAboutMe.text else {
+            saveAlert(msg: "Please enter an About Me description")
+            return
+        }
+        washerRep.aboutMe = aboutMe
+
+        guard let largeStr = txtRateLarge.text,
+            let large = Double(largeStr),
+            let mediumStr = txtRateMedium.text,
+            let medium = Double(mediumStr),
+            let smallStr = txtRateSmall.text,
+            let small = Double(smallStr)
+        else {
+            saveAlert(msg: "Please enter a large, medium, and small car rate. Use only numbers and decimal points.")
+            return
+        }
+        washerRep.rateLarge = large
+        washerRep.rateMedium = medium
+        washerRep.rateSmall = small
+        // TODO: Get current location from phone and assign it to the rep
+
+        washerController.put(washerRep: washerRep) { error  in
+            if let error = error {
+                print("Couldn't update washer details: \(error)")
+                self.saveAlert(msg: "An error occurred while updating your details: \(error)")
+            } else {
+                self.washerController?.updateWasher(washer, with: washerRep)
+            }
+        }
     }
 
     @IBAction func cancelTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 
+    private func saveAlert(msg: String) {
+        let alert = UIAlertController()
+        alert.title = "Error"
+        alert.message = msg
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
