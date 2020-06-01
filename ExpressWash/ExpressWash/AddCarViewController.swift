@@ -12,6 +12,15 @@ class AddCarViewController: UIViewController {
 
     // MARK: - Properties
 
+    @IBOutlet weak var carImageView: UIImageView!
+    @IBOutlet weak var yearTextField: UITextField!
+    @IBOutlet weak var makeTextField: UITextField!
+    @IBOutlet weak var modelTextField: UITextField!
+    @IBOutlet weak var licenseTextField: UITextField!
+    @IBOutlet weak var colorTextField: UITextField!
+    @IBOutlet weak var categorySegmentedControl: UISegmentedControl!
+    @IBOutlet weak var addCarButton: UIButton!
+
     // MARK: - Outlets
 
     // MARK: - Views
@@ -23,6 +32,9 @@ class AddCarViewController: UIViewController {
     // MARK: - Methods
 
     // MARK: - Actions
+
+    @IBAction func addCarButtonTapped(_ sender: Any) {
+    }
 
     // MARK: - Navigation
 

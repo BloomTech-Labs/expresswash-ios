@@ -14,13 +14,107 @@
                     <view key="view" contentMode="scaleToFill" id="2gg-hc-xs9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="FFg-UL-8ia">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="453"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BMM-xk-oqJ">
+                                <rect key="frame" x="20" y="458" width="374" height="219.5"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Year:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oET-Zd-yFq">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="37.5"/>
+                                        <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Make:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fj0-VQ-FBB">
+                                        <rect key="frame" x="0.0" y="45.5" width="374" height="37.5"/>
+                                        <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Model:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5U7-2U-GwF">
+                                        <rect key="frame" x="0.0" y="91" width="374" height="37.5"/>
+                                        <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="License Plate:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NMV-aW-yAu">
+                                        <rect key="frame" x="0.0" y="136.5" width="374" height="37.5"/>
+                                        <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Color:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3IY-1a-5Nf">
+                                        <rect key="frame" x="0.0" y="182" width="374" height="37.5"/>
+                                        <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IC2-j0-E06">
+                                <rect key="frame" x="20" y="752" width="374" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="bLI-tT-nEu"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Sedan"/>
+                                    <segment title="SUV"/>
+                                    <segment title="Truck"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOR-a1-j3G">
+                                <rect key="frame" x="20" y="807" width="374" height="45"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="ppa-O2-zrR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Add Car"/>
+                                <connections>
+                                    <action selector="addCarButtonTapped:" destination="NOB-Pp-Wan" eventType="touchUpInside" id="0L0-w7-dea"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="NOR-a1-j3G" firstAttribute="bottom" secondItem="q2D-CD-mFp" secondAttribute="bottom" constant="-10" id="247-Qx-rfM"/>
+                            <constraint firstItem="q2D-CD-mFp" firstAttribute="trailing" secondItem="NOR-a1-j3G" secondAttribute="trailing" constant="20" id="9P2-xb-dZJ"/>
+                            <constraint firstItem="IC2-j0-E06" firstAttribute="leading" secondItem="q2D-CD-mFp" secondAttribute="leading" constant="20" id="Kd1-9b-gKe"/>
+                            <constraint firstItem="q2D-CD-mFp" firstAttribute="trailing" secondItem="BMM-xk-oqJ" secondAttribute="trailing" constant="20" id="LED-Ya-AXv"/>
+                            <constraint firstItem="FFg-UL-8ia" firstAttribute="leading" secondItem="q2D-CD-mFp" secondAttribute="leading" id="LdI-yd-1pJ"/>
+                            <constraint firstItem="IC2-j0-E06" firstAttribute="top" relation="greaterThanOrEqual" secondItem="BMM-xk-oqJ" secondAttribute="bottom" id="bo8-j3-NPo"/>
+                            <constraint firstItem="BMM-xk-oqJ" firstAttribute="top" secondItem="FFg-UL-8ia" secondAttribute="bottom" constant="5" id="eM5-Ki-goH"/>
+                            <constraint firstItem="NOR-a1-j3G" firstAttribute="leading" secondItem="q2D-CD-mFp" secondAttribute="leading" constant="20" id="h4A-YI-nQo"/>
+                            <constraint firstItem="q2D-CD-mFp" firstAttribute="trailing" secondItem="IC2-j0-E06" secondAttribute="trailing" constant="20" id="hEb-9H-gDY"/>
+                            <constraint firstItem="FFg-UL-8ia" firstAttribute="trailing" secondItem="q2D-CD-mFp" secondAttribute="trailing" id="jia-FH-sES"/>
+                            <constraint firstItem="NOR-a1-j3G" firstAttribute="top" secondItem="IC2-j0-E06" secondAttribute="bottom" constant="20" id="mO3-VN-3sf"/>
+                            <constraint firstItem="FFg-UL-8ia" firstAttribute="top" secondItem="2gg-hc-xs9" secondAttribute="top" id="p4i-Jk-3R6"/>
+                            <constraint firstItem="BMM-xk-oqJ" firstAttribute="leading" secondItem="q2D-CD-mFp" secondAttribute="leading" constant="20" id="tN9-wD-g8t"/>
+                            <constraint firstItem="q2D-CD-mFp" firstAttribute="centerY" secondItem="FFg-UL-8ia" secondAttribute="bottom" id="yqm-yd-eKB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="q2D-CD-mFp"/>
                     </view>
+                    <connections>
+                        <outlet property="addCarButton" destination="NOR-a1-j3G" id="nIw-Mk-mPR"/>
+                        <outlet property="carImageView" destination="FFg-UL-8ia" id="Wk0-Xr-YTf"/>
+                        <outlet property="categorySegmentedControl" destination="IC2-j0-E06" id="cpX-S7-c2z"/>
+                        <outlet property="colorTextField" destination="3IY-1a-5Nf" id="es2-Em-KU7"/>
+                        <outlet property="licenseTextField" destination="NMV-aW-yAu" id="aoU-8N-OO2"/>
+                        <outlet property="makeTextField" destination="fj0-VQ-FBB" id="cCj-WI-RwT"/>
+                        <outlet property="modelTextField" destination="5U7-2U-GwF" id="Id1-qJ-zw2"/>
+                        <outlet property="yearTextField" destination="oET-Zd-yFq" id="yP2-rv-H6l"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kfw-OH-xx9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="357" y="-141"/>
+            <point key="canvasLocation" x="356.52173913043481" y="-141.29464285714286"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Logo" width="1024" height="1024"/>
+    </resources>
 </document>

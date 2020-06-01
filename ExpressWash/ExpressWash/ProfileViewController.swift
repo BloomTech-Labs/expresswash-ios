@@ -65,8 +65,8 @@ class ProfileViewController: UIViewController,
             let cars = user.cars else { return UICollectionViewCell() }
 
         if let car = cars[indexPath.row] as? Car {
-            if let photo = car.photo {
-                cell.imageView.image = UIImage(contentsOfFile: photo)
+            if let photoString = car.photo {
+                cell.imageView.image = UIImage(contentsOfFile: photoString)
             }
         }
 
@@ -303,7 +303,8 @@ class ProfileViewController: UIViewController,
     }
 
     @IBAction func addCarsButtonTapped(_ sender: Any) {
-        // Present the addCarsVC
+        editDisabled()
+        self.performSegue(withIdentifier: "addCarSegue", sender: self)
     }
 
     @IBAction func addBannerImageButtonTapped(_ sender: Any) {
