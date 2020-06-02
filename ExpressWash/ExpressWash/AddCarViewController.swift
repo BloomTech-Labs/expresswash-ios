@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddCarViewController: UIViewController {
+class AddCarViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     // MARK: - Properties
 
@@ -18,7 +18,7 @@ class AddCarViewController: UIViewController {
     // MARK: - Outlets
 
     @IBOutlet weak var carImageView: UIImageView!
-    @IBOutlet weak var captureImageButton: UIButton!
+    @IBOutlet weak var showCameraTapped: UIButton!
     @IBOutlet weak var yearTextField: UITextField!
     @IBOutlet weak var makeTextField: UITextField!
     @IBOutlet weak var modelTextField: UITextField!
@@ -42,13 +42,27 @@ class AddCarViewController: UIViewController {
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .normal)
 
-        captureImageButton.isSelected = false
         addCarButton.layer.cornerRadius = 10.0
-        setupCamera()
     }
 
     private func setupCamera() {
-        //Set this up when backend allows it.
+        let camera = UIImagePickerController()
+        camera.sourceType = .camera
+        camera.allowsEditing = true
+        camera.delegate = self
+        present(camera, animated: true)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        picker.dismiss(animated: true)
+
+        guard let image = info[.editedImage] as? UIImage else {
+            print("No image found")
+            return
+        }
+
+        carImageView.image = image
     }
 
     // MARK: - Actions
@@ -90,12 +104,6 @@ class AddCarViewController: UIViewController {
     }
 
     @IBAction func captureImageButtonTapped(_ sender: Any) {
-        if captureImageButton.isSelected {
-            captureImageButton.isSelected = false
-            //Show Camera
-        } else {
-            //Take Picture & Set it
-            captureImageButton.isSelected = true
-        }
+        setupCamera()
     }
 }

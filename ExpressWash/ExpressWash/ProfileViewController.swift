@@ -91,6 +91,8 @@ class ProfileViewController: UIViewController,
                        let image: UIImage = UIImage(data: data)!
                        profileImageView.image = image
                    }
+        } else {
+            profileImageView.image = UIImage(systemName: "person.circle")
         }
 
         ratingLabel.text = "★ \(user.userRating)"
@@ -125,17 +127,17 @@ class ProfileViewController: UIViewController,
         editDisabled()
     }
 
-    func imagePickerController(picker: UIImagePickerController!,
-                               didFinishPickingImage image: UIImage!,
-                               editingInfo: NSDictionary!) {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            if picker == profileImagePicker {
+                profileImageView.image = image
+            } else {
+                bannerImageView.image = image
+            }
+        }
 
         self.dismiss(animated: true, completion: nil)
-
-        if picker == profileImagePicker {
-            profileImageView.image = image
-        } else {
-            bannerImageView.image = image
-        }
     }
 
     // MARK: - Actions
@@ -248,7 +250,9 @@ extension ProfileViewController {
         editButton.isSelected = true
 
         if !profileTapGesture.isEnabled {
-            profileImageView.image = UIImage(systemName: "plus.circle")
+            if profileImageView.image == UIImage(systemName: "person.circle") {
+                profileImageView.image = UIImage(systemName: "plus.circle")
+            }
         }
 
         if firstNameTextField.text == "First" {
@@ -299,7 +303,9 @@ extension ProfileViewController {
         editButton.isSelected = false
 
         if profileTapGesture.isEnabled {
-            profileImageView.image = UIImage(systemName: "person.circle")
+            if profileImageView.image == UIImage(systemName: "plus.circle") {
+                profileImageView.image = UIImage(systemName: "person.circle")
+            }
         }
 
         if firstNameTextField.text == "" {
