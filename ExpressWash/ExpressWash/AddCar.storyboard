@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,7 +25,7 @@
                                     <constraint firstAttribute="height" constant="40" id="2on-qv-1Vn"/>
                                     <constraint firstAttribute="width" constant="50" id="qEh-jT-pW6"/>
                                 </constraints>
-                                <color key="tintColor" red="0.74117647060000003" green="0.83529411760000005" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" name="Light Blue"/>
                                 <state key="normal" backgroundImage="camera.viewfinder" catalog="system"/>
                                 <state key="selected" backgroundImage="camera.circle" catalog="system"/>
                                 <connections>
@@ -60,22 +61,22 @@
                                 <rect key="frame" x="20" y="458" width="374" height="274"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6zK-7N-qzQ">
-                                        <rect key="frame" x="0.0" y="75" width="183" height="124"/>
+                                        <rect key="frame" x="0.0" y="73" width="183" height="128.5"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Year:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oET-Zd-yFq">
-                                                <rect key="frame" x="0.0" y="0.0" width="183" height="36"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="183" height="37.5"/>
                                                 <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Make:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fj0-VQ-FBB">
-                                                <rect key="frame" x="0.0" y="44" width="183" height="36"/>
+                                                <rect key="frame" x="0.0" y="45.5" width="183" height="37.5"/>
                                                 <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Model:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5U7-2U-GwF">
-                                                <rect key="frame" x="0.0" y="88" width="183" height="36"/>
+                                                <rect key="frame" x="0.0" y="91" width="183" height="37.5"/>
                                                 <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -150,5 +151,8 @@
     <resources>
         <image name="camera.circle" catalog="system" width="128" height="121"/>
         <image name="camera.viewfinder" catalog="system" width="128" height="114"/>
+        <namedColor name="Light Blue">
+            <color red="0.74099999666213989" green="0.83499997854232788" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
     </resources>
 </document>
