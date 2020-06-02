@@ -34,7 +34,6 @@ class CarController {
                 return
             }
 
-            UserController.shared.sessionUser?.addToCars(car)
             completion(car, nil)
 
             context.perform {

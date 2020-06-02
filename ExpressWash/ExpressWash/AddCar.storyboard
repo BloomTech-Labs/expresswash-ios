@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NOB-Pp-Wan">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add Car View Controller-->
+        <scene sceneID="79M-RE-9Lo">
+            <objects>
+                <viewController id="NOB-Pp-Wan" customClass="AddCarViewController" customModule="ExpressWash" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2gg-hc-xs9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FFg-UL-8ia">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="453"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EnT-1I-bDc">
+                                <rect key="frame" x="344" y="394" width="50" height="37.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="2on-qv-1Vn"/>
+                                    <constraint firstAttribute="width" constant="50" id="qEh-jT-pW6"/>
+                                </constraints>
+                                <color key="tintColor" name="Light Blue"/>
+                                <state key="normal" backgroundImage="camera.viewfinder" catalog="system"/>
+                                <state key="selected" backgroundImage="camera.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="captureImageButtonTapped:" destination="NOB-Pp-Wan" eventType="touchUpInside" id="baa-YY-ZoG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOR-a1-j3G">
+                                <rect key="frame" x="20" y="807" width="374" height="45"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="ppa-O2-zrR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Add Car"/>
+                                <connections>
+                                    <action selector="addCarButtonTapped:" destination="NOB-Pp-Wan" eventType="touchUpInside" id="EXL-NL-Mwh"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IC2-j0-E06">
+                                <rect key="frame" x="20" y="752" width="374" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="bLI-tT-nEu"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Small"/>
+                                    <segment title="Medium"/>
+                                    <segment title="Large"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BVk-2X-5pt">
+                                <rect key="frame" x="20" y="458" width="374" height="274"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6zK-7N-qzQ">
+                                        <rect key="frame" x="0.0" y="73" width="183" height="128.5"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Year:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oET-Zd-yFq">
+                                                <rect key="frame" x="0.0" y="0.0" width="183" height="37.5"/>
+                                                <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Make:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fj0-VQ-FBB">
+                                                <rect key="frame" x="0.0" y="45.5" width="183" height="37.5"/>
+                                                <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Model:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5U7-2U-GwF">
+                                                <rect key="frame" x="0.0" y="91" width="183" height="37.5"/>
+                                                <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BMM-xk-oqJ">
+                                        <rect key="frame" x="191" y="91" width="183" height="92.5"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="License Plate:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NMV-aW-yAu">
+                                                <rect key="frame" x="0.0" y="0.0" width="183" height="25.5"/>
+                                                <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Color:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3IY-1a-5Nf">
+                                                <rect key="frame" x="0.0" y="33.5" width="183" height="25.5"/>
+                                                <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Category:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2OL-5R-scd">
+                                                <rect key="frame" x="0.0" y="67" width="183" height="25.5"/>
+                                                <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="IC2-j0-E06" firstAttribute="top" secondItem="BVk-2X-5pt" secondAttribute="bottom" constant="20" id="1yb-7S-uXn"/>
+                            <constraint firstItem="NOR-a1-j3G" firstAttribute="bottom" secondItem="q2D-CD-mFp" secondAttribute="bottom" constant="-10" id="247-Qx-rfM"/>
+                            <constraint firstItem="q2D-CD-mFp" firstAttribute="trailing" secondItem="BVk-2X-5pt" secondAttribute="trailing" constant="20" id="2N7-kf-jdv"/>
+                            <constraint firstItem="q2D-CD-mFp" firstAttribute="trailing" secondItem="NOR-a1-j3G" secondAttribute="trailing" constant="20" id="9P2-xb-dZJ"/>
+                            <constraint firstItem="IC2-j0-E06" firstAttribute="leading" secondItem="q2D-CD-mFp" secondAttribute="leading" constant="20" id="Kd1-9b-gKe"/>
+                            <constraint firstItem="FFg-UL-8ia" firstAttribute="leading" secondItem="q2D-CD-mFp" secondAttribute="leading" id="LdI-yd-1pJ"/>
+                            <constraint firstItem="BVk-2X-5pt" firstAttribute="top" secondItem="FFg-UL-8ia" secondAttribute="bottom" constant="5" id="UWm-eT-MQH"/>
+                            <constraint firstItem="EnT-1I-bDc" firstAttribute="bottom" secondItem="FFg-UL-8ia" secondAttribute="bottom" constant="-20" id="UwK-UT-lNo"/>
+                            <constraint firstItem="q2D-CD-mFp" firstAttribute="trailing" secondItem="EnT-1I-bDc" secondAttribute="trailing" constant="20" id="YoD-uD-O9S"/>
+                            <constraint firstItem="BVk-2X-5pt" firstAttribute="leading" secondItem="q2D-CD-mFp" secondAttribute="leading" constant="20" id="frY-aO-cCe"/>
+                            <constraint firstItem="NOR-a1-j3G" firstAttribute="leading" secondItem="q2D-CD-mFp" secondAttribute="leading" constant="20" id="h4A-YI-nQo"/>
+                            <constraint firstItem="q2D-CD-mFp" firstAttribute="trailing" secondItem="IC2-j0-E06" secondAttribute="trailing" constant="20" id="hEb-9H-gDY"/>
+                            <constraint firstItem="FFg-UL-8ia" firstAttribute="trailing" secondItem="q2D-CD-mFp" secondAttribute="trailing" id="jia-FH-sES"/>
+                            <constraint firstItem="NOR-a1-j3G" firstAttribute="top" secondItem="IC2-j0-E06" secondAttribute="bottom" constant="20" id="mO3-VN-3sf"/>
+                            <constraint firstItem="FFg-UL-8ia" firstAttribute="top" secondItem="2gg-hc-xs9" secondAttribute="top" id="p4i-Jk-3R6"/>
+                            <constraint firstItem="q2D-CD-mFp" firstAttribute="centerY" secondItem="FFg-UL-8ia" secondAttribute="bottom" id="yqm-yd-eKB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="q2D-CD-mFp"/>
+                    </view>
+                    <connections>
+                        <outlet property="addCarButton" destination="NOR-a1-j3G" id="nIw-Mk-mPR"/>
+                        <outlet property="carImageView" destination="FFg-UL-8ia" id="Wk0-Xr-YTf"/>
+                        <outlet property="categoryTextField" destination="2OL-5R-scd" id="l7b-mQ-8jt"/>
+                        <outlet property="colorTextField" destination="3IY-1a-5Nf" id="es2-Em-KU7"/>
+                        <outlet property="licenseTextField" destination="NMV-aW-yAu" id="aoU-8N-OO2"/>
+                        <outlet property="makeTextField" destination="fj0-VQ-FBB" id="cCj-WI-RwT"/>
+                        <outlet property="modelTextField" destination="5U7-2U-GwF" id="Id1-qJ-zw2"/>
+                        <outlet property="showCameraTapped" destination="EnT-1I-bDc" id="rIo-hD-xRX"/>
+                        <outlet property="sizeSegmentedControl" destination="IC2-j0-E06" id="cpX-S7-c2z"/>
+                        <outlet property="yearTextField" destination="oET-Zd-yFq" id="yP2-rv-H6l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kfw-OH-xx9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="356.52173913043481" y="-141.29464285714286"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="camera.circle" catalog="system" width="128" height="121"/>
+        <image name="camera.viewfinder" catalog="system" width="128" height="114"/>
+        <namedColor name="Light Blue">
+            <color red="0.74099999666213989" green="0.83499997854232788" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
+</document>
