@@ -10,13 +10,17 @@ import UIKit
 import Mapbox
 import CoreLocation
 
-class ScheduleViewController: UIViewController, MGLMapViewDelegate {
+class ScheduleViewController: UIViewController,
+                              MGLMapViewDelegate,
+                              UICollectionViewDelegate,
+                              UICollectionViewDataSource {
 
     // MARK: - Properties
 
     let locationManager = CLLocationManager()
     let geoCoder = CLGeocoder()
     let annotation = MGLPointAnnotation()
+    var washers: [Washer] = []
 
     // MARK: - Outlets
 
@@ -34,6 +38,34 @@ class ScheduleViewController: UIViewController, MGLMapViewDelegate {
 
         setupSubviews()
         setUpMap()
+        autoFillAddress()
+    }
+
+    // MARK: - CollectionView
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return washers.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "washerCell",
+                                                            for: indexPath) as? WasherCollectionViewCell else {
+                                                                return UICollectionViewCell() }
+
+        let washer = washers[indexPath.row]
+        if let user = washer.user {
+            // set image of cell with image handler
+
+            cell.nameLabel.text = user.firstName + user.lastName
+        }
+
+        cell.starLabel.text = "★ \(washer.washerRating)"
+        cell.largeRateLabel.text = "\(washer.rateLarge)"
+        cell.mediumRateLabel.text = "\(washer.rateMedium)"
+        cell.smallRateLabel.text = "\(washer.rateSmall)"
+
+        return cell
     }
 
     // MARK: - Methods
@@ -70,7 +102,8 @@ class ScheduleViewController: UIViewController, MGLMapViewDelegate {
                                                                longitude: location.coordinate.longitude)
                 self.mapView.addAnnotation(self.annotation)
 
-                // Search for available washers & Reload collection view
+                // Search for available washers
+                self.washersCollectionView.reloadData()
             }
         }
     }
@@ -103,7 +136,8 @@ class ScheduleViewController: UIViewController, MGLMapViewDelegate {
                                                            longitude: location.coordinate.longitude)
             self.mapView.addAnnotation(self.annotation)
 
-            // Search for available washers & Reload collection view
+            // Search for available washers
+            self.washersCollectionView.reloadData()
         }
     }
 
@@ -119,7 +153,8 @@ class ScheduleViewController: UIViewController, MGLMapViewDelegate {
                                                                     longitude: currentLocation.coordinate.longitude)
                 self.mapView.addAnnotation(self.annotation)
 
-                // Search for available washers & Reload collection view
+                // Search for available washers
+                self.washersCollectionView.reloadData()
             }
         }
     }
