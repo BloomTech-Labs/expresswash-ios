@@ -22,6 +22,8 @@
 	<true/>
 	<key>MGLMapboxMetricsEnabledSettingShownInApp</key>
 	<true/>
+	<key>MGLMapboxAccessToken</key>
+	<string>pk.eyJ1Ijoia2VmZnVyeTEiLCJhIjoiY2s5MHFkMDlpMDI3czNlcHhicXg1dWY2dyJ9.mKx7ioHQ6CbC5tFOxRfrvg</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -66,8 +68,10 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>&quot;Enable Camera Access&quot;</string>
+	<string>Enable Camera Access</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>&quot;Enable Photo Access</string>
+	<string>Enable Photo Access</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Enable Current Location</string>
 </dict>
 </plist>
