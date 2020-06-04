@@ -94,7 +94,7 @@ class SignUpViewController: UIViewController {
                 return
             }
             guard let user = user else { return }
-            UserController.shared.sessionUser = user
+            UserController.shared.sessionUser?.user = user
         }
         self.performSegue(withIdentifier: "finishedSignUpSegue", sender: self)
     }

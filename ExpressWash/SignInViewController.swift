@@ -24,6 +24,7 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
 
         btnSignIn.layer.cornerRadius = 5.0
+        txtEmail.text = UserController.shared.email
         txtPassword.text = UserController.shared.password
     }
 
