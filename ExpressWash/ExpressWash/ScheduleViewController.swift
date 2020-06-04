@@ -9,15 +9,29 @@
 import UIKit
 import Mapbox
 
-class ScheduleViewController: UIViewController, MGLMapViewDelegate {
+class ScheduleViewController: UIViewController,
+                              MGLMapViewDelegate,
+                              UICollectionViewDelegate,
+                              UICollectionViewDataSource {
 
     // MARK: - Properties
+
+    let jobController = JobController()
+    let locationManager = CLLocationManager()
+    let geoCoder = CLGeocoder()
+    var annotation = MGLPointAnnotation()
+    var washers: [Washer] = []
+
+    var addressString: String?
+    var cityString: String?
+    var stateString: String?
+    var zipString: String?
 
     // MARK: - Outlets
 
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var addressTextField: UITextField!
-    @IBOutlet weak var mapView: UIView!
+    @IBOutlet weak var mapView: MGLMapView!
     @IBOutlet weak var currentLocationButton: UIButton!
     @IBOutlet weak var washersCollectionView: UICollectionView!
     @IBOutlet weak var scheduleWashButton: UIButton!
@@ -29,6 +43,34 @@ class ScheduleViewController: UIViewController, MGLMapViewDelegate {
 
         setupSubviews()
         setUpMap()
+        autoFillAddress()
+    }
+
+    // MARK: - CollectionView
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return washers.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "washerCell",
+                                                            for: indexPath) as? WasherCollectionViewCell else {
+                                                                return UICollectionViewCell() }
+
+        let washer = washers[indexPath.row]
+        if let user = washer.user {
+            // set image of cell with image handler
+
+            cell.nameLabel.text = user.firstName + user.lastName
+        }
+
+        cell.starLabel.text = "★ \(washer.washerRating)"
+        cell.largeRateLabel.text = "\(washer.rateLarge)"
+        cell.mediumRateLabel.text = "\(washer.rateMedium)"
+        cell.smallRateLabel.text = "\(washer.rateSmall)"
+
+        return cell
     }
 
     // MARK: - Methods
@@ -38,28 +80,155 @@ class ScheduleViewController: UIViewController, MGLMapViewDelegate {
     }
 
     func setUpMap() {
-        let map = MGLMapView(frame: mapView.bounds)
-        map.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mapView.attributionButton.isHidden = true
+        mapView.attributionButton.isEnabled = false
+        mapView.delegate = self
+    }
 
-        map.attributionButton.isHidden = true
-        mapView.addSubview(map)
-        map.delegate = self
+    func autoFillAddress() {
+        self.mapView.removeAnnotation(annotation)
+
+        if let address = UserController.shared.sessionUser?.streetAddress {
+            addressTextField.text = address
+
+            geoCoder.geocodeAddressString(address) { (placemarks, error) in
+                if let error = error {
+                    print("Error geocoding address: \(error)")
+                    return
+                }
+
+                guard let placemarks = placemarks, let location = placemarks.first?.location else {
+                    print("No location found")
+                    return
+                }
+
+                self.annotation.coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
+                                                               longitude: location.coordinate.longitude)
+                self.mapView.addAnnotation(self.annotation)
+
+                // Search for available washers
+                self.washersCollectionView.reloadData()
+            }
+        }
+    }
+
+    func mapView(_ mapView: MGLMapView, didAdd annotationViews: [MGLAnnotationView]) {
+        mapView.centerCoordinate = annotation.coordinate
+        mapView.zoomLevel = 10
     }
 
     // MARK: - Actions
 
     @IBAction func searchButtonTapped(_ sender: Any) {
+        self.mapView.removeAnnotation(annotation)
+
+        guard let address = addressTextField.text else { return }
+
+        geoCoder.geocodeAddressString(address) { (placemarks, error) in
+            if let error = error {
+                print("Error geocoding address: \(error)")
+                return
+            }
+
+            guard let placemarks = placemarks, let location = placemarks.first?.location else {
+                print("No location found")
+                return
+                // Let the user know there was no location found
+            }
+
+            self.annotation.coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
+                                                           longitude: location.coordinate.longitude)
+            self.mapView.addAnnotation(self.annotation)
+
+            // Search for available washers
+            self.washersCollectionView.reloadData()
+        }
     }
 
     @IBAction func currentLocationButtonTapped(_ sender: Any) {
+
+        locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
+        CLLocationManager.authorizationStatus() == .authorizedAlways {
+            if let currentLocation = locationManager.location {
+                self.mapView.removeAnnotation(self.annotation)
+
+                self.annotation.coordinate = CLLocationCoordinate2D(latitude: currentLocation.coordinate.latitude,
+                                                                    longitude: currentLocation.coordinate.longitude)
+                self.mapView.addAnnotation(self.annotation)
+
+                // Search for available washers
+                self.washersCollectionView.reloadData()
+            }
+        }
     }
 
     @IBAction func scheduleWashButtonTapped(_ sender: Any) {
-    }
+        // Get selected washer & Move over to the receipts page for viewing/maintinence
 
-    // MARK: - Navigation
+        let date = Date()
+        let dateFormatter = DateFormatter.Clock
+        let timeRequested = dateFormatter.string(from: date)
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
 
+        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
+            if let error = error {
+                print("Error reverse geocoding: \(error)")
+                return
+            }
+
+            guard let placemark = placemarks?.first else { return }
+
+            if let address = placemark.thoroughfare {
+                self.addressString = address
+            }
+
+            if let city = placemark.subAdministrativeArea {
+                self.cityString = city
+            }
+
+            if let state = placemark.administrativeArea {
+                self.stateString = state
+            }
+
+            if let zip = placemark.isoCountryCode {
+                self.zipString = zip
+            }
+        }
+
+        guard let address = addressString,
+            let city = cityString,
+            let state = stateString,
+            let zip = zipString else { return }
+
+        let jobRep = JobRepresentation(jobLocationLat: Float(location.coordinate.latitude),
+                                       jobLocationLon: Float(location.coordinate.latitude),
+                                       address: address,
+                                       address2: nil,
+                                       city: city,
+                                       state: state,
+                                       zip: zip,
+                                       notes: nil,
+                                       jobType: "basic",
+                                       timeRequested: timeRequested)
+
+        jobController.addJob(jobRepresentation: jobRep) { (job, error) in
+            if let error = error {
+                print("Error adding job: \(error)")
+                return
+            }
+
+            guard let job = job else { return }
+
+            //FIX WASHER ID
+            self.jobController.assignWasher(job: job, washerID: 0) { (_, error) in
+                if let error = error {
+                    print("Error assigning washer to job: \(error)")
+                    return
+                }
+            }
+        }
     }
 }

@@ -45,11 +45,12 @@
                                     <action selector="searchButtonTapped:" destination="reU-hQ-IQZ" eventType="touchUpInside" id="B7w-8n-abC"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R81-gH-PDm">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R81-gH-PDm">
                                 <rect key="frame" x="53" y="148.5" width="308" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Gdw-11-zPk"/>
                                 </constraints>
+                                <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -64,9 +65,12 @@
                                     <action selector="currentLocationButtonTapped:" destination="reU-hQ-IQZ" eventType="touchUpInside" id="4C0-IR-kkm"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSB-TO-B0B">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSB-TO-B0B" customClass="MGLMapView">
                                 <rect key="frame" x="20" y="186.5" width="374" height="232"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleURL__" value="mapbox://styles/mapbox/streets-v11"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Yuv-YS-GiD">
                                 <rect key="frame" x="20" y="428.5" width="394" height="72"/>
@@ -103,13 +107,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1tN-iX-evK">
-                                                    <rect key="frame" x="8" y="5" width="75" height="75"/>
+                                                    <rect key="frame" x="40" y="5" width="75" height="75"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="75" id="CLH-Ou-2B1"/>
                                                         <constraint firstAttribute="width" constant="75" id="QAq-uS-Ear"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZUE-UX-acb">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZUE-UX-acb">
                                                     <rect key="frame" x="8" y="85" width="139" height="29.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -156,6 +160,7 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="1tN-iX-evK" firstAttribute="centerX" secondItem="gdT-eB-pXb" secondAttribute="centerX" id="FVU-t6-XNq"/>
                                                 <constraint firstItem="pes-1P-rJg" firstAttribute="top" secondItem="LC3-dR-NDX" secondAttribute="top" id="KSt-J9-TKQ"/>
                                                 <constraint firstItem="BZd-7G-T4M" firstAttribute="leading" secondItem="pes-1P-rJg" secondAttribute="trailing" constant="10" id="MVT-HZ-kRV"/>
                                                 <constraint firstItem="BZd-7G-T4M" firstAttribute="bottom" secondItem="LC3-dR-NDX" secondAttribute="bottom" id="NYJ-Kt-iMh"/>
@@ -168,7 +173,6 @@
                                                 <constraint firstItem="ZUE-UX-acb" firstAttribute="top" secondItem="1tN-iX-evK" secondAttribute="bottom" constant="5" id="gQ4-s4-VMW"/>
                                                 <constraint firstItem="pes-1P-rJg" firstAttribute="leading" secondItem="LC3-dR-NDX" secondAttribute="trailing" constant="10" id="jaO-Wh-him"/>
                                                 <constraint firstItem="1tN-iX-evK" firstAttribute="top" secondItem="gdT-eB-pXb" secondAttribute="top" constant="5" id="q4c-oy-QfH"/>
-                                                <constraint firstItem="1tN-iX-evK" firstAttribute="leading" secondItem="ZUE-UX-acb" secondAttribute="leading" id="wzd-S8-Nhz"/>
                                                 <constraint firstItem="ZUE-UX-acb" firstAttribute="leading" secondItem="gdT-eB-pXb" secondAttribute="leading" constant="8" id="yu0-zM-aNe"/>
                                             </constraints>
                                         </collectionViewCellContentView>
@@ -233,7 +237,7 @@
                     <connections>
                         <outlet property="addressTextField" destination="R81-gH-PDm" id="ERY-A1-ymJ"/>
                         <outlet property="currentLocationButton" destination="yjg-p9-hzT" id="HkM-sa-904"/>
-                        <outlet property="mapView" destination="nSB-TO-B0B" id="g0p-iC-AWj"/>
+                        <outlet property="mapView" destination="nSB-TO-B0B" id="yTq-aX-3ZB"/>
                         <outlet property="scheduleWashButton" destination="7hd-cB-qGb" id="bW7-CE-pr4"/>
                         <outlet property="searchButton" destination="qXN-zd-PCg" id="A7s-GX-2E4"/>
                         <outlet property="washersCollectionView" destination="xeQ-UX-rZc" id="QBb-UE-UXi"/>
