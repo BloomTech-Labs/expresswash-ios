@@ -23,30 +23,30 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         getJobs()
     }
-    
+
     // MARK: - Methods
-    
+
     private func getJobs() {
         guard let user = UserController.shared.sessionUser else { return }
-        
+
         jobController.getUserJobs(user: user) { (jobRepresentations, error) in
             if let error = error {
                 print("Error getting user's jobs: \(error)")
                 return
             }
-            
+
             guard let jobReps = jobRepresentations else { return }
-            
+
             self.jobs = []
-            
+
             for rep in jobReps {
                 let job = Job(representation: rep)
                 self.jobs.append(job)
             }
-            
+
             self.receiptsTableView.reloadData()
         }
     }
@@ -68,7 +68,7 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
         let lastName = job.washer!.user!.lastName
 
         cell.washerName.text = firstName + lastName
-        
+
         // Handle washer profile photo
 
         cell.washerRating.text = "★ \(job.washer!.washerRating))"
