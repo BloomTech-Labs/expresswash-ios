@@ -237,9 +237,9 @@ extension JobController {
         }.resume()
     }
 
-    func assignWasher(jobRepresentation: JobRepresentation, washerID: Int, completion: @escaping CompletionHandler) {
+    func assignWasher(job: Job, washerID: Int, completion: @escaping CompletionHandler) {
         let baseURL = BASEURL.appendingPathComponent(ENDPOINTS.jobSelect.rawValue)
-        let jobURL = baseURL.appendingPathComponent("\(jobRepresentation.jobId)")
+        let jobURL = baseURL.appendingPathComponent("\(job.jobId)")
         var request = URLRequest(url: jobURL)
         request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

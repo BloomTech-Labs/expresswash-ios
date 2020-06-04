@@ -8,7 +8,6 @@
 
 import UIKit
 import Mapbox
-import CoreLocation
 
 class ScheduleViewController: UIViewController,
                               MGLMapViewDelegate,
@@ -17,10 +16,16 @@ class ScheduleViewController: UIViewController,
 
     // MARK: - Properties
 
+    let jobController = JobController()
     let locationManager = CLLocationManager()
     let geoCoder = CLGeocoder()
-    let annotation = MGLPointAnnotation()
+    var annotation = MGLPointAnnotation()
     var washers: [Washer] = []
+
+    var addressString: String?
+    var cityString: String?
+    var stateString: String?
+    var zipString: String?
 
     // MARK: - Outlets
 
@@ -160,6 +165,70 @@ class ScheduleViewController: UIViewController,
     }
 
     @IBAction func scheduleWashButtonTapped(_ sender: Any) {
-        // Schedule the wash with the given address & washer, then move over to the receipts page for viewing/maintinenc
+        // Get selected washer & Move over to the receipts page for viewing/maintinence
+
+        let date = Date()
+        let dateFormatter = DateFormatter.Clock
+        let timeRequested = dateFormatter.string(from: date)
+
+        let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+
+        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
+            if let error = error {
+                print("Error reverse geocoding: \(error)")
+                return
+            }
+
+            guard let placemark = placemarks?.first else { return }
+
+            if let address = placemark.thoroughfare {
+                self.addressString = address
+            }
+
+            if let city = placemark.subAdministrativeArea {
+                self.cityString = city
+            }
+
+            if let state = placemark.administrativeArea {
+                self.stateString = state
+            }
+
+            if let zip = placemark.isoCountryCode {
+                self.zipString = zip
+            }
+        }
+
+        guard let address = addressString,
+            let city = cityString,
+            let state = stateString,
+            let zip = zipString else { return }
+
+        let jobRep = JobRepresentation(jobLocationLat: Float(location.coordinate.latitude),
+                                       jobLocationLon: Float(location.coordinate.latitude),
+                                       address: address,
+                                       address2: nil,
+                                       city: city,
+                                       state: state,
+                                       zip: zip,
+                                       notes: nil,
+                                       jobType: "basic",
+                                       timeRequested: timeRequested)
+
+        jobController.addJob(jobRepresentation: jobRep) { (job, error) in
+            if let error = error {
+                print("Error adding job: \(error)")
+                return
+            }
+
+            guard let job = job else { return }
+
+            //FIX WASHER ID
+            self.jobController.assignWasher(job: job, washerID: 0) { (_, error) in
+                if let error = error {
+                    print("Error assigning washer to job: \(error)")
+                    return
+                }
+            }
+        }
     }
 }
