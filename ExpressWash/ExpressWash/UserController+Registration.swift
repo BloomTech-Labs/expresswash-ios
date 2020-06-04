@@ -65,7 +65,7 @@ extension UserController {
                 let dataResponse = try decoder.decode(DataResponse.self, from: data)
                 let user = User(representation: dataResponse.user)
                 UserController.shared.token = dataResponse.token
-                UserController.shared.sessionUser = user
+                UserController.shared.sessionUser?.user = user
                 completion(user, nil)
             } catch {
                 completion(nil, error)

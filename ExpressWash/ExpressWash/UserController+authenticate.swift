@@ -62,13 +62,13 @@ extension UserController {
             do {
                 let authReturn = try decoder.decode(AuthReturn.self, from: data)
                 self.token = authReturn.token
-                self.sessionUser = self.findUser(byID: authReturn.user.userId)
-                if self.sessionUser != nil {
-                    self.update(user: self.sessionUser!, with: authReturn.user)
+                self.sessionUser?.user = self.findUser(byID: authReturn.user.userId)
+                if self.sessionUser?.user != nil {
+                    self.update(user: self.sessionUser!.user!, with: authReturn.user)
                 } else {
-                    self.sessionUser = User(representation: authReturn.user)
+                    self.sessionUser?.user = User(representation: authReturn.user)
                 }
-                completion(self.sessionUser, nil)
+                completion(self.sessionUser?.user, nil)
             } catch {
                 completion(nil, error)
                 return
@@ -115,7 +115,7 @@ extension UserController {
                         completion: @escaping (Error?) -> Void) {
 
         // if the user has saved their password
-        if let password = password, let email = sessionUser?.email {
+        if let password = password, let email = sessionUser?.user?.email {
 
             authenticate(username: email, password: password) { (_, error) in
                 if error != nil {
@@ -142,7 +142,7 @@ extension UserController {
             if let email = alert.textFields?[0].text,
                 let password = alert.textFields?[1].text {
                 self.authenticate(username: email,
-                                  password: password) { (user, error) in
+                                  password: password) { (_, error) in
                     if error != nil {
                         completion(error)
                         return
