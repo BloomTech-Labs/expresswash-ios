@@ -20,12 +20,12 @@ class EditWasherViewController: UIViewController {
     @IBOutlet weak var btnSave: UIButton!
 
     // MARK: - Properties
-    var washer: Washer? { didSet { updateViews() } }
+//    var washer: Washer? { didSet { updateViews() } }
     var washerController: WasherController?
 
     // MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 
         updateViews()
     }
@@ -33,7 +33,7 @@ class EditWasherViewController: UIViewController {
     func updateViews() {
         guard isViewLoaded else { return }
 
-        guard let washer = washer,
+        guard let washer = UserController.shared.sessionUser.washer,
             let user = washer.user else {
                 btnSave.isEnabled = false
                 return
@@ -58,7 +58,7 @@ class EditWasherViewController: UIViewController {
     // MARK: - Actions
 
     @IBAction func saveTapped(_ sender: Any) {
-        guard let washer = washer,
+        guard let washer = UserController.shared.sessionUser.washer,
             let washerController = washerController else {
             return
         }

@@ -17,6 +17,11 @@ struct SessionUser: Codable {
         case washer
     }
 
+    init(user: User?, washer: Washer?) {
+        self.user = user
+        self.washer = washer
+    }
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: SessionUserKeys.self)
         let userRep = try container.decode(UserRepresentation.self, forKey: .user)

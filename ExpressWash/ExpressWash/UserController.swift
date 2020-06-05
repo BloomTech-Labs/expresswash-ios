@@ -14,7 +14,7 @@ class UserController {
     static let shared = UserController()
 
     // MARK: - User session
-    var sessionUser: SessionUser? {
+    var sessionUser: SessionUser {
         didSet {
             saveToPersistentStore()
         }
@@ -38,6 +38,7 @@ class UserController {
     }()
 
     init() {
+        sessionUser = SessionUser(user: nil, washer: nil)
         if UserDefaults.standard.bool(forKey: "Session") {
             token = UserDefaults.standard.string(forKey: "Token")
             email = UserDefaults.standard.string(forKey: "Email")
@@ -48,7 +49,6 @@ class UserController {
 
     private func saveToPersistentStore() {
         guard let url = localStoreURL,
-              let sessionUser = sessionUser,
               let token = token
         else {
             UserDefaults.standard.set(false, forKey: "Session")
