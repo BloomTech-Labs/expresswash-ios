@@ -60,7 +60,7 @@ class UserModelTests: XCTestCase {
             XCTAssert(user.firstName == "Joel")
             XCTAssert(user.lastName == "Test")
             XCTAssert(user.userId == 39)
-            XCTAssert(UserController.shared.sessionUser?.user == user)
+            XCTAssert(UserController.shared.sessionUser.user == user)
             authExpectation.fulfill()
         }
         

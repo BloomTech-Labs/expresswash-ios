@@ -13,7 +13,6 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
 
     // MARK: - Properties
     var washerController = WasherController()
-    var washer = UserController.shared.sessionUser?.washer
     var job: Job?
     var locationManager: CLLocationManager?
 
@@ -82,8 +81,8 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
     }
 
     private func updateWasherViews() {
-        guard let washer = washer,
-            let wUser = washer.user
+        guard let washer = UserController.shared.sessionUser.washer,
+            let wUser = UserController.shared.sessionUser.user
         else {
             fullNameLabel.text = "Do you want to be a washer?"
             let alert = UIAlertController()
@@ -154,7 +153,7 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
     }
 
     @IBAction func activeSwitchToggled(_ sender: Any) {
-        guard let washer = washer else {
+        guard let washer = UserController.shared.sessionUser.washer else {
             activeSwitch.isOn = false
             return
         }
@@ -195,7 +194,6 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
         if segue.identifier == "editWasherSegue" {
             if let editWasherVC = segue.destination as? EditWasherViewController {
                 editWasherVC.washerController = washerController
-                editWasherVC.washer = washer
             }
         }
     }
