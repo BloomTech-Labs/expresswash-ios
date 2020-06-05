@@ -18,6 +18,7 @@ class ReceiptDetailViewController: UIViewController {
 
     @IBOutlet weak var washDateLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var cityStateLabel: UILabel!
     @IBOutlet weak var timeTakenLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var beforeImageView: UIImageView!
