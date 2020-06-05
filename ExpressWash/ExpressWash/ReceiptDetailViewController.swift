@@ -24,7 +24,6 @@ class ReceiptDetailViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var cityStateLabel: UILabel!
     @IBOutlet weak var timeTakenLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var beforeImageView: UIImageView!
     @IBOutlet weak var afterImageView: UIImageView!
     @IBOutlet weak var washerProfileImageView: UIImageView!
@@ -44,9 +43,24 @@ class ReceiptDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        updateViews()
     }
 
     // MARK: - Methods
+
+    private func updateViews() {
+        guard let job = job else { return }
+        guard let user = job.washer?.user else { return }
+
+        addressLabel.text = job.address
+        cityStateLabel.text = "\(job.city.capitalized), \(job.state.capitalized)"
+        // Time Taken
+        // Images
+        washerNameLabel.text = "\(user.firstName.capitalized) \(user.lastName.capitalized)"
+        washerRatingLabel.text = "★ \(job.washer!.washerRating)"
+        washerAboutMeTextView.text = "About your washer:/n/n\(job.washer!.aboutMe ?? "")"
+    }
 
     private func oneStarFill() {
         oneStar.setBackgroundImage(starFill, for: .normal)
@@ -98,7 +112,7 @@ class ReceiptDetailViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
-    
+
     private func disableRating() {
         oneStar.isEnabled = false
         twoStar.isEnabled = false
@@ -133,7 +147,7 @@ class ReceiptDetailViewController: UIViewController {
     @IBAction func rateWasherButtonClicked(_ sender: Any) {
         guard let washer = job!.washer else { return }
         guard let rating = rating else { return }
-        
+
         washerController.rate(washer: washer, rating: rating) { (error) in
             if let error = error {
                 print("Error rating washer: \(error)")
