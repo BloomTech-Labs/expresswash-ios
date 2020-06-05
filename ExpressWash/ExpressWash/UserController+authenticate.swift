@@ -62,13 +62,13 @@ extension UserController {
             do {
                 let authReturn = try decoder.decode(AuthReturn.self, from: data)
                 self.token = authReturn.token
-                self.sessionUser?.user = self.findUser(byID: authReturn.user.userId)
-                if self.sessionUser?.user != nil {
-                    self.update(user: self.sessionUser!.user!, with: authReturn.user)
+                self.sessionUser.user = self.findUser(byID: authReturn.user.userId)
+                if self.sessionUser.user != nil {
+                    self.update(user: self.sessionUser.user!, with: authReturn.user)
                 } else {
-                    self.sessionUser?.user = User(representation: authReturn.user)
+                    self.sessionUser.user = User(representation: authReturn.user)
                 }
-                completion(self.sessionUser?.user, nil)
+                completion(self.sessionUser.user, nil)
             } catch {
                 completion(nil, error)
                 return
@@ -115,7 +115,7 @@ extension UserController {
                         completion: @escaping (Error?) -> Void) {
 
         // if the user has saved their password
-        if let password = password, let email = sessionUser?.user?.email {
+        if let password = password, let email = sessionUser.user?.email {
 
             authenticate(username: email, password: password) { (_, error) in
                 if error != nil {
@@ -157,7 +157,8 @@ extension UserController {
         // if they tap cancel, sign them out
         alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { _ in
             self.token = nil
-            self.sessionUser = nil
+            self.sessionUser.user = nil
+            self.sessionUser.washer = nil
             completion(NSError(domain: "re-authenticate", code: CANCELLED, userInfo: nil))
             sender.dismiss(animated: true, completion: nil)
         }))

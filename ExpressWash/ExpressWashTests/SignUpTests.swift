@@ -50,7 +50,7 @@ class SignUpTests: XCTestCase {
                 XCTAssert(user.firstName == firstName)
                 XCTAssert(user.lastName == lastName)
                 XCTAssert(user.email == email)
-            XCTAssert(UserController.shared.sessionUser?.user == user)
+            XCTAssert(UserController.shared.sessionUser.user == user)
                 expect.fulfill()
             }
 
