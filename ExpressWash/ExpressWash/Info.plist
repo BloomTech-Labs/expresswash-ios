@@ -17,18 +17,24 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
-	<true/>
-	<key>MGLMapboxMetricsEnabledSettingShownInApp</key>
 	<true/>
 	<key>MGLMapboxAccessToken</key>
 	<string>pk.eyJ1Ijoia2VmZnVyeTEiLCJhIjoiY2s5MHFkMDlpMDI3czNlcHhicXg1dWY2dyJ9.mKx7ioHQ6CbC5tFOxRfrvg</string>
+	<key>MGLMapboxMetricsEnabledSettingShownInApp</key>
+	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Enable Camera Access</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Enable Current Location</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Enable Photo Access</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -67,11 +73,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>Enable Camera Access</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Enable Photo Access</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Enable Current Location</string>
 </dict>
 </plist>
