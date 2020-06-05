@@ -123,22 +123,38 @@
                                             <constraint firstAttribute="width" constant="25" id="S3v-LH-1s5"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="star" catalog="system"/>
+                                        <connections>
+                                            <action selector="oneStarTapped:" destination="2TW-Bl-IL3" eventType="touchUpInside" id="hR4-9Y-gR7"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q84-L2-xia">
                                         <rect key="frame" x="33" y="0.0" width="25" height="25"/>
                                         <state key="normal" backgroundImage="star" catalog="system"/>
+                                        <connections>
+                                            <action selector="oneStarTapped:" destination="2TW-Bl-IL3" eventType="touchUpInside" id="eDp-Ex-kaj"/>
+                                            <action selector="twoStarTapped:" destination="2TW-Bl-IL3" eventType="touchUpInside" id="mkR-Kg-KBf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrj-H2-loZ">
                                         <rect key="frame" x="66" y="0.0" width="25" height="25"/>
                                         <state key="normal" backgroundImage="star" catalog="system"/>
+                                        <connections>
+                                            <action selector="threeStarTapped:" destination="2TW-Bl-IL3" eventType="touchUpInside" id="gS8-2S-zYx"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTB-DG-tc5">
                                         <rect key="frame" x="99" y="0.0" width="25" height="25"/>
                                         <state key="normal" backgroundImage="star" catalog="system"/>
+                                        <connections>
+                                            <action selector="fourStarTapped:" destination="2TW-Bl-IL3" eventType="touchUpInside" id="gNc-Ba-1mk"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egz-yC-EVh">
                                         <rect key="frame" x="132" y="0.0" width="25" height="25"/>
                                         <state key="normal" backgroundImage="star" catalog="system"/>
+                                        <connections>
+                                            <action selector="fiveStarTapped:" destination="2TW-Bl-IL3" eventType="touchUpInside" id="QV4-0j-fNZ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -196,9 +212,14 @@
                         <outlet property="afterImageView" destination="Tk9-AP-cDG" id="lqf-U6-nAd"/>
                         <outlet property="beforeImageView" destination="pjp-ew-3S2" id="eGC-3H-y6P"/>
                         <outlet property="cityStateLabel" destination="37X-WO-16P" id="10G-d3-mC7"/>
+                        <outlet property="fiveStar" destination="egz-yC-EVh" id="2ES-go-w9J"/>
+                        <outlet property="fourStar" destination="hTB-DG-tc5" id="0li-wI-pp7"/>
+                        <outlet property="oneStar" destination="evk-ey-0IH" id="TDr-el-zDt"/>
                         <outlet property="priceLabel" destination="aDK-Yq-5Fk" id="jao-XT-BbC"/>
                         <outlet property="rateWasherButton" destination="5dB-Df-28k" id="Qwm-7V-646"/>
+                        <outlet property="threeStar" destination="qrj-H2-loZ" id="SrJ-pD-Uch"/>
                         <outlet property="timeTakenLabel" destination="D7S-Zl-VWL" id="vwS-NO-mDl"/>
+                        <outlet property="twoStar" destination="Q84-L2-xia" id="EMK-bX-dZf"/>
                         <outlet property="washDateLabel" destination="q5j-Mn-eeM" id="DyI-Xq-KMf"/>
                         <outlet property="washerAboutMeTextView" destination="his-cf-lk3" id="DCk-it-DoU"/>
                         <outlet property="washerNameLabel" destination="4yF-ud-bYL" id="k2G-k3-mwj"/>
