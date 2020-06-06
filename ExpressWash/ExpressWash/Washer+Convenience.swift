@@ -47,7 +47,7 @@ extension Washer {
         self.rateMedium = representation.rateMedium
         self.rateLarge = representation.rateLarge
         self.washerId = Int32(representation.washerId)
-        self.washerRating = Int16(representation.washerRating)
+        self.washerRating = Int16(representation.washerRating ?? 0)
         self.washerRatingTotal = Int16(representation.washerRatingTotal)
 
         // Get the User matching representation.userId and save it in self.user

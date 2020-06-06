@@ -68,6 +68,21 @@ extension UserController {
                 } else {
                     self.sessionUser.user = User(representation: authReturn.user)
                 }
+
+                // Check to see if a washer object was returned with the user
+                if let washerRep = authReturn.user.washerRepresentation {
+                    let washerController = WasherController()
+
+                    // find the Washer in Core Data, if it exists
+                    self.sessionUser.washer = washerController.findWasher(byID: washerRep.washerId)
+                    if self.sessionUser.washer != nil {
+                        // if it did exist, update it with the newly received data
+                        washerController.updateWasher(self.sessionUser.washer!, with: washerRep)
+                    } else {
+                        // if it didn't exist, create it and save it to the session
+                        self.sessionUser.washer = Washer(representation: washerRep)
+                    }
+                }
                 completion(self.sessionUser.user, nil)
             } catch {
                 completion(nil, error)

@@ -89,7 +89,7 @@ class ScheduleViewController: UIViewController,
     func autoFillAddress() {
         self.mapView.removeAnnotation(annotation)
 
-        if let address = UserController.shared.sessionUser?.streetAddress {
+        if let address = UserController.shared.sessionUser.user?.streetAddress {
             addressTextField.text = address
 
             geoCoder.geocodeAddressString(address) { (placemarks, error) in
