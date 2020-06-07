@@ -52,7 +52,7 @@ class ProfileViewController: UIViewController,
     // MARK: - CollectionView Data Source
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let user = UserController.shared.sessionUser, let cars = user.cars else { return 0 }
+        guard let user = UserController.shared.sessionUser.user, let cars = user.cars else { return 0 }
 
         return cars.count
     }
@@ -61,7 +61,7 @@ class ProfileViewController: UIViewController,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "carCell", for: indexPath)
             as? CarCollectionViewCell,
-            let user = UserController.shared.sessionUser,
+            let user = UserController.shared.sessionUser.user,
             let cars = user.cars else { return UICollectionViewCell() }
 
         if let car = cars[indexPath.row] as? Car {
@@ -84,7 +84,7 @@ class ProfileViewController: UIViewController,
     }
 
     func updateViews() {
-        guard let user = UserController.shared.sessionUser else { return }
+        guard let user = UserController.shared.sessionUser.user else { return }
 
         if let url = user.profilePicture {
             if let data = try? Data(contentsOf: url) {
@@ -143,7 +143,7 @@ class ProfileViewController: UIViewController,
     // MARK: - Actions
 
     @IBAction func editButtonTapped(_ sender: Any) {
-        guard let user = UserController.shared.sessionUser else { return }
+        guard let user = UserController.shared.sessionUser.user else { return }
 
         if !editButton.isSelected {
             editEnabled()
@@ -237,7 +237,7 @@ class ProfileViewController: UIViewController,
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addCarSegue" {
             if let addCarVC = segue.destination as? AddCarViewController {
-                addCarVC.user = UserController.shared.sessionUser
+                addCarVC.user = UserController.shared.sessionUser.user
             }
         }
     }

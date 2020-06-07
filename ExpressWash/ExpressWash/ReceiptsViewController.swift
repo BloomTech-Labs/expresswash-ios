@@ -30,7 +30,7 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
     // MARK: - Methods
 
     private func getJobs() {
-        guard let user = UserController.shared.sessionUser else { return }
+        guard let user = UserController.shared.sessionUser.user else { return }
 
         jobController.getUserJobs(user: user) { (jobRepresentations, error) in
             if let error = error {

@@ -705,7 +705,7 @@
                                     <constraint firstAttribute="height" constant="4" id="bTH-Pu-OcC"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYN-CP-n1b">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYN-CP-n1b" customClass="MGLMapView">
                                 <rect key="frame" x="20" y="297" width="374" height="496"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lwo-7q-LJM">
@@ -898,7 +898,7 @@
                         <outlet property="jobDescriptionLabel" destination="6GO-nA-ecJ" id="xht-Xg-vPt"/>
                         <outlet property="licPlateLabel" destination="hdf-SL-Yu6" id="uMM-51-aGC"/>
                         <outlet property="makeModelLabel" destination="NNY-mJ-z24" id="hfa-Hf-p7y"/>
-                        <outlet property="mapView" destination="dYN-CP-n1b" id="oGh-Z9-OWl"/>
+                        <outlet property="mapView" destination="dYN-CP-n1b" id="ADh-0Z-WLk"/>
                         <outlet property="profileImageView" destination="NbW-MF-ct6" id="m41-Ix-FHN"/>
                         <outlet property="rateLargeLabel" destination="Cbi-Km-kyC" id="JWs-VA-Ip9"/>
                         <outlet property="rateMediumLabel" destination="F8h-RP-QrO" id="dFR-6I-DP0"/>

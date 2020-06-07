@@ -47,27 +47,8 @@ extension Washer {
         self.rateMedium = representation.rateMedium
         self.rateLarge = representation.rateLarge
         self.washerId = Int32(representation.washerId)
-        self.washerRating = Int16(representation.washerRating)
+        self.washerRating = Int16(representation.washerRating ?? 0)
         self.washerRatingTotal = Int16(representation.washerRatingTotal)
-
-        // Get the User matching representation.userId and save it in self.user
-        let user = UserController.shared.findUser(byID: representation.userId)
-        if user == nil {
-            UserController.shared.fetchUserByID(uid: representation.userId,
-                                                context: context) { (fetchedUser, error) in
-                if let error = error {
-                    print("Error fetching userId \(representation.userId) for washerId \(self.washerId): \(error)")
-                    self.user = nil
-                }
-
-                if let fetchedUser = fetchedUser {
-                    self.user = fetchedUser
-                    return
-                }
-            }
-        } else {
-            self.user = user
-        }
     }
 
     var representation: WasherRepresentation {

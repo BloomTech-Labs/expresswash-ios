@@ -13,8 +13,8 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
 
     // MARK: - Properties
     var washerController = WasherController()
-    var washer = UserController.shared.sessionUser?.washer
     var job: Job?
+    var locationManager: CLLocationManager?
 
     // MARK: - Outlets
 
@@ -24,7 +24,7 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var activeSwitch: UISwitch!
     @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var mapView: UIView!
+    @IBOutlet weak var mapView: MGLMapView!
     @IBOutlet weak var arrivedCompleteButton: UIButton!
     @IBOutlet weak var arrivedCompleteLabel: UILabel!
     @IBOutlet weak var carImageView: UIImageView!
@@ -41,12 +41,18 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.requestAlwaysAuthorization()
+
         setupSubviews()
         setUpMap()
-        updateViews()
     }
 
-    // MARK: - Methods
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateViews()
+    }
 
     private func setupSubviews() {
         profileImageView.layer.cornerRadius = profileImageView.frame.size.height/2
@@ -75,8 +81,8 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
     }
 
     private func updateWasherViews() {
-        guard let washer = washer,
-            let wUser = washer.user
+        guard let washer = UserController.shared.sessionUser.washer,
+            let wUser = UserController.shared.sessionUser.user
         else {
             fullNameLabel.text = "Do you want to be a washer?"
             let alert = UIAlertController()
@@ -89,9 +95,12 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
             return
         }
 
+        profileImageView.image = UIImage.cached(from: wUser.profilePicture?.absoluteString ?? "",
+                                                defaultTitle: "person.circle")
         fullNameLabel.text = "\(wUser.firstName) \(wUser.lastName)"
         ratingLabel.text = "★ \(washer.washerRating)"
         activeSwitch.isOn = washer.workStatus
+        activeSwitchToggled(self.activeSwitch!)
         rateLargeLabel.text = "Lg. " + NumberFormatter.dollarString(washer.rateLarge)
         rateMediumLabel.text = "Md. " + NumberFormatter.dollarString(washer.rateMedium)
         rateSmallLabel.text = "Sm. " + NumberFormatter.dollarString(washer.rateSmall)
@@ -108,8 +117,7 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
         licPlateLabel.text = car.licensePlate
         makeModelLabel.text = "\(car.make) \(car.model)"
         colorYearLabel.text = "\(car.color), \(car.year)"
-
-        // TODO: Add car photo once back-end allows for it
+        carImageView.image = UIImage.cached(from: car.photo ?? "", defaultTitle: "Logo")
 
         switch car.size {
         case "small":
@@ -141,18 +149,25 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
     // MARK: - Actions
 
     @IBAction func editButtonTapped(_ sender: Any) {
-        // segue to EditWasherViewController
+        self.performSegue(withIdentifier: "editWasherSegue", sender: self)
     }
 
     @IBAction func activeSwitchToggled(_ sender: Any) {
-        guard let washer = washer else {
+        guard let washer = UserController.shared.sessionUser.washer else {
             activeSwitch.isOn = false
             return
         }
 
         var washerRep = washer.representation
         washerRep.workStatus = activeSwitch.isOn
-        // TODO: Get current location from phone and assign it to the rep
+        if washerRep.workStatus {
+            locationManager?.requestLocation()
+            if let lat = locationManager?.location?.coordinate.latitude,
+                let lon = locationManager?.location?.coordinate.longitude {
+                washerRep.currentLocationLat = lat
+                washerRep.currentLocationLon = lon
+            }
+        }
 
         washerController.put(washerRep: washerRep) { (error) in
             if let error = error {
@@ -176,6 +191,37 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editWasherSegue" {
+            if let editWasherVC = segue.destination as? EditWasherViewController {
+                editWasherVC.washerController = washerController
+            }
+        }
+    }
+}
+
+extension WasherViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status != .authorizedAlways || status != .authorizedWhenInUse {
+            let alert = UIAlertController()
+            alert.title = "Location Services Required"
+            var message = "This app requires location services to be enabled for you to act as a washer. "
+            message += "You cannot be assigned any jobs until you enable location services."
+            alert.message = message
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                self.locationManager?.requestAlwaysAuthorization()
+            }))
+            alert.addAction(UIAlertAction(title: "No jobs for me", style: .destructive, handler: { _ in
+                self.activeSwitch.isOn = false
+                self.activeSwitchToggled(self.activeSwitch!)
+            }))
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
 
     }
 }

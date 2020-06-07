@@ -14,12 +14,17 @@ class UserController {
     static let shared = UserController()
 
     // MARK: - User session
-    var sessionUser: User? {
+    var sessionUser: SessionUser {
         didSet {
             saveToPersistentStore()
         }
     }
     var token: String?
+    var email: String? {
+        didSet {
+            saveToPersistentStore()
+        }
+    }
     var password: String? {
         didSet {
             saveToPersistentStore()
@@ -33,8 +38,10 @@ class UserController {
     }()
 
     init() {
+        sessionUser = SessionUser(user: nil, washer: nil)
         if UserDefaults.standard.bool(forKey: "Session") {
             token = UserDefaults.standard.string(forKey: "Token")
+            email = UserDefaults.standard.string(forKey: "Email")
             password = UserDefaults.standard.string(forKey: "Password")
             loadFromPersistentStore()
         }
@@ -42,21 +49,22 @@ class UserController {
 
     private func saveToPersistentStore() {
         guard let url = localStoreURL,
-              let sessionUser = sessionUser,
               let token = token
         else {
             UserDefaults.standard.set(false, forKey: "Session")
             UserDefaults.standard.set("", forKey: "Token")
+            UserDefaults.standard.set("", forKey: "Email")
             UserDefaults.standard.set("", forKey: "Password")
             return
         }
 
         do {
             let encoder = PropertyListEncoder()
-            let userData = try encoder.encode(sessionUser.representation)
+            let userData = try encoder.encode(sessionUser)
             try userData.write(to: url)
             UserDefaults.standard.set(true, forKey: "Session")
             UserDefaults.standard.set(token, forKey: "Token")
+            UserDefaults.standard.set(email, forKey: "Email")
             UserDefaults.standard.set(password, forKey: "Password")
         } catch {
             print("Error saving user session data: \(error)")
@@ -70,8 +78,7 @@ class UserController {
         do {
             let data = try Data(contentsOf: url)
             let decoder = PropertyListDecoder()
-            let decodedUserRepresentation = try decoder.decode(UserRepresentation.self, from: data)
-            sessionUser = User(representation: decodedUserRepresentation)
+            sessionUser = try decoder.decode(SessionUser.self, from: data)
         } catch {
             print("Error loading user session data: \(error)")
         }

@@ -62,13 +62,28 @@ extension UserController {
             do {
                 let authReturn = try decoder.decode(AuthReturn.self, from: data)
                 self.token = authReturn.token
-                self.sessionUser = self.findUser(byID: authReturn.user.userId)
-                if self.sessionUser != nil {
-                    self.update(user: self.sessionUser!, with: authReturn.user)
+                self.sessionUser.user = self.findUser(byID: authReturn.user.userId)
+                if self.sessionUser.user != nil {
+                    self.update(user: self.sessionUser.user!, with: authReturn.user)
                 } else {
-                    self.sessionUser = User(representation: authReturn.user)
+                    self.sessionUser.user = User(representation: authReturn.user)
                 }
-                completion(self.sessionUser, nil)
+
+                // Check to see if a washer object was returned with the user
+                if let washerRep = authReturn.user.washerRepresentation {
+                    let washerController = WasherController()
+
+                    // find the Washer in Core Data, if it exists
+                    self.sessionUser.washer = washerController.findWasher(byID: washerRep.washerId)
+                    if self.sessionUser.washer != nil {
+                        // if it did exist, update it with the newly received data
+                        washerController.updateWasher(self.sessionUser.washer!, with: washerRep)
+                    } else {
+                        // if it didn't exist, create it and save it to the session
+                        self.sessionUser.washer = Washer(representation: washerRep)
+                    }
+                }
+                completion(self.sessionUser.user, nil)
             } catch {
                 completion(nil, error)
                 return
@@ -115,7 +130,7 @@ extension UserController {
                         completion: @escaping (Error?) -> Void) {
 
         // if the user has saved their password
-        if let password = password, let email = sessionUser?.email {
+        if let password = password, let email = sessionUser.user?.email {
 
             authenticate(username: email, password: password) { (_, error) in
                 if error != nil {
@@ -142,7 +157,7 @@ extension UserController {
             if let email = alert.textFields?[0].text,
                 let password = alert.textFields?[1].text {
                 self.authenticate(username: email,
-                                  password: password) { (user, error) in
+                                  password: password) { (_, error) in
                     if error != nil {
                         completion(error)
                         return
@@ -157,7 +172,8 @@ extension UserController {
         // if they tap cancel, sign them out
         alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { _ in
             self.token = nil
-            self.sessionUser = nil
+            self.sessionUser.user = nil
+            self.sessionUser.washer = nil
             completion(NSError(domain: "re-authenticate", code: CANCELLED, userInfo: nil))
             sender.dismiss(animated: true, completion: nil)
         }))

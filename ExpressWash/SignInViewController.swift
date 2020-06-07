@@ -24,12 +24,15 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
 
         btnSignIn.layer.cornerRadius = 5.0
-        txtPassword.text = UserController.shared.password
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        txtEmail.text = UserController.shared.email
+        txtPassword.text = UserController.shared.password
+        
         // check to see if a valid token is already available
         UserController.shared.validateToken { valid in
             if valid {
@@ -73,15 +76,17 @@ class SignInViewController: UIViewController {
 
         UserController.shared.authenticate(username: email, password: password) { (_, error) in
             DispatchQueue.main.async {
-                if error != nil {
+                if let error = error {
                     let alert = UIAlertController(title: "Sign-in failed",
                                                   message: "Incorrect email and/or password.",
                                                   preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
+                    print("Sign-in error: \(error)")
                 } else {
                     if self.segSavePassword.selectedSegmentIndex == 0 {
                         // if the user wants to save their password
+                        UserController.shared.email = email
                         UserController.shared.password = password
                     }
                     self.performSegue(withIdentifier: "segueToMain", sender: self)

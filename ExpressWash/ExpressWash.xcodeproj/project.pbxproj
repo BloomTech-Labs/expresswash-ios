@@ -63,6 +63,7 @@
 		5D51383D2463A13500E81AEA /* Washer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D51383C2463A13500E81AEA /* Washer+Convenience.swift */; };
 		5D605C652453D31100B83420 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D605C642453D31100B83420 /* UserRepresentation.swift */; };
 		5D605C672453DEB700B83420 /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D605C662453DEB700B83420 /* User+Convenience.swift */; };
+		5D7DBB062488995C00ABD34C /* SessionUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DBB052488995C00ABD34C /* SessionUser.swift */; };
 		5D84F2942481EE3700CE7A4C /* UIImage+cached.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84F2932481EE3700CE7A4C /* UIImage+cached.swift */; };
 		5D99624A2464FFB700D4151F /* WasherModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9962492464FFB700D4151F /* WasherModelTests.swift */; };
 		5D99624C2464FFDB00D4151F /* JobModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D99624B2464FFDB00D4151F /* JobModelTests.swift */; };
@@ -147,6 +148,7 @@
 		5D51383C2463A13500E81AEA /* Washer+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Washer+Convenience.swift"; sourceTree = "<group>"; };
 		5D605C642453D31100B83420 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
 		5D605C662453DEB700B83420 /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
+		5D7DBB052488995C00ABD34C /* SessionUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUser.swift; sourceTree = "<group>"; };
 		5D84F2932481EE3700CE7A4C /* UIImage+cached.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+cached.swift"; sourceTree = "<group>"; };
 		5D9962492464FFB700D4151F /* WasherModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherModelTests.swift; sourceTree = "<group>"; };
 		5D99624B2464FFDB00D4151F /* JobModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobModelTests.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 		375DB3D8244A5AE500C889F2 /* ExpressWash */ = {
 			isa = PBXGroup;
 			children = (
+				5DEB0BAB2487368F00B84DA3 /* Location */,
 				375DB3F4244A5B2500C889F2 /* App Lifecycle */,
 				375DB3F3244A5B1900C889F2 /* Network Controllers */,
 				375DB3F2244A5B1400C889F2 /* Models */,
@@ -314,6 +317,7 @@
 				5D46BE53244EBE5A0058A660 /* Washer+CoreDataProperties.swift */,
 				5D51383C2463A13500E81AEA /* Washer+Convenience.swift */,
 				5D51383A24639BF000E81AEA /* WasherRepresentation.swift */,
+				5D7DBB052488995C00ABD34C /* SessionUser.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -453,6 +457,13 @@
 				5D84F2932481EE3700CE7A4C /* UIImage+cached.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		5DEB0BAB2487368F00B84DA3 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Location;
 			sourceTree = "<group>";
 		};
 		B41FE9FEE225BA7775004AA3 /* Frameworks */ = {
@@ -648,6 +659,7 @@
 				5D51383D2463A13500E81AEA /* Washer+Convenience.swift in Sources */,
 				5D2370F224776C4B007A7AB8 /* EditWasherViewController.swift in Sources */,
 				5D46BE44244E9EE20058A660 /* CoreDataStack.swift in Sources */,
+				5D7DBB062488995C00ABD34C /* SessionUser.swift in Sources */,
 				5D51383B24639BF000E81AEA /* WasherRepresentation.swift in Sources */,
 				5D46BE46244EA0950058A660 /* JobRepresentation.swift in Sources */,
 				5D46BE5D244EBE5A0058A660 /* Car+CoreDataProperties.swift in Sources */,
