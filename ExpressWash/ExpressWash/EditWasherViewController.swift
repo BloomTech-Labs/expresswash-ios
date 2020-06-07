@@ -93,6 +93,7 @@ class EditWasherViewController: UIViewController {
                 self.washerController?.updateWasher(washer, with: washerRep)
             }
         }
+        self.dismiss(animated: true, completion: nil)
     }
 
     @IBAction func cancelTapped(_ sender: Any) {

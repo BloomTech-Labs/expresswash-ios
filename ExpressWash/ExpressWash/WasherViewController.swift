@@ -149,7 +149,7 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
     // MARK: - Actions
 
     @IBAction func editButtonTapped(_ sender: Any) {
-        // segue to EditWasherViewController
+        self.performSegue(withIdentifier: "editWasherSegue", sender: self)
     }
 
     @IBAction func activeSwitchToggled(_ sender: Any) {
@@ -198,26 +198,6 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
         }
     }
 }
-/*
-extension WasherViewController: MGLMapViewDelegate {
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status != .authorizedAlways || status != .authorizedWhenInUse {
-            let alert = UIAlertController()
-            alert.title = "Location Services Required"
-            var message = "This app requires location services to be enabled for you to act as a washer. "
-            message += "You cannot be assigned any jobs until you enable location services."
-            alert.message = message
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-                self.locationManager?.requestAlwaysAuthorization()
-            }))
-            alert.addAction(UIAlertAction(title: "No jobs for me", style: .destructive, handler: { _ in
-                self.activeSwitch.isOn = false
-                self.activeSwitchToggled(self.activeSwitch!)
-            }))
-        }
-    }
-}
-*/
 
 extension WasherViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

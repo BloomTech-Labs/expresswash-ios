@@ -24,13 +24,15 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
 
         btnSignIn.layer.cornerRadius = 5.0
-        txtEmail.text = UserController.shared.email
-        txtPassword.text = UserController.shared.password
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        txtEmail.text = UserController.shared.email
+        txtPassword.text = UserController.shared.password
+        
         // check to see if a valid token is already available
         UserController.shared.validateToken { valid in
             if valid {
