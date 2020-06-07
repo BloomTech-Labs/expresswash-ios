@@ -85,7 +85,7 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "FILL ME IN" {
+        if segue.identifier == "washDetailSegue" {
             if let receiptDetailVC = segue.destination as? ReceiptDetailViewController,
                 let indexPath = receiptsTableView.indexPathForSelectedRow {
                 let job = jobs[indexPath.row]

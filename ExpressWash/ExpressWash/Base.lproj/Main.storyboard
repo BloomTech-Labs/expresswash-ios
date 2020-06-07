@@ -360,6 +360,7 @@
                                             <outlet property="washerImage" destination="97E-W7-Wtx" id="52p-64-h0d"/>
                                             <outlet property="washerName" destination="Foi-ep-qXU" id="DPC-0i-n9H"/>
                                             <outlet property="washerRating" destination="Ze9-eY-iWm" id="yU2-Xj-z8X"/>
+                                            <segue destination="3zs-Gk-T7a" kind="show" identifier="washDetailSegue" id="NKt-4S-tMG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -382,6 +383,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EbK-vI-aZJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1976.8115942028987" y="-842.41071428571422"/>
+        </scene>
+        <!--ReceiptDetail-->
+        <scene sceneID="eoG-y5-8xd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ReceiptDetail" id="3zs-Gk-T7a" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="g4a-1E-cYU"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CML-jk-Jeq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2670" y="-842"/>
         </scene>
         <!--Profile-->
         <scene sceneID="pr9-du-SDX">
