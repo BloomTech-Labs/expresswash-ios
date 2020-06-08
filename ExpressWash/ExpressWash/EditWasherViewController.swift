@@ -20,7 +20,6 @@ class EditWasherViewController: UIViewController {
     @IBOutlet weak var btnSave: UIButton!
 
     // MARK: - Properties
-//    var washer: Washer? { didSet { updateViews() } }
     var washerController: WasherController?
 
     // MARK: - Lifecycle

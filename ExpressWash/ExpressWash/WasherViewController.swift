@@ -9,12 +9,13 @@
 import UIKit
 import Mapbox
 
-class WasherViewController: UIViewController, MGLMapViewDelegate {
+class WasherViewController: UIViewController {
 
     // MARK: - Properties
     var washerController = WasherController()
     var job: Job?
-    var locationManager: CLLocationManager?
+    var lastKnownLat = kCLLocationCoordinate2DInvalid.latitude
+    var lastKnownLon = kCLLocationCoordinate2DInvalid.longitude
 
     // MARK: - Outlets
 
@@ -41,12 +42,17 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        locationManager?.requestAlwaysAuthorization()
-
         setupSubviews()
         setUpMap()
+
+        if UserController.shared.sessionUser.user != nil &&
+           UserController.shared.sessionUser.washer != nil &&
+           UserController.shared.sessionUser.washer?.user == nil {
+            // if the signed in user isn't linked to its washer in
+            // Core Data, link them up
+            UserController.shared.sessionUser.user?.washer =
+                UserController.shared.sessionUser.washer
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -65,6 +71,8 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
 
         mapView.addSubview(map)
         map.delegate = self
+        map.showsUserLocation = true
+        map.setUserTrackingMode(.follow, animated: true, completionHandler: nil)
     }
 
     private func updateViews() {
@@ -161,12 +169,8 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
         var washerRep = washer.representation
         washerRep.workStatus = activeSwitch.isOn
         if washerRep.workStatus {
-            locationManager?.requestLocation()
-            if let lat = locationManager?.location?.coordinate.latitude,
-                let lon = locationManager?.location?.coordinate.longitude {
-                washerRep.currentLocationLat = lat
-                washerRep.currentLocationLon = lon
-            }
+            washerRep.currentLocationLat = lastKnownLat
+            washerRep.currentLocationLon = lastKnownLon
         }
 
         washerController.put(washerRep: washerRep) { (error) in
@@ -179,6 +183,7 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             } else {
+                print(washerRep)
                 self.washerController.updateWasher(washer, with: washerRep)
             }
         }
@@ -199,29 +204,34 @@ class WasherViewController: UIViewController, MGLMapViewDelegate {
     }
 }
 
-extension WasherViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status != .authorizedAlways || status != .authorizedWhenInUse {
-            let alert = UIAlertController()
-            alert.title = "Location Services Required"
-            var message = "This app requires location services to be enabled for you to act as a washer. "
-            message += "You cannot be assigned any jobs until you enable location services."
-            alert.message = message
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-                self.locationManager?.requestAlwaysAuthorization()
-            }))
-            alert.addAction(UIAlertAction(title: "No jobs for me", style: .destructive, handler: { _ in
-                self.activeSwitch.isOn = false
-                self.activeSwitchToggled(self.activeSwitch!)
-            }))
+extension WasherViewController: MGLMapViewDelegate {
+    func mapView(_ mapView: MGLMapView, didUpdate userLocation: MGLUserLocation?) {
+        lastKnownLat = mapView.userLocation!.coordinate.latitude
+        lastKnownLon = mapView.userLocation!.coordinate.longitude
+        print("location: \(lastKnownLat) x \(lastKnownLon)")
+
+        guard let washer = UserController.shared.sessionUser.washer,
+            washer.workStatus == true,
+            activeSwitch.isOn
+        else {
+            return
         }
-    }
 
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        var washerRep = washer.representation
+        washerRep.currentLocationLat = lastKnownLat
+        washerRep.currentLocationLon = lastKnownLon
 
-    }
-
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-
+        washerController.put(washerRep: washerRep) { (error) in
+            if let error = error {
+                print("Couldn't update washer location: \(error)")
+                let alert = UIAlertController()
+                alert.title = "Unable to update"
+                alert.message = "An error occurred while updating your location: \(error)"
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                self.washerController.updateWasher(washer, with: washerRep)
+            }
+        }
     }
 }
