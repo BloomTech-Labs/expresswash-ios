@@ -82,7 +82,6 @@ class EditWasherViewController: UIViewController {
         washerRep.rateLarge = large
         washerRep.rateMedium = medium
         washerRep.rateSmall = small
-        // TODO: Get current location from phone and assign it to the rep
 
         washerController.put(washerRep: washerRep) { error  in
             if let error = error {
