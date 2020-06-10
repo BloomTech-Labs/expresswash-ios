@@ -51,7 +51,7 @@ struct JobRepresentation: Codable {
          timeCompleted: String? = nil,
          carId: Int,
          clientId: Int,
-         washerId: Int) {
+         washerId: Int,
          creationDate: String? = nil) {
         self.address = address
         self.address2 = address2
