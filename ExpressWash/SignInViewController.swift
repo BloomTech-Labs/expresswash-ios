@@ -16,14 +16,14 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var btnSignIn: UIButton!
-    @IBOutlet weak var segSavePassword: UISegmentedControl!
-    @IBOutlet var tapSignUp: UITapGestureRecognizer!
-    @IBOutlet var tapForgotPassword: UITapGestureRecognizer!
+    @IBOutlet weak var savePasswordButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var forgotPasswordButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        btnSignIn.layer.cornerRadius = 5.0
+        btnSignIn.layer.cornerRadius = 10.0
 
     }
 
@@ -32,7 +32,7 @@ class SignInViewController: UIViewController {
 
         txtEmail.text = UserController.shared.email
         txtPassword.text = UserController.shared.password
-        
+
         // check to see if a valid token is already available
         UserController.shared.validateToken { valid in
             if valid {
@@ -57,10 +57,14 @@ class SignInViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 
-    @IBAction func savePasswordChanged(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 1 {
-            // if the user doesn't want to save their password
+    @IBAction func savePasswordButtonTapped(_ sender: Any) {
+        
+        if savePasswordButton.isSelected {
+            savePasswordButton.isSelected = false
+             // if the user doesn't want to save their password
             UserController.shared.password = nil
+        } else {
+            savePasswordButton.isSelected = true
         }
     }
 
@@ -84,7 +88,7 @@ class SignInViewController: UIViewController {
                     self.present(alert, animated: true, completion: nil)
                     print("Sign-in error: \(error)")
                 } else {
-                    if self.segSavePassword.selectedSegmentIndex == 0 {
+                    if self.savePasswordButton.isSelected {
                         // if the user wants to save their password
                         UserController.shared.email = email
                         UserController.shared.password = password
@@ -95,10 +99,8 @@ class SignInViewController: UIViewController {
         }
     }
 
-    @IBAction func lblForgotPasswordTapped(_ sender: Any) {
-        // There is no forgot password feature on the website yet
-        // for now, just directing to home page
-        lblURLTapped(sender)
+    @IBAction func forgotPasswordButtonTapped(_ sender: Any) {
+         lblURLTapped(sender)
     }
 
 }
