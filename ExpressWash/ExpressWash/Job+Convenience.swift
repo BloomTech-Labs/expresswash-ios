@@ -27,6 +27,7 @@ extension Job {
                      scheduled: Bool = true,
                      timeCompleted: String? = nil,
                      timeRequested: String,
+                     creationDate: String? = nil,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.jobId = jobId
@@ -46,6 +47,7 @@ extension Job {
         self.scheduled = scheduled
         self.timeCompleted = timeCompleted
         self.timeRequested = timeRequested
+        self.creationDate = creationDate
     }
 
     convenience init(representation: JobRepresentation,
@@ -68,6 +70,7 @@ extension Job {
         self.scheduled = representation.scheduled
         self.timeCompleted = representation.timeCompleted
         self.timeRequested = representation.timeRequested
+        self.creationDate = representation.creationDate
     }
 
     var representation: JobRepresentation? {
@@ -91,6 +94,7 @@ extension Job {
                           carId: Int(self.car?.carId ?? NOID32),
                           clientId: Int(self.client?.userId ?? NOID32),
                           washerId: Int(self.washer?.washerId ?? NOID32)
+                          creationDate: self.creationDate
         )
     }
 }

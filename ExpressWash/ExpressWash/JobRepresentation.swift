@@ -30,6 +30,7 @@ struct JobRepresentation: Codable {
     var timeCompleted: String?
     var washerId: Int
     var zip: String
+    var creationDate: String?
 
     init(jobId: Int = 0,
          jobLocationLat: Double,
@@ -51,6 +52,7 @@ struct JobRepresentation: Codable {
          carId: Int,
          clientId: Int,
          washerId: Int) {
+         creationDate: String? = nil) {
         self.address = address
         self.address2 = address2
         self.carId = carId
@@ -71,6 +73,7 @@ struct JobRepresentation: Codable {
         self.timeCompleted = timeCompleted
         self.washerId = washerId
         self.zip = zip
+        self.creationDate = creationDate
     }
 
     enum JobKeys: String, CodingKey {
@@ -94,6 +97,7 @@ struct JobRepresentation: Codable {
         case timeCompleted
         case washerId
         case zip
+        case creationDate
     }
 
     init(from decoder: Decoder) throws {
@@ -121,6 +125,7 @@ struct JobRepresentation: Codable {
         carId           = try container.decode(Int.self, forKey: .carId)
         clientId        = try container.decode(Int.self, forKey: .clientId)
         washerId        = try container.decode(Int.self, forKey: .washerId)
+        creationDate    = try container.decodeIfPresent(String.self, forKey: .creationDate)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -151,5 +156,8 @@ struct JobRepresentation: Codable {
         try container.encode(carId, forKey: .carId)
         try container.encode(clientId, forKey: .clientId)
         try container.encode(washerId, forKey: .washerId)
+        if let creationDate = creationDate {
+            try container.encode(creationDate, forKey: .creationDate)
+        }
     }
 }

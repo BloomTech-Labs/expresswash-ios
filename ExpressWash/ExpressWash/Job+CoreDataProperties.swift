@@ -34,6 +34,7 @@ extension Job {
     @NSManaged public var timeCompleted: String?
     @NSManaged public var timeRequested: String
     @NSManaged public var zip: String
+    @NSManaged public var creationDate: String?
 
     // Relationships
     @NSManaged public var car: Car?
