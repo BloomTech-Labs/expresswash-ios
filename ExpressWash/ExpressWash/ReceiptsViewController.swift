@@ -73,7 +73,8 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
 
         cell.washerRating.text = "★ \(job.washer!.washerRating))"
 
-        // Ask for backend to add date requested to job
+        // Ask Joel about dateFormatter for this.
+        cell.dateLabel.text = String(describing: job.creationDate)
 
         // Also add timeArrived to help calculate timeTaken
 
