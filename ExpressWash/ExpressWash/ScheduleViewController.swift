@@ -66,7 +66,7 @@ class ScheduleViewController: UIViewController,
         }
 
         cell.starLabel.text = "★ \(washer.washerRating)"
-        cell.largeRateLabel.text = "\(washer.rateLarge)"
+        cell.largeRateLabel.text = "$\(washer.rateLarge)"
         cell.mediumRateLabel.text = "\(washer.rateMedium)"
         cell.smallRateLabel.text = "\(washer.rateSmall)"
 

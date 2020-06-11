@@ -245,4 +245,50 @@ class CarController {
             }
         }.resume()
     }
+
+    func tieCar(_ carRepresentation: CarRepresentation, to user: User, completion: @escaping CompletionHandler) {
+
+        let tieCarURL = BASEURL.appendingPathComponent("cars/\(carRepresentation.carId!)")
+        var request = URLRequest(url: tieCarURL)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
+
+        let encoder = JSONEncoder()
+
+        do {
+            let data = try encoder.encode(carRepresentation)
+            request.httpBody = data
+        } catch {
+            print("Error Encoding Car: \(error)")
+            completion(nil, error)
+            return
+        }
+
+        SESSION.dataTask(with: request) { (data, _, error) in
+
+            if let error = error {
+                print("Error Editing Car: \(error)")
+                completion(nil, error)
+                return
+            }
+
+            guard let data = data else {
+                completion(nil, error)
+                return
+            }
+
+            let decoder = JSONDecoder()
+
+            do {
+                let editedCarRepresentation = try decoder.decode(CarRepresentation.self, from: data)
+                let car = Car(representation: editedCarRepresentation)
+                completion(car, nil)
+            } catch {
+                print("Error Decoding Car: \(error)")
+                completion(nil, error)
+                return
+            }
+        }.resume()
+    }
 }
