@@ -58,7 +58,7 @@ class SignInViewController: UIViewController {
     }
 
     @IBAction func savePasswordButtonTapped(_ sender: Any) {
-        
+
         if savePasswordButton.isSelected {
             savePasswordButton.isSelected = false
              // if the user doesn't want to save their password
