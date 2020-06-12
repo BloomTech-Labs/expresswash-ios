@@ -35,7 +35,8 @@ enum ENDPOINTS: String {
     case jobSelect = "/jobs/selectJob"              // POST     Adds the washer to a job
     case jobRevise = "/jobs/job/"                   // DELETE   Deletes Job by jobID
                                                     // PUT      Edits Job by jobID
-    case jobGet = "/jobs/user/"                     // GET      Gets Jobs by userID
+    case jobsClient = "/jobs/user/"                 // GET      Gets Jobs by userID
+    case jobsWasher = "/jobs/washer"                // GET      Gets Jobs by washerID
 
     case users      // GET      View all users.
                     // GET      /:id    View specific user.
