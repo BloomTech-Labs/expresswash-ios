@@ -18,6 +18,7 @@ enum ImageEndpoint: String {
 }
 
 class PhotoController {
+    static var shared = PhotoController()
 
     enum FormKeys: String {
         // the key for the multi-part form submmission
