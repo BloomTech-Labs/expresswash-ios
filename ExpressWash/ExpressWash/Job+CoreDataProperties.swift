@@ -31,7 +31,6 @@ extension Job {
     @NSManaged public var photoAfterJob: String?
     @NSManaged public var scheduled: Bool
     @NSManaged public var state: String
-    @NSManaged public var timeArrived: String?
     @NSManaged public var timeCompleted: String?
     @NSManaged public var timeRequested: String
     @NSManaged public var zip: String

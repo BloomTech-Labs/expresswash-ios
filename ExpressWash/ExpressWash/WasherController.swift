@@ -8,7 +8,6 @@
 
 import Foundation
 import CoreData
-import CoreLocation
 
 class WasherController {
     // MARK: - Local store methods
@@ -32,8 +31,8 @@ class WasherController {
                       completion: @escaping (Error?) -> Void = { _ -> Void in }) {
         washer.aboutMe = rep.aboutMe
         washer.workStatus = rep.workStatus
-        washer.currentLocationLat = rep.currentLocationLat ?? kCLLocationCoordinate2DInvalid.latitude
-        washer.currentLocationLon = rep.currentLocationLon ??  kCLLocationCoordinate2DInvalid.longitude
+        washer.currentLocationLat = rep.currentLocationLat
+        washer.currentLocationLon = rep.currentLocationLon
         washer.rateSmall = rep.rateSmall
         washer.rateMedium = rep.rateMedium
         washer.rateLarge = rep.rateLarge
