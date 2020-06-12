@@ -23,8 +23,9 @@ struct JobRepresentation: Codable {
     var photoAfterJob: String?
     var scheduled: Bool
     var state: String
-    var timeRequested: String
+    var timeArrived: String?
     var timeCompleted: String?
+    var timeRequested: String
     var zip: String
 
     init(jobId: Int = 0,
@@ -43,6 +44,7 @@ struct JobRepresentation: Codable {
          photoBeforeJob: String? = nil,
          photoAfterJob: String? = nil,
          timeRequested: String,
+         timeArrived: String? = nil,
          timeCompleted: String? = nil) {
         self.address = address
         self.address2 = address2
@@ -60,6 +62,7 @@ struct JobRepresentation: Codable {
         self.state = state
         self.timeRequested = timeRequested
         self.timeCompleted = timeCompleted
+        self.timeArrived = timeArrived
         self.zip = zip
     }
 
@@ -79,6 +82,7 @@ struct JobRepresentation: Codable {
         case scheduled
         case state
         case timeRequested
+        case timeArrived
         case timeCompleted
         case zip
     }
@@ -102,6 +106,7 @@ struct JobRepresentation: Codable {
         photoBeforeJob  = try container.decodeIfPresent(String.self, forKey: .photoBeforeJob)
         photoAfterJob   = try container.decodeIfPresent(String.self, forKey: .photoAfterJob)
         timeRequested   = try container.decode(String.self, forKey: .timeRequested)
+        timeArrived     = try container.decodeIfPresent(String.self, forKey: .timeArrived)
         timeCompleted   = try container.decodeIfPresent(String.self, forKey: .timeCompleted)
     }
 
@@ -127,6 +132,9 @@ struct JobRepresentation: Codable {
         try container.encode(photoBeforeJob, forKey: .photoBeforeJob)
         try container.encode(photoAfterJob, forKey: .photoAfterJob)
         try container.encode(timeRequested, forKey: .timeRequested)
+        if let timeArrived = timeArrived {
+            try container.encode(timeArrived, forKey: .timeArrived)
+        }
         if let timeCompleted = timeCompleted {
             try container.encode(timeCompleted, forKey: .timeCompleted)
         }
