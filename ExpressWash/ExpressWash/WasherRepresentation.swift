@@ -11,8 +11,8 @@ import Foundation
 struct WasherRepresentation: Codable {
     var aboutMe: String?
     var workStatus: Bool
-    var currentLocationLat: Double
-    var currentLocationLon: Double
+    var currentLocationLat: Double?
+    var currentLocationLon: Double?
     var rateSmall: Double
     var rateMedium: Double
     var rateLarge: Double

@@ -13,9 +13,11 @@ class WasherViewController: UIViewController {
 
     // MARK: - Properties
     var washerController = WasherController()
+    var jobController = JobController()
     var job: Job?
     var lastKnownLat = kCLLocationCoordinate2DInvalid.latitude
     var lastKnownLon = kCLLocationCoordinate2DInvalid.longitude
+    var currentlyRequestedImage: JobImages?
 
     // MARK: - Outlets
 
@@ -151,7 +153,8 @@ class WasherViewController: UIViewController {
             addressText += ", \(address2)"
         }
         addressLabel.text = addressText
-
+        arrivedCompleteButton.isSelected = job.timeArrived == nil ? false : true
+        arrivedCompleteLabel.text = job.timeArrived == nil ? "Arrived?" : "Completed?"
     }
 
     // MARK: - Actions
@@ -190,7 +193,9 @@ class WasherViewController: UIViewController {
     }
 
     @IBAction func arrivedCompleteTapped(_ sender: Any) {
-        // TODO: Show camera, upload before or after photo of the car
+        guard let job = job else { return }
+        let desiredImage = job.timeArrived == nil ? JobImages.before : JobImages.after
+        setupCamera(for: desiredImage)
     }
 
     // MARK: - Navigation
@@ -232,6 +237,78 @@ extension WasherViewController: MGLMapViewDelegate {
             } else {
                 self.washerController.updateWasher(washer, with: washerRep)
             }
+        }
+    }
+}
+
+extension WasherViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    enum JobImages {
+        case before
+        case after
+    }
+
+    private func setupCamera(for jobImage: JobImages) {
+        currentlyRequestedImage = jobImage
+        let camera = UIImagePickerController()
+        camera.sourceType = .camera
+        camera.allowsEditing = true
+        camera.delegate = self
+        present(camera, animated: true)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        picker.dismiss(animated: true)
+
+        guard let image = info[.editedImage] as? UIImage,
+              let job = job
+        else {
+            print("No image found")
+            return
+        }
+
+        let endpoint = currentlyRequestedImage == .before ? ImageEndpoint.imagesJobBefore : ImageEndpoint.imagesJobAfter
+        PhotoController.shared.uploadPhoto(image,
+                                           httpMethod: "POST",
+                                           endpoint: endpoint,
+                                           theID: Int(job.jobId))
+        { data, error in
+            if let error = error {
+                let alert = UIAlertController()
+                alert.title = "Error uploading photo"
+                alert.message = "The photo failed to upload, but we're still going to try "
+                alert.message! += "to let your client know you've arrived.\n"
+                alert.message! += "Error: \(error)"
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+
+            var jobRep = job.representation
+            if let data = data {
+                let decoder = JSONDecoder()
+                do {
+                    jobRep = try decoder.decode(JobRepresentation.self, from: data)
+                } catch {
+                    print("A job was returned after photo was uploaded, but there was an error decoding it: \(error)")
+                }
+            }
+
+            jobRep?.timeArrived = DateFormatter.clockString(from: "\(Date())")
+            if let jobRep = jobRep {
+                self.jobController.updateJob(jobRepresentation: jobRep) { (job, error) in
+                    if let error = error {
+                        print("Error trying to update job after uploading photo: \(error)")
+                    }
+
+                    if let job = job {
+                        self.job = job
+                    } else {
+                        print("No job was returned. Sticking with the old one.")
+                    }
+                }
+            }
+            self.updateViews()
         }
     }
 }

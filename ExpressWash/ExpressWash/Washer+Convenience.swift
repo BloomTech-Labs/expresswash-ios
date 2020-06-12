@@ -8,12 +8,13 @@
 
 import Foundation
 import CoreData
+import CoreLocation
 
 extension Washer {
     convenience init(aboutMe: String?,
                      available: Bool = false,
-                     currentLocationLat: Double,
-                     currentLocationLon: Double,
+                     currentLocationLat: Double?,
+                     currentLocationLon: Double?,
                      rateSmall: Double,
                      rateMedium: Double,
                      rateLarge: Double,
@@ -25,8 +26,8 @@ extension Washer {
         self.init(context: context)
         self.aboutMe = aboutMe
         self.workStatus = available
-        self.currentLocationLat = currentLocationLat
-        self.currentLocationLon = currentLocationLon
+        self.currentLocationLat = currentLocationLat ?? 0.0
+        self.currentLocationLon = currentLocationLon ?? 0.0
         self.rateSmall = rateSmall
         self.rateMedium = rateMedium
         self.rateLarge = rateLarge
@@ -41,8 +42,8 @@ extension Washer {
         self.init(context: context)
         self.aboutMe = representation.aboutMe
         self.workStatus = representation.workStatus
-        self.currentLocationLat = representation.currentLocationLat
-        self.currentLocationLon = representation.currentLocationLon
+        self.currentLocationLat = representation.currentLocationLat ?? kCLLocationCoordinate2DInvalid.latitude
+        self.currentLocationLon = representation.currentLocationLon ?? kCLLocationCoordinate2DInvalid.longitude
         self.rateSmall = representation.rateSmall
         self.rateMedium = representation.rateMedium
         self.rateLarge = representation.rateLarge
