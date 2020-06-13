@@ -375,43 +375,6 @@ extension JobController {
         }.resume()
     }
 
-    func getWashersInCity(_ city: String, completion: @escaping ([Washer]?, Error?) -> Void) {
-        let baseURL = BASEURL.appendingPathComponent(ENDPOINTS.washersInCity.rawValue)
-        let getWashersURL = baseURL.appendingPathComponent("\(city)")
-        var request = URLRequest(url: getWashersURL)
-        request.httpMethod = "GET"
-        request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
-
-        SESSION.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                print("Error getting washers: \(error)")
-                completion(nil, error)
-                return
-            }
-
-            guard let data = data else {
-                completion(nil, NSError(domain: "Getting Washers in City", code: NODATAERROR, userInfo: nil))
-                return
-            }
-
-            let decoder = JSONDecoder()
-
-            do {
-                let washerReps = try decoder.decode([WasherRepresentation].self, from: data)
-                var washers: [Washer] = []
-
-                for wash in washerReps {
-                    let washer = Washer(representation: wash)
-                    washers.append(washer)
-                }
-                completion(washers, nil)
-            } catch {
-                print("Error getting washers in city: \(error)")
-                return
-            }
-        }.resume()
-    }
-
     struct WasherID: Codable {
         var washerID: Int
     }

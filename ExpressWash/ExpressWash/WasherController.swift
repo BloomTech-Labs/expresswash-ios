@@ -224,6 +224,53 @@ extension WasherController {
         }.resume()
     }
 
+    func getWashersInCity(_ city: String, completion: @escaping ([Washer]?, Error?) -> Void) {
+        let baseURL = BASEURL.appendingPathComponent(ENDPOINTS.washersInCity.rawValue)
+        let getWashersURL = baseURL.appendingPathComponent("\(city)")
+        var request = URLRequest(url: getWashersURL)
+        request.httpMethod = "GET"
+        request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
+
+        SESSION.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error getting washers: \(error)")
+                completion(nil, error)
+                return
+            }
+
+            if let response = response as? HTTPURLResponse {
+                print("\(response.statusCode)")
+                if response.statusCode != 200 && response.statusCode != 201 && response.statusCode != 202 {
+                    completion(nil, NSError(domain: "Getting Washers in City",
+                                            code: response.statusCode,
+                                            userInfo: nil))
+                    return
+                }
+            }
+
+            guard let data = data else {
+                completion(nil, NSError(domain: "Getting Washers in City", code: NODATAERROR, userInfo: nil))
+                return
+            }
+
+            let decoder = JSONDecoder()
+
+            do {
+                let washerReps = try decoder.decode([WasherRepresentation].self, from: data)
+                var washers: [Washer] = []
+
+                for wash in washerReps {
+                    let washer = Washer(representation: wash)
+                    washers.append(washer)
+                }
+                completion(washers, nil)
+            } catch {
+                print("Error getting washers in city: \(error)")
+                return
+            }
+        }.resume()
+    }
+
     struct WasherRating: Encodable {
         var washerRating: Int
     }
