@@ -76,8 +76,6 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
         guard let category = categoryTextField.text else { return }
         let segment = sizeSegmentedControl.selectedSegmentIndex
         guard let size = sizeSegmentedControl.titleForSegment(at: segment) else { return }
-        guard let user = UserController.shared.sessionUser.user else { return }
-
         guard let yearInt = Int16(year) else { return }
 
         let carRepresentation = CarRepresentation(carId: nil,
@@ -103,7 +101,7 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
             self.dismiss(animated: true, completion: nil)
         }
 
-        carController.tieCar(carRepresentation, to: user) { (_, error) in
+        carController.tieCar(carRepresentation) { (_, error) in
             if let error = error {
                 print("Error tying car to user: \(error)")
                 return
