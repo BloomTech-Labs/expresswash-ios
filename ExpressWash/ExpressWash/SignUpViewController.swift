@@ -93,10 +93,11 @@ class SignUpViewController: UIViewController {
                 print("Error registering user: \(error)")
                 return
             }
-            guard let user = user else { return }
-            UserController.shared.sessionUser.user = user
+            if let user = user {
+                UserController.shared.sessionUser.user = user
+                self.performSegue(withIdentifier: "finishedSignUpSegue", sender: self)
+            }
         }
-        self.performSegue(withIdentifier: "finishedSignUpSegue", sender: self)
     }
 }
 
