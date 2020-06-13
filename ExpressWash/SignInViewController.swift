@@ -24,7 +24,6 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
 
         btnSignIn.layer.cornerRadius = 10.0
-
     }
 
     override func viewDidAppear(_ animated: Bool) {

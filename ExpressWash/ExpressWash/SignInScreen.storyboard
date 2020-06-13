@@ -86,7 +86,7 @@
                                             <color key="titleColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="19z-hv-b2R" kind="presentation" identifier="signUpSegue" modalPresentationStyle="fullScreen" id="TKe-LG-0RB"/>
+                                            <segue destination="19z-hv-b2R" kind="show" identifier="signUpSegue" id="TKe-LG-0RB"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVj-eZ-fxV">
@@ -205,7 +205,9 @@
         <!--SignUp-->
         <scene sceneID="L7I-1u-VV8">
             <objects>
-                <viewControllerPlaceholder storyboardName="SignUp" id="19z-hv-b2R" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="SignUp" id="19z-hv-b2R" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="F7Y-u1-kk1"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ghj-QF-QRa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="272" y="221"/>

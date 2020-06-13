@@ -95,7 +95,9 @@ class SignUpViewController: UIViewController {
             }
             if let user = user {
                 UserController.shared.sessionUser.user = user
-                self.performSegue(withIdentifier: "finishedSignUpSegue", sender: self)
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "finishedSignUpSegue", sender: self)
+                }
             }
         }
     }

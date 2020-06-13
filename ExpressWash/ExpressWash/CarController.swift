@@ -246,9 +246,9 @@ class CarController {
         }.resume()
     }
 
-    func tieCar(_ carRepresentation: CarRepresentation, completion: @escaping CompletionHandler) {
+    func tieCar(_ carRepresentation: CarRepresentation, with carID: Int, completion: @escaping CompletionHandler) {
 
-        let tieCarURL = BASEURL.appendingPathComponent("cars/\(carRepresentation.carId!)")
+        let tieCarURL = BASEURL.appendingPathComponent("cars/\(carID)")
         var request = URLRequest(url: tieCarURL)
         request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
