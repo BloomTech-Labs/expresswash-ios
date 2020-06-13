@@ -65,6 +65,15 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
         carImageView.image = image
     }
 
+    func tieCar(carRep: CarRepresentation) {
+        carController.tieCar(carRep) { (_, error) in
+            if let error = error {
+                print("Error tying car to user: \(error)")
+                return
+            }
+        }
+    }
+
     // MARK: - Actions
 
     @IBAction func addCarButtonTapped(_ sender: Any) {
@@ -101,12 +110,7 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
             self.dismiss(animated: true, completion: nil)
         }
 
-        carController.tieCar(carRepresentation) { (_, error) in
-            if let error = error {
-                print("Error tying car to user: \(error)")
-                return
-            }
-        }
+        self.tieCar(carRep: carRepresentation)
     }
 
     @IBAction func captureImageButtonTapped(_ sender: Any) {
