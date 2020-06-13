@@ -114,6 +114,22 @@ class ScheduleViewController: UIViewController,
         }
     }
 
+    func alertUser(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+
+    func alertUserWithTransition(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertController, animated: true) {
+            self.tabBarController?.selectedIndex = 3
+        }
+    }
+
     func autoFillAddress() {
         self.mapView.removeAnnotation(annotation)
 
@@ -193,8 +209,8 @@ class ScheduleViewController: UIViewController,
 
             guard let placemarks = placemarks, let location = placemarks.first?.location else {
                 print("No location found")
+                self.alertUser(title: "Location Not Found", message: "Please try again")
                 return
-                // Let the user know there was no location found
             }
 
             self.annotation.coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
@@ -275,12 +291,12 @@ class ScheduleViewController: UIViewController,
                         }
 
                         if job != nil {
-                            // Let the user know they have completed the scheduling process.
+                            self.alertUserWithTransition(title: "Job Scheduled!", message: "")
                         }
                     }
                 }
             } else {
-                // Tell user to select washer
+                self.alertUser(title: "Please Select A Washer", message: "")
             }
         }
     }
