@@ -227,7 +227,7 @@ class CarController {
         }.resume()
     }
 
-    func tieCar(_ carRepresentation: CarRepresentation, to user: User, completion: @escaping CompletionHandler) {
+    func tieCar(_ carRepresentation: CarRepresentation, completion: @escaping CompletionHandler) {
 
         let tieCarURL = BASEURL.appendingPathComponent("cars/\(carRepresentation.carId!)")
         var request = URLRequest(url: tieCarURL)

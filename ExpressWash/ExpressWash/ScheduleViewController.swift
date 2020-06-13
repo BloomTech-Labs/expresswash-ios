@@ -85,6 +85,31 @@ class ScheduleViewController: UIViewController,
         mapView.attributionButton.isEnabled = false
         mapView.delegate = self
     }
+    
+    func getWashers(location: CLLocation) {
+        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
+            if let error = error {
+                print("Error reverse geocoding: \(error)")
+                return
+            }
+
+            guard let placemark = placemarks?.first else { return }
+
+            if let city = placemark.subAdministrativeArea {
+                self.jobController.getWashersInCity(city) { (washers, error) in
+                    if let error = error {
+                        print("Error gettig washers in city: \(error)")
+                        return
+                    }
+                    self.washers = []
+
+                    if let washers = washers {
+                        self.washers = washers
+                    }
+                }
+            }
+        }
+    }
 
     func autoFillAddress() {
         self.mapView.removeAnnotation(annotation)
@@ -106,8 +131,9 @@ class ScheduleViewController: UIViewController,
                 self.annotation.coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
                                                                longitude: location.coordinate.longitude)
                 self.mapView.addAnnotation(self.annotation)
+                
+                self.getWashers(location: location)
 
-                // Search for available washers
                 self.washersCollectionView.reloadData()
             }
         }
@@ -141,7 +167,8 @@ class ScheduleViewController: UIViewController,
                                                            longitude: location.coordinate.longitude)
             self.mapView.addAnnotation(self.annotation)
 
-            // Search for available washers
+            self.getWashers(location: location)
+
             self.washersCollectionView.reloadData()
         }
     }
@@ -158,7 +185,8 @@ class ScheduleViewController: UIViewController,
                                                                     longitude: currentLocation.coordinate.longitude)
                 self.mapView.addAnnotation(self.annotation)
 
-                // Search for available washers
+                self.getWashers(location: currentLocation)
+
                 self.washersCollectionView.reloadData()
             }
         }
