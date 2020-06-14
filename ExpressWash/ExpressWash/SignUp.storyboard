@@ -87,21 +87,23 @@
                                     <action selector="registerButtonTapped:" destination="8jX-1J-ZWq" eventType="touchUpInside" id="eb7-KI-HpC"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="oaH-n0-NRq">
-                                <rect key="frame" x="0.0" y="44" width="414" height="319"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="oaH-n0-NRq">
+                                <rect key="frame" x="84.5" y="203" width="245" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="8Yk-qf-0NG"/>
+                                    <constraint firstAttribute="width" constant="245" id="CQv-ft-KqI"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="pIh-du-IKM" firstAttribute="trailing" secondItem="nN4-Qo-GzJ" secondAttribute="trailing" id="0fa-Aj-dIR"/>
                             <constraint firstItem="1h7-bN-c6y" firstAttribute="trailing" secondItem="nN4-Qo-GzJ" secondAttribute="trailing" constant="50" id="6n4-bD-EAc"/>
-                            <constraint firstItem="nN4-Qo-GzJ" firstAttribute="top" secondItem="oaH-n0-NRq" secondAttribute="bottom" id="ERI-hl-Ome"/>
                             <constraint firstItem="nN4-Qo-GzJ" firstAttribute="centerX" secondItem="1h7-bN-c6y" secondAttribute="centerX" id="GTh-jy-9og"/>
                             <constraint firstItem="nN4-Qo-GzJ" firstAttribute="leading" secondItem="1h7-bN-c6y" secondAttribute="leading" constant="50" id="KYm-uP-rqN"/>
+                            <constraint firstItem="oaH-n0-NRq" firstAttribute="centerX" secondItem="1h7-bN-c6y" secondAttribute="centerX" id="ffs-PC-Xge"/>
                             <constraint firstItem="pIh-du-IKM" firstAttribute="top" secondItem="nN4-Qo-GzJ" secondAttribute="bottom" constant="30" id="gIe-sO-Cd7"/>
-                            <constraint firstItem="1h7-bN-c6y" firstAttribute="trailing" secondItem="oaH-n0-NRq" secondAttribute="trailing" id="kGp-2V-bmS"/>
-                            <constraint firstItem="oaH-n0-NRq" firstAttribute="leading" secondItem="1h7-bN-c6y" secondAttribute="leading" id="qjV-hq-Gg1"/>
-                            <constraint firstItem="oaH-n0-NRq" firstAttribute="top" secondItem="1h7-bN-c6y" secondAttribute="top" id="wpE-8Q-gsK"/>
+                            <constraint firstItem="nN4-Qo-GzJ" firstAttribute="top" secondItem="oaH-n0-NRq" secondAttribute="bottom" constant="75" id="sCC-O9-Svn"/>
                             <constraint firstItem="nN4-Qo-GzJ" firstAttribute="centerY" secondItem="1h7-bN-c6y" secondAttribute="centerY" constant="50" id="zhw-Au-q8c"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1h7-bN-c6y"/>

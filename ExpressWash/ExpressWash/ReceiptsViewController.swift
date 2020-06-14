@@ -17,6 +17,7 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
 
     // MARK: - Outlets
 
+    @IBOutlet weak var emptyReceiptsView: UIView!
     @IBOutlet weak var receiptsTableView: UITableView!
 
     // MARK: - Views
@@ -25,6 +26,8 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
 
         getJobs()
+        receiptsTableView.delegate = self
+        receiptsTableView.dataSource = self
     }
 
     // MARK: - Methods
@@ -56,7 +59,13 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
     // MARK: - Table View
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return jobs.count
+        if jobs.count == 0 {
+            emptyReceiptsView.alpha = 1
+            return jobs.count
+        } else {
+            emptyReceiptsView.alpha = 0
+            return jobs.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
