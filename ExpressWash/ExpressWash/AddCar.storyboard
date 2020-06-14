@@ -17,13 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FFg-UL-8ia">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="453"/>
+                                <rect key="frame" x="10" y="10" width="394" height="443"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EnT-1I-bDc">
-                                <rect key="frame" x="344" y="394" width="50" height="37.5"/>
+                                <rect key="frame" x="344" y="394" width="40" height="37.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="2on-qv-1Vn"/>
-                                    <constraint firstAttribute="width" constant="50" id="qEh-jT-pW6"/>
+                                    <constraint firstAttribute="width" constant="40" id="qEh-jT-pW6"/>
                                 </constraints>
                                 <color key="tintColor" name="Light Blue"/>
                                 <state key="normal" backgroundImage="camera.viewfinder" catalog="system"/>
@@ -67,19 +67,19 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="183" height="37.5"/>
                                                 <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Make:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fj0-VQ-FBB">
                                                 <rect key="frame" x="0.0" y="45.5" width="183" height="37.5"/>
                                                 <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Model:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5U7-2U-GwF">
                                                 <rect key="frame" x="0.0" y="91" width="183" height="37.5"/>
                                                 <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -90,19 +90,19 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="183" height="25.5"/>
                                                 <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Color:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3IY-1a-5Nf">
                                                 <rect key="frame" x="0.0" y="33.5" width="183" height="25.5"/>
                                                 <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Category:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2OL-5R-scd">
                                                 <rect key="frame" x="0.0" y="67" width="183" height="25.5"/>
                                                 <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -116,16 +116,16 @@
                             <constraint firstItem="q2D-CD-mFp" firstAttribute="trailing" secondItem="BVk-2X-5pt" secondAttribute="trailing" constant="20" id="2N7-kf-jdv"/>
                             <constraint firstItem="q2D-CD-mFp" firstAttribute="trailing" secondItem="NOR-a1-j3G" secondAttribute="trailing" constant="20" id="9P2-xb-dZJ"/>
                             <constraint firstItem="IC2-j0-E06" firstAttribute="leading" secondItem="q2D-CD-mFp" secondAttribute="leading" constant="20" id="Kd1-9b-gKe"/>
-                            <constraint firstItem="FFg-UL-8ia" firstAttribute="leading" secondItem="q2D-CD-mFp" secondAttribute="leading" id="LdI-yd-1pJ"/>
+                            <constraint firstItem="FFg-UL-8ia" firstAttribute="leading" secondItem="q2D-CD-mFp" secondAttribute="leading" constant="10" id="LdI-yd-1pJ"/>
                             <constraint firstItem="BVk-2X-5pt" firstAttribute="top" secondItem="FFg-UL-8ia" secondAttribute="bottom" constant="5" id="UWm-eT-MQH"/>
                             <constraint firstItem="EnT-1I-bDc" firstAttribute="bottom" secondItem="FFg-UL-8ia" secondAttribute="bottom" constant="-20" id="UwK-UT-lNo"/>
-                            <constraint firstItem="q2D-CD-mFp" firstAttribute="trailing" secondItem="EnT-1I-bDc" secondAttribute="trailing" constant="20" id="YoD-uD-O9S"/>
+                            <constraint firstItem="q2D-CD-mFp" firstAttribute="trailing" secondItem="EnT-1I-bDc" secondAttribute="trailing" constant="30" id="YoD-uD-O9S"/>
                             <constraint firstItem="BVk-2X-5pt" firstAttribute="leading" secondItem="q2D-CD-mFp" secondAttribute="leading" constant="20" id="frY-aO-cCe"/>
                             <constraint firstItem="NOR-a1-j3G" firstAttribute="leading" secondItem="q2D-CD-mFp" secondAttribute="leading" constant="20" id="h4A-YI-nQo"/>
                             <constraint firstItem="q2D-CD-mFp" firstAttribute="trailing" secondItem="IC2-j0-E06" secondAttribute="trailing" constant="20" id="hEb-9H-gDY"/>
-                            <constraint firstItem="FFg-UL-8ia" firstAttribute="trailing" secondItem="q2D-CD-mFp" secondAttribute="trailing" id="jia-FH-sES"/>
+                            <constraint firstItem="FFg-UL-8ia" firstAttribute="trailing" secondItem="q2D-CD-mFp" secondAttribute="trailing" constant="-10" id="jia-FH-sES"/>
                             <constraint firstItem="NOR-a1-j3G" firstAttribute="top" secondItem="IC2-j0-E06" secondAttribute="bottom" constant="20" id="mO3-VN-3sf"/>
-                            <constraint firstItem="FFg-UL-8ia" firstAttribute="top" secondItem="2gg-hc-xs9" secondAttribute="top" id="p4i-Jk-3R6"/>
+                            <constraint firstItem="FFg-UL-8ia" firstAttribute="top" secondItem="2gg-hc-xs9" secondAttribute="top" constant="10" id="p4i-Jk-3R6"/>
                             <constraint firstItem="q2D-CD-mFp" firstAttribute="centerY" secondItem="FFg-UL-8ia" secondAttribute="bottom" id="yqm-yd-eKB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q2D-CD-mFp"/>
