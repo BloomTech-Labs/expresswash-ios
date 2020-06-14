@@ -43,6 +43,7 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
         UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .normal)
 
         addCarButton.layer.cornerRadius = 10.0
+        carImageView.layer.cornerRadius = 10.0
     }
 
     private func setupCamera() {
