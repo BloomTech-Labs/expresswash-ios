@@ -86,8 +86,10 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
         let segment = sizeSegmentedControl.selectedSegmentIndex
         guard let size = sizeSegmentedControl.titleForSegment(at: segment) else { return }
         guard let yearInt = Int16(year) else { return }
+        guard let clientID = UserController.shared.sessionUser.user?.userId else { return }
 
         let carRepresentation = CarRepresentation(carId: nil,
+                                                  clientId: Int(clientID),
                                                   make: make,
                                                   model: model,
                                                   year: yearInt,
@@ -109,7 +111,9 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
 
             self.tieCar(carRep: carRepresentation, carId: Int(car.carId))
 
-            self.dismiss(animated: true, completion: nil)
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
 

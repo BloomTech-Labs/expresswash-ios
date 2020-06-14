@@ -123,9 +123,8 @@ class CarController {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
 
-        let encoder = JSONEncoder()
-
         do {
+            let encoder = JSONEncoder()
             let data = try encoder.encode(carRepresentation)
             request.httpBody = data
         } catch {
@@ -134,19 +133,12 @@ class CarController {
             return
         }
 
-        SESSION.dataTask(with: request) { (data, response, error) in
+        SESSION.dataTask(with: request) { (data, _, error) in
 
             if let error = error {
                 print("Error Adding Car: \(error)")
                 completion(nil, error)
                 return
-            }
-
-            if let response = response as? HTTPURLResponse {
-                if response.statusCode != 200 {
-                    completion(nil, NSError(domain: "Adding Car", code: response.statusCode, userInfo: nil))
-                    return
-                }
             }
 
             guard let data = data else {
@@ -281,8 +273,8 @@ class CarController {
             let decoder = JSONDecoder()
 
             do {
-                let editedCarRepresentation = try decoder.decode(CarRepresentation.self, from: data)
-                let car = Car(representation: editedCarRepresentation)
+                let editedCarRepresentation = try decoder.decode(Message.self, from: data)
+                let car = Car(representation: editedCarRepresentation.updatedCar)
                 completion(car, nil)
             } catch {
                 print("Error Decoding Car: \(error)")
@@ -290,5 +282,10 @@ class CarController {
                 return
             }
         }.resume()
+    }
+
+    struct Message: Decodable {
+        var message: String
+        var updatedCar: CarRepresentation
     }
 }
