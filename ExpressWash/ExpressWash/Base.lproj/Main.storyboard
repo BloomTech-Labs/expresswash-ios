@@ -52,7 +52,7 @@
                                 </constraints>
                                 <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="address-line1"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yjg-p9-hzT">
                                 <rect key="frame" x="369" y="148.5" width="25" height="30"/>
@@ -504,7 +504,7 @@
                                 </constraints>
                                 <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" smartDashesType="yes" textContentType="tel"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email Address" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z3H-3j-xtV">
                                 <rect key="frame" x="70" y="521.5" width="334" height="35"/>

@@ -80,6 +80,8 @@ class ScheduleViewController: UIViewController,
         scheduleWashButton.layer.cornerRadius = 10.0
 
         washersCollectionView.allowsMultipleSelection = false
+
+        addressTextField.text = ""
     }
 
     func setUpMap() {
@@ -87,6 +89,7 @@ class ScheduleViewController: UIViewController,
         mapView.attributionButton.isHidden = true
         mapView.attributionButton.isEnabled = false
         mapView.delegate = self
+        mapView.layer.cornerRadius = 8.0
     }
 
     func getWashers(location: CLLocation) {
@@ -191,7 +194,7 @@ class ScheduleViewController: UIViewController,
 
     func mapView(_ mapView: MGLMapView, didAdd annotationViews: [MGLAnnotationView]) {
         mapView.centerCoordinate = annotation.coordinate
-        mapView.zoomLevel = 10
+        mapView.zoomLevel = 13
     }
 
     // MARK: - Actions

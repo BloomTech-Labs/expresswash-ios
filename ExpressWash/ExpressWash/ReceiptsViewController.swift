@@ -47,7 +47,9 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
                 self.jobs.append(job)
             }
 
-            self.receiptsTableView.reloadData()
+            DispatchQueue.main.async {
+                self.receiptsTableView.reloadData()
+            }
         }
     }
 
