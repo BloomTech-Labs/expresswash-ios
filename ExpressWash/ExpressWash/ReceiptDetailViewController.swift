@@ -51,7 +51,7 @@ class ReceiptDetailViewController: UIViewController {
 
     private func updateViews() {
         guard let job = job else { return }
-        guard let user = job.washer?.user else { return }
+        guard let washer = job.washer?.user else { return }
 
         // Format the date
         washDateLabel.text = job.creationDate
@@ -64,7 +64,7 @@ class ReceiptDetailViewController: UIViewController {
         timeTakenLabel.text = "\(timeTaken) min"
 
         // Images
-        washerNameLabel.text = "\(user.firstName.capitalized) \(user.lastName.capitalized)"
+        washerNameLabel.text = "\(washer.firstName.capitalized) \(washer.lastName.capitalized)"
         washerRatingLabel.text = "★ \(job.washer!.washerRating)"
         washerAboutMeTextView.text = "About your washer:/n/n\(job.washer!.aboutMe ?? "")"
     }
