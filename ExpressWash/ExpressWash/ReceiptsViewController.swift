@@ -84,10 +84,13 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
 
         cell.washerRating.text = "★ \(job.washer!.washerRating))"
 
-        // Ask Joel about dateFormatter for this.
+        // Ask Joel about dateFormatter for this
         cell.dateLabel.text = String(describing: job.creationDate)
 
-        // Also add timeArrived to help calculate timeTaken
+        // Fix this when joel is through with his branch
+        let timeTaken = DateFormatter.timeTaken(timeArrived: "TIME ARRIVED", timeCompleted: "TIME COMPLETED")
+
+        cell.timeTakenLabel.text = "\(timeTaken) min"
 
         // Handle before & after pictures
 

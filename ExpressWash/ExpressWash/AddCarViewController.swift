@@ -78,8 +78,8 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
     // MARK: - Actions
 
     @IBAction func addCarButtonTapped(_ sender: Any) {
-        guard let year = yearTextField.text else { return }
-        guard let make = makeTextField.text else { return }
+        guard let year = yearTextField.text,
+              let make = makeTextField.text else { return }
         guard let model = modelTextField.text else { return }
         guard let licensePlate = licenseTextField.text else { return }
         guard let color = colorTextField.text else { return }

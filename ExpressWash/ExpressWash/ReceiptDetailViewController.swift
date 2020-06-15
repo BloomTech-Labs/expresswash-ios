@@ -55,9 +55,14 @@ class ReceiptDetailViewController: UIViewController {
 
         // Format the date
         washDateLabel.text = job.creationDate
+
         addressLabel.text = job.address
         cityStateLabel.text = "\(job.city.capitalized), \(job.state.capitalized)"
-        // Time Taken
+
+        // Fix this when joel is through
+        let timeTaken = DateFormatter.timeTaken(timeArrived: "TIME ARRIVED", timeCompleted: "TIME COMPLETED")
+        timeTakenLabel.text = "\(timeTaken) min"
+
         // Images
         washerNameLabel.text = "\(user.firstName.capitalized) \(user.lastName.capitalized)"
         washerRatingLabel.text = "★ \(job.washer!.washerRating)"
