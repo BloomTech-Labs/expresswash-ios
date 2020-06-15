@@ -29,4 +29,29 @@ extension DateFormatter {
 
         return "00:00?"
     }
+
+    static func timeTaken(timeArrived: String, timeCompleted: String) -> Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm a"
+        dateFormatter.timeZone = TimeZone.current
+        let arrivalDate = dateFormatter.date(from: timeArrived)
+        let completedDate = dateFormatter.date(from: timeCompleted)
+
+        let calendar = Calendar.current
+        let arrivalComp = calendar.dateComponents([.hour, .minute], from: arrivalDate!)
+        let completedComp = calendar.dateComponents([.hour, .minute], from: completedDate!)
+        let arrivalHour = arrivalComp.hour ?? 0
+        let arrivalMinute = arrivalComp.minute ?? 0
+
+        let minutesArrived = (arrivalHour * 60) + arrivalMinute
+
+        let completedHour = completedComp.hour ?? 0
+        let completedMinute = completedComp.minute ?? 0
+
+        let minutesCompleted = (completedHour * 60) + completedMinute
+
+        let timeTaken = minutesCompleted - minutesArrived
+
+        return timeTaken
+    }
 }
