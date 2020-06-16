@@ -203,8 +203,8 @@ class ScheduleViewController: UIViewController,
             let state = stateString,
             let zip = zipString else { return }
 
-        let jobRep = JobRepresentation(jobLocationLat: Float(location.coordinate.latitude),
-                                       jobLocationLon: Float(location.coordinate.latitude),
+        let jobRep = JobRepresentation(jobLocationLat: location.coordinate.latitude,
+                                       jobLocationLon: location.coordinate.latitude,
                                        address: address,
                                        address2: nil,
                                        city: city,
@@ -212,7 +212,11 @@ class ScheduleViewController: UIViewController,
                                        zip: zip,
                                        notes: nil,
                                        jobType: "basic",
-                                       timeRequested: timeRequested)
+                                       timeRequested: timeRequested,
+                                       // ROBERT: UPDATE THE NEXT THREE VALUES -Joel
+                                       carId: 0,
+                                       clientId: Int(UserController.shared.sessionUser.user!.userId),
+                                       washerId: 0)
 
         jobController.addJob(jobRepresentation: jobRep) { (job, error) in
             if let error = error {

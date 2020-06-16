@@ -197,7 +197,7 @@ extension JobController {
     }
 
     func getUserJobs(user: User, completion: @escaping ([JobRepresentation]?, Error?) -> Void) {
-        let baseURL = BASEURL.appendingPathComponent(ENDPOINTS.jobGet.rawValue)
+        let baseURL = BASEURL.appendingPathComponent(ENDPOINTS.jobsClient.rawValue)
         let getJobsURL = baseURL.appendingPathComponent("\(user.userId)")
         var request = URLRequest(url: getJobsURL)
         request.httpMethod = "GET"
@@ -207,6 +207,47 @@ extension JobController {
         SESSION.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("Error getting users jobs: \(error)")
+                completion(nil, error)
+                return
+            }
+
+            if let response = response as? HTTPURLResponse {
+                print("\(response.statusCode)")
+                if response.statusCode != 200 && response.statusCode != 201 && response.statusCode != 202 {
+                    completion(nil, NSError(domain: "Getting Users Jobs", code: response.statusCode, userInfo: nil))
+                    return
+                }
+            }
+
+            guard let data = data else {
+                completion(nil, NSError(domain: "Getting Users Jobs", code: NODATAERROR, userInfo: nil))
+                return
+            }
+
+            let decoder = JSONDecoder()
+
+            do {
+                let jobRepresentations = try decoder.decode([JobRepresentation].self, from: data)
+                completion(jobRepresentations, nil)
+            } catch {
+                print("Error decoding users jobs: \(error)")
+                completion(nil, error)
+                return
+            }
+        }.resume()
+    }
+
+    func getWasherJobs(washer: Washer, completion: @escaping ([JobRepresentation]?, Error?) -> Void) {
+        let baseURL = BASEURL.appendingPathComponent(ENDPOINTS.jobsWasher.rawValue)
+        let getJobsURL = baseURL.appendingPathComponent("\(washer.washerId)")
+        var request = URLRequest(url: getJobsURL)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
+
+        SESSION.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error getting washer's jobs: \(error)")
                 completion(nil, error)
                 return
             }
@@ -266,7 +307,10 @@ extension JobController {
 
             if let response = response as? HTTPURLResponse {
                 print("\(response.statusCode)")
-                if response.statusCode != 200 && response.statusCode != 201 && response.statusCode != 202 {
+                if response.statusCode != 200 &&
+                   response.statusCode != 201 &&
+                   response.statusCode != 202 &&
+                   response.statusCode != 203 {
                     completion(nil, NSError(domain: "Assigning Washer To Job",
                                             code: response.statusCode,
                                             userInfo: nil))

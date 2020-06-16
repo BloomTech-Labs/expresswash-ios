@@ -11,8 +11,8 @@ import CoreData
 
 extension Job {
     convenience init(jobId: Int32 = 0,
-                     jobLocationLat: Float,
-                     jobLocationLon: Float,
+                     jobLocationLat: Double,
+                     jobLocationLon: Double,
                      address: String,
                      address2: String? = nil,
                      city: String,
@@ -87,7 +87,10 @@ extension Job {
                           photoBeforeJob: self.photoBeforeJob,
                           photoAfterJob: self.photoAfterJob,
                           timeRequested: self.timeRequested,
-                          timeCompleted: self.timeCompleted
+                          timeCompleted: self.timeCompleted,
+                          carId: Int(self.car?.carId ?? NOID32),
+                          clientId: Int(self.client?.userId ?? NOID32),
+                          washerId: Int(self.washer?.washerId ?? NOID32)
         )
     }
 }

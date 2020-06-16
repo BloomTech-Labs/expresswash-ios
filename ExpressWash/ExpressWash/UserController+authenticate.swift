@@ -66,7 +66,14 @@ extension UserController {
                 if self.sessionUser.user != nil {
                     self.update(user: self.sessionUser.user!, with: authReturn.user)
                 } else {
-                    self.sessionUser.user = User(representation: authReturn.user)
+                    CoreDataStack.shared.mainContext.perform {
+                        self.sessionUser.user = User(representation: authReturn.user)
+                        do {
+                            try CoreDataStack.shared.mainContext.save()
+                        } catch {
+                            print("Unable to save user after signing in: \(error)")
+                        }
+                    }
                 }
 
                 // Check to see if a washer object was returned with the user
@@ -80,7 +87,14 @@ extension UserController {
                         washerController.updateWasher(self.sessionUser.washer!, with: washerRep)
                     } else {
                         // if it didn't exist, create it and save it to the session
-                        self.sessionUser.washer = Washer(representation: washerRep)
+                        CoreDataStack.shared.mainContext.perform {
+                            self.sessionUser.washer = Washer(representation: washerRep)
+                            do {
+                                try CoreDataStack.shared.mainContext.save()
+                            } catch {
+                                print("unable to save washer after signing in: \(error)")
+                            }
+                        }
                     }
                 }
                 completion(self.sessionUser.user, nil)

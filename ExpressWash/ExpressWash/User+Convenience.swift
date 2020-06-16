@@ -75,6 +75,10 @@ extension User {
         } else {
             self.userRatingTotal = 0
         }
+
+        for carRep in representation.carRepresentations {
+            addToCars(Car(representation: carRep, context: context))
+        }
     }
 
     var representation: UserRepresentation {

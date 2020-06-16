@@ -13,6 +13,8 @@ class WasherViewController: UIViewController {
 
     // MARK: - Properties
     var washerController = WasherController()
+    var jobController = JobController()
+    var carController = CarController()
     var job: Job?
     var lastKnownLat = kCLLocationCoordinate2DInvalid.latitude
     var lastKnownLon = kCLLocationCoordinate2DInvalid.longitude
@@ -42,9 +44,17 @@ class WasherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        checkUserWasherLink()
         setupSubviews()
         setUpMap()
+    }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateViews()
+    }
+
+    private func checkUserWasherLink() {
         if UserController.shared.sessionUser.user != nil &&
            UserController.shared.sessionUser.washer != nil &&
            UserController.shared.sessionUser.washer?.user == nil {
@@ -53,11 +63,6 @@ class WasherViewController: UIViewController {
             UserController.shared.sessionUser.user?.washer =
                 UserController.shared.sessionUser.washer
         }
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        updateViews()
     }
 
     private func setupSubviews() {
@@ -85,7 +90,9 @@ class WasherViewController: UIViewController {
         colorYearLabel.text = nil
 
         updateWasherViews()
-        updateJobViews()
+        fetchJobs {
+            self.updateJobViews()
+        }
     }
 
     private func updateWasherViews() {
@@ -112,6 +119,53 @@ class WasherViewController: UIViewController {
         rateLargeLabel.text = "Lg. " + NumberFormatter.dollarString(washer.rateLarge)
         rateMediumLabel.text = "Md. " + NumberFormatter.dollarString(washer.rateMedium)
         rateSmallLabel.text = "Sm. " + NumberFormatter.dollarString(washer.rateSmall)
+    }
+
+    private func fetchJobs(completion: @escaping () -> Void) {
+        // checks with the server to get the latest list of jobs
+        // for this washer and sets the current job, if any, to self.job
+
+        checkUserWasherLink()
+        guard let washer = UserController.shared.sessionUser.washer else {
+            return
+        }
+
+        jobController.getWasherJobs(washer: washer) { (jobReps, error) in
+            if let error = error {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController()
+                    alert.title = "Unable to fetch jobs"
+                    alert.message = "An error occurred while fetching your current job: \(error)"
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                return
+            }
+
+            guard let jobReps = jobReps else { return }
+            var selectedJobRep: JobRepresentation?
+            for jobRep in jobReps where !jobRep.completed {
+                // assign any uncompleted job to the self.job property
+                // hopefully there's only one. probably a better way
+                // to do this
+                self.job = Job(representation: jobRep)
+                selectedJobRep = jobRep
+            }
+            if selectedJobRep != nil {
+                // fetch the client for this job
+                UserController.shared.fetchUserByID(uid: selectedJobRep!.clientId) { (client, error) in
+                    if let error = error {
+                        print("Unable to fetch client for job: \(error)")
+                    }
+                    if let client = client {
+                        self.job?.client = client
+                    }
+
+                    self.job?.car = self.carController.findCar(by: selectedJobRep!.carId)
+                }
+            }
+            completion()
+        }
     }
 
     private func updateJobViews() {
@@ -176,12 +230,14 @@ class WasherViewController: UIViewController {
         washerController.put(washerRep: washerRep) { (error) in
             if let error = error {
                 print("Couldn't update washer active status: \(error)")
-                self.activeSwitch.isOn = washer.workStatus
-                let alert = UIAlertController()
-                alert.title = "Unable to update"
-                alert.message = "An error occurred while updating your active status: \(error)"
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.activeSwitch.isOn = washer.workStatus
+                    let alert = UIAlertController()
+                    alert.title = "Unable to update"
+                    alert.message = "An error occurred while updating your active status: \(error)"
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
             } else {
                 print(washerRep)
                 self.washerController.updateWasher(washer, with: washerRep)
@@ -224,11 +280,13 @@ extension WasherViewController: MGLMapViewDelegate {
         washerController.put(washerRep: washerRep) { (error) in
             if let error = error {
                 print("Couldn't update washer location: \(error)")
-                let alert = UIAlertController()
-                alert.title = "Unable to update"
-                alert.message = "An error occurred while updating your location: \(error)"
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    let alert = UIAlertController()
+                    alert.title = "Unable to update"
+                    alert.message = "An error occurred while updating your location: \(error)"
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
             } else {
                 self.washerController.updateWasher(washer, with: washerRep)
             }
