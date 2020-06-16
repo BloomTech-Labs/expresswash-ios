@@ -80,7 +80,11 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
 
         cell.washerName.text = firstName + lastName
 
-        // Handle washer profile photo
+        if let url = job.washer!.user!.profilePicture {
+            cell.washerImage.image = UIImage.cached(from: url, defaultTitle: "person.circle")
+        } else {
+            cell.washerImage.image = UIImage(named: "person.circle")
+        }
 
         cell.washerRating.text = "★ \(job.washer!.washerRating))"
 
@@ -91,7 +95,13 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
 
         cell.timeTakenLabel.text = "\(timeTaken) min"
 
-        // Handle before & after pictures
+        if let beforeString = job.photoBeforeJob {
+            cell.beforeImageView.image = UIImage.cached(from: beforeString, defaultTitle: "MAKE THIS LOGO")
+        }
+        
+        if let afterString = job.photoAfterJob {
+            cell.afterImageView.image = UIImage.cached(from: afterString, defaultTitle: "MAKE THIS LOGO")
+        }
 
         return cell
     }

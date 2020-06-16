@@ -12,7 +12,8 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
 
     // MARK: - Properties
 
-    private var carController = CarController()
+    var carController = CarController()
+    var photoController = PhotoController()
     var user: User?
 
     // MARK: - Outlets
@@ -79,15 +80,16 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
 
     @IBAction func addCarButtonTapped(_ sender: Any) {
         guard let year = yearTextField.text,
-              let make = makeTextField.text else { return }
-        guard let model = modelTextField.text else { return }
-        guard let licensePlate = licenseTextField.text else { return }
-        guard let color = colorTextField.text else { return }
-        guard let category = categoryTextField.text else { return }
+              let make = makeTextField.text,
+              let model = modelTextField.text,
+              let licensePlate = licenseTextField.text,
+              let color = colorTextField.text,
+              let category = categoryTextField.text else { return }
+
         let segment = sizeSegmentedControl.selectedSegmentIndex
-        guard let size = sizeSegmentedControl.titleForSegment(at: segment) else { return }
-        guard let yearInt = Int16(year) else { return }
-        guard let clientID = UserController.shared.sessionUser.user?.userId else { return }
+        guard let size = sizeSegmentedControl.titleForSegment(at: segment),
+              let yearInt = Int16(year),
+              let clientID = UserController.shared.sessionUser.user?.userId else { return }
 
         let carRepresentation = CarRepresentation(carId: nil,
                                                   clientId: Int(clientID),
@@ -96,7 +98,7 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
                                                   year: yearInt,
                                                   color: color,
                                                   licensePlate: licensePlate,
-                                                  photo: "HANDLE THIS",
+                                                  photo: nil,
                                                   category: category,
                                                   size: size)
 
@@ -109,8 +111,20 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
             guard let car = car else { return }
 
             self.user?.addToCars(car)
-
             self.tieCar(carRep: carRepresentation, carId: Int(car.carId))
+
+            if let photo = self.carImageView.image {
+                self.photoController.uploadPhoto(photo,
+                                                 httpMethod: "FIX THIS",
+                                                 endpoint: .imagesCar, theID: Int(car.carId)) { (_, error) in
+                    if let error = error {
+                        print("Error uploading car photo: \(error)")
+                        return
+                    }
+                                                    
+                                                    // Get car and move functions above down here
+                }
+            }
 
             DispatchQueue.main.async {
                 self.dismiss(animated: true, completion: nil)

@@ -61,7 +61,11 @@ class ScheduleViewController: UIViewController,
 
         let washer = washers[indexPath.row]
         if let user = washer.user {
-            // set image of cell with image handler
+            if let url = user.profilePicture {
+                cell.imageView.image = UIImage.cached(from: url, defaultTitle: "person.circle")
+            } else {
+                cell.imageView.image = UIImage(named: "person.circle")
+            }
 
             cell.nameLabel.text = user.firstName + user.lastName
         }
