@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E266" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Car" representedClassName="Car" syncable="YES">
         <attribute name="carId" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="category" attributeType="String"/>
@@ -19,8 +19,8 @@
         <attribute name="city" attributeType="String"/>
         <attribute name="completed" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="jobId" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="jobLocationLat" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="jobLocationLon" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="jobLocationLat" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="jobLocationLon" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="jobType" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="paid" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
@@ -69,7 +69,7 @@
         <attribute name="washerRatingTotal" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="workStatus" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <relationship name="jobs" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Job" inverseName="washer" inverseEntity="Job"/>
-        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="washer" inverseEntity="User"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="washer" inverseEntity="User"/>
     </entity>
     <elements>
         <element name="Car" positionX="18" positionY="171" width="128" height="208"/>

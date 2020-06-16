@@ -7,15 +7,18 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct JobRepresentation: Codable {
     var address: String
     var address2: String?
+    var carId: Int
     var city: String
+    var clientId: Int
     var completed: Bool
     var jobId: Int
-    var jobLocationLat: Float
-    var jobLocationLon: Float
+    var jobLocationLat: Double
+    var jobLocationLon: Double
     var jobType: String
     var notes: String?
     var paid: Bool
@@ -25,11 +28,12 @@ struct JobRepresentation: Codable {
     var state: String
     var timeRequested: String
     var timeCompleted: String?
+    var washerId: Int
     var zip: String
 
     init(jobId: Int = 0,
-         jobLocationLat: Float,
-         jobLocationLon: Float,
+         jobLocationLat: Double,
+         jobLocationLon: Double,
          address: String,
          address2: String?,
          city: String,
@@ -43,10 +47,15 @@ struct JobRepresentation: Codable {
          photoBeforeJob: String? = nil,
          photoAfterJob: String? = nil,
          timeRequested: String,
-         timeCompleted: String? = nil) {
+         timeCompleted: String? = nil,
+         carId: Int,
+         clientId: Int,
+         washerId: Int) {
         self.address = address
         self.address2 = address2
+        self.carId = carId
         self.city = city
+        self.clientId = clientId
         self.completed = completed
         self.jobId = jobId
         self.jobLocationLat = jobLocationLat
@@ -60,13 +69,16 @@ struct JobRepresentation: Codable {
         self.state = state
         self.timeRequested = timeRequested
         self.timeCompleted = timeCompleted
+        self.washerId = washerId
         self.zip = zip
     }
 
     enum JobKeys: String, CodingKey {
         case address
         case address2
+        case carId
         case city
+        case clientId
         case completed
         case jobId
         case jobLocationLat
@@ -80,6 +92,7 @@ struct JobRepresentation: Codable {
         case state
         case timeRequested
         case timeCompleted
+        case washerId
         case zip
     }
 
@@ -92,8 +105,10 @@ struct JobRepresentation: Codable {
         paid            = try container.decode(Bool.self, forKey: .paid)
         address         = try container.decode(String.self, forKey: .address)
         address2        = try container.decodeIfPresent(String.self, forKey: .address2)
-        jobLocationLat  = try container.decode(Float.self, forKey: .jobLocationLat)
-        jobLocationLon  = try container.decode(Float.self, forKey: .jobLocationLon)
+        jobLocationLat  = try container.decodeIfPresent(Double.self, forKey: .jobLocationLat) ??
+            kCLLocationCoordinate2DInvalid.latitude
+        jobLocationLon  = try container.decodeIfPresent(Double.self, forKey: .jobLocationLon) ??
+            kCLLocationCoordinate2DInvalid.longitude
         city            = try container.decode(String.self, forKey: .city)
         state           = try container.decode(String.self, forKey: .state)
         zip             = try container.decode(String.self, forKey: .zip)
@@ -103,6 +118,9 @@ struct JobRepresentation: Codable {
         photoAfterJob   = try container.decodeIfPresent(String.self, forKey: .photoAfterJob)
         timeRequested   = try container.decode(String.self, forKey: .timeRequested)
         timeCompleted   = try container.decodeIfPresent(String.self, forKey: .timeCompleted)
+        carId           = try container.decode(Int.self, forKey: .carId)
+        clientId        = try container.decode(Int.self, forKey: .clientId)
+        washerId        = try container.decode(Int.self, forKey: .washerId)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -130,5 +148,8 @@ struct JobRepresentation: Codable {
         if let timeCompleted = timeCompleted {
             try container.encode(timeCompleted, forKey: .timeCompleted)
         }
+        try container.encode(carId, forKey: .carId)
+        try container.encode(clientId, forKey: .clientId)
+        try container.encode(washerId, forKey: .washerId)
     }
 }

@@ -22,8 +22,8 @@ extension Job {
     @NSManaged public var city: String
     @NSManaged public var completed: Bool
     @NSManaged public var jobId: Int32
-    @NSManaged public var jobLocationLat: Float
-    @NSManaged public var jobLocationLon: Float
+    @NSManaged public var jobLocationLat: Double
+    @NSManaged public var jobLocationLon: Double
     @NSManaged public var jobType: String
     @NSManaged public var notes: String?
     @NSManaged public var paid: Bool
