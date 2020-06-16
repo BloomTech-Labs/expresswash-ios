@@ -212,7 +212,11 @@ class ScheduleViewController: UIViewController,
                                        zip: zip,
                                        notes: nil,
                                        jobType: "basic",
-                                       timeRequested: timeRequested)
+                                       timeRequested: timeRequested,
+                                       // ROBERT: UPDATE THE NEXT THREE VALUES -Joel
+                                       carId: 0,
+                                       clientId: Int(UserController.shared.sessionUser.user!.userId),
+                                       washerId: 0)
 
         jobController.addJob(jobRepresentation: jobRep) { (job, error) in
             if let error = error {
