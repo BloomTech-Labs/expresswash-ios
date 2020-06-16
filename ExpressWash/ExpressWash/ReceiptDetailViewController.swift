@@ -53,7 +53,6 @@ class ReceiptDetailViewController: UIViewController {
         guard let job = job else { return }
         guard let washer = job.washer?.user else { return }
 
-        // Format the date
         washDateLabel.text = DateFormatter.dateString(from: job.creationDate!)
 
         addressLabel.text = job.address
@@ -63,7 +62,15 @@ class ReceiptDetailViewController: UIViewController {
         let timeTaken = DateFormatter.timeTaken(timeArrived: "TIME ARRIVED", timeCompleted: "TIME COMPLETED")
         timeTakenLabel.text = "\(timeTaken) min"
 
-        // Images
+        if let beforeString = job.photoBeforeJob {
+            beforeImageView.image = UIImage.cached(from: beforeString, defaultTitle: "LOGO")
+        }
+        if let afterString = job.photoAfterJob {
+            afterImageView.image = UIImage.cached(from: afterString, defaultTitle: "LOGO")
+        }
+        if let washerPhotoURL = washer.profilePicture {
+            washerProfileImageView.image = UIImage.cached(from: washerPhotoURL, defaultTitle: "person.circle")
+        }
         washerNameLabel.text = "\(washer.firstName.capitalized) \(washer.lastName.capitalized)"
         washerRatingLabel.text = "★ \(job.washer!.washerRating)"
         washerAboutMeTextView.text = "About your washer:/n/n\(job.washer!.aboutMe ?? "")"

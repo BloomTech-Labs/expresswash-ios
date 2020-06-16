@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController,
 
     // MARK: - Properties
 
+    let photoController = PhotoController()
     var profileImagePicker = UIImagePickerController()
     var bannerImagePicker = UIImagePickerController()
 
@@ -66,7 +67,7 @@ class ProfileViewController: UIViewController,
 
         if let car = cars[indexPath.row] as? Car {
             if let photoString = car.photo {
-                cell.imageView.image = UIImage(contentsOfFile: photoString)
+                cell.imageView.image = UIImage.cached(from: photoString, defaultTitle: nil)
             }
         }
 
@@ -148,29 +149,46 @@ class ProfileViewController: UIViewController,
         if !editButton.isSelected {
             editEnabled()
         } else {
-            // FIX PHOTOS, & STRIPE
-            guard let firstName = firstNameTextField.text else { return }
-            guard let lastName = lastNameTextField.text else { return }
-            guard let phoneNumber = phoneNumberTextField.text else { return }
-            guard let emailAddress = emailAddressTextField.text else { return }
-            guard let address = addressTextField.text else { return }
-            guard let city = cityTextField.text else { return }
-            guard let state = stateTextField.text else { return }
+            // Fix Stripe
+            guard let firstName = firstNameTextField.text, let lastName = lastNameTextField.text,
+                  let phoneNumber = phoneNumberTextField.text, let emailAddress = emailAddressTextField.text,
+                  let address = addressTextField.text, let city = cityTextField.text,
+                  let state = stateTextField.text else { return }
+
+            if let profilePhoto = profileImageView.image {
+                photoController.uploadPhoto(profilePhoto,
+                                            httpMethod: "FIX THIS", endpoint: .imagesProfile,
+                                            theID: Int(user.userId)) { (_, error) in
+                    if let error = error {
+                        print("Error updloading profile photo: \(error)")
+                        return
+                    }
+                }
+            }
+
+            if let bannerPhoto = bannerImageView.image {
+                photoController.uploadPhoto(bannerPhoto,
+                                            httpMethod: "FIX THIS", endpoint: .imagesBanner,
+                                            theID: Int(user.userId)) { (_, error) in
+                    if let error = error {
+                        print("Error uploading banner photo: \(error)")
+                        return
+                    }
+                }
+            }
+
+            guard let userRep = UserController.shared.findUser(byID: Int(user.userId)) else { return }
 
             let userRepresentation = UserRepresentation(userId: Int(user.userId),
-                                                        accountType: user.accountType,
-                                                        email: emailAddress,
-                                                        firstName: firstName,
-                                                        lastName: lastName,
-                                                        bannerImage: user.bannerImage,
+                                                        accountType: user.accountType, email: emailAddress,
+                                                        firstName: firstName, lastName: lastName,
+                                                        bannerImage: userRep.bannerImage,
                                                         phoneNumber: phoneNumber,
-                                                        profilePicture: user.profilePicture,
+                                                        profilePicture: userRep.profilePicture,
                                                         stripeUUID: user.stripeUUID,
                                                         streetAddress: address,
                                                         streetAddress2: nil,
-                                                        city: city,
-                                                        state: state,
-                                                        zip: nil,
+                                                        city: city, state: state, zip: nil,
                                                         userRating: Int(user.userRating),
                                                         userRatingTotal: Int(user.userRatingTotal))
 
