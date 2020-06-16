@@ -203,8 +203,8 @@ class ScheduleViewController: UIViewController,
             let state = stateString,
             let zip = zipString else { return }
 
-        let jobRep = JobRepresentation(jobLocationLat: Float(location.coordinate.latitude),
-                                       jobLocationLon: Float(location.coordinate.latitude),
+        let jobRep = JobRepresentation(jobLocationLat: location.coordinate.latitude,
+                                       jobLocationLon: location.coordinate.latitude,
                                        address: address,
                                        address2: nil,
                                        city: city,
