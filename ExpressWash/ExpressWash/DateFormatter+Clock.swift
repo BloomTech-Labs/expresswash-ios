@@ -30,6 +30,20 @@ extension DateFormatter {
         return "00:00?"
     }
 
+    static var Date: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd, YYYY"
+        return formatter
+    }()
+
+    static func dateString(from dateString: String) -> String {
+        if let date = DateFormatter.FromISODate.date(from: dateString) {
+            return DateFormatter.Date.string(from: date)
+        }
+
+        return ""
+    }
+
     static func timeTaken(timeArrived: String, timeCompleted: String) -> Int {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "hh:mm a"
