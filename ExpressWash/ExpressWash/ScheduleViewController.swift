@@ -248,8 +248,7 @@ class ScheduleViewController: UIViewController,
     @IBAction func scheduleWashButtonTapped(_ sender: Any) {
 
         let date = Date()
-        let dateFormatter = DateFormatter.Clock
-        let timeRequested = dateFormatter.string(from: date)
+        let timeRequested = DateFormatter.Clock.string(from: date)
 
         let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
 

@@ -15,9 +15,6 @@
 		371DFE3D2474AE05008EAAE0 /* Car.json in Resources */ = {isa = PBXBuildFile; fileRef = 371DFE3C2474AE05008EAAE0 /* Car.json */; };
 		371DFE3F2474CAB1008EAAE0 /* EditCar.json in Resources */ = {isa = PBXBuildFile; fileRef = 371DFE3E2474CAB1008EAAE0 /* EditCar.json */; };
 		371DFE412474D98B008EAAE0 /* DeleteCar.json in Resources */ = {isa = PBXBuildFile; fileRef = 371DFE402474D98B008EAAE0 /* DeleteCar.json */; };
-		372991BB2497FE7B0019E788 /* profileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372991BA2497FE7B0019E788 /* profileTests.swift */; };
-		372991BD2497FE8D0019E788 /* schedulingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372991BC2497FE8D0019E788 /* schedulingTests.swift */; };
-		372991BF2497FE980019E788 /* receiptsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372991BE2497FE980019E788 /* receiptsTests.swift */; };
 		375D410D2451296E00479C7E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375D410C2451296E00479C7E /* ProfileViewController.swift */; };
 		375D410F2451298200479C7E /* ReceiptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375D410E2451298200479C7E /* ReceiptsViewController.swift */; };
 		375D41112451299500479C7E /* WasherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375D41102451299500479C7E /* WasherViewController.swift */; };
@@ -103,9 +100,6 @@
 		371DFE3C2474AE05008EAAE0 /* Car.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Car.json; sourceTree = "<group>"; };
 		371DFE3E2474CAB1008EAAE0 /* EditCar.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EditCar.json; sourceTree = "<group>"; };
 		371DFE402474D98B008EAAE0 /* DeleteCar.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DeleteCar.json; sourceTree = "<group>"; };
-		372991BA2497FE7B0019E788 /* profileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileTests.swift; sourceTree = "<group>"; };
-		372991BC2497FE8D0019E788 /* schedulingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = schedulingTests.swift; sourceTree = "<group>"; };
-		372991BE2497FE980019E788 /* receiptsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = receiptsTests.swift; sourceTree = "<group>"; };
 		375D410C2451296E00479C7E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		375D410E2451298200479C7E /* ReceiptsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptsViewController.swift; sourceTree = "<group>"; };
 		375D41102451299500479C7E /* WasherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherViewController.swift; sourceTree = "<group>"; };
@@ -235,30 +229,6 @@
 				375DB3E4244A5AE800C889F2 /* LaunchScreen.storyboard */,
 			);
 			name = Main;
-			sourceTree = "<group>";
-		};
-		372991B72497FE400019E788 /* ProfileTests */ = {
-			isa = PBXGroup;
-			children = (
-				372991BA2497FE7B0019E788 /* profileTests.swift */,
-			);
-			name = ProfileTests;
-			sourceTree = "<group>";
-		};
-		372991B82497FE420019E788 /* SchedulingTests */ = {
-			isa = PBXGroup;
-			children = (
-				372991BC2497FE8D0019E788 /* schedulingTests.swift */,
-			);
-			name = SchedulingTests;
-			sourceTree = "<group>";
-		};
-		372991B92497FE440019E788 /* ReceiptsTests */ = {
-			isa = PBXGroup;
-			children = (
-				372991BE2497FE980019E788 /* receiptsTests.swift */,
-			);
-			name = ReceiptsTests;
 			sourceTree = "<group>";
 		};
 		375DB3CD244A5AE500C889F2 = {
@@ -503,9 +473,6 @@
 				378CE7C82473A28C00486754 /* CarTests */,
 				37C3A1F224762A3A008ECB90 /* JobTests */,
 				5D9962512465021C00D4151F /* Modeltests */,
-				372991B72497FE400019E788 /* ProfileTests */,
-				372991B82497FE420019E788 /* SchedulingTests */,
-				372991B92497FE440019E788 /* ReceiptsTests */,
 				5DA0A8AC24592A3100992692 /* Info.plist */,
 			);
 			path = ExpressWashTests;
@@ -775,10 +742,7 @@
 				377D1A07246A4A3D00CA3AEB /* SignUpTests.swift in Sources */,
 				5D9962502465017600D4151F /* UserModelTests.swift in Sources */,
 				5D99624C2464FFDB00D4151F /* JobModelTests.swift in Sources */,
-				372991BF2497FE980019E788 /* receiptsTests.swift in Sources */,
-				372991BD2497FE8D0019E788 /* schedulingTests.swift in Sources */,
 				5DD4A84E246B8D7200E5FA2B /* URLProcotolMock.swift in Sources */,
-				372991BB2497FE7B0019E788 /* profileTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
