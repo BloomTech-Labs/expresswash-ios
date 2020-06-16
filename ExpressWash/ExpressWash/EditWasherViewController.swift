@@ -99,10 +99,12 @@ class EditWasherViewController: UIViewController {
     }
 
     private func saveAlert(msg: String) {
-        let alert = UIAlertController()
-        alert.title = "Error"
-        alert.message = msg
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            let alert = UIAlertController()
+            alert.title = "Error"
+            alert.message = msg
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
