@@ -94,6 +94,25 @@ class CarController {
         }
     }
 
+    func findCar(by carId: Int, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> Car? {
+        var foundCar: Car?
+        let objcUID = NSNumber(value: carId)
+        let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "carId == %@", objcUID)
+        do {
+            let matchedCars = try context.fetch(fetchRequest)
+
+            if matchedCars.count == 1 {
+                foundCar = matchedCars[0]
+            }
+
+            return foundCar
+        } catch {
+            print("Error when searching core data for carId \(carId): \(error)")
+            return nil
+        }
+    }
+
     // MARK: - Networking Methods
 
     func createCar(carRepresentation: CarRepresentation, completion: @escaping CompletionHandler) {

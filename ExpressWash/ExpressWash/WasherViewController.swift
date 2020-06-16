@@ -14,6 +14,7 @@ class WasherViewController: UIViewController {
     // MARK: - Properties
     var washerController = WasherController()
     var jobController = JobController()
+    var carController = CarController()
     var job: Job?
     var lastKnownLat = kCLLocationCoordinate2DInvalid.latitude
     var lastKnownLon = kCLLocationCoordinate2DInvalid.longitude
@@ -142,12 +143,26 @@ class WasherViewController: UIViewController {
             }
 
             guard let jobReps = jobReps else { return }
-
+            var selectedJobRep: JobRepresentation?
             for jobRep in jobReps where !jobRep.completed {
                 // assign any uncompleted job to the self.job property
                 // hopefully there's only one. probably a better way
                 // to do this
                 self.job = Job(representation: jobRep)
+                selectedJobRep = jobRep
+            }
+            if selectedJobRep != nil {
+                // fetch the client for this job
+                UserController.shared.fetchUserByID(uid: selectedJobRep!.clientId) { (client, error) in
+                    if let error = error {
+                        print("Unable to fetch client for job: \(error)")
+                    }
+                    if let client = client {
+                        self.job?.client = client
+                    }
+
+                    self.job?.car = self.carController.findCar(by: selectedJobRep!.carId)
+                }
             }
             completion()
         }
