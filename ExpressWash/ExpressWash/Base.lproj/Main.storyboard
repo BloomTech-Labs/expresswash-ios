@@ -460,14 +460,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="408.5"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MhW-A2-VP9">
-                                <rect key="frame" x="364" y="66.5" width="30" height="25.5"/>
+                                <rect key="frame" x="369" y="64" width="50" height="35"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="W5f-4m-rbQ"/>
-                                    <constraint firstAttribute="width" constant="30" id="fse-P0-dKv"/>
+                                    <constraint firstAttribute="height" constant="35" id="W5f-4m-rbQ"/>
+                                    <constraint firstAttribute="width" constant="50" id="fse-P0-dKv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" backgroundImage="pencil" catalog="system"/>
+                                <state key="normal" image="pencil" catalog="system"/>
                                 <connections>
                                     <action selector="editButtonTapped:" destination="hN8-tt-ZdM" eventType="touchUpInside" id="9vj-Tu-Oug"/>
                                 </connections>
@@ -527,8 +528,13 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXX-jc-qci">
-                                <rect key="frame" x="370" y="366.5" width="24" height="22"/>
-                                <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="369" y="353.5" width="50" height="35"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="190-yt-Hx5"/>
+                                    <constraint firstAttribute="height" constant="35" id="UAH-w1-TYL"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="photo" catalog="system"/>
                                 <connections>
                                     <action selector="addBannerImageButtonTapped:" destination="hN8-tt-ZdM" eventType="touchUpInside" id="lzv-6p-WES"/>
@@ -689,7 +695,7 @@
                             <constraint firstItem="wfM-m4-ViT" firstAttribute="centerX" secondItem="0Ds-oN-TWi" secondAttribute="centerX" id="euu-h1-d2B"/>
                             <constraint firstItem="VB2-b6-Nvo" firstAttribute="bottom" secondItem="AmW-k0-3ks" secondAttribute="bottom" constant="10" id="jto-ya-efY"/>
                             <constraint firstItem="VB2-b6-Nvo" firstAttribute="trailing" secondItem="FuJ-at-0XY" secondAttribute="trailing" id="mnX-A3-i7q"/>
-                            <constraint firstItem="VB2-b6-Nvo" firstAttribute="trailing" secondItem="MhW-A2-VP9" secondAttribute="trailing" constant="20" id="pW4-kE-8y6"/>
+                            <constraint firstItem="VB2-b6-Nvo" firstAttribute="trailing" secondItem="MhW-A2-VP9" secondAttribute="trailing" constant="-5" id="pW4-kE-8y6"/>
                             <constraint firstItem="mW0-no-oUq" firstAttribute="top" secondItem="FuJ-at-0XY" secondAttribute="bottom" id="sNi-jY-V7q"/>
                             <constraint firstItem="VB2-b6-Nvo" firstAttribute="centerY" secondItem="0Ds-oN-TWi" secondAttribute="bottom" constant="20" id="wiO-ww-6Mr"/>
                         </constraints>

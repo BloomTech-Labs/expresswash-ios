@@ -20,6 +20,12 @@ class ProfileViewController: UIViewController,
     let photoController = PhotoController()
     var profileImagePicker = UIImagePickerController()
     var bannerImagePicker = UIImagePickerController()
+    var cars: [Car] {
+        let orderedSet = UserController.shared.sessionUser.user?.cars?.set as? Set<Car> ?? []
+        return orderedSet.sorted { (car1, car2) -> Bool in
+            car1.carId > car2.carId
+        }
+    }
 
     // MARK: - Outlets
 
@@ -53,22 +59,18 @@ class ProfileViewController: UIViewController,
     // MARK: - CollectionView Data Source
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let user = UserController.shared.sessionUser.user, let cars = user.cars else { return 0 }
-
         return cars.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "carCell", for: indexPath)
-            as? CarCollectionViewCell,
-            let user = UserController.shared.sessionUser.user,
-            let cars = user.cars else { return UICollectionViewCell() }
+            as? CarCollectionViewCell else { return UICollectionViewCell() }
 
-        if let car = cars[indexPath.row] as? Car {
-            if let photoString = car.photo {
-                cell.imageView.image = UIImage.cached(from: photoString, defaultTitle: nil)
-            }
+        let car = cars[indexPath.row]
+
+        if let photoString = car.photo {
+            cell.imageView.image = UIImage.cached(from: photoString, defaultTitle: nil)
         }
 
         cell.layer.cornerRadius = 10.0
@@ -82,6 +84,9 @@ class ProfileViewController: UIViewController,
         profileImageView.layer.cornerRadius = profileImageView.frame.size.height/2
         profileImageView.layer.borderColor = UIColor.white.cgColor
         profileImageView.layer.borderWidth = 3.0
+
+        editButton.layer.cornerRadius = 5.0
+        bannerImageButton.layer.cornerRadius = 5.0
     }
 
     func updateViews() {
@@ -89,9 +94,9 @@ class ProfileViewController: UIViewController,
 
         if let url = user.profilePicture {
             if let data = try? Data(contentsOf: url) {
-                       let image: UIImage = UIImage(data: data)!
-                       profileImageView.image = image
-                   }
+                let image: UIImage = UIImage(data: data)!
+                profileImageView.image = image
+            }
         } else {
             profileImageView.image = UIImage(systemName: "person.circle")
         }
@@ -100,7 +105,7 @@ class ProfileViewController: UIViewController,
 
         if let bannerURL = user.bannerImage {
             if let data = try? Data(contentsOf: bannerURL) {
-                let image = UIImage(data: data)
+                let image: UIImage = UIImage(data: data)!
                 bannerImageView.image = image
             }
         }
@@ -141,11 +146,11 @@ class ProfileViewController: UIViewController,
         self.dismiss(animated: true, completion: nil)
     }
 
-    func uploadPhoto(photo: UIImage, url: URL?, user: User) {
+    func uploadProfilePhoto(photo: UIImage, url: URL?, user: User, endpoint: ImageEndpoint) {
         if user.profilePicture == nil {
             print("POST")
             photoController.uploadPhoto(photo,
-                                        httpMethod: "POST", endpoint: .imagesProfile,
+                                        httpMethod: "POST", endpoint: endpoint,
                                         theID: Int(user.userId)) { (_, error) in
                 if let error = error {
                     print("Error updloading profile photo: \(error)")
@@ -155,7 +160,31 @@ class ProfileViewController: UIViewController,
         } else {
             print("PUT")
             photoController.uploadPhoto(photo,
-                                        httpMethod: "PUT", endpoint: .imagesProfile,
+                                        httpMethod: "PUT", endpoint: endpoint,
+                                        theID: Int(user.userId)) { (_, error) in
+                if let error = error {
+                    print("Error updloading profile photo: \(error)")
+                    return
+                }
+            }
+        }
+    }
+
+    func uploadBannerPhoto(photo: UIImage, url: URL?, user: User, endpoint: ImageEndpoint) {
+        if user.bannerImage == nil {
+            print("POST")
+            photoController.uploadPhoto(photo,
+                                        httpMethod: "POST", endpoint: endpoint,
+                                        theID: Int(user.userId)) { (_, error) in
+                if let error = error {
+                    print("Error updloading profile photo: \(error)")
+                    return
+                }
+            }
+        } else {
+            print("PUT")
+            photoController.uploadPhoto(photo,
+                                        httpMethod: "PUT", endpoint: endpoint,
                                         theID: Int(user.userId)) { (_, error) in
                 if let error = error {
                     print("Error updloading profile photo: \(error)")
@@ -180,11 +209,11 @@ class ProfileViewController: UIViewController,
                   let state = stateTextField.text else { return }
 
             if let profilePhoto = profileImageView.image {
-                uploadPhoto(photo: profilePhoto, url: user.profilePicture, user: user)
+                uploadProfilePhoto(photo: profilePhoto, url: user.profilePicture, user: user, endpoint: .imagesProfile)
             }
 
             if let bannerPhoto = bannerImageView.image {
-                uploadPhoto(photo: bannerPhoto, url: user.bannerImage, user: user)
+                uploadBannerPhoto(photo: bannerPhoto, url: user.bannerImage, user: user, endpoint: .imagesBanner)
             }
 
             guard let userRep = UserController.shared.findUser(byID: Int(user.userId)) else { return }
@@ -276,7 +305,7 @@ class ProfileViewController: UIViewController,
 extension ProfileViewController {
 
     func editEnabled() {
-        editButton.setBackgroundImage(UIImage(systemName: "square.and.arrow.down"), for: .normal)
+        editButton.setImage(UIImage(systemName: "square.and.arrow.down"), for: .normal)
         editButton.isSelected = true
 
         if !profileTapGesture.isEnabled {
@@ -329,7 +358,7 @@ extension ProfileViewController {
     }
 
     func editDisabled() {
-        editButton.setBackgroundImage(UIImage(systemName: "pencil"), for: .normal)
+       editButton.setImage(UIImage(systemName: "pencil"), for: .normal)
         editButton.isSelected = false
 
         if profileTapGesture.isEnabled {
