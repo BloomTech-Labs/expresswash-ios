@@ -32,7 +32,7 @@ class SignInViewController: UIViewController {
 
         txtEmail.text = UserController.shared.email
         txtPassword.text = UserController.shared.password
-        
+
         // check to see if a valid token is already available
         UserController.shared.validateToken { valid in
             if valid {
