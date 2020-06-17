@@ -284,6 +284,19 @@ class CarController {
         }.resume()
     }
 
+    func decodeCar(with data: Data) -> Car? {
+        let decoder = JSONDecoder()
+
+        do {
+            let carRep = try decoder.decode(CarRepresentation.self, from: data)
+            let car = Car(representation: carRep)
+            return car
+        } catch {
+            print("Error decoding car from data: \(error)")
+            return nil
+        }
+    }
+
     struct Message: Decodable {
         var message: String
         var updatedCar: CarRepresentation

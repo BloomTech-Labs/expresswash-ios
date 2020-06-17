@@ -110,19 +110,20 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
 
             guard let car = car else { return }
 
-            self.user?.addToCars(car)
-            self.tieCar(carRep: carRepresentation, carId: Int(car.carId))
-
             if let photo = self.carImageView.image {
-                self.photoController.uploadPhoto(photo,
-                                                 httpMethod: "FIX THIS",
-                                                 endpoint: .imagesCar, theID: Int(car.carId)) { (_, error) in
+                self.photoController.uploadPhoto(photo, httpMethod: "FIX THIS", endpoint: .imagesCar,
+                                                 theID: Int(car.carId)) { (data, error) in
                     if let error = error {
                         print("Error uploading car photo: \(error)")
                         return
                     }
-                                                    
-                                                    // Get car and move functions above down here
+
+                    guard let data = data else { return }
+
+                    if let car = self.carController.decodeCar(with: data) {
+                        self.user?.addToCars(car)
+                        self.tieCar(carRep: carRepresentation, carId: Int(car.carId))
+                    }
                 }
             }
 
