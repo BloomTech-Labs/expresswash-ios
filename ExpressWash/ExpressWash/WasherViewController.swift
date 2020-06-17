@@ -8,6 +8,7 @@
 
 import UIKit
 import Mapbox
+import AVFoundation
 
 class WasherViewController: UIViewController {
 
@@ -18,6 +19,8 @@ class WasherViewController: UIViewController {
     var job: Job?
     var lastKnownLat = kCLLocationCoordinate2DInvalid.latitude
     var lastKnownLon = kCLLocationCoordinate2DInvalid.longitude
+    var imagePicker = UIImagePickerController()
+    var nextImageNeeded: ImageEndpoint?
 
     // MARK: - Outlets
 
@@ -249,7 +252,25 @@ class WasherViewController: UIViewController {
     }
 
     @IBAction func arrivedCompleteTapped(_ sender: Any) {
-        // TODO: Show camera, upload before or after photo of the car
+        if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
+            imagePicker.delegate = self
+            imagePicker.sourceType = .savedPhotosAlbum
+            imagePicker.allowsEditing = false
+
+            present(imagePicker, animated: true, completion: nil)
+        } else {
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                if granted {
+                    self.imagePicker.delegate = self
+                    self.imagePicker.sourceType = .camera
+                    self.imagePicker.allowsEditing = false
+
+                    self.present(self.imagePicker, animated: true, completion: nil)
+                } else {
+                    return
+                }
+            }
+        }
     }
 
     // MARK: - Navigation
@@ -294,5 +315,51 @@ extension WasherViewController: MGLMapViewDelegate {
                 self.washerController.updateWasher(washer, with: washerRep)
             }
         }
+    }
+}
+
+extension WasherViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        guard let nextImageNeeded = nextImageNeeded,
+              let job = job
+        else {
+            print("Don't know what this image is for!")
+            return
+        }
+
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            PhotoController.shared.uploadPhoto(image, httpMethod: "POST", endpoint: nextImageNeeded, theID: Int(job.jobId)) { (data, error) in
+                
+                if let error = error {
+                    let alert = UIAlertController()
+                    alert.title = "Upload failed"
+                    alert.message = "Unable to uplaod photo: \(error)"
+                    alert.addAction(UIAlertAction(title: "OK",
+                                                  style: .default,
+                                                  handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+
+                if let data = data {
+                    let decoder = JSONDecoder()
+                    do {
+                        let rep = try decoder.decode(JobRepresentation.self, from: data)
+                        self.jobController.updateJob(job, with: rep) { _, error in
+                            if let error = error {
+                                print("Failed to update job after uploading photo: \(error)")
+                            } else {
+                                self.nextImageNeeded = self.nextImageNeeded == .imagesJobBefore ? .imagesJobAfter : nil
+                            }
+                        }
+                    } catch {
+                        print("Couldn't decode job after uploading photo: \(error)")
+                    }
+                }
+            }
+        }
+
+        self.dismiss(animated: true, completion: nil)
     }
 }
