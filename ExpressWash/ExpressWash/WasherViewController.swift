@@ -46,7 +46,9 @@ class WasherViewController: UIViewController {
 
         checkUserWasherLink()
         setupSubviews()
-        setUpMap()
+        if UserController.shared.sessionUser.washer != nil {
+            setUpMap()
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
