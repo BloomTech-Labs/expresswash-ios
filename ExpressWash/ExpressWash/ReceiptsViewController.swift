@@ -96,11 +96,11 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.timeTakenLabel.text = "\(timeTaken) min"
 
         if let beforeString = job.photoBeforeJob {
-            cell.beforeImageView.image = UIImage.cached(from: beforeString, defaultTitle: "MAKE THIS LOGO")
+            cell.beforeImageView.image = UIImage.cached(from: beforeString, defaultTitle: "Logo")
         }
-        
+
         if let afterString = job.photoAfterJob {
-            cell.afterImageView.image = UIImage.cached(from: afterString, defaultTitle: "MAKE THIS LOGO")
+            cell.afterImageView.image = UIImage.cached(from: afterString, defaultTitle: "Logo")
         }
 
         return cell

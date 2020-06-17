@@ -63,10 +63,10 @@ class ReceiptDetailViewController: UIViewController {
         timeTakenLabel.text = "\(timeTaken) min"
 
         if let beforeString = job.photoBeforeJob {
-            beforeImageView.image = UIImage.cached(from: beforeString, defaultTitle: "LOGO")
+            beforeImageView.image = UIImage.cached(from: beforeString, defaultTitle: "Logo")
         }
         if let afterString = job.photoAfterJob {
-            afterImageView.image = UIImage.cached(from: afterString, defaultTitle: "LOGO")
+            afterImageView.image = UIImage.cached(from: afterString, defaultTitle: "Logo")
         }
         if let washerPhotoURL = washer.profilePicture {
             washerProfileImageView.image = UIImage.cached(from: washerPhotoURL, defaultTitle: "person.circle")

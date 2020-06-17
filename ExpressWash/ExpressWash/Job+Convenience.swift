@@ -93,7 +93,7 @@ extension Job {
                           timeCompleted: self.timeCompleted,
                           carId: Int(self.car?.carId ?? NOID32),
                           clientId: Int(self.client?.userId ?? NOID32),
-                          washerId: Int(self.washer?.washerId ?? NOID32)
+                          washerId: Int(self.washer?.washerId ?? NOID32),
                           creationDate: self.creationDate
         )
     }
