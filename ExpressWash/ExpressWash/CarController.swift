@@ -123,9 +123,8 @@ class CarController {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
 
-        let encoder = JSONEncoder()
-
         do {
+            let encoder = JSONEncoder()
             let data = try encoder.encode(carRepresentation)
             request.httpBody = data
         } catch {
@@ -134,19 +133,12 @@ class CarController {
             return
         }
 
-        SESSION.dataTask(with: request) { (data, response, error) in
+        SESSION.dataTask(with: request) { (data, _, error) in
 
             if let error = error {
                 print("Error Adding Car: \(error)")
                 completion(nil, error)
                 return
-            }
-
-            if let response = response as? HTTPURLResponse {
-                if response.statusCode != 200 {
-                    completion(nil, NSError(domain: "Adding Car", code: response.statusCode, userInfo: nil))
-                    return
-                }
             }
 
             guard let data = data else {
@@ -244,5 +236,69 @@ class CarController {
                 return
             }
         }.resume()
+    }
+
+    func tieCar(_ carRepresentation: CarRepresentation, with carID: Int, completion: @escaping CompletionHandler) {
+
+        let tieCarURL = BASEURL.appendingPathComponent("cars/\(carID)")
+        var request = URLRequest(url: tieCarURL)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
+
+        let encoder = JSONEncoder()
+
+        do {
+            let data = try encoder.encode(carRepresentation)
+            request.httpBody = data
+        } catch {
+            print("Error Encoding Car: \(error)")
+            completion(nil, error)
+            return
+        }
+
+        SESSION.dataTask(with: request) { (data, _, error) in
+
+            if let error = error {
+                print("Error Editing Car: \(error)")
+                completion(nil, error)
+                return
+            }
+
+            guard let data = data else {
+                completion(nil, error)
+                return
+            }
+
+            let decoder = JSONDecoder()
+
+            do {
+                let editedCarRepresentation = try decoder.decode(Message.self, from: data)
+                let car = Car(representation: editedCarRepresentation.updatedCar)
+                completion(car, nil)
+            } catch {
+                print("Error Decoding Car: \(error)")
+                completion(nil, error)
+                return
+            }
+        }.resume()
+    }
+
+    func decodeCar(with data: Data) -> Car? {
+        let decoder = JSONDecoder()
+
+        do {
+            let carRep = try decoder.decode(CarRepresentation.self, from: data)
+            let car = Car(representation: carRep)
+            return car
+        } catch {
+            print("Error decoding car from data: \(error)")
+            return nil
+        }
+    }
+
+    struct Message: Decodable {
+        var message: String
+        var updatedCar: CarRepresentation
     }
 }

@@ -46,7 +46,8 @@ class PhotoController {
         }
 
         let boundary = "Boundary-\(UUID().uuidString)"
-        let url = URL(string: endpoint.rawValue)!.appendingPathComponent(String(theID))
+        let baseURL = BASEURL.appendingPathComponent(endpoint.rawValue)
+        let url = baseURL.appendingPathComponent(String(theID))
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")

@@ -17,6 +17,7 @@ class ScheduleViewController: UIViewController,
     // MARK: - Properties
 
     let jobController = JobController()
+    let washerController = WasherController()
     let locationManager = CLLocationManager()
     let geoCoder = CLGeocoder()
     var annotation = MGLPointAnnotation()
@@ -35,6 +36,7 @@ class ScheduleViewController: UIViewController,
     @IBOutlet weak var currentLocationButton: UIButton!
     @IBOutlet weak var washersCollectionView: UICollectionView!
     @IBOutlet weak var scheduleWashButton: UIButton!
+    @IBOutlet weak var emptyWashersView: UIView!
 
     // MARK: - Views
 
@@ -44,12 +46,20 @@ class ScheduleViewController: UIViewController,
         setupSubviews()
         setUpMap()
         autoFillAddress()
+        washersCollectionView.delegate = self
+        washersCollectionView.dataSource = self
     }
 
     // MARK: - CollectionView
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return washers.count
+        if washers.count == 0 {
+            emptyWashersView.alpha = 1
+            return washers.count
+        } else {
+            emptyWashersView.alpha = 0
+            return washers.count
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -60,13 +70,17 @@ class ScheduleViewController: UIViewController,
 
         let washer = washers[indexPath.row]
         if let user = washer.user {
-            // set image of cell with image handler
+            if let url = user.profilePicture {
+                cell.imageView.image = UIImage.cached(from: url, defaultTitle: "person.circle")
+            } else {
+                cell.imageView.image = UIImage(named: "person.circle")
+            }
 
             cell.nameLabel.text = user.firstName + user.lastName
         }
 
         cell.starLabel.text = "★ \(washer.washerRating)"
-        cell.largeRateLabel.text = "\(washer.rateLarge)"
+        cell.largeRateLabel.text = "$\(washer.rateLarge)"
         cell.mediumRateLabel.text = "\(washer.rateMedium)"
         cell.smallRateLabel.text = "\(washer.rateSmall)"
 
@@ -77,6 +91,10 @@ class ScheduleViewController: UIViewController,
 
     func setupSubviews() {
         scheduleWashButton.layer.cornerRadius = 10.0
+
+        washersCollectionView.allowsMultipleSelection = false
+
+        addressTextField.text = ""
     }
 
     func setUpMap() {
@@ -84,6 +102,48 @@ class ScheduleViewController: UIViewController,
         mapView.attributionButton.isHidden = true
         mapView.attributionButton.isEnabled = false
         mapView.delegate = self
+        mapView.layer.cornerRadius = 8.0
+    }
+
+    func getWashers(location: CLLocation) {
+        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
+            if let error = error {
+                print("Error reverse geocoding: \(error)")
+                return
+            }
+
+            guard let placemark = placemarks?.first else { return }
+
+            if let city = placemark.subAdministrativeArea {
+                self.washerController.getWashersInCity(city) { (washers, error) in
+                    if let error = error {
+                        print("Error gettig washers in city: \(error)")
+                        return
+                    }
+                    self.washers = []
+
+                    if let washers = washers {
+                        self.washers = washers
+                    }
+                }
+            }
+        }
+    }
+
+    func alertUser(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+
+    func alertUserWithTransition(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertController, animated: true) {
+            self.tabBarController?.selectedIndex = 3
+        }
     }
 
     func autoFillAddress() {
@@ -107,15 +167,47 @@ class ScheduleViewController: UIViewController,
                                                                longitude: location.coordinate.longitude)
                 self.mapView.addAnnotation(self.annotation)
 
-                // Search for available washers
+                self.getWashers(location: location)
+
                 self.washersCollectionView.reloadData()
+            }
+        }
+    }
+
+    func reversGeocode(location: CLLocation) {
+        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
+            if let error = error {
+                print("Error reverse geocoding: \(error)")
+                return
+            }
+
+            guard let placemark = placemarks?.first else { return }
+
+            self.addressString = nil
+            if let address = placemark.thoroughfare {
+                self.addressString = address
+            }
+
+            self.cityString = nil
+            if let city = placemark.subAdministrativeArea {
+                self.cityString = city
+            }
+
+            self.stateString = nil
+            if let state = placemark.administrativeArea {
+                self.stateString = state
+            }
+
+            self.zipString = nil
+            if let zip = placemark.isoCountryCode {
+                self.zipString = zip
             }
         }
     }
 
     func mapView(_ mapView: MGLMapView, didAdd annotationViews: [MGLAnnotationView]) {
         mapView.centerCoordinate = annotation.coordinate
-        mapView.zoomLevel = 10
+        mapView.zoomLevel = 13
     }
 
     // MARK: - Actions
@@ -133,15 +225,16 @@ class ScheduleViewController: UIViewController,
 
             guard let placemarks = placemarks, let location = placemarks.first?.location else {
                 print("No location found")
+                self.alertUser(title: "Location Not Found", message: "Please try again")
                 return
-                // Let the user know there was no location found
             }
 
             self.annotation.coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
                                                            longitude: location.coordinate.longitude)
             self.mapView.addAnnotation(self.annotation)
 
-            // Search for available washers
+            self.getWashers(location: location)
+
             self.washersCollectionView.reloadData()
         }
     }
@@ -158,45 +251,21 @@ class ScheduleViewController: UIViewController,
                                                                     longitude: currentLocation.coordinate.longitude)
                 self.mapView.addAnnotation(self.annotation)
 
-                // Search for available washers
+                self.getWashers(location: currentLocation)
+
                 self.washersCollectionView.reloadData()
             }
         }
     }
 
     @IBAction func scheduleWashButtonTapped(_ sender: Any) {
-        // Get selected washer & Move over to the receipts page for viewing/maintinence
 
         let date = Date()
-        let dateFormatter = DateFormatter.Clock
-        let timeRequested = dateFormatter.string(from: date)
+        let timeRequested = DateFormatter.Clock.string(from: date)
 
         let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
 
-        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
-            if let error = error {
-                print("Error reverse geocoding: \(error)")
-                return
-            }
-
-            guard let placemark = placemarks?.first else { return }
-
-            if let address = placemark.thoroughfare {
-                self.addressString = address
-            }
-
-            if let city = placemark.subAdministrativeArea {
-                self.cityString = city
-            }
-
-            if let state = placemark.administrativeArea {
-                self.stateString = state
-            }
-
-            if let zip = placemark.isoCountryCode {
-                self.zipString = zip
-            }
-        }
+        reversGeocode(location: location)
 
         guard let address = addressString,
             let city = cityString,
@@ -226,12 +295,23 @@ class ScheduleViewController: UIViewController,
 
             guard let job = job else { return }
 
-            //FIX WASHER ID
-            self.jobController.assignWasher(job: job, washerID: 0) { (_, error) in
-                if let error = error {
-                    print("Error assigning washer to job: \(error)")
-                    return
+            if let indexPaths = self.washersCollectionView.indexPathsForSelectedItems {
+                if let indexPath = indexPaths.first {
+                    let washer = self.washers[indexPath.row]
+
+                    self.jobController.assignWasher(job: job, washerID: Int(washer.washerId)) { (job, error) in
+                        if let error = error {
+                            print("Error assigning washer to job: \(error)")
+                            return
+                        }
+
+                        if job != nil {
+                            self.alertUserWithTransition(title: "Job Scheduled!", message: "")
+                        }
+                    }
                 }
+            } else {
+                self.alertUser(title: "Please Select A Washer", message: "")
             }
         }
     }

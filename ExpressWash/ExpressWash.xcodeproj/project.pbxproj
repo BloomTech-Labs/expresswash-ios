@@ -203,6 +203,34 @@
 			name = Receipts;
 			sourceTree = "<group>";
 		};
+		372991B32497FDE80019E788 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				370E676424820FB500297018 /* AddCar.storyboard */,
+				3765B4162488932B00D93751 /* ReceiptDetail.storyboard */,
+				5D2370EF247762A7007A7AB8 /* EditWasher.storyboard */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		372991B42497FDEB0019E788 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				5DC1B27924512563007C11EA /* SignInScreen.storyboard */,
+				378BB365244E837000A2DCDA /* SignUp.storyboard */,
+			);
+			name = Authorization;
+			sourceTree = "<group>";
+		};
+		372991B52497FDED0019E788 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				375DB3DF244A5AE500C889F2 /* Main.storyboard */,
+				375DB3E4244A5AE800C889F2 /* LaunchScreen.storyboard */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
 		375DB3CD244A5AE500C889F2 = {
 			isa = PBXGroup;
 			children = (
@@ -253,13 +281,9 @@
 		375DB3EE244A5AF400C889F2 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				375DB3DF244A5AE500C889F2 /* Main.storyboard */,
-				378BB365244E837000A2DCDA /* SignUp.storyboard */,
-				5DC1B27924512563007C11EA /* SignInScreen.storyboard */,
-				5D2370EF247762A7007A7AB8 /* EditWasher.storyboard */,
-				370E676424820FB500297018 /* AddCar.storyboard */,
-				3765B4162488932B00D93751 /* ReceiptDetail.storyboard */,
-				375DB3E4244A5AE800C889F2 /* LaunchScreen.storyboard */,
+				372991B42497FDEB0019E788 /* Authorization */,
+				372991B52497FDED0019E788 /* Main */,
+				372991B32497FDE80019E788 /* Detail */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";

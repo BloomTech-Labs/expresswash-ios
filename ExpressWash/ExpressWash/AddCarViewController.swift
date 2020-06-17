@@ -12,7 +12,8 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
 
     // MARK: - Properties
 
-    private var carController = CarController()
+    var carController = CarController()
+    var photoController = PhotoController()
     var user: User?
 
     // MARK: - Outlets
@@ -43,6 +44,7 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
         UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .normal)
 
         addCarButton.layer.cornerRadius = 10.0
+        carImageView.layer.cornerRadius = 10.0
     }
 
     private func setupCamera() {
@@ -65,27 +67,38 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
         carImageView.image = image
     }
 
+    func tieCar(carRep: CarRepresentation, carId: Int) {
+        carController.tieCar(carRep, with: carId) { (_, error) in
+            if let error = error {
+                print("Error tying car to user: \(error)")
+                return
+            }
+        }
+    }
+
     // MARK: - Actions
 
     @IBAction func addCarButtonTapped(_ sender: Any) {
-        guard let year = yearTextField.text else { return }
-        guard let make = makeTextField.text else { return }
-        guard let model = modelTextField.text else { return }
-        guard let licensePlate = licenseTextField.text else { return }
-        guard let color = colorTextField.text else { return }
-        guard let category = categoryTextField.text else { return }
-        let segment = sizeSegmentedControl.selectedSegmentIndex
-        guard let size = sizeSegmentedControl.titleForSegment(at: segment) else { return }
+        guard let year = yearTextField.text,
+              let make = makeTextField.text,
+              let model = modelTextField.text,
+              let licensePlate = licenseTextField.text,
+              let color = colorTextField.text,
+              let category = categoryTextField.text else { return }
 
-        guard let yearInt = Int16(year) else { return }
+        let segment = sizeSegmentedControl.selectedSegmentIndex
+        guard let size = sizeSegmentedControl.titleForSegment(at: segment),
+              let yearInt = Int16(year),
+              let clientID = UserController.shared.sessionUser.user?.userId else { return }
 
         let carRepresentation = CarRepresentation(carId: nil,
+                                                  clientId: Int(clientID),
                                                   make: make,
                                                   model: model,
                                                   year: yearInt,
                                                   color: color,
                                                   licensePlate: licensePlate,
-                                                  photo: "HANDLE THIS",
+                                                  photo: nil,
                                                   category: category,
                                                   size: size)
 
@@ -97,9 +110,30 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
 
             guard let car = car else { return }
 
-            self.user?.addToCars(car)
+            DispatchQueue.main.async {
+                if let photo = self.carImageView.image {
+                    DispatchQueue.global(qos: .background).async {
+                        self.photoController.uploadPhoto(photo, httpMethod: "POST", endpoint: .imagesCar,
+                                                         theID: Int(car.carId)) { (data, error) in
+                            if let error = error {
+                                print("Error uploading car photo: \(error)")
+                                return
+                            }
 
-            self.dismiss(animated: true, completion: nil)
+                            guard let data = data else { return }
+
+                            if let car = self.carController.decodeCar(with: data) {
+                                self.user?.addToCars(car)
+                                self.tieCar(carRep: carRepresentation, carId: Int(car.carId))
+                            }
+                        }
+                    }
+                }
+            }
+
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
 

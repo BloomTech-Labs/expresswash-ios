@@ -138,7 +138,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ReP-Hg-XcT" firstAttribute="top" secondItem="MCE-0r-N5H" secondAttribute="bottom" constant="8" id="18i-DB-H5L"/>
                             <constraint firstItem="thn-mk-VJC" firstAttribute="top" secondItem="Roe-vx-WRp" secondAttribute="bottom" constant="8" id="6UT-z9-n9T"/>

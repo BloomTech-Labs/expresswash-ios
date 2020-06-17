@@ -17,8 +17,15 @@ class ProfileViewController: UIViewController,
 
     // MARK: - Properties
 
+    let photoController = PhotoController()
     var profileImagePicker = UIImagePickerController()
     var bannerImagePicker = UIImagePickerController()
+    var cars: [Car] {
+        let orderedSet = UserController.shared.sessionUser.user?.cars?.set as? Set<Car> ?? []
+        return orderedSet.sorted { (car1, car2) -> Bool in
+            car1.carId > car2.carId
+        }
+    }
 
     // MARK: - Outlets
 
@@ -52,22 +59,18 @@ class ProfileViewController: UIViewController,
     // MARK: - CollectionView Data Source
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let user = UserController.shared.sessionUser.user, let cars = user.cars else { return 0 }
-
         return cars.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "carCell", for: indexPath)
-            as? CarCollectionViewCell,
-            let user = UserController.shared.sessionUser.user,
-            let cars = user.cars else { return UICollectionViewCell() }
+            as? CarCollectionViewCell else { return UICollectionViewCell() }
 
-        if let car = cars[indexPath.row] as? Car {
-            if let photoString = car.photo {
-                cell.imageView.image = UIImage(contentsOfFile: photoString)
-            }
+        let car = cars[indexPath.row]
+
+        if let photoString = car.photo {
+            cell.imageView.image = UIImage.cached(from: photoString, defaultTitle: nil)
         }
 
         cell.layer.cornerRadius = 10.0
@@ -81,6 +84,9 @@ class ProfileViewController: UIViewController,
         profileImageView.layer.cornerRadius = profileImageView.frame.size.height/2
         profileImageView.layer.borderColor = UIColor.white.cgColor
         profileImageView.layer.borderWidth = 3.0
+
+        editButton.layer.cornerRadius = 5.0
+        bannerImageButton.layer.cornerRadius = 5.0
     }
 
     func updateViews() {
@@ -88,9 +94,9 @@ class ProfileViewController: UIViewController,
 
         if let url = user.profilePicture {
             if let data = try? Data(contentsOf: url) {
-                       let image: UIImage = UIImage(data: data)!
-                       profileImageView.image = image
-                   }
+                let image: UIImage = UIImage(data: data)!
+                profileImageView.image = image
+            }
         } else {
             profileImageView.image = UIImage(systemName: "person.circle")
         }
@@ -99,7 +105,7 @@ class ProfileViewController: UIViewController,
 
         if let bannerURL = user.bannerImage {
             if let data = try? Data(contentsOf: bannerURL) {
-                let image = UIImage(data: data)
+                let image: UIImage = UIImage(data: data)!
                 bannerImageView.image = image
             }
         }
@@ -140,6 +146,54 @@ class ProfileViewController: UIViewController,
         self.dismiss(animated: true, completion: nil)
     }
 
+    func uploadProfilePhoto(photo: UIImage, url: URL?, user: User, endpoint: ImageEndpoint) {
+        if user.profilePicture == nil {
+            print("POST")
+            photoController.uploadPhoto(photo,
+                                        httpMethod: "POST", endpoint: endpoint,
+                                        theID: Int(user.userId)) { (_, error) in
+                if let error = error {
+                    print("Error updloading profile photo: \(error)")
+                    return
+                }
+            }
+        } else {
+            print("PUT")
+            photoController.uploadPhoto(photo,
+                                        httpMethod: "PUT", endpoint: endpoint,
+                                        theID: Int(user.userId)) { (_, error) in
+                if let error = error {
+                    print("Error updloading profile photo: \(error)")
+                    return
+                }
+            }
+        }
+    }
+
+    func uploadBannerPhoto(photo: UIImage, url: URL?, user: User, endpoint: ImageEndpoint) {
+        if user.bannerImage == nil {
+            print("POST")
+            photoController.uploadPhoto(photo,
+                                        httpMethod: "POST", endpoint: endpoint,
+                                        theID: Int(user.userId)) { (_, error) in
+                if let error = error {
+                    print("Error updloading profile photo: \(error)")
+                    return
+                }
+            }
+        } else {
+            print("PUT")
+            photoController.uploadPhoto(photo,
+                                        httpMethod: "PUT", endpoint: endpoint,
+                                        theID: Int(user.userId)) { (_, error) in
+                if let error = error {
+                    print("Error updloading profile photo: \(error)")
+                    return
+                }
+            }
+        }
+    }
+
     // MARK: - Actions
 
     @IBAction func editButtonTapped(_ sender: Any) {
@@ -148,29 +202,32 @@ class ProfileViewController: UIViewController,
         if !editButton.isSelected {
             editEnabled()
         } else {
-            // FIX PHOTOS, & STRIPE
-            guard let firstName = firstNameTextField.text else { return }
-            guard let lastName = lastNameTextField.text else { return }
-            guard let phoneNumber = phoneNumberTextField.text else { return }
-            guard let emailAddress = emailAddressTextField.text else { return }
-            guard let address = addressTextField.text else { return }
-            guard let city = cityTextField.text else { return }
-            guard let state = stateTextField.text else { return }
+            // Fix Stripe
+            guard let firstName = firstNameTextField.text, let lastName = lastNameTextField.text,
+                  let phoneNumber = phoneNumberTextField.text, let emailAddress = emailAddressTextField.text,
+                  let address = addressTextField.text, let city = cityTextField.text,
+                  let state = stateTextField.text else { return }
+
+            if let profilePhoto = profileImageView.image {
+                uploadProfilePhoto(photo: profilePhoto, url: user.profilePicture, user: user, endpoint: .imagesProfile)
+            }
+
+            if let bannerPhoto = bannerImageView.image {
+                uploadBannerPhoto(photo: bannerPhoto, url: user.bannerImage, user: user, endpoint: .imagesBanner)
+            }
+
+            guard let userRep = UserController.shared.findUser(byID: Int(user.userId)) else { return }
 
             let userRepresentation = UserRepresentation(userId: Int(user.userId),
-                                                        accountType: user.accountType,
-                                                        email: emailAddress,
-                                                        firstName: firstName,
-                                                        lastName: lastName,
-                                                        bannerImage: user.bannerImage,
+                                                        accountType: user.accountType, email: emailAddress,
+                                                        firstName: firstName, lastName: lastName,
+                                                        bannerImage: userRep.bannerImage,
                                                         phoneNumber: phoneNumber,
-                                                        profilePicture: user.profilePicture,
+                                                        profilePicture: userRep.profilePicture,
                                                         stripeUUID: user.stripeUUID,
                                                         streetAddress: address,
                                                         streetAddress2: nil,
-                                                        city: city,
-                                                        state: state,
-                                                        zip: nil,
+                                                        city: city, state: state, zip: nil,
                                                         userRating: Int(user.userRating),
                                                         userRatingTotal: Int(user.userRatingTotal))
 
@@ -190,11 +247,13 @@ class ProfileViewController: UIViewController,
         } else {
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
                 if granted {
-                    self.profileImagePicker.delegate = self
-                    self.profileImagePicker.sourceType = .savedPhotosAlbum
-                    self.profileImagePicker.allowsEditing = false
+                    DispatchQueue.main.async {
+                        self.profileImagePicker.delegate = self
+                        self.profileImagePicker.sourceType = .savedPhotosAlbum
+                        self.profileImagePicker.allowsEditing = false
 
-                    self.present(self.profileImagePicker, animated: true, completion: nil)
+                        self.present(self.profileImagePicker, animated: true, completion: nil)
+                    }
                 } else {
                     return
                 }
@@ -246,7 +305,7 @@ class ProfileViewController: UIViewController,
 extension ProfileViewController {
 
     func editEnabled() {
-        editButton.setBackgroundImage(UIImage(systemName: "square.and.arrow.down"), for: .normal)
+        editButton.setImage(UIImage(systemName: "square.and.arrow.down"), for: .normal)
         editButton.isSelected = true
 
         if !profileTapGesture.isEnabled {
@@ -299,7 +358,7 @@ extension ProfileViewController {
     }
 
     func editDisabled() {
-        editButton.setBackgroundImage(UIImage(systemName: "pencil"), for: .normal)
+       editButton.setImage(UIImage(systemName: "pencil"), for: .normal)
         editButton.isSelected = false
 
         if profileTapGesture.isEnabled {

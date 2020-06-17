@@ -17,6 +17,7 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
 
     // MARK: - Outlets
 
+    @IBOutlet weak var emptyReceiptsView: UIView!
     @IBOutlet weak var receiptsTableView: UITableView!
 
     // MARK: - Views
@@ -25,6 +26,8 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
 
         getJobs()
+        receiptsTableView.delegate = self
+        receiptsTableView.dataSource = self
     }
 
     // MARK: - Methods
@@ -47,14 +50,22 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
                 self.jobs.append(job)
             }
 
-            self.receiptsTableView.reloadData()
+            DispatchQueue.main.async {
+                self.receiptsTableView.reloadData()
+            }
         }
     }
 
     // MARK: - Table View
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return jobs.count
+        if jobs.count == 0 {
+            emptyReceiptsView.alpha = 1
+            return jobs.count
+        } else {
+            emptyReceiptsView.alpha = 0
+            return jobs.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,15 +80,27 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
 
         cell.washerName.text = firstName + lastName
 
-        // Handle washer profile photo
+        if let url = job.washer!.user!.profilePicture {
+            cell.washerImage.image = UIImage.cached(from: url, defaultTitle: "person.circle")
+        } else {
+            cell.washerImage.image = UIImage(named: "person.circle")
+        }
 
         cell.washerRating.text = "★ \(job.washer!.washerRating))"
 
-        // Ask for backend to add date requested to job
+        cell.dateLabel.text = DateFormatter.dateString(from: job.creationDate!)
 
-        // Also add timeArrived to help calculate timeTaken
+        let timeTakenString = DateFormatter.timeTaken(timeArrived: job.timeArrived, timeCompleted: job.timeCompleted)
 
-        // Handle before & after pictures
+        cell.timeTakenLabel.text = timeTakenString
+
+        if let beforeString = job.photoBeforeJob {
+            cell.beforeImageView.image = UIImage.cached(from: beforeString, defaultTitle: "Logo")
+        }
+
+        if let afterString = job.photoAfterJob {
+            cell.afterImageView.image = UIImage.cached(from: afterString, defaultTitle: "Logo")
+        }
 
         return cell
     }
@@ -85,7 +108,7 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "FILL ME IN" {
+        if segue.identifier == "washDetailSegue" {
             if let receiptDetailVC = segue.destination as? ReceiptDetailViewController,
                 let indexPath = receiptsTableView.indexPathForSelectedRow {
                 let job = jobs[indexPath.row]

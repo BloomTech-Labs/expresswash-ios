@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E266" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Car" representedClassName="Car" syncable="YES">
         <attribute name="carId" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="category" attributeType="String"/>
+        <attribute name="clientId" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="color" attributeType="String"/>
         <attribute name="licensePlate" attributeType="String"/>
         <attribute name="make" attributeType="String"/>
@@ -18,6 +19,7 @@
         <attribute name="address2" optional="YES" attributeType="String"/>
         <attribute name="city" attributeType="String"/>
         <attribute name="completed" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="creationDate" optional="YES" attributeType="String"/>
         <attribute name="jobId" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="jobLocationLat" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="jobLocationLon" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -28,6 +30,7 @@
         <attribute name="photoBeforeJob" optional="YES" attributeType="String"/>
         <attribute name="scheduled" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="state" attributeType="String"/>
+        <attribute name="timeArrived" optional="YES" attributeType="String"/>
         <attribute name="timeCompleted" optional="YES" attributeType="String"/>
         <attribute name="timeRequested" attributeType="String"/>
         <attribute name="zip" attributeType="String"/>
@@ -72,8 +75,8 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="washer" inverseEntity="User"/>
     </entity>
     <elements>
-        <element name="Car" positionX="18" positionY="171" width="128" height="208"/>
-        <element name="Job" positionX="160" positionY="192" width="128" height="343"/>
+        <element name="Car" positionX="18" positionY="171" width="128" height="223"/>
+        <element name="Job" positionX="160" positionY="192" width="128" height="373"/>
         <element name="User" positionX="54" positionY="198" width="128" height="343"/>
         <element name="Washer" positionX="18" positionY="153" width="128" height="223"/>
     </elements>
