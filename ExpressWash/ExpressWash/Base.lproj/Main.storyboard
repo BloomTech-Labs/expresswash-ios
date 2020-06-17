@@ -47,6 +47,7 @@
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R81-gH-PDm">
                                 <rect key="frame" x="53" y="148.5" width="308" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Gdw-11-zPk"/>
                                 </constraints>
@@ -211,14 +212,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="NFl-jm-uPI" firstAttribute="centerY" secondItem="9Bg-lY-gv8" secondAttribute="centerY" id="IIf-yD-pig"/>
                                     <constraint firstItem="NFl-jm-uPI" firstAttribute="centerX" secondItem="9Bg-lY-gv8" secondAttribute="centerX" id="wiP-Nn-8EM"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="UmX-uE-ogO" firstAttribute="leading" secondItem="Ebx-gE-aXq" secondAttribute="leading" constant="20" id="1ce-ed-iLx"/>
                             <constraint firstItem="Yuv-YS-GiD" firstAttribute="top" secondItem="Ebx-gE-aXq" secondAttribute="centerY" id="1ub-bn-R1D"/>
@@ -278,7 +279,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MND-dY-aqs">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="receiptCell" rowHeight="174" id="RvP-BV-3Xy" customClass="ReceiptTableViewCell" customModule="ExpressWash" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="174"/>
@@ -406,7 +407,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="cVa-mb-mxF" firstAttribute="centerY" secondItem="YQv-75-KQK" secondAttribute="centerY" id="6xn-gk-ygL"/>
                                     <constraint firstItem="cVa-mb-mxF" firstAttribute="centerX" secondItem="YQv-75-KQK" secondAttribute="centerX" constant="-20" id="SBf-Mx-2ZO"/>
@@ -415,7 +416,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="jE3-im-1qK" firstAttribute="trailing" secondItem="YQv-75-KQK" secondAttribute="trailing" id="7WZ-OL-sPB"/>
                             <constraint firstItem="MND-dY-aqs" firstAttribute="leading" secondItem="jE3-im-1qK" secondAttribute="leading" id="7Yv-Ya-Kdb"/>
@@ -603,7 +604,7 @@
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="whz-Ze-BNg">
                                 <rect key="frame" x="115" y="678" width="299" height="75"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="Fyq-Bf-1oi"/>
                                 </constraints>
@@ -662,7 +663,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="address-line1"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="SGj-8O-3q9" firstAttribute="centerY" secondItem="AmW-k0-3ks" secondAttribute="centerY" id="1iz-ds-scX"/>
                             <constraint firstItem="mW0-no-oUq" firstAttribute="leading" secondItem="FuJ-at-0XY" secondAttribute="leading" id="3vg-T8-8Cf"/>
@@ -917,7 +918,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="g82-j0-oOQ" firstAttribute="leading" secondItem="1Qm-YK-iIe" secondAttribute="trailing" constant="8" id="6Lm-5C-SnS"/>
                             <constraint firstItem="u3Z-NF-rAd" firstAttribute="centerY" secondItem="P7w-K1-NQc" secondAttribute="centerY" id="8hb-QM-6o9"/>
@@ -999,7 +1000,8 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4vH-tu-t3S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
