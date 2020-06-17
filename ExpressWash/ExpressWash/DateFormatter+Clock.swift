@@ -44,7 +44,8 @@ extension DateFormatter {
         return ""
     }
 
-    static func timeTaken(timeArrived: String, timeCompleted: String) -> Int {
+    static func timeTaken(timeArrived: String?, timeCompleted: String?) -> String {
+        guard let timeArrived = timeArrived, let timeCompleted = timeCompleted else { return "In Progress"}
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "hh:mm a"
         dateFormatter.timeZone = TimeZone.current
@@ -66,6 +67,6 @@ extension DateFormatter {
 
         let timeTaken = minutesCompleted - minutesArrived
 
-        return timeTaken
+        return "\(timeTaken) min"
     }
 }

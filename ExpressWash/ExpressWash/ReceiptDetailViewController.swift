@@ -58,9 +58,8 @@ class ReceiptDetailViewController: UIViewController {
         addressLabel.text = job.address
         cityStateLabel.text = "\(job.city.capitalized), \(job.state.capitalized)"
 
-        // Fix this when joel is through
-        let timeTaken = DateFormatter.timeTaken(timeArrived: "TIME ARRIVED", timeCompleted: "TIME COMPLETED")
-        timeTakenLabel.text = "\(timeTaken) min"
+        let timeTakenString = DateFormatter.timeTaken(timeArrived: job.timeArrived, timeCompleted: job.timeCompleted)
+        timeTakenLabel.text = timeTakenString
 
         if let beforeString = job.photoBeforeJob {
             beforeImageView.image = UIImage.cached(from: beforeString, defaultTitle: "Logo")

@@ -90,10 +90,9 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
 
         cell.dateLabel.text = DateFormatter.dateString(from: job.creationDate!)
 
-        // Fix this when joel is through with his branch
-        let timeTaken = DateFormatter.timeTaken(timeArrived: "TIME ARRIVED", timeCompleted: "TIME COMPLETED")
+        let timeTakenString = DateFormatter.timeTaken(timeArrived: job.timeArrived, timeCompleted: job.timeCompleted)
 
-        cell.timeTakenLabel.text = "\(timeTaken) min"
+        cell.timeTakenLabel.text = timeTakenString
 
         if let beforeString = job.photoBeforeJob {
             cell.beforeImageView.image = UIImage.cached(from: beforeString, defaultTitle: "Logo")
