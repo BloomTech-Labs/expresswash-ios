@@ -226,9 +226,8 @@ extension WasherController {
     }
 
     func getWashersInCity(_ city: String, completion: @escaping ([Washer]?, Error?) -> Void) {
-        let baseURL = BASEURL.appendingPathComponent(ENDPOINTS.washersInCity.rawValue)
-        let getWashersURL = baseURL.appendingPathComponent("\(city)")
-        var request = URLRequest(url: getWashersURL)
+        let baseURL = BASEURL.appendingPathComponent(ENDPOINTS.washersInCity.rawValue).appendingPathComponent(city)
+        var request = URLRequest(url: baseURL)
         request.httpMethod = "GET"
         request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
 

@@ -141,6 +141,30 @@ class ProfileViewController: UIViewController,
         self.dismiss(animated: true, completion: nil)
     }
 
+    func uploadPhoto(photo: UIImage, url: URL?, user: User) {
+        if user.profilePicture == nil {
+            print("POST")
+            photoController.uploadPhoto(photo,
+                                        httpMethod: "POST", endpoint: .imagesProfile,
+                                        theID: Int(user.userId)) { (_, error) in
+                if let error = error {
+                    print("Error updloading profile photo: \(error)")
+                    return
+                }
+            }
+        } else {
+            print("PUT")
+            photoController.uploadPhoto(photo,
+                                        httpMethod: "PUT", endpoint: .imagesProfile,
+                                        theID: Int(user.userId)) { (_, error) in
+                if let error = error {
+                    print("Error updloading profile photo: \(error)")
+                    return
+                }
+            }
+        }
+    }
+
     // MARK: - Actions
 
     @IBAction func editButtonTapped(_ sender: Any) {
@@ -156,25 +180,11 @@ class ProfileViewController: UIViewController,
                   let state = stateTextField.text else { return }
 
             if let profilePhoto = profileImageView.image {
-                photoController.uploadPhoto(profilePhoto,
-                                            httpMethod: "FIX THIS", endpoint: .imagesProfile,
-                                            theID: Int(user.userId)) { (_, error) in
-                    if let error = error {
-                        print("Error updloading profile photo: \(error)")
-                        return
-                    }
-                }
+                uploadPhoto(photo: profilePhoto, url: user.profilePicture, user: user)
             }
 
             if let bannerPhoto = bannerImageView.image {
-                photoController.uploadPhoto(bannerPhoto,
-                                            httpMethod: "FIX THIS", endpoint: .imagesBanner,
-                                            theID: Int(user.userId)) { (_, error) in
-                    if let error = error {
-                        print("Error uploading banner photo: \(error)")
-                        return
-                    }
-                }
+                uploadPhoto(photo: bannerPhoto, url: user.bannerImage, user: user)
             }
 
             guard let userRep = UserController.shared.findUser(byID: Int(user.userId)) else { return }
@@ -208,11 +218,13 @@ class ProfileViewController: UIViewController,
         } else {
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
                 if granted {
-                    self.profileImagePicker.delegate = self
-                    self.profileImagePicker.sourceType = .savedPhotosAlbum
-                    self.profileImagePicker.allowsEditing = false
+                    DispatchQueue.main.async {
+                        self.profileImagePicker.delegate = self
+                        self.profileImagePicker.sourceType = .savedPhotosAlbum
+                        self.profileImagePicker.allowsEditing = false
 
-                    self.present(self.profileImagePicker, animated: true, completion: nil)
+                        self.present(self.profileImagePicker, animated: true, completion: nil)
+                    }
                 } else {
                     return
                 }

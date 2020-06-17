@@ -36,6 +36,7 @@ class ScheduleViewController: UIViewController,
     @IBOutlet weak var currentLocationButton: UIButton!
     @IBOutlet weak var washersCollectionView: UICollectionView!
     @IBOutlet weak var scheduleWashButton: UIButton!
+    @IBOutlet weak var emptyWashersView: UIView!
 
     // MARK: - Views
 
@@ -45,12 +46,20 @@ class ScheduleViewController: UIViewController,
         setupSubviews()
         setUpMap()
         autoFillAddress()
+        washersCollectionView.delegate = self
+        washersCollectionView.dataSource = self
     }
 
     // MARK: - CollectionView
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return washers.count
+        if washers.count == 0 {
+            emptyWashersView.alpha = 1
+            return washers.count
+        } else {
+            emptyWashersView.alpha = 0
+            return washers.count
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView,
