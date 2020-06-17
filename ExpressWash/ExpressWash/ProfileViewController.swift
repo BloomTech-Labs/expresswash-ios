@@ -10,10 +10,8 @@ import UIKit
 import AVFoundation
 
 class ProfileViewController: UIViewController,
-                             UICollectionViewDelegate,
-                             UICollectionViewDataSource,
-                             UIImagePickerControllerDelegate &
-                             UINavigationControllerDelegate {
+                             UICollectionViewDelegate, UICollectionViewDataSource,
+                             UIImagePickerControllerDelegate & UINavigationControllerDelegate {
 
     // MARK: - Properties
 

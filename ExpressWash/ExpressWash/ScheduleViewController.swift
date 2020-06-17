@@ -8,12 +8,13 @@
 
 import UIKit
 import Mapbox
+import Stripe
 
 class ScheduleViewController: UIViewController,
                               MGLMapViewDelegate,
                               UICollectionViewDelegate,
                               UICollectionViewDataSource {
-
+    
     // MARK: - Properties
 
     let jobController = JobController()
@@ -27,6 +28,8 @@ class ScheduleViewController: UIViewController,
     var cityString: String?
     var stateString: String?
     var zipString: String?
+    var selectedCar: Car?
+    var selectedWasher: Washer?
 
     // MARK: - Outlets
 
@@ -263,14 +266,17 @@ class ScheduleViewController: UIViewController,
         let date = Date()
         let timeRequested = DateFormatter.Clock.string(from: date)
 
+        if let indexPath = washersCollectionView.indexPathsForSelectedItems?.first {
+            selectedWasher = washers[indexPath.row]
+        }
         let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
 
         reversGeocode(location: location)
 
         guard let address = addressString,
-            let city = cityString,
-            let state = stateString,
-            let zip = zipString else { return }
+            let city = cityString, let state = stateString,
+            let zip = zipString, let selectedCar = selectedCar,
+            let selectedWasher = selectedWasher else { return }
 
         let jobRep = JobRepresentation(jobLocationLat: location.coordinate.latitude,
                                        jobLocationLon: location.coordinate.latitude,
@@ -282,10 +288,9 @@ class ScheduleViewController: UIViewController,
                                        notes: nil,
                                        jobType: "basic",
                                        timeRequested: timeRequested,
-                                       // ROBERT: UPDATE THE NEXT THREE VALUES -Joel
-                                       carId: 0,
+                                       carId: Int(selectedCar.carId),
                                        clientId: Int(UserController.shared.sessionUser.user!.userId),
-                                       washerId: 0)
+                                       washerId: Int(selectedWasher.washerId))
 
         jobController.addJob(jobRepresentation: jobRep) { (job, error) in
             if let error = error {
