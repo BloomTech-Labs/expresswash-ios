@@ -73,6 +73,7 @@ class WasherViewController: UIViewController {
         let map = MGLMapView(frame: mapView.bounds)
         map.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         map.attributionButton.isHidden = true
+        map.attributionButton.isEnabled = false
 
         mapView.addSubview(map)
         map.delegate = self
