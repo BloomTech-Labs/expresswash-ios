@@ -92,7 +92,7 @@ class JobController {
             job.photoBeforeJob = rep.photoBeforeJob
             job.scheduled = rep.scheduled
             job.state = rep.state
-            // job.timeArrived = rep.timeArrived
+            job.timeArrived = rep.timeArrived
             job.timeCompleted = rep.timeCompleted
             job.timeRequested = rep.timeRequested
             job.zip = rep.zip
@@ -112,7 +112,6 @@ class JobController {
                 completion(nil, error)
             }
         }
-        
     }
 
     func deleteJob(job: Job,
