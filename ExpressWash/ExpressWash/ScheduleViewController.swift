@@ -286,8 +286,9 @@ class ScheduleViewController: UIViewController,
 
         reversGeocode(location: location)
 
-//        guard (self.selectedWasher != nil) else { // Alert user to select a washer
-//            return }
+        guard self.selectedWasher != nil else {
+            self.alertUser(title: "Please Select Washer", message: "")
+            return }
 
         self.performSegue(withIdentifier: "confirmWashSegue", sender: self)
     }
