@@ -15,4 +15,10 @@ class CarCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         imageView.layer.cornerRadius = 5.0
     }
+    
+    @IBAction func carTapped(_ sender: Any) {
+        addButtonTapAction?()
+    }
+
+    var addButtonTapAction : (()->())?
 }

@@ -25,6 +25,7 @@ class ProfileViewController: UIViewController,
             carOne.carId > carTwo.carId
         })
     }
+    var car: Car?
 
     // MARK: - Outlets
 
@@ -78,6 +79,11 @@ class ProfileViewController: UIViewController,
         }
 
         cell.layer.cornerRadius = 10.0
+
+        cell.addButtonTapAction = {
+            self.car = car
+            self.performSegue(withIdentifier: "carDetailSegue", sender: self)
+        }
 
         return cell
     }
@@ -301,6 +307,11 @@ class ProfileViewController: UIViewController,
         if segue.identifier == "addCarSegue" {
             if let addCarVC = segue.destination as? AddCarViewController {
                 addCarVC.user = UserController.shared.sessionUser.user
+            }
+        } else if segue.identifier == "carDetailSegue" {
+            if let detailVC = segue.destination as? AddCarViewController,
+                let car = car {
+                detailVC.car = car
             }
         }
     }

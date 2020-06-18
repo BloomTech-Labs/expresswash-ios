@@ -637,11 +637,21 @@
                                                     <rect key="frame" x="5" y="5" width="68" height="65"/>
                                                     <color key="tintColor" name="Salmon"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCo-N5-xp9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="78" height="75"/>
+                                                    <connections>
+                                                        <action selector="carTapped:" destination="tS1-PB-L7t" eventType="touchUpInside" id="C2t-Z0-rlt"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="lbJ-U1-xCw" secondAttribute="trailing" constant="5" id="0wu-ab-R1J"/>
                                                 <constraint firstAttribute="bottom" secondItem="lbJ-U1-xCw" secondAttribute="bottom" constant="5" id="7zo-Lf-pUF"/>
+                                                <constraint firstAttribute="trailing" secondItem="gCo-N5-xp9" secondAttribute="trailing" id="8vf-ia-Ecf"/>
+                                                <constraint firstItem="gCo-N5-xp9" firstAttribute="leading" secondItem="LTd-jV-DH1" secondAttribute="leading" id="Foa-fb-Aqs"/>
                                                 <constraint firstItem="lbJ-U1-xCw" firstAttribute="top" secondItem="LTd-jV-DH1" secondAttribute="top" constant="5" id="GYB-yp-M9b"/>
+                                                <constraint firstAttribute="bottom" secondItem="gCo-N5-xp9" secondAttribute="bottom" id="ZpC-i9-EK1"/>
+                                                <constraint firstItem="gCo-N5-xp9" firstAttribute="top" secondItem="LTd-jV-DH1" secondAttribute="top" id="hun-ga-0VQ"/>
                                                 <constraint firstItem="lbJ-U1-xCw" firstAttribute="leading" secondItem="LTd-jV-DH1" secondAttribute="leading" constant="5" id="sb7-6c-12t"/>
                                             </constraints>
                                         </collectionViewCellContentView>
@@ -731,6 +741,7 @@
                         <outlet property="ratingLabel" destination="uLC-21-vpx" id="uEI-KT-FWs"/>
                         <outlet property="stateTextField" destination="yjq-lX-28y" id="e9E-MQ-0BE"/>
                         <segue destination="Co2-w8-3kU" kind="show" identifier="addCarSegue" id="hzi-MB-L81"/>
+                        <segue destination="Co2-w8-3kU" kind="show" identifier="carDetailSegue" id="CfS-4G-O96"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OaL-L7-Vzb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1026,6 +1037,9 @@
             <point key="canvasLocation" x="-16" y="-158"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="CfS-4G-O96"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Background" width="100" height="84"/>
         <image name="Logo" width="1024" height="1024"/>

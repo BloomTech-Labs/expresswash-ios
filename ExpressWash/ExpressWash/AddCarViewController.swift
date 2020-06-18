@@ -16,6 +16,7 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
     var carController = CarController()
     var photoController = PhotoController()
     var user: User?
+    var car: Car?
 
     // MARK: - Outlets
 
@@ -36,6 +37,7 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
         super.viewDidLoad()
 
         setupSubviews()
+        updateViews()
     }
 
     // MARK: - Methods
@@ -88,6 +90,36 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
         return newString.length <= maxLength
     }
 
+    private func updateViews() {
+        guard let car = car else { return }
+
+        carImageView.image = UIImage.cached(from: car.photo!)
+        yearTextField.text = "\(car.year)"
+        makeTextField.text = car.make
+        modelTextField.text = car.model
+        licenseTextField.text = car.licensePlate
+        colorTextField.text = car.color
+        categoryTextField.text = car.category
+        if car.size == "small" {
+            sizeSegmentedControl.selectedSegmentIndex = 1
+        } else if car.size == "medium" {
+            sizeSegmentedControl.selectedSegmentIndex = 2
+        } else {
+            sizeSegmentedControl.selectedSegmentIndex = 3
+        }
+
+        yearTextField.isEnabled = false
+        makeTextField.isEnabled = false
+        modelTextField.isEnabled = false
+        licenseTextField.isEnabled = false
+        colorTextField.isEnabled = false
+        categoryTextField.isEnabled = false
+        sizeSegmentedControl.isEnabled = false
+        showCameraTapped.isEnabled = false
+        showCameraTapped.alpha = 0
+        addCarButton.isEnabled = false
+        addCarButton.alpha = 0
+    }
     // MARK: - Actions
 
     @IBAction func addCarButtonTapped(_ sender: Any) {
