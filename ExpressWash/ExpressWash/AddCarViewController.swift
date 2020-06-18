@@ -8,7 +8,8 @@
 
 import UIKit
 
-class AddCarViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class AddCarViewController: UIViewController, UINavigationControllerDelegate,
+UIImagePickerControllerDelegate, UITextFieldDelegate {
 
     // MARK: - Properties
 
@@ -45,6 +46,7 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
 
         addCarButton.layer.cornerRadius = 10.0
         carImageView.layer.cornerRadius = 10.0
+        licenseTextField.delegate = self
     }
 
     private func setupCamera() {
@@ -74,6 +76,16 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
                 return
             }
         }
+    }
+
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        let maxLength = 7
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
     }
 
     // MARK: - Actions
@@ -123,8 +135,16 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
                             guard let data = data else { return }
 
                             if let car = self.carController.decodeCar(with: data) {
-                                self.user?.addToCars(car)
+                                guard let user = self.user else { return }
+                                user.addToCars(car)
                                 self.tieCar(carRep: carRepresentation, carId: Int(car.carId))
+
+                                let moc = CoreDataStack.shared.mainContext
+                                do {
+                                    try moc.save()
+                                } catch {
+                                    print("Error saving added car: \(error)")
+                                }
                             }
                         }
                     }

@@ -613,13 +613,13 @@
                                     <constraint firstAttribute="width" constant="75" id="1RW-rw-nU5"/>
                                 </constraints>
                             </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="whz-Ze-BNg">
-                                <rect key="frame" x="115" y="678" width="299" height="75"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="whz-Ze-BNg">
+                                <rect key="frame" x="115" y="678" width="279" height="75"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="Fyq-Bf-1oi"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fHQ-vT-OEH">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fHQ-vT-OEH">
                                     <size key="itemSize" width="78" height="75"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -693,7 +693,7 @@
                             <constraint firstItem="70E-cc-J6N" firstAttribute="leading" secondItem="VB2-b6-Nvo" secondAttribute="leading" constant="20" id="MG9-cj-RKM"/>
                             <constraint firstItem="wfM-m4-ViT" firstAttribute="centerY" secondItem="0Ds-oN-TWi" secondAttribute="centerY" constant="20" id="N79-7h-raz"/>
                             <constraint firstItem="FuJ-at-0XY" firstAttribute="bottom" secondItem="aWK-Zz-QuR" secondAttribute="centerY" id="RHQ-VB-MxR"/>
-                            <constraint firstItem="VB2-b6-Nvo" firstAttribute="trailing" secondItem="whz-Ze-BNg" secondAttribute="trailing" id="WtZ-1C-5fh"/>
+                            <constraint firstItem="VB2-b6-Nvo" firstAttribute="trailing" secondItem="whz-Ze-BNg" secondAttribute="trailing" constant="20" id="WtZ-1C-5fh"/>
                             <constraint firstItem="whz-Ze-BNg" firstAttribute="centerY" secondItem="AmW-k0-3ks" secondAttribute="centerY" id="XKJ-24-w32"/>
                             <constraint firstItem="ASY-wp-eWd" firstAttribute="centerY" secondItem="CZ1-hz-UyC" secondAttribute="centerY" id="YcU-Xe-tf5"/>
                             <constraint firstItem="ASY-wp-eWd" firstAttribute="leading" secondItem="70E-cc-J6N" secondAttribute="trailing" constant="20" id="aCa-aK-7W7"/>
@@ -740,7 +740,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1967.2" y="-2221.1822660098524"/>
+            <point key="canvasLocation" x="1966.6666666666667" y="-2221.2053571428569"/>
         </scene>
         <!--AddCar-->
         <scene sceneID="XDE-hG-3lT">

@@ -20,10 +20,11 @@ UICollectionViewDataSource, STPAuthenticationContext {
         return cardTextField
     }()
     var cars: [Car] {
-        let orderedSet = UserController.shared.sessionUser.user?.cars?.set as? Set<Car> ?? []
-        return orderedSet.sorted { (car1, car2) -> Bool in
-            car1.carId > car2.carId
-        }
+        guard let user = UserController.shared.sessionUser.user else { return [] }
+        guard let cars = user.cars else { return [] }
+        return cars.sorted(by: { (carOne, carTwo) -> Bool in
+            carOne.carId > carTwo.carId
+        })
     }
     var jobController = JobController()
     var amount: Int?
@@ -47,6 +48,8 @@ UICollectionViewDataSource, STPAuthenticationContext {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        carsCollectionView.delegate = self
+        carsCollectionView.dataSource = self
         carsCollectionView.allowsMultipleSelection = false
         confirmWashButton.layer.cornerRadius = 10.0
         cardView.addSubview(cardTextField)
@@ -176,5 +179,13 @@ UICollectionViewDataSource, STPAuthenticationContext {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    }
+}
+
+extension PaymentViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 120.0, height: 120.0)
     }
 }

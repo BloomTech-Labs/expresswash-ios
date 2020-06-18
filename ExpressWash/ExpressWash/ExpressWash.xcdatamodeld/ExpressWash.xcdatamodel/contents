@@ -56,7 +56,7 @@
         <attribute name="userRating" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="userRatingTotal" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="zip" optional="YES" attributeType="String"/>
-        <relationship name="cars" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Car" inverseName="owner" inverseEntity="Car"/>
+        <relationship name="cars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Car" inverseName="owner" inverseEntity="Car"/>
         <relationship name="jobs" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Job" inverseName="client" inverseEntity="Job"/>
         <relationship name="washer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Washer" inverseName="user" inverseEntity="Washer"/>
     </entity>

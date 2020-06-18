@@ -174,7 +174,7 @@ class ScheduleViewController: UIViewController,
     }
 
     func reversGeocode(location: CLLocation) {
-        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
+        geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
             if let error = error {
                 print("Error reverse geocoding: \(error)")
                 return
@@ -201,7 +201,7 @@ class ScheduleViewController: UIViewController,
             if let zip = placemark.isoCountryCode {
                 self.zipString = zip
             }
-        }
+        })
     }
 
     func mapView(_ mapView: MGLMapView, didAdd annotationViews: [MGLAnnotationView]) {
@@ -252,6 +252,8 @@ class ScheduleViewController: UIViewController,
 
                 self.getWashers(location: currentLocation)
 
+                self.addressTextField.text = nil
+
                 self.washersCollectionView.reloadData()
             }
         }
@@ -265,6 +267,9 @@ class ScheduleViewController: UIViewController,
         let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
 
         reversGeocode(location: location)
+
+//        guard (self.selectedWasher != nil) else { // Alert user to select a washer
+//            return }
 
         self.performSegue(withIdentifier: "confirmWashSegue", sender: self)
     }

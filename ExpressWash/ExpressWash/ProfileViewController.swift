@@ -19,10 +19,11 @@ class ProfileViewController: UIViewController,
     var profileImagePicker = UIImagePickerController()
     var bannerImagePicker = UIImagePickerController()
     var cars: [Car] {
-        let orderedSet = UserController.shared.sessionUser.user?.cars?.set as? Set<Car> ?? []
-        return orderedSet.sorted { (car1, car2) -> Bool in
-            car1.carId > car2.carId
-        }
+        guard let user = UserController.shared.sessionUser.user else { return [] }
+        guard let cars = user.cars else { return [] }
+        return cars.sorted(by: { (carOne, carTwo) -> Bool in
+            carOne.carId > carTwo.carId
+        })
     }
 
     // MARK: - Outlets
@@ -52,6 +53,11 @@ class ProfileViewController: UIViewController,
         updateViews()
         carsCollectionView.delegate = self
         carsCollectionView.dataSource = self
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        carsCollectionView.reloadData()
     }
 
     // MARK: - CollectionView Data Source
@@ -391,5 +397,13 @@ extension ProfileViewController {
         addCarsButton.alpha = 0
         addCarsButton.isEnabled = false
         carsCollectionView.alpha = 1
+    }
+}
+
+extension ProfileViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 75.0, height: 75.0)
     }
 }
