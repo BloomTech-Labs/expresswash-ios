@@ -86,6 +86,12 @@ class ScheduleViewController: UIViewController,
         } else {
             cell.layer.borderColor = UIColor(named: "Light Blue")?.cgColor
         }
+        
+        if self.selectedIndexPath != nil && indexPath == self.selectedIndexPath {
+            cell.layer.borderColor = UIColor(named: "Salmon")?.cgColor
+        } else {
+            cell.layer.backgroundColor = UIColor.white.cgColor
+        }
 
         cell.starLabel.text = "★ \(washer.washerRating)"
         cell.largeRateLabel.text = "$\(washer.rateLarge)"
@@ -102,6 +108,17 @@ class ScheduleViewController: UIViewController,
         self.selectedIndexPath = indexPath
         self.selectedWasher = nil
         self.selectedWasher = washers[indexPath.row]
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderWidth = 2.0
+        cell?.layer.borderColor = UIColor(named: "Salmon")?.cgColor
+        self.selectedIndexPath = indexPath
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderWidth = 0.0
+        cell?.layer.borderColor = UIColor.white.cgColor
+        self.selectedIndexPath = nil
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
