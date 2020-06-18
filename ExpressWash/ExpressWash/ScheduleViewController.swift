@@ -14,7 +14,7 @@ class ScheduleViewController: UIViewController,
                               MGLMapViewDelegate,
                               UICollectionViewDelegate,
                               UICollectionViewDataSource {
-    
+
     // MARK: - Properties
 
     let jobController = JobController()
@@ -263,61 +263,64 @@ class ScheduleViewController: UIViewController,
 
     @IBAction func scheduleWashButtonTapped(_ sender: Any) {
 
-        let date = Date()
-        let timeRequested = DateFormatter.Clock.string(from: date)
+        self.performSegue(withIdentifier: "confirmWashSegue", sender: self)
 
-        if let indexPath = washersCollectionView.indexPathsForSelectedItems?.first {
-            selectedWasher = washers[indexPath.row]
-        }
-        let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
-
-        reversGeocode(location: location)
-
-        guard let address = addressString,
-            let city = cityString, let state = stateString,
-            let zip = zipString, let selectedCar = selectedCar,
-            let selectedWasher = selectedWasher else { return }
-
-        let jobRep = JobRepresentation(jobLocationLat: location.coordinate.latitude,
-                                       jobLocationLon: location.coordinate.latitude,
-                                       address: address,
-                                       address2: nil,
-                                       city: city,
-                                       state: state,
-                                       zip: zip,
-                                       notes: nil,
-                                       jobType: "basic",
-                                       timeRequested: timeRequested,
-                                       carId: Int(selectedCar.carId),
-                                       clientId: Int(UserController.shared.sessionUser.user!.userId),
-                                       washerId: Int(selectedWasher.washerId))
-
-        jobController.addJob(jobRepresentation: jobRep) { (job, error) in
-            if let error = error {
-                print("Error adding job: \(error)")
-                return
-            }
-
-            guard let job = job else { return }
-
-            if let indexPaths = self.washersCollectionView.indexPathsForSelectedItems {
-                if let indexPath = indexPaths.first {
-                    let washer = self.washers[indexPath.row]
-
-                    self.jobController.assignWasher(job: job, washerID: Int(washer.washerId)) { (job, error) in
-                        if let error = error {
-                            print("Error assigning washer to job: \(error)")
-                            return
-                        }
-
-                        if job != nil {
-                            self.alertUserWithTransition(title: "Job Scheduled!", message: "")
-                        }
-                    }
-                }
-            } else {
-                self.alertUser(title: "Please Select A Washer", message: "")
-            }
-        }
+//        let date = Date()
+//        let timeRequested = DateFormatter.Clock.string(from: date)
+//
+//        if let indexPath = washersCollectionView.indexPathsForSelectedItems?.first {
+//            selectedWasher = washers[indexPath.row]
+//        }
+//
+//        let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+//
+//        reversGeocode(location: location)
+//
+//        guard let address = addressString,
+//            let city = cityString, let state = stateString,
+//            let zip = zipString, let selectedCar = selectedCar,
+//            let selectedWasher = selectedWasher else { return }
+//
+//        let jobRep = JobRepresentation(jobLocationLat: location.coordinate.latitude,
+//                                       jobLocationLon: location.coordinate.latitude,
+//                                       address: address,
+//                                       address2: nil,
+//                                       city: city,
+//                                       state: state,
+//                                       zip: zip,
+//                                       notes: nil,
+//                                       jobType: "basic",
+//                                       timeRequested: timeRequested,
+//                                       carId: Int(selectedCar.carId),
+//                                       clientId: Int(UserController.shared.sessionUser.user!.userId),
+//                                       washerId: Int(selectedWasher.washerId))
+//
+//        jobController.addJob(jobRepresentation: jobRep) { (job, error) in
+//            if let error = error {
+//                print("Error adding job: \(error)")
+//                return
+//            }
+//
+//            guard let job = job else { return }
+//
+//            if let indexPaths = self.washersCollectionView.indexPathsForSelectedItems {
+//                if let indexPath = indexPaths.first {
+//                    let washer = self.washers[indexPath.row]
+//
+//                    self.jobController.assignWasher(job: job, washerID: Int(washer.washerId)) { (job, error) in
+//                        if let error = error {
+//                            print("Error assigning washer to job: \(error)")
+//                            return
+//                        }
+//
+//                        if job != nil {
+//                            self.alertUserWithTransition(title: "Job Scheduled!", message: "")
+//                        }
+//                    }
+//                }
+//            } else {
+//                self.alertUser(title: "Please Select A Washer", message: "")
+//            }
+//        }
     }
 }
