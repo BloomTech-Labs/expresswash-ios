@@ -30,6 +30,7 @@ class ScheduleViewController: UIViewController,
     var zipString: String?
     var timeRequested: String?
     var selectedWasher: Washer?
+    var selectedIndexPath: IndexPath?
 
     // MARK: - Outlets
 
@@ -81,6 +82,12 @@ class ScheduleViewController: UIViewController,
 
             cell.nameLabel.text = user.firstName + user.lastName
         }
+        
+        if self.selectedIndexPath != nil && indexPath == self.selectedIndexPath {
+            cell.layer.borderColor = UIColor(named: "Salmon")?.cgColor
+        } else {
+            cell.layer.backgroundColor = UIColor.white.cgColor
+        }
 
         cell.starLabel.text = "★ \(washer.washerRating)"
         cell.largeRateLabel.text = "$\(washer.rateLarge)"
@@ -93,6 +100,17 @@ class ScheduleViewController: UIViewController,
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedWasher = nil
         self.selectedWasher = washers[indexPath.row]
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderWidth = 2.0
+        cell?.layer.borderColor = UIColor(named: "Salmon")?.cgColor
+        self.selectedIndexPath = indexPath
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderWidth = 0.0
+        cell?.layer.borderColor = UIColor.white.cgColor
+        self.selectedIndexPath = nil
     }
 
     // MARK: - Methods

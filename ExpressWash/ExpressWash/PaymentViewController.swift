@@ -36,6 +36,7 @@ UICollectionViewDataSource, STPAuthenticationContext {
     var selectedCar: Car?
     var annotation: MGLAnnotation?
     var timeRequested: String?
+    var selectedIndexPath: IndexPath?
 
     // MARK: - Outlets
 
@@ -82,14 +83,31 @@ UICollectionViewDataSource, STPAuthenticationContext {
             cell.imageView.image = UIImage.cached(from: photoString, defaultTitle: nil)
         }
 
+        if self.selectedIndexPath != nil && indexPath == self.selectedIndexPath {
+            cell.layer.borderColor = UIColor(named: "Salmon")?.cgColor
+        } else {
+            cell.layer.backgroundColor = UIColor.white.cgColor
+        }
+
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderWidth = 2.0
+        cell?.layer.borderColor = UIColor(named: "Salmon")?.cgColor
+        self.selectedIndexPath = indexPath
         self.selectedCar = nil
         self.selectedCar = cars[indexPath.row]
         setAmount(car: selectedCar!, washer: selectedWasher!)
         StripeController.shared.startCheckout(with: self.amount!)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderWidth = 0.0
+        cell?.layer.borderColor = UIColor.white.cgColor
+        self.selectedIndexPath = nil
     }
 
     // MARK: - Methods
