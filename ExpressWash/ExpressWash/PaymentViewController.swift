@@ -41,6 +41,7 @@ UICollectionViewDataSource, STPAuthenticationContext {
         confirmWashButton.layer.cornerRadius = 10.0
         cardView.addSubview(cardTextField)
         cardTextField.translatesAutoresizingMaskIntoConstraints = false
+        cardTextField.textColor = UIColor(named: "Navy")
         NSLayoutConstraint.activate([
             cardTextField.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
             cardTextField.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
@@ -94,15 +95,12 @@ UICollectionViewDataSource, STPAuthenticationContext {
             case .failed:
                 // Alert of failed payment
                 print("Payment Failed")
-                break
             case .canceled:
                 // Alert of cenceled payment
                 print("Payment Canceled")
-                break
             case .succeeded:
                 // Alert of succeeded payment
                 print("Payment Successful")
-                break
             @unknown default:
                 fatalError()
             }
