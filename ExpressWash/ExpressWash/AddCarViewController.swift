@@ -30,6 +30,7 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var sizeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var addCarButton: UIButton!
+    @IBOutlet weak var deleteCarButton: UIButton!
 
     // MARK: - Views
 
@@ -37,7 +38,9 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
         super.viewDidLoad()
 
         setupSubviews()
-        updateViews()
+        if car != nil {
+            updateViews()
+        }
     }
 
     // MARK: - Methods
@@ -47,7 +50,12 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
         UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .normal)
 
         addCarButton.layer.cornerRadius = 10.0
+        addCarButton.isEnabled = true
         carImageView.layer.cornerRadius = 10.0
+        deleteCarButton.layer.cornerRadius = 10.0
+        deleteCarButton.isEnabled = false
+        deleteCarButton.alpha = 0
+
         licenseTextField.delegate = self
     }
 
@@ -119,34 +127,42 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
         showCameraTapped.alpha = 0
         addCarButton.isEnabled = false
         addCarButton.alpha = 0
+        deleteCarButton.isEnabled = true
+        deleteCarButton.alpha = 1
     }
-    // MARK: - Actions
 
-    @IBAction func addCarButtonTapped(_ sender: Any) {
+    private func fetchCar() -> CarRepresentation? {
         guard let year = yearTextField.text,
               let make = makeTextField.text,
               let model = modelTextField.text,
               let licensePlate = licenseTextField.text,
               let color = colorTextField.text,
-              let category = categoryTextField.text else { return }
+              let category = categoryTextField.text else { return nil }
 
         let segment = sizeSegmentedControl.selectedSegmentIndex
         guard let size = sizeSegmentedControl.titleForSegment(at: segment),
               let yearInt = Int16(year),
-              let clientID = UserController.shared.sessionUser.user?.userId else { return }
+              let clientID = UserController.shared.sessionUser.user?.userId else { return nil }
 
-        let carRepresentation = CarRepresentation(carId: nil,
-                                                  clientId: Int(clientID),
-                                                  make: make,
-                                                  model: model,
-                                                  year: yearInt,
-                                                  color: color,
-                                                  licensePlate: licensePlate,
-                                                  photo: nil,
-                                                  category: category,
-                                                  size: size)
+            let carRepresentation = CarRepresentation(carId: nil,
+                                                      clientId: Int(clientID),
+                                                      make: make,
+                                                      model: model,
+                                                      year: yearInt,
+                                                      color: color,
+                                                      licensePlate: licensePlate,
+                                                      photo: nil,
+                                                      category: category,
+                                                      size: size)
+            return carRepresentation
+    }
 
-        carController.addCar(carRepresentation: carRepresentation) { (car, error) in
+    // MARK: - Actions
+
+    @IBAction func addCarButtonTapped(_ sender: Any) {
+        guard let carRep = fetchCar() else { return }
+
+        carController.addCar(carRepresentation: carRep) { (car, error) in
             if let error = error {
                 print("Error creating car: \(error)")
                 return
@@ -169,7 +185,7 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
                             if let car = self.carController.decodeCar(with: data) {
                                 guard let user = self.user else { return }
                                 user.addToCars(car)
-                                self.tieCar(carRep: carRepresentation, carId: Int(car.carId))
+                                self.tieCar(carRep: carRep, carId: Int(car.carId))
 
                                 let moc = CoreDataStack.shared.mainContext
                                 do {
@@ -191,5 +207,11 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
 
     @IBAction func captureImageButtonTapped(_ sender: Any) {
         setupCamera()
+    }
+
+    @IBAction func deleteCarButtonTapped(_ sender: Any) {
+        guard let car = car else { return }
+        carController.deleteCar(car: car, context: CoreDataStack.shared.mainContext)
+        self.dismiss(animated: true, completion: nil)
     }
 }

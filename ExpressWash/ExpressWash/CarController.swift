@@ -48,6 +48,7 @@ class CarController {
     }
 
     func updateCar(carRepresentation: CarRepresentation,
+                   baseCar: Car,
                    context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
                    completion: @escaping CompletionHandler) {
 
@@ -58,7 +59,8 @@ class CarController {
                 return
             }
 
-            guard let car = car else { return }
+            guard let car = car,
+                let user = UserController.shared.sessionUser.user else { return }
 
             context.perform {
                 do {
