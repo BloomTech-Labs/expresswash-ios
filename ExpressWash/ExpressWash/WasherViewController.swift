@@ -154,10 +154,10 @@ class WasherViewController: UIViewController {
                 // assign any uncompleted job to the self.job property
                 // hopefully there's only one. probably a better way
                 // to do this
-                self.job = Job(representation: jobRep)
                 selectedJobRep = jobRep
             }
             if selectedJobRep != nil {
+                self.job = Job(representation: selectedJobRep!)
                 // fetch the client for this job
                 UserController.shared.fetchUserByID(uid: selectedJobRep!.clientId) { (client, error) in
                     if let error = error {
@@ -168,9 +168,9 @@ class WasherViewController: UIViewController {
                     }
 
                     self.job?.car = self.carController.findCar(by: selectedJobRep!.carId)
+                    completion()
                 }
             }
-            completion()
         }
     }
 
@@ -331,7 +331,6 @@ extension WasherViewController: UIImagePickerControllerDelegate, UINavigationCon
 
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             PhotoController.shared.uploadPhoto(image, httpMethod: "POST", endpoint: nextImageNeeded, theID: Int(job.jobId)) { (data, error) in
-                
                 if let error = error {
                     let alert = UIAlertController()
                     alert.title = "Upload failed"

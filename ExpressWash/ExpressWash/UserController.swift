@@ -365,6 +365,7 @@ extension UserController {
                         context.reset()
                         completion(fetchedUser, error)
                     }
+                    completion(fetchedUser, nil)
                 }
             } catch {
                 print("Unable to decode after fetching user for ID \(uid): \(error)")

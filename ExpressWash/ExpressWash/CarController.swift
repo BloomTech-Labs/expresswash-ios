@@ -60,16 +60,42 @@ class CarController {
 
             guard let car = car else { return }
 
-            completion(car, nil)
-
             context.perform {
                 do {
                     try CoreDataStack.shared.save(context: context)
                 } catch {
                     print("Unable to update car: \(error)")
                     context.reset()
+                    completion(nil, error)
                 }
+                completion(car, nil)
             }
+        }
+    }
+
+    func updateCarInCoreData(_ car: Car,
+                             rep: CarRepresentation,
+                             context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
+                             completion: @escaping CompletionHandler) {
+        context.perform {
+            car.carId = Int32(rep.carId ?? NOID)
+            car.category = rep.category
+            car.clientId = Int16(rep.clientId)
+            car.color = rep.color
+            car.licensePlate = rep.licensePlate
+            car.make = rep.make
+            car.model = rep.model
+            car.photo = rep.photo
+            car.size = rep.size
+            car.year = rep.year
+            do {
+                try CoreDataStack.shared.save(context: context)
+            } catch {
+                print("Unable to save updated car: \(error)")
+                context.reset()
+                completion(nil, error)
+            }
+            completion(car, nil)
         }
     }
 
@@ -111,6 +137,19 @@ class CarController {
             print("Error when searching core data for carId \(carId): \(error)")
             return nil
         }
+    }
+
+    // finds or creates a Car in Core Data (not on the server)
+    func findOrCreateCarInCoreData(from rep: CarRepresentation,
+                                   context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> Car {
+        var foundCar = findCar(by: rep.carId ?? 0)
+        if foundCar == nil {
+            foundCar = Car(representation: rep, context: context)
+        } else {
+            // if the Car already exists in Core Data, update based on rep
+            updateCarInCoreData(foundCar!, rep: rep, context: context) { (_, _) in }
+        }
+        return foundCar!
     }
 
     // MARK: - Networking Methods

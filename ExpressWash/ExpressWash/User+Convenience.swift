@@ -76,8 +76,9 @@ extension User {
             self.userRatingTotal = 0
         }
 
+        let carController = CarController()
         for carRep in representation.carRepresentations {
-            addToCars(Car(representation: carRep, context: context))
+            addToCars(carController.findOrCreateCarInCoreData(from: carRep, context: context))
         }
     }
 
