@@ -47,6 +47,7 @@ UICollectionViewDataSource, STPAuthenticationContext {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        carsCollectionView.allowsMultipleSelection = false
         confirmWashButton.layer.cornerRadius = 10.0
         cardView.addSubview(cardTextField)
         cardTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -120,7 +121,8 @@ UICollectionViewDataSource, STPAuthenticationContext {
                 }
 
                 if job != nil {
-                    // Alert User
+                    self.dismiss(animated: true, completion: nil)
+                    self.tabBarController?.selectedIndex = 3
                 }
             }
         }

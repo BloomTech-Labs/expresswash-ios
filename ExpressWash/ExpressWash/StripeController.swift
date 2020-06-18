@@ -16,7 +16,6 @@ class StripeController {
     var paymentIntentClientSecret: String?
 
     func startCheckout(with amount: Int) {
-        // Create a PaymentIntent by calling the sample server's /create-payment-intent endpoint.
         let url = BASEURL.appendingPathComponent("create-payment-intent")
         let json: [String: Any] = [
             "amount": amount,
