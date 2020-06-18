@@ -192,7 +192,7 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
                             if let car = self.carController.decodeCar(with: data) {
                                 guard let user = self.user else { return }
                                 user.addToCars(car)
-                                self.tieCar(carRep: carRep, carId: Int(car.carId))
+                                self.tieCar(carRep: carRepresentation, carId: Int(car.carId))
 
                                 let moc = CoreDataStack.shared.mainContext
                                 do {

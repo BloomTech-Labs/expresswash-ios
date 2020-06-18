@@ -274,6 +274,8 @@ class ScheduleViewController: UIViewController,
                 self.getWashers(location: currentLocation)
 
                 self.addressTextField.text = "Current Location"
+
+                self.washersCollectionView.reloadData()
             }
         }
     }
