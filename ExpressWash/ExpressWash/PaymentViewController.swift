@@ -58,9 +58,6 @@ UICollectionViewDataSource, STPAuthenticationContext {
             cardTextField.centerXAnchor.constraint(equalTo: cardView.centerXAnchor),
             cardTextField.heightAnchor.constraint(equalToConstant: 50.0)
         ])
-        if let amount = amount {
-            StripeController.shared.startCheckout(with: amount)
-        }
     }
 
     // MARK: - CollectionView
@@ -87,6 +84,8 @@ UICollectionViewDataSource, STPAuthenticationContext {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedCar = nil
         self.selectedCar = cars[indexPath.row]
+        setAmount(car: selectedCar!, washer: selectedWasher!)
+        StripeController.shared.startCheckout(with: self.amount!)
     }
 
     // MARK: - Methods
@@ -124,6 +123,16 @@ UICollectionViewDataSource, STPAuthenticationContext {
                     // Alert User
                 }
             }
+        }
+    }
+
+    private func setAmount(car: Car, washer: Washer) {
+        if car.size == "small" {
+            self.amount = Int(washer.rateSmall)
+        } else if car.size == "medium" {
+            self.amount = Int(washer.rateMedium)
+        } else if car.size == "large" {
+            self.amount = Int(washer.rateLarge)
         }
     }
 

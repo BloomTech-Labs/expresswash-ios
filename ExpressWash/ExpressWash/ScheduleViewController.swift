@@ -23,7 +23,6 @@ class ScheduleViewController: UIViewController,
     let geoCoder = CLGeocoder()
     var annotation = MGLPointAnnotation()
     var washers: [Washer] = []
-    var amount: Int?
 
     var addressString: String?
     var cityString: String?
@@ -280,7 +279,6 @@ class ScheduleViewController: UIViewController,
                 paymentVC.cityString = cityString
                 paymentVC.stateString = stateString
                 paymentVC.zipString = zipString
-                paymentVC.amount = amount
                 paymentVC.timeRequested = timeRequested
             }
         }
