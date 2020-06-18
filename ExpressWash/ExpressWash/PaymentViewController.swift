@@ -8,6 +8,7 @@
 
 import UIKit
 import Stripe
+import Mapbox
 
 class PaymentViewController: UIViewController, UICollectionViewDelegate,
 UICollectionViewDataSource, STPAuthenticationContext {
@@ -18,14 +19,22 @@ UICollectionViewDataSource, STPAuthenticationContext {
         let cardTextField = STPPaymentCardTextField()
         return cardTextField
     }()
-    var jobRep: JobRepresentation?
     var cars: [Car] {
         let orderedSet = UserController.shared.sessionUser.user?.cars?.set as? Set<Car> ?? []
         return orderedSet.sorted { (car1, car2) -> Bool in
             car1.carId > car2.carId
         }
     }
+    var jobController = JobController()
     var amount: Int?
+    var addressString: String?
+    var cityString: String?
+    var stateString: String?
+    var zipString: String?
+    var selectedWasher: Washer?
+    var selectedCar: Car?
+    var annotation: MGLAnnotation?
+    var timeRequested: String?
 
     // MARK: - Outlets
 
@@ -75,7 +84,48 @@ UICollectionViewDataSource, STPAuthenticationContext {
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedCar = nil
+        self.selectedCar = cars[indexPath.row]
+    }
+
     // MARK: - Methods
+
+    private func createJob() {
+        let jobRep = JobRepresentation(jobLocationLat: annotation!.coordinate.latitude,
+                                       jobLocationLon: annotation!.coordinate.latitude,
+                                       address: addressString!,
+                                       address2: nil,
+                                       city: cityString!,
+                                       state: stateString!,
+                                       zip: zipString!,
+                                       notes: nil,
+                                       jobType: "basic",
+                                       timeRequested: timeRequested!,
+                                       carId: Int(selectedCar!.carId),
+                                       clientId: Int(UserController.shared.sessionUser.user!.userId),
+                                       washerId: Int(selectedWasher!.washerId))
+
+        jobController.addJob(jobRepresentation: jobRep) { (job, error) in
+            if let error = error {
+                print("Error adding job: \(error)")
+                return
+            }
+
+            guard let job = job else { return }
+
+            self.jobController.assignWasher(job: job, washerID: Int(self.selectedWasher!.washerId)) { (job, error) in
+                if let error = error {
+                    print("Error assigning washer to job: \(error)")
+                    return
+                }
+
+                if job != nil {
+                    // Alert User
+                }
+            }
+        }
+    }
 
     // MARK: - Actions
 
@@ -100,6 +150,7 @@ UICollectionViewDataSource, STPAuthenticationContext {
                 print("Payment Canceled")
             case .succeeded:
                 // Alert of succeeded payment
+                self.createJob()
                 print("Payment Successful")
             @unknown default:
                 fatalError()

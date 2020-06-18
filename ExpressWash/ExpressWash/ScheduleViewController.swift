@@ -23,12 +23,13 @@ class ScheduleViewController: UIViewController,
     let geoCoder = CLGeocoder()
     var annotation = MGLPointAnnotation()
     var washers: [Washer] = []
+    var amount: Int?
 
     var addressString: String?
     var cityString: String?
     var stateString: String?
     var zipString: String?
-    var selectedCar: Car?
+    var timeRequested: String?
     var selectedWasher: Washer?
 
     // MARK: - Outlets
@@ -90,6 +91,11 @@ class ScheduleViewController: UIViewController,
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedWasher = nil
+        self.selectedWasher = washers[indexPath.row]
+    }
+
     // MARK: - Methods
 
     func setupSubviews() {
@@ -138,15 +144,6 @@ class ScheduleViewController: UIViewController,
 
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertController, animated: true, completion: nil)
-    }
-
-    func alertUserWithTransition(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-
-        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        self.present(alertController, animated: true) {
-            self.tabBarController?.selectedIndex = 3
-        }
     }
 
     func autoFillAddress() {
@@ -263,67 +260,29 @@ class ScheduleViewController: UIViewController,
 
     @IBAction func scheduleWashButtonTapped(_ sender: Any) {
 
-        self.performSegue(withIdentifier: "confirmWashSegue", sender: self)
+        let date = Date()
+        self.timeRequested = DateFormatter.Clock.string(from: date)
 
-//        let date = Date()
-//        let timeRequested = DateFormatter.Clock.string(from: date)
-//
-//        if let indexPath = washersCollectionView.indexPathsForSelectedItems?.first {
-//            selectedWasher = washers[indexPath.row]
-//        }
-//
-//        let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
-//
-//        reversGeocode(location: location)
-//
-//        guard let address = addressString,
-//            let city = cityString, let state = stateString,
-//            let zip = zipString, let selectedCar = selectedCar,
-//            let selectedWasher = selectedWasher else { return }
-//
-//        let jobRep = JobRepresentation(jobLocationLat: location.coordinate.latitude,
-//                                       jobLocationLon: location.coordinate.latitude,
-//                                       address: address,
-//                                       address2: nil,
-//                                       city: city,
-//                                       state: state,
-//                                       zip: zip,
-//                                       notes: nil,
-//                                       jobType: "basic",
-//                                       timeRequested: timeRequested,
-//                                       carId: Int(selectedCar.carId),
-//                                       clientId: Int(UserController.shared.sessionUser.user!.userId),
-//                                       washerId: Int(selectedWasher.washerId))
-//
-//        jobController.addJob(jobRepresentation: jobRep) { (job, error) in
-//            if let error = error {
-//                print("Error adding job: \(error)")
-//                return
-//            }
-//
-//            guard let job = job else { return }
-//
-//            if let indexPaths = self.washersCollectionView.indexPathsForSelectedItems {
-//                if let indexPath = indexPaths.first {
-//                    let washer = self.washers[indexPath.row]
-//
-//                    self.jobController.assignWasher(job: job, washerID: Int(washer.washerId)) { (job, error) in
-//                        if let error = error {
-//                            print("Error assigning washer to job: \(error)")
-//                            return
-//                        }
-//
-//                        if job != nil {
-//                            self.alertUserWithTransition(title: "Job Scheduled!", message: "")
-//                        }
-//                    }
-//                }
-//            } else {
-//                self.alertUser(title: "Please Select A Washer", message: "")
-//            }
-//        }
+        let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+
+        reversGeocode(location: location)
+
+        self.performSegue(withIdentifier: "confirmWashSegue", sender: self)
     }
-    
+
     // MARK: - Navigation
-    
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "confirmWashSegue" {
+            if let paymentVC = segue.destination as? PaymentViewController {
+                paymentVC.annotation = annotation
+                paymentVC.addressString = addressString
+                paymentVC.cityString = cityString
+                paymentVC.stateString = stateString
+                paymentVC.zipString = zipString
+                paymentVC.amount = amount
+                paymentVC.timeRequested = timeRequested
+            }
+        }
+    }
 }
