@@ -77,7 +77,9 @@ class CarController {
                              rep: CarRepresentation,
                              context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
                              completion: @escaping CompletionHandler) {
-        context.perform {
+        let privateMOC = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        privateMOC.parent = context
+        privateMOC.performAndWait {
             car.carId = Int32(rep.carId ?? NOID)
             car.category = rep.category
             car.clientId = Int16(rep.clientId)
@@ -89,7 +91,7 @@ class CarController {
             car.size = rep.size
             car.year = rep.year
             do {
-                try CoreDataStack.shared.save(context: context)
+                try privateMOC.save()
             } catch {
                 print("Unable to save updated car: \(error)")
                 context.reset()
