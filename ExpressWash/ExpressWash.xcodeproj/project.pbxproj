@@ -39,6 +39,9 @@
 		37C3A1F1247629EC008ECB90 /* DeleteJob.json in Resources */ = {isa = PBXBuildFile; fileRef = 37C3A1F0247629EC008ECB90 /* DeleteJob.json */; };
 		37C3A1F424762A4F008ECB90 /* JobTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C3A1F324762A4F008ECB90 /* JobTests.swift */; };
 		37C3A1F82476D852008ECB90 /* EditJob.json in Resources */ = {isa = PBXBuildFile; fileRef = 37C3A1F72476D852008ECB90 /* EditJob.json */; };
+		37E2B037249AB40000617C03 /* StripeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2B036249AB40000617C03 /* StripeController.swift */; };
+		37E2B039249AB9B000617C03 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2B038249AB9B000617C03 /* PaymentViewController.swift */; };
+		37E2B03B249AB9D900617C03 /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37E2B03A249AB9D900617C03 /* Payment.storyboard */; };
 		5D0685AF246B9FB800C44DEF /* authLogin.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D0971E7246B909000B5492D /* authLogin.json */; };
 		5D0971EA246B913500B5492D /* JSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0971E9246B913500B5492D /* JSONLoader.swift */; };
 		5D0B2608249085D200F76302 /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B2607249085D200F76302 /* PhotoController.swift */; };
@@ -126,6 +129,9 @@
 		37C3A1F0247629EC008ECB90 /* DeleteJob.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DeleteJob.json; sourceTree = "<group>"; };
 		37C3A1F324762A4F008ECB90 /* JobTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTests.swift; sourceTree = "<group>"; };
 		37C3A1F72476D852008ECB90 /* EditJob.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EditJob.json; sourceTree = "<group>"; };
+		37E2B036249AB40000617C03 /* StripeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeController.swift; sourceTree = "<group>"; };
+		37E2B038249AB9B000617C03 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		37E2B03A249AB9D900617C03 /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		5D0971E7246B909000B5492D /* authLogin.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = authLogin.json; sourceTree = "<group>"; };
 		5D0971E9246B913500B5492D /* JSONLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLoader.swift; sourceTree = "<group>"; };
 		5D0B2607249085D200F76302 /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
@@ -209,6 +215,7 @@
 				370E676424820FB500297018 /* AddCar.storyboard */,
 				3765B4162488932B00D93751 /* ReceiptDetail.storyboard */,
 				5D2370EF247762A7007A7AB8 /* EditWasher.storyboard */,
+				37E2B03A249AB9D900617C03 /* Payment.storyboard */,
 			);
 			name = Detail;
 			sourceTree = "<group>";
@@ -355,6 +362,7 @@
 			children = (
 				5DA0A8A22459141E00992692 /* NetworkGlobals.swift */,
 				5D0B2607249085D200F76302 /* PhotoController.swift */,
+				37E2B036249AB40000617C03 /* StripeController.swift */,
 			);
 			name = "Network Controllers";
 			sourceTree = "<group>";
@@ -372,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				37B747EF244FF997004AD2FE /* ScheduleViewController.swift */,
+				37E2B038249AB9B000617C03 /* PaymentViewController.swift */,
 			);
 			name = Scheduling;
 			sourceTree = "<group>";
@@ -588,6 +597,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37E2B03B249AB9D900617C03 /* Payment.storyboard in Resources */,
 				370E676524820FB500297018 /* AddCar.storyboard in Resources */,
 				375DB3E6244A5AE800C889F2 /* LaunchScreen.storyboard in Resources */,
 				375DB3E3244A5AE800C889F2 /* Assets.xcassets in Resources */,
@@ -700,8 +710,10 @@
 				378BB368244E8C6100A2DCDA /* SignUpViewController.swift in Sources */,
 				375D41112451299500479C7E /* WasherViewController.swift in Sources */,
 				37B8377E2457CCC3007D65DA /* WasherCollectionViewCell.swift in Sources */,
+				37E2B039249AB9B000617C03 /* PaymentViewController.swift in Sources */,
 				375D410F2451298200479C7E /* ReceiptsViewController.swift in Sources */,
 				375DB3DA244A5AE500C889F2 /* AppDelegate.swift in Sources */,
+				37E2B037249AB40000617C03 /* StripeController.swift in Sources */,
 				5D46BE4D244EBAA80058A660 /* ExpressWash.xcdatamodeld in Sources */,
 				5D605C652453D31100B83420 /* UserRepresentation.swift in Sources */,
 				5D605C672453DEB700B83420 /* User+Convenience.swift in Sources */,

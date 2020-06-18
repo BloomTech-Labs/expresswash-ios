@@ -263,11 +263,22 @@
                         <outlet property="scheduleWashButton" destination="7hd-cB-qGb" id="bW7-CE-pr4"/>
                         <outlet property="searchButton" destination="qXN-zd-PCg" id="A7s-GX-2E4"/>
                         <outlet property="washersCollectionView" destination="xeQ-UX-rZc" id="QBb-UE-UXi"/>
+                        <segue destination="xbR-FZ-srV" kind="show" identifier="confirmWashSegue" id="mZh-Je-ZDG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9lR-Gm-GF5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1973.5999999999999" y="-1528.8177339901479"/>
+        </scene>
+        <!--Payment-->
+        <scene sceneID="kAI-kZ-48R">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Payment" id="xbR-FZ-srV" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="VW6-4f-XWI"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3g2-TD-UfA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2669" y="-1529"/>
         </scene>
         <!--Receipts-->
         <scene sceneID="DZ0-6S-Fbf">
