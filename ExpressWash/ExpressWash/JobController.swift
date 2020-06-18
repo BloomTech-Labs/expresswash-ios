@@ -380,13 +380,10 @@ extension JobController {
 
             if let response = response as? HTTPURLResponse {
                 print("\(response.statusCode)")
-                if response.statusCode != 200 &&
-                   response.statusCode != 201 &&
-                   response.statusCode != 202 &&
-                   response.statusCode != 203 {
+                if response.statusCode != 200 && response.statusCode != 201 &&
+                   response.statusCode != 202 && response.statusCode != 203 {
                     completion(nil, NSError(domain: "Assigning Washer To Job",
-                                            code: response.statusCode,
-                                            userInfo: nil))
+                                            code: response.statusCode, userInfo: nil))
                     return
                 }
             }
@@ -459,39 +456,6 @@ extension JobController {
             } catch {
                 print("Error decoding job: \(error)")
                 completion(nil, error)
-                return
-            }
-        }.resume()
-    }
-
-    func deleteJob(job: Job, completion: @escaping (String?, Error?) -> Void) {
-
-        let baseURL = BASEURL.appendingPathComponent(ENDPOINTS.jobRevise.rawValue)
-        let deleteJobURL = baseURL.appendingPathComponent("\(job.jobId)")
-        var request = URLRequest(url: deleteJobURL)
-        request.httpMethod = "DELETE"
-        request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")
-
-        SESSION.dataTask(with: request) { (data, _, error) in
-            if let error = error {
-                print("Error deleting job: \(error)")
-                completion(nil, error)
-                return
-            }
-
-            guard let data = data else {
-                completion(nil, NSError(domain: "Deleting Job", code: NODATAERROR, userInfo: nil))
-                return
-            }
-
-            let decoder = JSONDecoder()
-
-            do {
-                let dictionary = try decoder.decode([String: String].self, from: data)
-                let message = dictionary.values.first
-                completion(message, nil)
-            } catch {
-                print("Error decoding message: \(error)")
                 return
             }
         }.resume()

@@ -315,31 +315,24 @@ extension ProfileViewController {
         if firstNameTextField.text == "First" {
             firstNameTextField.text = nil
         }
-
         if lastNameTextField.text == "Last" {
             lastNameTextField.text = nil
         }
-
         if phoneNumberTextField.text == "Phone Number" {
             phoneNumberTextField.text = nil
         }
-
         if emailAddressTextField.text == "Email Address" {
             emailAddressTextField.text = nil
         }
-
         if addressTextField.text == "Address" {
             addressTextField.text = nil
         }
-
         if cityTextField.text == "City" {
             cityTextField.text = nil
         }
-
         if stateTextField.text == "State" {
             stateTextField.text = nil
         }
-
         bannerImageButton.alpha = 1
         bannerImageButton.isEnabled = true
         profileTapGesture.isEnabled = true
@@ -364,35 +357,27 @@ extension ProfileViewController {
                 profileImageView.image = UIImage(systemName: "person.circle")
             }
         }
-
         if firstNameTextField.text == "" {
             firstNameTextField.text = "First"
         }
-
         if lastNameTextField.text == "" {
             lastNameTextField.text = "Last"
         }
-
         if phoneNumberTextField.text == "" {
             phoneNumberTextField.text = "Phone Number"
         }
-
         if emailAddressTextField.text == "" {
             emailAddressTextField.text = "Email Address"
         }
-
         if addressTextField.text == "" {
             addressTextField.text = "Address"
         }
-
         if cityTextField.text == "" {
             cityTextField.text = "City"
         }
-
         if stateTextField.text == "" {
             stateTextField.text = "State"
         }
-
         bannerImageButton.alpha = 0
         bannerImageButton.isEnabled = false
         profileTapGesture.isEnabled = false
