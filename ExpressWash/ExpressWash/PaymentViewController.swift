@@ -27,7 +27,11 @@ UICollectionViewDataSource, STPAuthenticationContext {
         })
     }
     var jobController = JobController()
-    var amount: Int?
+    var amount: Int? {
+        didSet {
+            amountLabel.text = "$\(amount ?? 0)"
+        }
+    }
     var addressString: String?
     var cityString: String?
     var stateString: String?
@@ -43,12 +47,16 @@ UICollectionViewDataSource, STPAuthenticationContext {
     @IBOutlet weak var carsCollectionView: UICollectionView!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var confirmWashButton: UIButton!
-
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var logoImageView: UIImageView!
+    
     // MARK: - Views
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        cardView.layer.cornerRadius = 10.0
+        logoImageView.layer.cornerRadius = 10.0
         carsCollectionView.delegate = self
         carsCollectionView.dataSource = self
         carsCollectionView.allowsMultipleSelection = false
@@ -56,9 +64,10 @@ UICollectionViewDataSource, STPAuthenticationContext {
         cardView.addSubview(cardTextField)
         cardTextField.translatesAutoresizingMaskIntoConstraints = false
         cardTextField.textColor = UIColor(named: "Navy")
+        cardTextField.backgroundColor = .white
         NSLayoutConstraint.activate([
-            cardTextField.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
-            cardTextField.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
+            cardTextField.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 10.0),
+            cardTextField.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -10.0),
             cardTextField.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
             cardTextField.centerXAnchor.constraint(equalTo: cardView.centerXAnchor),
             cardTextField.heightAnchor.constraint(equalToConstant: 50.0)
@@ -164,7 +173,7 @@ UICollectionViewDataSource, STPAuthenticationContext {
             self.amount = Int(washer.rateLarge)
         }
     }
-    
+
     private func alertUser(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
