@@ -13,9 +13,9 @@ struct WasherRepresentation: Codable {
     var workStatus: Bool
     var currentLocationLat: Double?
     var currentLocationLon: Double?
-    var rateSmall: Double
-    var rateMedium: Double
-    var rateLarge: Double
+    var rateSmall: Double?
+    var rateMedium: Double          // this is the only required rate on the back-end
+    var rateLarge: Double?
     var washerId: Int
     var washerRating: Int?
     var washerRatingTotal: Int

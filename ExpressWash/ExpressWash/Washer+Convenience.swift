@@ -44,9 +44,9 @@ extension Washer {
         self.workStatus = representation.workStatus
         self.currentLocationLat = representation.currentLocationLat ?? kCLLocationCoordinate2DInvalid.latitude
         self.currentLocationLon = representation.currentLocationLon ?? kCLLocationCoordinate2DInvalid.longitude
-        self.rateSmall = representation.rateSmall
+        self.rateSmall = representation.rateSmall ?? representation.rateMedium
         self.rateMedium = representation.rateMedium
-        self.rateLarge = representation.rateLarge
+        self.rateLarge = representation.rateLarge ?? representation.rateMedium
         self.washerId = Int32(representation.washerId)
         self.washerRating = Int16(representation.washerRating ?? 0)
         self.washerRatingTotal = Int16(representation.washerRatingTotal)
