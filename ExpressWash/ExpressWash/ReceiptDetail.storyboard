@@ -66,7 +66,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="0nV-Ie-hAJ">
-                                <rect key="frame" x="20" y="624" width="374" height="125"/>
+                                <rect key="frame" x="20" y="614" width="374" height="125"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="oAU-dS-u5A">
                                         <rect key="frame" x="0.0" y="0.0" width="187" height="116"/>
@@ -105,7 +105,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Q1n-hC-amW">
-                                <rect key="frame" x="128.5" y="779" width="157" height="25"/>
+                                <rect key="frame" x="128.5" y="769" width="157" height="25"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evk-ey-0IH">
                                         <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
@@ -151,10 +151,10 @@
                                 <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5dB-Df-28k">
-                                <rect key="frame" x="20" y="819" width="374" height="35"/>
+                                <rect key="frame" x="20" y="809" width="374" height="45"/>
                                 <color key="backgroundColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="6QI-el-szD"/>
+                                    <constraint firstAttribute="height" constant="45" id="6QI-el-szD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Rate Washer!">

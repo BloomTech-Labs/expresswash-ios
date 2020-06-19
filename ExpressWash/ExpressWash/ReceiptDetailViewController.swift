@@ -45,6 +45,7 @@ class ReceiptDetailViewController: UIViewController {
         super.viewDidLoad()
 
         updateViews()
+        rateWasherButton.layer.cornerRadius = 10.0
     }
 
     // MARK: - Methods
