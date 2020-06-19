@@ -337,11 +337,3 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: 75.0, height: 75.0)
     }
 }
-
-extension ProfileViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 75.0, height: 75.0)
-    }
-}

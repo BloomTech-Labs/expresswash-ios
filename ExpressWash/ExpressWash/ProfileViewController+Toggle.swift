@@ -11,7 +11,7 @@ import UIKit
 
 extension ProfileViewController {
 
-    @objc func editEnabled() {
+    func editEnabled() {
         editButton.setImage(UIImage(systemName: "square.and.arrow.down"), for: .normal)
         editButton.isSelected = true
 
