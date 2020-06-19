@@ -23,7 +23,7 @@ struct UserRepresentation: Codable {
     var city: String?
     var state: String?
     var zip: String?
-    var userRating: Int?
+    var userRating: Float?
     var userRatingTotal: Int?
     var carRepresentations: [CarRepresentation] = []
     var washerRepresentation: WasherRepresentation?
@@ -42,7 +42,7 @@ struct UserRepresentation: Codable {
          city: String? = nil,
          state: String? = nil,
          zip: String? = nil,
-         userRating: Int? = nil,
+         userRating: Float? = nil,
          userRatingTotal: Int? = nil) {
         self.userId = userId
         self.accountType = accountType
@@ -115,7 +115,7 @@ struct UserRepresentation: Codable {
         self.city = try container.decodeIfPresent(String.self, forKey: .city)
         self.state = try container.decodeIfPresent(String.self, forKey: .state)
         self.zip = try container.decodeIfPresent(String.self, forKey: .zip)
-        self.userRating = try container.decodeIfPresent(Int.self, forKey: .userRating)
+        self.userRating = try container.decodeIfPresent(Float.self, forKey: .userRating)
         self.userRatingTotal = try container.decodeIfPresent(Int.self, forKey: .userRatingTotal)
         self.washerRepresentation = try container.decodeIfPresent(WasherRepresentation.self, forKey: .washer)
 

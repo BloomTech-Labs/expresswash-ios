@@ -17,7 +17,7 @@ struct WasherRepresentation: Codable {
     var rateMedium: Double          // this is the only required rate on the back-end
     var rateLarge: Double?
     var washerId: Int
-    var washerRating: Int?
+    var washerRating: Float?
     var washerRatingTotal: Int
     var userId: Int
 
@@ -29,7 +29,7 @@ struct WasherRepresentation: Codable {
          rateMedium: Double,
          rateLarge: Double,
          washerId: Int,
-         washerRating: Int?,
+         washerRating: Float?,
          washerRatingTotal: Int,
          userId: Int) {
         self.aboutMe = aboutMe

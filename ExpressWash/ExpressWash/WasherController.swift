@@ -38,7 +38,7 @@ class WasherController {
         washer.rateMedium = rep.rateMedium
         washer.rateLarge = rep.rateLarge ?? rep.rateMedium
         washer.washerId = Int32(rep.washerId)
-        washer.washerRating = Int16(rep.washerRating ?? 0)
+        washer.washerRating = rep.washerRating ?? 0.0
         washer.washerRatingTotal = Int16(rep.washerRatingTotal)
 
         // if the user is already the same, don't bother hunting it down

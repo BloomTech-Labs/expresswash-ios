@@ -53,7 +53,7 @@
         <attribute name="stripeUUID" optional="YES" attributeType="String"/>
         <attribute name="token" optional="YES" attributeType="String"/>
         <attribute name="userId" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="userRating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="userRating" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="userRatingTotal" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="zip" optional="YES" attributeType="String"/>
         <relationship name="cars" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Car" inverseName="owner" inverseEntity="Car"/>
@@ -68,7 +68,7 @@
         <attribute name="rateMedium" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="rateSmall" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="washerId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="washerRating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="washerRating" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="washerRatingTotal" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="workStatus" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <relationship name="jobs" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Job" inverseName="washer" inverseEntity="Job"/>

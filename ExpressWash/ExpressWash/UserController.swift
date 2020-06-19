@@ -127,7 +127,7 @@ class UserController {
         user.profilePicture = representation.profilePicture != nil
             ? representation.profilePicture! : user.profilePicture
         user.bannerImage = representation.bannerImage != nil ? representation.bannerImage! : user.bannerImage
-        user.userRating = representation.userRating != nil ? Int16(representation.userRating!) : user.userRating
+        user.userRating = representation.userRating != nil ? representation.userRating! : user.userRating
 
         context.perform {
             do {
@@ -187,7 +187,7 @@ class UserController {
         user.zip = representation.zip
         user.profilePicture = representation.profilePicture
         user.bannerImage = representation.bannerImage
-        user.userRating = representation.userRating != nil ? Int16(representation.userRating!) : user.userRating
+        user.userRating = representation.userRating != nil ? representation.userRating! : user.userRating
 
         if saveOnMainContext {
             CoreDataStack.shared.mainContext.perform {

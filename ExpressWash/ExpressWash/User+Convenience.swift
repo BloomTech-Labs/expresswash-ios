@@ -24,7 +24,7 @@ extension User {
                      city: String? = nil,
                      state: String? = nil,
                      zip: String? = nil,
-                     userRating: Int16 = 0,
+                     userRating: Float = 0,
                      userRatingTotal: Int16 = 0,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
@@ -65,7 +65,7 @@ extension User {
         self.zip = representation.zip
 
         if let repUserRating = representation.userRating {
-            self.userRating = Int16(repUserRating)
+            self.userRating = repUserRating
         } else {
             self.userRating = 0
         }

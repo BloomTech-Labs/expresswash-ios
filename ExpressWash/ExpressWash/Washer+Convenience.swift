@@ -19,7 +19,7 @@ extension Washer {
                      rateMedium: Double,
                      rateLarge: Double,
                      washerId: Int32,
-                     washerRating: Int16,
+                     washerRating: Float,
                      washerRatingTotal: Int16,
                      user: User,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
@@ -48,7 +48,7 @@ extension Washer {
         self.rateMedium = representation.rateMedium
         self.rateLarge = representation.rateLarge ?? representation.rateMedium
         self.washerId = Int32(representation.washerId)
-        self.washerRating = Int16(representation.washerRating ?? 0)
+        self.washerRating = representation.washerRating ?? 0.0
         self.washerRatingTotal = Int16(representation.washerRatingTotal)
     }
 
@@ -61,7 +61,7 @@ extension Washer {
                              rateMedium: self.rateMedium,
                              rateLarge: self.rateLarge,
                              washerId: Int(self.washerId),
-                             washerRating: Int(self.washerRating),
+                             washerRating: self.washerRating,
                              washerRatingTotal: Int(self.washerRatingTotal),
                              userId: Int(self.user?.userId ?? NOID32))
     }

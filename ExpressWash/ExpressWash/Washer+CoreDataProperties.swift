@@ -24,7 +24,7 @@ extension Washer {
     @NSManaged public var rateMedium: Double
     @NSManaged public var rateLarge: Double
     @NSManaged public var washerId: Int32
-    @NSManaged public var washerRating: Int16
+    @NSManaged public var washerRating: Float
     @NSManaged public var washerRatingTotal: Int16
     @NSManaged public var jobs: NSOrderedSet?
     @NSManaged public var user: User?
