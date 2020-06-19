@@ -170,8 +170,5 @@
         <image name="camera.circle" catalog="system" width="128" height="121"/>
         <image name="camera.viewfinder" catalog="system" width="128" height="114"/>
         <image name="trash" catalog="system" width="121" height="128"/>
-        <namedColor name="Light Blue">
-            <color red="0.74099999666213989" green="0.83499997854232788" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
     </resources>
 </document>
