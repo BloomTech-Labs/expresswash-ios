@@ -76,7 +76,11 @@ class ReceiptDetailViewController: UIViewController {
         }
         washerNameLabel.text = "\(washer.firstName.capitalized) \(washer.lastName.capitalized)"
         washerRatingLabel.text = "★ \(job.washer!.washerRating)"
-        washerAboutMeTextView.text = "About your washer:/n/n\(job.washer!.aboutMe ?? "")"
+        washerAboutMeTextView.text = """
+        About your washer:
+
+        \(job.washer!.aboutMe ?? "")
+        """
     }
 
     private func oneStarFill() {
