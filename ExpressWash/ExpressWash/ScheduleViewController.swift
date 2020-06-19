@@ -76,10 +76,9 @@ class ScheduleViewController: UIViewController,
             if let url = user.profilePicture {
                 cell.imageView.image = UIImage.cached(from: url, defaultTitle: "person.circle")
             } else {
-                cell.imageView.image = UIImage(named: "person.circle")
+                cell.imageView.image = UIImage(systemName: "person.circle")
             }
-
-            cell.nameLabel.text = user.firstName + user.lastName
+            cell.nameLabel.text = "\(user.firstName.capitalized)  \(user.lastName.capitalized)"
         }
 
         if self.selectedIndexPath != nil && indexPath == self.selectedIndexPath {

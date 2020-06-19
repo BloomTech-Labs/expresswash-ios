@@ -109,6 +109,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1tN-iX-evK">
                                                     <rect key="frame" x="40" y="5" width="75" height="75"/>
+                                                    <color key="tintColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="75" id="CLH-Ou-2B1"/>
                                                         <constraint firstAttribute="width" constant="75" id="QAq-uS-Ear"/>
