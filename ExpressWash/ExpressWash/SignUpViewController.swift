@@ -24,6 +24,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var minimumLabel: UILabel!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var borderView: UIView!
+    @IBOutlet weak var stackView: UIStackView!
 
     // MARK: - Views
 
@@ -39,6 +41,10 @@ class SignUpViewController: UIViewController {
     // MARK: - Methods
 
     func setupSubviews() {
+
+        borderView.layer.cornerRadius = 10.0
+        borderView.layer.borderColor = UIColor(named: "Light Blue")?.cgColor
+        borderView.layer.borderWidth = 2.0
 
         let width = passwordTextField.frame.size.width
         let rect = CGRect(x: CGFloat(width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
