@@ -147,13 +147,25 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfj-yg-gQh">
+                                        <rect key="frame" x="104.5" y="122" width="205" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Tap to Add Cars">
+                                            <color key="titleColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addCarsButtonTapped:" destination="JNl-Lo-2K9" eventType="touchUpInside" id="6jX-lN-Kus"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstItem="Mfj-yg-gQh" firstAttribute="centerY" secondItem="cxo-QK-cfH" secondAttribute="centerY" id="0NO-ZY-JaE"/>
                                     <constraint firstItem="erk-Cu-Rzi" firstAttribute="centerX" secondItem="cxo-QK-cfH" secondAttribute="centerX" id="4xR-JU-Opz"/>
                                     <constraint firstAttribute="trailing" secondItem="erk-Cu-Rzi" secondAttribute="trailing" constant="10" id="QX3-hC-WB2"/>
                                     <constraint firstAttribute="bottom" secondItem="erk-Cu-Rzi" secondAttribute="bottom" constant="10" id="TXd-dQ-2df"/>
                                     <constraint firstItem="erk-Cu-Rzi" firstAttribute="leading" secondItem="cxo-QK-cfH" secondAttribute="leading" constant="10" id="X2Y-1g-eh2"/>
+                                    <constraint firstItem="Mfj-yg-gQh" firstAttribute="centerX" secondItem="cxo-QK-cfH" secondAttribute="centerX" id="bNt-2q-DKd"/>
                                     <constraint firstItem="erk-Cu-Rzi" firstAttribute="top" secondItem="cxo-QK-cfH" secondAttribute="top" constant="10" id="e5O-Zz-084"/>
                                     <constraint firstItem="erk-Cu-Rzi" firstAttribute="centerY" secondItem="cxo-QK-cfH" secondAttribute="centerY" id="kWv-5F-NI3"/>
                                 </constraints>
@@ -182,6 +194,7 @@
                         <viewLayoutGuide key="safeArea" id="841-zN-1iV"/>
                     </view>
                     <connections>
+                        <outlet property="addCarsButton" destination="Mfj-yg-gQh" id="fej-1i-ZEC"/>
                         <outlet property="amountLabel" destination="218-M1-hCP" id="Nyx-IA-QVu"/>
                         <outlet property="cardView" destination="TJf-d1-Tyx" id="qTf-4i-ACi"/>
                         <outlet property="carsCollectionView" destination="erk-Cu-Rzi" id="ltc-UJ-EEM"/>

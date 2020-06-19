@@ -56,6 +56,8 @@ class ProfileViewController: UIViewController,
         carsCollectionView.dataSource = self
         NotificationCenter.default.addObserver(self, selector: #selector(loadList),
                                                name: NSNotification.Name(rawValue: "load"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(editEnabled),
+                                               name: NSNotification.Name(rawValue: "addCar"), object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {

@@ -306,6 +306,7 @@ class ScheduleViewController: UIViewController,
                 paymentVC.zipString = zipString
                 paymentVC.timeRequested = timeRequested
                 paymentVC.selectedWasher = selectedWasher
+                paymentVC.scheduleViewController = self
             }
         }
     }

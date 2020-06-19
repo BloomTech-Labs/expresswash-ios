@@ -41,6 +41,7 @@ UICollectionViewDataSource, STPAuthenticationContext {
     var annotation: MGLAnnotation?
     var timeRequested: String?
     var selectedIndexPath: IndexPath?
+    var scheduleViewController: ScheduleViewController?
 
     // MARK: - Outlets
 
@@ -49,6 +50,7 @@ UICollectionViewDataSource, STPAuthenticationContext {
     @IBOutlet weak var confirmWashButton: UIButton!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var addCarsButton: UIButton!
 
     // MARK: - Views
 
@@ -77,7 +79,15 @@ UICollectionViewDataSource, STPAuthenticationContext {
     // MARK: - CollectionView
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cars.count
+        if cars.count == 0 {
+            addCarsButton.isEnabled = true
+            addCarsButton.alpha = 1
+            return cars.count
+        } else {
+            addCarsButton.isEnabled = false
+            addCarsButton.alpha = 0
+            return cars.count
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -157,7 +167,9 @@ UICollectionViewDataSource, STPAuthenticationContext {
                 if job != nil {
                     DispatchQueue.main.async {
                         self.dismiss(animated: true, completion: nil)
-                        self.tabBarController?.selectedIndex = 3
+                        if let tabBarController = self.scheduleViewController?.tabBarController {
+                            tabBarController.selectedIndex = 2
+                        }
                     }
                 }
             }
@@ -211,6 +223,15 @@ UICollectionViewDataSource, STPAuthenticationContext {
 
     func authenticationPresentingViewController() -> UIViewController {
         return self
+    }
+
+    @IBAction func addCarsButtonTapped(_ sender: Any) {
+        if let tabBarController = scheduleViewController?.tabBarController {
+            tabBarController.selectedIndex = 0
+        }
+        self.dismiss(animated: true, completion: nil)
+
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "addCar"), object: nil)
     }
 }
 
