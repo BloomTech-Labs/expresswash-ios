@@ -49,7 +49,7 @@ UICollectionViewDataSource, STPAuthenticationContext {
     @IBOutlet weak var confirmWashButton: UIButton!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var logoImageView: UIImageView!
-    
+
     // MARK: - Views
 
     override func viewDidLoad() {
