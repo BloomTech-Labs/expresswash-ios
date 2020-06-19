@@ -64,12 +64,15 @@ class ReceiptDetailViewController: UIViewController {
 
         if let beforeString = job.photoBeforeJob {
             beforeImageView.image = UIImage.cached(from: beforeString, defaultTitle: "Logo")
+            beforeImageView.layer.cornerRadius = 10.0
         }
         if let afterString = job.photoAfterJob {
             afterImageView.image = UIImage.cached(from: afterString, defaultTitle: "Logo")
+            afterImageView.layer.cornerRadius = 10.0
         }
         if let washerPhotoURL = washer.profilePicture {
             washerProfileImageView.image = UIImage.cached(from: washerPhotoURL, defaultTitle: "person.circle")
+            washerProfileImageView.layer.cornerRadius = washerProfileImageView.frame.size.height/2
         }
         washerNameLabel.text = "\(washer.firstName.capitalized) \(washer.lastName.capitalized)"
         washerRatingLabel.text = "★ \(job.washer!.washerRating)"

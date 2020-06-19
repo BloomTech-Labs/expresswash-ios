@@ -82,6 +82,7 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
 
         if let url = job.washer!.user!.profilePicture {
             cell.washerImage.image = UIImage.cached(from: url, defaultTitle: "person.circle")
+            cell.washerImage.layer.cornerRadius = cell.washerImage.frame.size.height/2
         } else {
             cell.washerImage.image = UIImage(named: "person.circle")
         }
@@ -96,10 +97,12 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
 
         if let beforeString = job.photoBeforeJob {
             cell.beforeImageView.image = UIImage.cached(from: beforeString, defaultTitle: "Logo")
+            cell.beforeImageView.layer.cornerRadius = 5.0
         }
 
         if let afterString = job.photoAfterJob {
             cell.afterImageView.image = UIImage.cached(from: afterString, defaultTitle: "Logo")
+            cell.afterImageView.layer.cornerRadius = 5.0
         }
 
         return cell
