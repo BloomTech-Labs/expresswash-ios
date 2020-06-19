@@ -38,7 +38,7 @@ enum ENDPOINTS: String {
     case jobsClient = "/jobs/user/"                 // GET      Gets Jobs by userID
     case jobsWasher = "/jobs/washer"                // GET      Gets Jobs by washerID
     case washersInCity = "/users/available/"        // GET      Gets washers in given city
-    
+
     case paymentIntent = "/users/payment-intent"    // Post     Established payment intent
 
     case users      // GET      View all users.

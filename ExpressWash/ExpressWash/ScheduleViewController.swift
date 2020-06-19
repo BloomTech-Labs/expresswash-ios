@@ -289,7 +289,9 @@ class ScheduleViewController: UIViewController,
             self.alertUser(title: "Please Select Washer", message: "")
             return }
 
-        self.performSegue(withIdentifier: "confirmWashSegue", sender: self)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.performSegue(withIdentifier: "confirmWashSegue", sender: self)
+        }
     }
 
     // MARK: - Navigation
