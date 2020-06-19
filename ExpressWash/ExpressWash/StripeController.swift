@@ -16,9 +16,10 @@ class StripeController {
     var paymentIntentClientSecret: String?
 
     func startCheckout(with amount: Int) {
-        let url = BASEURL.appendingPathComponent("create-payment-intent")
+        let url = BASEURL.appendingPathComponent(ENDPOINTS.paymentIntent.rawValue)
+        let amountCents = amount * 100
         let json: [String: Any] = [
-            "amount": amount,
+            "amount": amountCents,
             "currency": "usd"
         ]
         var request = URLRequest(url: url)

@@ -20,7 +20,6 @@ class ScheduleViewController: UIViewController,
     let jobController = JobController()
     let washerController = WasherController()
     let locationManager = CLLocationManager()
-    let geoCoder = CLGeocoder()
     var annotation = MGLPointAnnotation()
     var washers: [Washer] = []
 
@@ -132,7 +131,7 @@ class ScheduleViewController: UIViewController,
     }
 
     func getWashers(location: CLLocation) {
-        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
+        CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
             if let error = error {
                 print("Error reverse geocoding: \(error)")
                 return
@@ -150,6 +149,9 @@ class ScheduleViewController: UIViewController,
 
                     if let washers = washers {
                         self.washers = washers
+                        DispatchQueue.main.async {
+                            self.washersCollectionView.reloadData()
+                        }
                     }
                 }
             }
@@ -169,7 +171,7 @@ class ScheduleViewController: UIViewController,
         if let address = UserController.shared.sessionUser.user?.streetAddress {
             addressTextField.text = address
 
-            geoCoder.geocodeAddressString(address) { (placemarks, error) in
+            CLGeocoder().geocodeAddressString(address) { (placemarks, error) in
                 if let error = error {
                     print("Error geocoding address: \(error)")
                     return
@@ -192,7 +194,7 @@ class ScheduleViewController: UIViewController,
     }
 
     func reversGeocode(location: CLLocation) {
-        geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
+        CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
             if let error = error {
                 print("Error reverse geocoding: \(error)")
                 return
@@ -234,7 +236,7 @@ class ScheduleViewController: UIViewController,
 
         guard let address = addressTextField.text else { return }
 
-        geoCoder.geocodeAddressString(address) { (placemarks, error) in
+        CLGeocoder().geocodeAddressString(address) { (placemarks, error) in
             if let error = error {
                 print("Error geocoding address: \(error)")
                 return
@@ -271,8 +273,6 @@ class ScheduleViewController: UIViewController,
                 self.getWashers(location: currentLocation)
 
                 self.addressTextField.text = nil
-
-                self.washersCollectionView.reloadData()
             }
         }
     }
@@ -304,6 +304,7 @@ class ScheduleViewController: UIViewController,
                 paymentVC.stateString = stateString
                 paymentVC.zipString = zipString
                 paymentVC.timeRequested = timeRequested
+                paymentVC.selectedWasher = selectedWasher
             }
         }
     }

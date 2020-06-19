@@ -99,7 +99,8 @@ UICollectionViewDataSource, STPAuthenticationContext {
         self.selectedIndexPath = indexPath
         self.selectedCar = nil
         self.selectedCar = cars[indexPath.row]
-        setAmount(car: selectedCar!, washer: selectedWasher!)
+        setAmount(car: selectedCar!,
+                  washer: selectedWasher!)
         StripeController.shared.startCheckout(with: self.amount!)
     }
 
@@ -152,11 +153,11 @@ UICollectionViewDataSource, STPAuthenticationContext {
     }
 
     private func setAmount(car: Car, washer: Washer) {
-        if car.size == "small" {
+        if car.size == "Small" {
             self.amount = Int(washer.rateSmall)
-        } else if car.size == "medium" {
+        } else if car.size == "Medium" {
             self.amount = Int(washer.rateMedium)
-        } else if car.size == "large" {
+        } else if car.size == "Large" {
             self.amount = Int(washer.rateLarge)
         }
     }
