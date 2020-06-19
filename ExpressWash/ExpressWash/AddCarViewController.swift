@@ -201,6 +201,9 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
 
             DispatchQueue.main.async {
                 self.dismiss(animated: true, completion: nil)
+               DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+                }
             }
         }
     }
@@ -213,5 +216,8 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
         guard let car = car else { return }
         carController.deleteCar(car: car, context: CoreDataStack.shared.mainContext)
         self.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+        }
     }
 }

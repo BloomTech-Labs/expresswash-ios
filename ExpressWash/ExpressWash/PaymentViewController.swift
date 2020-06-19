@@ -142,8 +142,10 @@ UICollectionViewDataSource, STPAuthenticationContext {
                 }
 
                 if job != nil {
-                    self.dismiss(animated: true, completion: nil)
-                    self.tabBarController?.selectedIndex = 3
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true, completion: nil)
+                        self.tabBarController?.selectedIndex = 3
+                    }
                 }
             }
         }
@@ -192,11 +194,6 @@ UICollectionViewDataSource, STPAuthenticationContext {
 
     func authenticationPresentingViewController() -> UIViewController {
         return self
-    }
-
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     }
 }
 

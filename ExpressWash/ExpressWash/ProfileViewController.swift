@@ -54,6 +54,8 @@ class ProfileViewController: UIViewController,
         updateViews()
         carsCollectionView.delegate = self
         carsCollectionView.dataSource = self
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList),
+                                               name: NSNotification.Name(rawValue: "load"), object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -202,6 +204,10 @@ class ProfileViewController: UIViewController,
                 }
             }
         }
+    }
+
+    @objc func loadList(notification: NSNotification) {
+        self.carsCollectionView.reloadData()
     }
 
     // MARK: - Actions
