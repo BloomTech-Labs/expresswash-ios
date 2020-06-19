@@ -271,7 +271,7 @@ class ScheduleViewController: UIViewController,
 
                 self.getWashers(location: currentLocation)
 
-                self.addressTextField.text = nil
+                self.addressTextField.text = "Current Location"
             }
         }
     }
