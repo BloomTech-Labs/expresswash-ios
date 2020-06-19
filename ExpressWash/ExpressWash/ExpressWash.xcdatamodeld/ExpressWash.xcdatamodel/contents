@@ -33,6 +33,7 @@
         <attribute name="timeArrived" optional="YES" attributeType="String"/>
         <attribute name="timeCompleted" optional="YES" attributeType="String"/>
         <attribute name="timeRequested" attributeType="String"/>
+        <attribute name="washAddress" attributeType="String"/>
         <attribute name="zip" attributeType="String"/>
         <relationship name="car" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Car" inverseName="jobs" inverseEntity="Car"/>
         <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="jobs" inverseEntity="User"/>
@@ -76,7 +77,7 @@
     </entity>
     <elements>
         <element name="Car" positionX="18" positionY="171" width="128" height="223"/>
-        <element name="Job" positionX="160" positionY="192" width="128" height="373"/>
+        <element name="Job" positionX="160" positionY="192" width="128" height="388"/>
         <element name="User" positionX="54" positionY="198" width="128" height="343"/>
         <element name="Washer" positionX="18" positionY="153" width="128" height="223"/>
     </elements>

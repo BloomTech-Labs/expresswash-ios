@@ -118,6 +118,7 @@ UICollectionViewDataSource, STPAuthenticationContext {
     private func createJob() {
         let jobRep = JobRepresentation(jobLocationLat: annotation!.coordinate.latitude,
                                        jobLocationLon: annotation!.coordinate.latitude,
+                                       washAddress: addressString!,
                                        address: addressString!,
                                        address2: nil,
                                        city: cityString!,
