@@ -87,12 +87,6 @@ class ScheduleViewController: UIViewController,
             cell.layer.borderColor = UIColor(named: "Light Blue")?.cgColor
         }
 
-        if self.selectedIndexPath != nil && indexPath == self.selectedIndexPath {
-            cell.layer.borderColor = UIColor(named: "Salmon")?.cgColor
-        } else {
-            cell.layer.borderColor = UIColor(named: "Light Blue")?.cgColor
-        }
-
         cell.starLabel.text = "★ \(washer.washerRating)"
         cell.largeRateLabel.text = "$\(washer.rateLarge)"
         cell.mediumRateLabel.text = "\(washer.rateMedium)"
