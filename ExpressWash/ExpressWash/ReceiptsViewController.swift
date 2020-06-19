@@ -78,7 +78,7 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
         let firstName = job.washer!.user!.firstName
         let lastName = job.washer!.user!.lastName
 
-        cell.washerName.text = firstName + lastName
+        cell.washerName.text = "\(firstName) \(lastName)"
 
         if let url = job.washer!.user!.profilePicture {
             cell.washerImage.image = UIImage.cached(from: url, defaultTitle: "person.circle")
@@ -86,7 +86,7 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
             cell.washerImage.image = UIImage(named: "person.circle")
         }
 
-        cell.washerRating.text = "★ \(job.washer!.washerRating))"
+        cell.washerRating.text = "★ \(job.washer!.washerRating)"
 
         cell.dateLabel.text = DateFormatter.dateString(from: job.creationDate!)
 
