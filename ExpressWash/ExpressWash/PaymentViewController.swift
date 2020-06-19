@@ -86,8 +86,10 @@ UICollectionViewDataSource, STPAuthenticationContext {
         if self.selectedIndexPath != nil && indexPath == self.selectedIndexPath {
             cell.layer.borderColor = UIColor(named: "Salmon")?.cgColor
         } else {
-            cell.layer.backgroundColor = UIColor.white.cgColor
+            cell.layer.borderColor = UIColor.white.cgColor
         }
+
+        cell.layer.cornerRadius = 5.0
 
         return cell
     }
