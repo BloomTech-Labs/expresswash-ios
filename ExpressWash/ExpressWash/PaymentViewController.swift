@@ -191,6 +191,12 @@ UICollectionViewDataSource, STPAuthenticationContext {
             self.amount = Int(washer.rateLarge)
         }
     }
+    
+    private func alertUser(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
 
     private func alertUser(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
