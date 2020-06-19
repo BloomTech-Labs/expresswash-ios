@@ -26,6 +26,7 @@
 		3765B41524888DD000D93751 /* ReceiptDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3765B41424888DD000D93751 /* ReceiptDetailViewController.swift */; };
 		3765B4172488932B00D93751 /* ReceiptDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3765B4162488932B00D93751 /* ReceiptDetail.storyboard */; };
 		3770887E249BCFEC002891B1 /* JobController+delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3770887D249BCFEC002891B1 /* JobController+delete.swift */; };
+		37708880249D31CA002891B1 /* ProfileViewController+Toggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3770887F249D31CA002891B1 /* ProfileViewController+Toggle.swift */; };
 		377D1A02246A46FD00CA3AEB /* UserController+Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377D1A01246A46FD00CA3AEB /* UserController+Registration.swift */; };
 		377D1A07246A4A3D00CA3AEB /* SignUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377D1A06246A4A3D00CA3AEB /* SignUpTests.swift */; };
 		378BB366244E837000A2DCDA /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 378BB365244E837000A2DCDA /* SignUp.storyboard */; };
@@ -119,6 +120,7 @@
 		3765B41424888DD000D93751 /* ReceiptDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptDetailViewController.swift; sourceTree = "<group>"; };
 		3765B4162488932B00D93751 /* ReceiptDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReceiptDetail.storyboard; sourceTree = "<group>"; };
 		3770887D249BCFEC002891B1 /* JobController+delete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JobController+delete.swift"; sourceTree = "<group>"; };
+		3770887F249D31CA002891B1 /* ProfileViewController+Toggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Toggle.swift"; sourceTree = "<group>"; };
 		377D1A01246A46FD00CA3AEB /* UserController+Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserController+Registration.swift"; sourceTree = "<group>"; };
 		377D1A06246A4A3D00CA3AEB /* SignUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTests.swift; sourceTree = "<group>"; };
 		378BB365244E837000A2DCDA /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				375D410C2451296E00479C7E /* ProfileViewController.swift */,
+				3770887F249D31CA002891B1 /* ProfileViewController+Toggle.swift */,
 				370E67622482008500297018 /* AddCarViewController.swift */,
 			);
 			name = Profile;
@@ -706,6 +709,7 @@
 				5DA0A8A32459141E00992692 /* NetworkGlobals.swift in Sources */,
 				5DBD0ECF2457C10200ADE10A /* UserController.swift in Sources */,
 				5D51383D2463A13500E81AEA /* Washer+Convenience.swift in Sources */,
+				37708880249D31CA002891B1 /* ProfileViewController+Toggle.swift in Sources */,
 				5D2370F224776C4B007A7AB8 /* EditWasherViewController.swift in Sources */,
 				5D46BE44244E9EE20058A660 /* CoreDataStack.swift in Sources */,
 				5D7DBB062488995C00ABD34C /* SessionUser.swift in Sources */,
