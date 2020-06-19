@@ -164,6 +164,12 @@ UICollectionViewDataSource, STPAuthenticationContext {
             self.amount = Int(washer.rateLarge)
         }
     }
+    
+    private func alertUser(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
 
     // MARK: - Actions
 
@@ -181,13 +187,11 @@ UICollectionViewDataSource, STPAuthenticationContext {
                                       authenticationContext: self) { (status, _, _) in
             switch status {
             case .failed:
-                // Alert of failed payment
+                self.alertUser(title: "Payment Failed", message: "please try again")
                 print("Payment Failed")
             case .canceled:
-                // Alert of cenceled payment
                 print("Payment Canceled")
             case .succeeded:
-                // Alert of succeeded payment
                 self.createJob()
                 print("Payment Successful")
             @unknown default:
