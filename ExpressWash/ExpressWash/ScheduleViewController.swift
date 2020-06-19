@@ -82,7 +82,7 @@ class ScheduleViewController: UIViewController,
 
             cell.nameLabel.text = user.firstName + user.lastName
         }
-        
+
         if self.selectedIndexPath != nil && indexPath == self.selectedIndexPath {
             cell.layer.borderColor = UIColor(named: "Salmon")?.cgColor
         } else {
@@ -105,7 +105,7 @@ class ScheduleViewController: UIViewController,
         cell?.layer.borderColor = UIColor(named: "Salmon")?.cgColor
         self.selectedIndexPath = indexPath
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.borderWidth = 0.0

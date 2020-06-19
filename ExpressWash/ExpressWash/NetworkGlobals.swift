@@ -37,7 +37,7 @@ enum ENDPOINTS: String {
                                                     // PUT      Edits Job by jobID
     case jobsClient = "/jobs/user/"                 // GET      Gets Jobs by userID
     case jobsWasher = "/jobs/washer"                // GET      Gets Jobs by washerID
-    case washersInCity = "users/available/"         // GET      Gets washers in given city
+    case washersInCity = "/users/available/"         // GET      Gets washers in given city
 
     case users      // GET      View all users.
                     // GET      /:id    View specific user.

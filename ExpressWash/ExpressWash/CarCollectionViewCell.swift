@@ -20,5 +20,5 @@ class CarCollectionViewCell: UICollectionViewCell {
         addButtonTapAction?()
     }
 
-    var addButtonTapAction : (()->())?
+    var addButtonTapAction : (() -> Void)?
 }

@@ -57,6 +57,7 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
         deleteCarButton.alpha = 0
 
         licenseTextField.delegate = self
+        yearTextField.delegate = self
     }
 
     private func setupCamera() {
@@ -91,7 +92,13 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
-        let maxLength = 7
+        var maxLength = 7
+
+        if textField == licenseTextField {
+            maxLength = 7
+        } else if textField == yearTextField {
+            maxLength = 4
+        }
         let currentString: NSString = textField.text! as NSString
         let newString: NSString =
             currentString.replacingCharacters(in: range, with: string) as NSString
