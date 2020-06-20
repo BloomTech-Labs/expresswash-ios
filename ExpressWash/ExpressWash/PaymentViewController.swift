@@ -135,20 +135,25 @@ UICollectionViewDataSource, STPAuthenticationContext {
     // MARK: - Methods
 
     private func createJob() {
+        guard let address = addressString, let city = cityString,
+            let state = stateString, let zip = zipString,
+            let timeRequested = timeRequested, let car = selectedCar,
+            let washer = selectedWasher else { return }
+
         let jobRep = JobRepresentation(jobLocationLat: annotation!.coordinate.latitude,
                                        jobLocationLon: annotation!.coordinate.latitude,
-                                       washAddress: addressString!,
-                                       address: addressString!,
+                                       washAddress: address,
+                                       address: address,
                                        address2: nil,
-                                       city: cityString!,
-                                       state: stateString!,
-                                       zip: zipString!,
+                                       city: city,
+                                       state: state,
+                                       zip: zip,
                                        notes: nil,
                                        jobType: "basic",
-                                       timeRequested: timeRequested!,
-                                       carId: Int(selectedCar!.carId),
+                                       timeRequested: timeRequested,
+                                       carId: Int(car.carId),
                                        clientId: Int(UserController.shared.sessionUser.user!.userId),
-                                       washerId: Int(selectedWasher!.washerId))
+                                       washerId: Int(washer.washerId))
 
         jobController.addJob(jobRepresentation: jobRep) { (job, error) in
             if let error = error {
