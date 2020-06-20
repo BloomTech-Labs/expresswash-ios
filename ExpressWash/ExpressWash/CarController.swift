@@ -60,16 +60,44 @@ class CarController {
 
             guard let car = car else { return }
 
-            completion(car, nil)
-
             context.perform {
                 do {
                     try CoreDataStack.shared.save(context: context)
                 } catch {
                     print("Unable to update car: \(error)")
                     context.reset()
+                    completion(nil, error)
                 }
+                completion(car, nil)
             }
+        }
+    }
+
+    func updateCarInCoreData(_ car: Car,
+                             rep: CarRepresentation,
+                             context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
+                             completion: @escaping CompletionHandler) {
+        let privateMOC = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        privateMOC.parent = context
+        privateMOC.performAndWait {
+            car.carId = Int32(rep.carId ?? NOID)
+            car.category = rep.category
+            car.clientId = Int16(rep.clientId)
+            car.color = rep.color
+            car.licensePlate = rep.licensePlate
+            car.make = rep.make
+            car.model = rep.model
+            car.photo = rep.photo
+            car.size = rep.size
+            car.year = rep.year
+            do {
+                try privateMOC.save()
+            } catch {
+                print("Unable to save updated car: \(error)")
+                context.reset()
+                completion(nil, error)
+            }
+            completion(car, nil)
         }
     }
 
@@ -96,9 +124,9 @@ class CarController {
 
     func findCar(by carId: Int, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> Car? {
         var foundCar: Car?
-        let objcUID = NSNumber(value: carId)
+        let objcCarId = NSNumber(value: carId)
         let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "carId == %@", objcUID)
+        fetchRequest.predicate = NSPredicate(format: "carId == %@", objcCarId)
         do {
             let matchedCars = try context.fetch(fetchRequest)
 
@@ -111,6 +139,19 @@ class CarController {
             print("Error when searching core data for carId \(carId): \(error)")
             return nil
         }
+    }
+
+    // finds or creates a Car in Core Data (not on the server)
+    func findOrCreateCarInCoreData(from rep: CarRepresentation,
+                                   context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> Car {
+        var foundCar = findCar(by: rep.carId ?? 0)
+        if foundCar == nil {
+            foundCar = Car(representation: rep, context: context)
+        } else {
+            // if the Car already exists in Core Data, update based on rep
+            updateCarInCoreData(foundCar!, rep: rep, context: context) { (_, _) in }
+        }
+        return foundCar!
     }
 
     // MARK: - Networking Methods
@@ -196,7 +237,7 @@ class CarController {
 
             do {
                 let editedCarRepresentation = try decoder.decode(CarRepresentation.self, from: data)
-                let car = Car(representation: editedCarRepresentation)
+                let car = self.findOrCreateCarInCoreData(from: editedCarRepresentation)
                 completion(car, nil)
             } catch {
                 print("Error Decoding Car: \(error)")
