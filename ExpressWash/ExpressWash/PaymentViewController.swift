@@ -158,7 +158,7 @@ UICollectionViewDataSource, STPAuthenticationContext {
 
             guard let job = job else { return }
 
-            self.jobController.assignWasher(job: job, washerID: Int(self.selectedWasher!.washerId)) { (job, error) in
+            self.jobController.assignWasher(job: job, washerId: Int(self.selectedWasher!.washerId)) { (job, error) in
                 if let error = error {
                     print("Error assigning washer to job: \(error)")
                     return

@@ -29,7 +29,7 @@ struct JobRepresentation: Codable {
     var state: String
     var timeRequested: String
     var timeCompleted: String?
-    var washerId: Int
+    var washerId: Int?
     var zip: String
     var creationDate: String?
     var timeArrived: String?
@@ -54,7 +54,7 @@ struct JobRepresentation: Codable {
          timeCompleted: String? = nil,
          carId: Int,
          clientId: Int,
-         washerId: Int,
+         washerId: Int? = nil,
          creationDate: String? = nil,
          timeArrived: String? = nil) {
         self.washAddress = washAddress
@@ -135,7 +135,7 @@ struct JobRepresentation: Codable {
         timeCompleted   = try container.decodeIfPresent(String.self, forKey: .timeCompleted)
         carId           = try container.decode(Int.self, forKey: .carId)
         clientId        = try container.decode(Int.self, forKey: .clientId)
-        washerId        = try container.decode(Int.self, forKey: .washerId)
+        washerId        = try container.decodeIfPresent(Int.self, forKey: .washerId)
         creationDate    = try container.decodeIfPresent(String.self, forKey: .creationDate)
         timeArrived     = try container.decodeIfPresent(String.self, forKey: .timeArrived)
     }
@@ -173,5 +173,8 @@ struct JobRepresentation: Codable {
             try container.encode(creationDate, forKey: .creationDate)
         }
         try container.encode(timeArrived, forKey: .timeArrived)
+        if let washerId = washerId {
+            try container.encode(washerId, forKey: .washerId)
+        }
     }
 }

@@ -355,7 +355,7 @@ extension JobController {
         }.resume()
     }
 
-    func assignWasher(job: Job, washerID: Int, completion: @escaping CompletionHandler) {
+    func assignWasher(job: Job, washerId: Int, completion: @escaping CompletionHandler) {
         let baseURL = BASEURL.appendingPathComponent(ENDPOINTS.jobSelect.rawValue)
         let jobURL = baseURL.appendingPathComponent("\(job.jobId)")
         var request = URLRequest(url: jobURL)
@@ -366,8 +366,8 @@ extension JobController {
         let encoder = JSONEncoder()
 
         do {
-            let washerID = WasherID(washerID: washerID)
-            let data = try encoder.encode(washerID)
+            let washerId = WasherId(washerId: washerId)
+            let data = try encoder.encode(washerId)
             request.httpBody = data
         } catch {
             print("Error encoding washer to be assigned: \(error)")
@@ -383,7 +383,6 @@ extension JobController {
             }
 
             if let response = response as? HTTPURLResponse {
-                print("\(response.statusCode)")
                 if response.statusCode != 200 && response.statusCode != 201 &&
                    response.statusCode != 202 && response.statusCode != 203 {
                     completion(nil, NSError(domain: "Assigning Washer To Job",
@@ -465,7 +464,7 @@ extension JobController {
         }.resume()
     }
 
-    struct WasherID: Codable {
-        var washerID: Int
+    struct WasherId: Codable {
+        var washerId: Int
     }
 }
