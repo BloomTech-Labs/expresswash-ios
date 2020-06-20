@@ -77,12 +77,17 @@ class WasherViewController: UIViewController {
 
     private func setupSubviews() {
         profileImageView.layer.cornerRadius = profileImageView.frame.size.height/2
+        arrivedCompleteLabel.layer.cornerRadius = 10.0
+        arrivedCompleteLabel.layer.masksToBounds = true
+        arrivedCompleteButton.layer.cornerRadius = 10.0
+        addressLabel.layer.cornerRadius = 10.0
+        addressLabel.layer.masksToBounds = true
+        mapView.attributionButton.isHidden = true
+        mapView.attributionButton.isEnabled = false
     }
 
     private func setUpMap() {
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mapView.attributionButton.isHidden = true
-        mapView.attributionButton.isEnabled = false
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.setUserTrackingMode(.follow, animated: true, completionHandler: nil)
