@@ -260,8 +260,21 @@ extension WasherController {
                 var washers: [Washer] = []
 
                 for wash in washerReps {
-                    let washer = Washer(representation: wash)
-                    washers.append(washer)
+                    var washer = self.findWasher(byID: wash.washerId)
+                    if washer == nil {
+                        washer = Washer(representation: wash)
+                    }
+                    UserController.shared.fetchUserByID(uid: wash.userId) { (user, error) in
+                        if let error = error {
+                            completion(washers, error)
+                            // sending back whatever washers we got plus the error
+                        }
+
+                        if let user = user {
+                            washer?.user = user
+                        }
+                    }
+                    washers.append(washer!)
                 }
                 completion(washers, nil)
             } catch {
