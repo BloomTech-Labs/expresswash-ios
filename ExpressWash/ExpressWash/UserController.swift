@@ -356,16 +356,22 @@ extension UserController {
             let decoder = JSONDecoder()
             do {
                 let representation = try decoder.decode(UserRepresentation.self, from: data)
-                let fetchedUser = User(representation: representation, context: context)
-                context.perform {
-                    do {
-                        try CoreDataStack.shared.save(context: context)
-                    } catch {
-                        print("Unable to save new user after fetching for ID \(uid): \(error)")
-                        context.reset()
-                        completion(fetchedUser, error)
+                let foundUser = self.findUser(byID: representation.userId)
+                if foundUser == nil {
+                    let fetchedUser = User(representation: representation, context: context)
+                    context.perform {
+                        do {
+                            try CoreDataStack.shared.save(context: context)
+                        } catch {
+                            print("Unable to save new user after fetching for ID \(uid): \(error)")
+                            context.reset()
+                            completion(fetchedUser, error)
+                        }
+                        completion(fetchedUser, nil)
                     }
-                    completion(fetchedUser, nil)
+                } else {
+                    self.update(user: foundUser!, with: representation, saveOnMainContext: true)
+                    completion(foundUser!, nil)
                 }
             } catch {
                 print("Unable to decode after fetching user for ID \(uid): \(error)")
