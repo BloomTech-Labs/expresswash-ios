@@ -138,7 +138,7 @@ UICollectionViewDataSource, STPAuthenticationContext {
         guard let address = addressString, let city = cityString,
             let state = stateString, let zip = zipString,
             let timeRequested = timeRequested, let car = selectedCar,
-            let washer = selectedWasher else { return }
+            let washer = selectedWasher, let user = washer.user else { return }
 
         let jobRep = JobRepresentation(jobLocationLat: annotation!.coordinate.latitude,
                                        jobLocationLon: annotation!.coordinate.latitude,
@@ -163,7 +163,8 @@ UICollectionViewDataSource, STPAuthenticationContext {
 
             guard let job = job else { return }
 
-            self.jobController.assignWasher(job: job, washerId: Int(self.selectedWasher!.washerId)) { (job, error) in
+            self.jobController.assignWasher(job: job, washerId: Int(washer.washerId),
+                                            userId: Int(user.userId)) { (job, error) in
                 if let error = error {
                     print("Error assigning washer to job: \(error)")
                     return

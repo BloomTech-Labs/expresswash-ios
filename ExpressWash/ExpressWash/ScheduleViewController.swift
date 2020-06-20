@@ -147,10 +147,12 @@ class ScheduleViewController: UIViewController,
                     self.washers = []
 
                     if let washers = washers {
-                        self.washers = washers
-                        DispatchQueue.main.async {
+                        self.washers = washers.sorted(by: { (washer1, washer2) -> Bool in
+                            washer1.washerRating > washer2.washerRating
+                        })
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
                             self.washersCollectionView.reloadData()
-                        }
+                        })
                     }
                 }
             }

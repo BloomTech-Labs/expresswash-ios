@@ -287,5 +287,4 @@ extension WasherController {
     struct WasherRating: Encodable {
         var washerRating: Int
     }
-
 }
