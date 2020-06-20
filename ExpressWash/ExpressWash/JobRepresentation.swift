@@ -113,10 +113,12 @@ struct JobRepresentation: Codable {
         paid            = try container.decode(Bool.self, forKey: .paid)
         address         = try container.decode(String.self, forKey: .address)
         address2        = try container.decodeIfPresent(String.self, forKey: .address2)
+
         jobLocationLat  = try container.decodeIfPresent(Double.self, forKey: .jobLocationLat) ??
             kCLLocationCoordinate2DInvalid.latitude
         jobLocationLon  = try container.decodeIfPresent(Double.self, forKey: .jobLocationLon) ??
             kCLLocationCoordinate2DInvalid.longitude
+
         city            = try container.decode(String.self, forKey: .city)
         state           = try container.decode(String.self, forKey: .state)
         zip             = try container.decode(String.self, forKey: .zip)

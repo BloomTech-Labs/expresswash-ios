@@ -228,7 +228,7 @@ class ProfileViewController: UIViewController,
                                                         streetAddress: address,
                                                         streetAddress2: nil,
                                                         city: city, state: state, zip: nil,
-                                                        userRating: Int(user.userRating),
+                                                        userRating: user.userRating,
                                                         userRatingTotal: Int(user.userRatingTotal))
 
             UserController.shared.updateUser(user, with: userRepresentation)

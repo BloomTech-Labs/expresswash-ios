@@ -21,6 +21,13 @@ extension DateFormatter {
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         return formatter
     }()
+    
+    static var nowAsISOString: String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        return formatter.string(from: Foundation.Date())
+    }
 
     static func clockString(from timeString: String) -> String {
         if let date = DateFormatter.FromISODate.date(from: timeString) {

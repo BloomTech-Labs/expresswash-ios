@@ -124,9 +124,9 @@ class CarController {
 
     func findCar(by carId: Int, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> Car? {
         var foundCar: Car?
-        let objcUID = NSNumber(value: carId)
+        let objcCarId = NSNumber(value: carId)
         let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "carId == %@", objcUID)
+        fetchRequest.predicate = NSPredicate(format: "carId == %@", objcCarId)
         do {
             let matchedCars = try context.fetch(fetchRequest)
 
@@ -237,7 +237,7 @@ class CarController {
 
             do {
                 let editedCarRepresentation = try decoder.decode(CarRepresentation.self, from: data)
-                let car = Car(representation: editedCarRepresentation)
+                let car = self.findOrCreateCarInCoreData(from: editedCarRepresentation)
                 completion(car, nil)
             } catch {
                 print("Error Decoding Car: \(error)")

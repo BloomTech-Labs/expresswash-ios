@@ -135,6 +135,38 @@ class JobController {
             }
         }
     }
+
+    func findJob(by jobId: Int, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> Job? {
+        var foundJob: Job?
+        let objcJobId = NSNumber(value: jobId)
+        let fetchRequest: NSFetchRequest<Job> = Job.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "jobId == %@", objcJobId)
+        do {
+            let matchedJobs = try context.fetch(fetchRequest)
+
+            if matchedJobs.count == 1 {
+                foundJob = matchedJobs[0]
+            }
+
+            return foundJob
+        } catch {
+            print("Error when searching core data for jobId \(jobId): \(error)")
+            return nil
+        }
+    }
+
+    // finds or creates a Job in Core Data (not on the server)
+    func findOrCreateJobInCoreData(from rep: JobRepresentation,
+                                   context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> Job {
+        var foundJob = findJob(by: rep.jobId, context: context)
+        if foundJob == nil {
+            foundJob = Job(representation: rep, context: context)
+        } else {
+            // if the Job already exists in Core Data, update based on rep
+            updateJob(foundJob!, with: rep) { (_, _) in }
+        }
+        return foundJob!
+    }
 }
 
 extension JobController {
@@ -416,7 +448,7 @@ extension JobController {
             do {
                 let editedJobRepresentations = try decoder.decode([JobRepresentation].self, from: data)
                 if let jobRepresentation = editedJobRepresentations.first {
-                    let job = Job(representation: jobRepresentation)
+                    let job = self.findOrCreateJobInCoreData(from: jobRepresentation)
                     completion(job, nil)
                 }
             } catch {

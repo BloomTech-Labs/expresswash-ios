@@ -20,7 +20,22 @@ class WasherViewController: UIViewController {
     var lastKnownLat = kCLLocationCoordinate2DInvalid.latitude
     var lastKnownLon = kCLLocationCoordinate2DInvalid.longitude
     var imagePicker = UIImagePickerController()
-    var nextImageNeeded: ImageEndpoint?
+    var jobStarted: Bool {
+        guard let job = job else { return false }
+        if job.timeArrived == nil {
+            return false
+        } else {
+            return true
+        }
+    }
+    var jobFinished: Bool {
+        guard let job = job else { return false }
+        if job.timeCompleted == nil {
+            return false
+        } else {
+            return true
+        }
+    }
 
     // MARK: - Outlets
 
@@ -75,15 +90,12 @@ class WasherViewController: UIViewController {
     }
 
     private func setUpMap() {
-        let map = MGLMapView(frame: mapView.bounds)
-        map.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        map.attributionButton.isHidden = true
-        map.attributionButton.isEnabled = false
-
-        mapView.addSubview(map)
-        map.delegate = self
-        map.showsUserLocation = true
-        map.setUserTrackingMode(.follow, animated: true, completionHandler: nil)
+        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mapView.attributionButton.isHidden = true
+        mapView.attributionButton.isEnabled = false
+        mapView.delegate = self
+        mapView.showsUserLocation = true
+        mapView.setUserTrackingMode(.follow, animated: true, completionHandler: nil)
     }
 
     private func updateViews() {
@@ -98,6 +110,7 @@ class WasherViewController: UIViewController {
         updateWasherViews()
         fetchJobs {
             self.updateJobViews()
+            self.addAnnotation()
         }
     }
 
@@ -157,7 +170,7 @@ class WasherViewController: UIViewController {
                 selectedJobRep = jobRep
             }
             if selectedJobRep != nil {
-                self.job = Job(representation: selectedJobRep!)
+                self.job = jobController.findOrCreateJobInCoreData(from: selectedJobRep!)
                 // fetch the client for this job
                 UserController.shared.fetchUserByID(uid: selectedJobRep!.clientId) { (client, error) in
                     if let error = error {
@@ -212,6 +225,21 @@ class WasherViewController: UIViewController {
         }
         addressLabel.text = addressText
 
+        if jobFinished {
+            arrivedCompleteLabel.isHidden = true
+            arrivedCompleteButton.isHidden = true
+        } else {
+            arrivedCompleteLabel.isHidden = false
+            arrivedCompleteButton.isHidden = false
+        }
+
+        if jobStarted {
+            arrivedCompleteLabel.text = "Completed?"
+            arrivedCompleteButton.isSelected = true
+        } else {
+            arrivedCompleteLabel.text = "Arrived?"
+            arrivedCompleteButton.isSelected = false
+        }
     }
 
     // MARK: - Actions
@@ -262,7 +290,11 @@ class WasherViewController: UIViewController {
             AVCaptureDevice.requestAccess(for: .video) { granted in
                 if granted {
                     self.imagePicker.delegate = self
-                    self.imagePicker.sourceType = .camera
+                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                        self.imagePicker.sourceType = .camera
+                    } else {
+                        self.imagePicker.sourceType = .savedPhotosAlbum
+                    }
                     self.imagePicker.allowsEditing = false
 
                     self.present(self.imagePicker, animated: true, completion: nil)
@@ -316,21 +348,52 @@ extension WasherViewController: MGLMapViewDelegate {
             }
         }
     }
+
+    func addAnnotation() {
+        guard let job = job else { return }
+        let annotation = MGLPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: job.jobLocationLat, longitude: job.jobLocationLon)
+        annotation.title = "\(job.address)"
+        if job.address2 != nil {
+            annotation.title! += ", \(job.address2!)"
+        }
+        annotation.subtitle = jobStarted ? "Tap the button when you arrive -->" : "Tap the button when you are done -->"
+        mapView.addAnnotation(annotation)
+        mapView.setCenter(annotation.coordinate, animated: true)
+    }
+
+    func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+        true
+    }
+
+    func mapView(_ mapView: MGLMapView, rightCalloutAccessoryViewFor annotation: MGLAnnotation) -> UIView? {
+        let button = UIButton(type: .system)
+        button.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        let buttonName = jobStarted ? "checkmark.seal.fill" : "mappin.and.ellipse"
+        button.setImage(UIImage(systemName: buttonName), for: .normal)
+        return button
+    }
+
+    func mapView(_ mapView: MGLMapView, annotation: MGLAnnotation, calloutAccessoryControlTapped control: UIControl) {
+        arrivedCompleteTapped(self)
+    }
 }
 
 extension WasherViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        guard let nextImageNeeded = nextImageNeeded,
-              let job = job
-        else {
+        guard let job = job else {
             print("Don't know what this image is for!")
             return
         }
 
+        let nextImageNeeded: ImageEndpoint = jobStarted ? .imagesJobAfter : .imagesJobBefore
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            PhotoController.shared.uploadPhoto(image, httpMethod: "POST", endpoint: nextImageNeeded, theID: Int(job.jobId)) { (data, error) in
+            PhotoController.shared.uploadPhoto(image,
+                                               httpMethod: "POST",
+                                               endpoint: nextImageNeeded,
+                                               theID: Int(job.jobId)) { (data, error) in
                 if let error = error {
                     let alert = UIAlertController()
                     alert.title = "Upload failed"
@@ -344,12 +407,18 @@ extension WasherViewController: UIImagePickerControllerDelegate, UINavigationCon
                 if let data = data {
                     let decoder = JSONDecoder()
                     do {
-                        let rep = try decoder.decode(JobRepresentation.self, from: data)
-                        self.jobController.updateJob(job, with: rep) { _, error in
-                            if let error = error {
-                                print("Failed to update job after uploading photo: \(error)")
-                            } else {
-                                self.nextImageNeeded = self.nextImageNeeded == .imagesJobBefore ? .imagesJobAfter : nil
+                        let repArray = try decoder.decode([JobRepresentation].self, from: data)
+                        if var rep = repArray.first {
+                            if nextImageNeeded == .imagesJobBefore {
+                                rep.timeArrived = DateFormatter.nowAsISOString
+                            } else if nextImageNeeded == .imagesJobAfter {
+                                rep.timeCompleted = DateFormatter.nowAsISOString
+                            }
+                            self.jobController.editJob(jobRepresentation: rep) { _, error in
+                                if let error = error {
+                                    print("Failed to update job after uploading photo: \(error)")
+                                }
+                                self.updateViews()
                             }
                         }
                     } catch {
