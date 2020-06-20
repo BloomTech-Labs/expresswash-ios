@@ -733,7 +733,6 @@
 				5D605C672453DEB700B83420 /* User+Convenience.swift in Sources */,
 				5D16D46F247F650200ED6F43 /* NumberFormatter+Dollar.swift in Sources */,
 				371683A324706562000CE78C /* CarCollectionViewCell.swift in Sources */,
-				3770887E249BCFEC002891B1 /* JobController+delete.swift in Sources */,
 				370E67632482008500297018 /* AddCarViewController.swift in Sources */,
 				5D46BE59244EBE5A0058A660 /* Job+CoreDataProperties.swift in Sources */,
 				375D410D2451296E00479C7E /* ProfileViewController.swift in Sources */,
