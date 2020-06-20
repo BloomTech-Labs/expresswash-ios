@@ -155,6 +155,13 @@ class CarController {
         return foundCar!
     }
 
+    struct Message: Decodable {
+        var message: String
+        var updatedCar: CarRepresentation
+    }
+}
+
+extension CarController {
     // MARK: - Networking Methods
 
     func createCar(carRepresentation: CarRepresentation, completion: @escaping CompletionHandler) {
@@ -337,10 +344,5 @@ class CarController {
             print("Error decoding car from data: \(error)")
             return nil
         }
-    }
-
-    struct Message: Decodable {
-        var message: String
-        var updatedCar: CarRepresentation
     }
 }
