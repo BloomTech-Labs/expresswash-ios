@@ -170,7 +170,7 @@ class WasherViewController: UIViewController {
                 selectedJobRep = jobRep
             }
             if selectedJobRep != nil {
-                self.job = jobController.findOrCreateJobInCoreData(from: selectedJobRep!)
+                self.job = self.jobController.findOrCreateJobInCoreData(from: selectedJobRep!)
                 // fetch the client for this job
                 UserController.shared.fetchUserByID(uid: selectedJobRep!.clientId) { (client, error) in
                     if let error = error {
@@ -407,17 +407,17 @@ extension WasherViewController: UIImagePickerControllerDelegate, UINavigationCon
                 if let data = data {
                     let decoder = JSONDecoder()
                     do {
-                        let repArray = try decoder.decode([JobRepresentation].self, from: data)
-                        if var rep = repArray.first {
-                            if nextImageNeeded == .imagesJobBefore {
-                                rep.timeArrived = DateFormatter.nowAsISOString
-                            } else if nextImageNeeded == .imagesJobAfter {
-                                rep.timeCompleted = DateFormatter.nowAsISOString
+                        var rep = try decoder.decode(JobRepresentation.self, from: data)
+                        if nextImageNeeded == .imagesJobBefore {
+                            rep.timeArrived = DateFormatter.nowAsISOString
+                        } else if nextImageNeeded == .imagesJobAfter {
+                            rep.timeCompleted = DateFormatter.nowAsISOString
+                        }
+                        self.jobController.editJob(jobRepresentation: rep) { _, error in
+                            if let error = error {
+                                print("Failed to update job after uploading photo: \(error)")
                             }
-                            self.jobController.editJob(jobRepresentation: rep) { _, error in
-                                if let error = error {
-                                    print("Failed to update job after uploading photo: \(error)")
-                                }
+                            DispatchQueue.main.async {
                                 self.updateViews()
                             }
                         }
