@@ -21,11 +21,7 @@ UICollectionViewDataSource, STPAuthenticationContext {
     }()
     var cars: [Car] {
         guard let user = UserController.shared.sessionUser.user else { return [] }
-        guard let cars = user.cars else { return [] }
-        let set = cars as? Set<Car> ?? []
-        return set.sorted(by: { (carOne, carTwo) -> Bool in
-            carOne.carId > carTwo.carId
-        })
+        return user.carsArray
     }
     var jobController = JobController()
     var amount: Int? {
@@ -106,6 +102,8 @@ UICollectionViewDataSource, STPAuthenticationContext {
         if let photoString = car.photo {
             cell.imageView.image = UIImage.cached(from: photoString, defaultTitle: nil)
         }
+
+        cell.modelLabel.text = car.model
 
         if self.selectedIndexPath != nil && indexPath == self.selectedIndexPath {
             cell.layer.borderColor = UIColor(named: "Salmon")?.cgColor

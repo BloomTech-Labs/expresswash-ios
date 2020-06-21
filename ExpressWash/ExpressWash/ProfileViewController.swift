@@ -20,11 +20,7 @@ class ProfileViewController: UIViewController,
     var bannerImagePicker = UIImagePickerController()
     var cars: [Car] {
         guard let user = UserController.shared.sessionUser.user else { return [] }
-        guard let cars = user.cars else { return [] }
-        let set = cars as? Set<Car> ?? []
-        return set.sorted(by: { (carOne, carTwo) -> Bool in
-            carOne.carId > carTwo.carId
-        })
+        return user.carsArray
     }
     var car: Car?
 
@@ -82,6 +78,8 @@ class ProfileViewController: UIViewController,
         if let photoString = car.photo {
             cell.imageView.image = UIImage.cached(from: photoString, defaultTitle: nil)
         }
+
+        cell.modelLabel.text = car.model
 
         cell.layer.cornerRadius = 10.0
 

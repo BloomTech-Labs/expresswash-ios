@@ -36,6 +36,13 @@ extension User {
     @NSManaged public var jobs: NSOrderedSet?
     @NSManaged public var cars: NSSet?
     @NSManaged public var washer: Washer?
+
+    public var carsArray: [Car] {
+      let set = cars as? Set<Car> ?? []
+      return set.sorted {
+        $0.carId < $1.carId
+      }
+    }
 }
 
 // MARK: Generated accessors for jobs
