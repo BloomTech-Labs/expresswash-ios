@@ -182,7 +182,7 @@ class WasherViewController: UIViewController {
             let car = job.car
         else { return }
 
-        jobDescriptionLabel.text = "\(DateFormatter.clockString(from: job.timeRequested)): Job for \(client.firstName)"
+        jobDescriptionLabel.text = "\(job.timeRequested): Job for \(client.firstName)"
 
         licPlateLabel.text = car.licensePlate
         makeModelLabel.text = "\(car.make) \(car.model)"
