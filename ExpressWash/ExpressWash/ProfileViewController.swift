@@ -21,7 +21,8 @@ class ProfileViewController: UIViewController,
     var cars: [Car] {
         guard let user = UserController.shared.sessionUser.user else { return [] }
         guard let cars = user.cars else { return [] }
-        return cars.sorted(by: { (carOne, carTwo) -> Bool in
+        let set = cars as? Set<Car> ?? []
+        return set.sorted(by: { (carOne, carTwo) -> Bool in
             carOne.carId > carTwo.carId
         })
     }

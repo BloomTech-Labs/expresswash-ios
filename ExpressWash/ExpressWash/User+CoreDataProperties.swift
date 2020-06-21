@@ -34,7 +34,7 @@ extension User {
     @NSManaged public var zip: String?
     @NSManaged public var token: String?
     @NSManaged public var jobs: NSOrderedSet?
-    @NSManaged public var cars: Set<Car>?
+    @NSManaged public var cars: NSSet?
     @NSManaged public var washer: Washer?
 }
 
