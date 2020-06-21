@@ -102,9 +102,11 @@ extension JobController {
             let decoder = JSONDecoder()
 
             do {
-                let jobRepresentation = try decoder.decode(JobRepresentation.self, from: data)
-                let job = Job(representation: jobRepresentation)
-                completion(job, nil)
+                let jobRepresentations = try decoder.decode([JobRepresentation].self, from: data)
+                if let jobRepresentation = jobRepresentations.first {
+                    let job = Job(representation: jobRepresentation)
+                    completion(job, nil)
+                }
             } catch {
                 print("Error decoding job info: \(error)")
                 completion(nil, error)
