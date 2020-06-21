@@ -12,7 +12,7 @@ import Stripe
 
 class ScheduleViewController: UIViewController,
                               MGLMapViewDelegate,
-                              UICollectionViewDelegate,
+                              UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,
                               UICollectionViewDataSource {
 
     // MARK: - Properties
@@ -109,6 +109,12 @@ class ScheduleViewController: UIViewController,
         cell?.layer.borderWidth = 2.0
         cell?.layer.borderColor = UIColor(named: "Light Blue")?.cgColor
         self.selectedIndexPath = nil
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 190, height: 155)
     }
 
     // MARK: - Methods
