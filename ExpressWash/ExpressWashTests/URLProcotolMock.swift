@@ -28,6 +28,7 @@ class URLProtocolMock: URLProtocol {
             // …and if we have test data for that URL…
             if let data = URLProtocolMock.testURLs[url] {
                 // …load it immediately.
+                print("Loading data for URL: \(url.absoluteString)")
                 self.client?.urlProtocol(self, didLoad: data)
             }
         }
