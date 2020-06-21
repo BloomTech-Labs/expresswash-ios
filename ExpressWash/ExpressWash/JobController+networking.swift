@@ -243,9 +243,9 @@ extension JobController {
             do {
                 let jobReps = try decoder.decode([JobRepresentation].self, from: data)
                 if let jobRep = jobReps.first {
-                    let job = self.findOrCreateJobInCoreData(from: jobRepresentation)
+                    let job = self.findOrCreateJobInCoreData(from: jobRep)
                     let washerController = WasherController()
-                    let washer = washerController.findWasher(byID: washerID)
+                    let washer = washerController.findWasher(byID: washerId)
                     if washer != nil {
                         job.washer = washer!
                     }
