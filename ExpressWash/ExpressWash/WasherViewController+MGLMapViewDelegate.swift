@@ -50,7 +50,7 @@ extension WasherViewController: MGLMapViewDelegate {
         if job.address2 != nil {
             annotation!.title! += ", \(job.address2!)"
         }
-        annotation!.subtitle = jobStarted ? "Tap the button when you arrive -->" : "Tap the button when you are done -->"
+        annotation!.subtitle = jobStarted ? "Tap the button when you arrive ->" : "Tap the button when you are done ->"
         mapView.addAnnotation(annotation!)
         mapView.setCenter(annotation!.coordinate, animated: true)
     }

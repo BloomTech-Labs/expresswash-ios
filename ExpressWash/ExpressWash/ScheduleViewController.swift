@@ -111,13 +111,6 @@ class ScheduleViewController: UIViewController,
         self.selectedIndexPath = nil
     }
 
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell?.layer.borderWidth = 2.0
-        cell?.layer.borderColor = UIColor(named: "Light Blue")?.cgColor
-        self.selectedIndexPath = nil
-    }
-
     // MARK: - Methods
 
     func setupSubviews() {

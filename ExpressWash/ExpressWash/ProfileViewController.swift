@@ -65,11 +65,6 @@ class ProfileViewController: UIViewController,
         carsCollectionView.reloadData()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        carsCollectionView.reloadData()
-    }
-
     // MARK: - CollectionView Data Source
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
