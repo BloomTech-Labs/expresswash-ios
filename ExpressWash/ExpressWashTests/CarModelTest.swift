@@ -64,4 +64,28 @@ class CarModelTest: XCTestCase {
         XCTAssert(car2.owner == user)
     }
 
+    func testCarModelRepresentation() {
+        let user = User(accountType: "client", email: "email@email.com", firstName: "Test", lastName: "User")
+        user.userId = 1
+
+        let car1 = Car(carId: 1,
+                       clientId: 6,
+                       make: "Ford",
+                       model: "Taurus",
+                       year: 2016,
+                       color: "White",
+                       licensePlate: "1ABC234",
+                       photo: nil,
+                       category: "Car",
+                       size: CarSize.medium.rawValue)
+        
+        if let carRep = car1.representation {
+            XCTAssert(carRep.carId == 1)
+            XCTAssert(carRep.make == "Ford")
+            XCTAssert(carRep.model == "Taurus")
+            XCTAssert(carRep.year == 2016)
+        } else {
+            XCTFail()
+        }
+    }
 }
