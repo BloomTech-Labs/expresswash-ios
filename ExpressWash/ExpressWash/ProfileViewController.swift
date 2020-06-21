@@ -47,6 +47,11 @@ class ProfileViewController: UIViewController,
 
     // MARK: - Views
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        carsCollectionView.reloadData()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -58,11 +63,6 @@ class ProfileViewController: UIViewController,
                                                name: NSNotification.Name(rawValue: "load"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(editEnabled),
                                                name: NSNotification.Name(rawValue: "addCar"), object: nil)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        carsCollectionView.reloadData()
     }
 
     // MARK: - CollectionView Data Source
