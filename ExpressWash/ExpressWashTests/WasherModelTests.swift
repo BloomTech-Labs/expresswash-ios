@@ -139,9 +139,13 @@ class WasherModelTests: XCTestCase {
         
         waitForExpectations(timeout: 3.0, handler: nil)
         
+        let washerDeletedExpectation = expectation(description: "Washer is deleted")
         washerController.deleteWasherLocally(washer: washer) { error in
             XCTAssertNil(error)
+            washerDeletedExpectation.fulfill()
         }
+        
+        waitForExpectations(timeout: 3.0, handler: nil)
     }
     
     func testRateWasher() throws {
