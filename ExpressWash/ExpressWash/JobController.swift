@@ -400,7 +400,12 @@ extension JobController {
 
             do {
                 let jobRepresentation = try decoder.decode(JobRepresentation.self, from: data)
-                let job = Job(representation: jobRepresentation)
+                let job = self.findOrCreateJobInCoreData(from: jobRepresentation)
+                let washerController = WasherController()
+                let washer = washerController.findWasher(byID: washerID)
+                if washer != nil {
+                    job.washer = washer!
+                }
                 completion(job, nil)
             } catch {
                 print("Error decoding job assigned to washer: \(error)")
