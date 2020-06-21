@@ -43,8 +43,8 @@ class ScheduleViewController: UIViewController,
 
     // MARK: - Views
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
 
         setupSubviews()
         setUpMap()

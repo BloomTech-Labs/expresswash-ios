@@ -92,8 +92,8 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="About Your Washer:" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="his-cf-lk3">
-                                        <rect key="frame" x="187" y="0.0" width="187" height="125"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" text="About Your Washer:" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="his-cf-lk3">
+                                        <rect key="frame" x="187" y="0.0" width="187" height="116"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <color key="textColor" red="0.3411764706" green="0.45098039220000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -101,6 +101,7 @@
                                     </textView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="his-cf-lk3" firstAttribute="bottom" secondItem="oAU-dS-u5A" secondAttribute="bottom" id="5PS-9t-cZ4"/>
                                     <constraint firstAttribute="height" constant="125" id="rJQ-Fz-u7F"/>
                                 </constraints>
                             </stackView>

@@ -85,7 +85,7 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
             cell.washerImage.image = UIImage.cached(from: url, defaultTitle: "person.circle")
             cell.washerImage.layer.cornerRadius = cell.washerImage.frame.size.height/2
         } else {
-            cell.washerImage.image = UIImage(named: "person.circle")
+            cell.washerImage.image = UIImage(systemName: "person.circle")
         }
 
         cell.washerRating.text = "★ \(job.washer!.washerRating)"
