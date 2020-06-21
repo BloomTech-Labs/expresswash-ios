@@ -457,7 +457,7 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		5D0971E6246B902500B5492D /* ModelData */ = {
+		5D0971E6246B902500B5492D /* Mock Data */ = {
 			isa = PBXGroup;
 			children = (
 				5D0971E7246B909000B5492D /* authLogin.json */,
@@ -470,13 +470,12 @@
 				37C3A1EE247629D2008ECB90 /* Job.json */,
 				5D41D4F92474DB6900DC3152 /* washerRating.json */,
 			);
-			name = ModelData;
+			name = "Mock Data";
 			sourceTree = "<group>";
 		};
 		5D9962512465021C00D4151F /* Modeltests */ = {
 			isa = PBXGroup;
 			children = (
-				5D0971E6246B902500B5492D /* ModelData */,
 				5D99624D2464FFE900D4151F /* CarModelTest.swift */,
 				5D99624B2464FFDB00D4151F /* JobModelTests.swift */,
 				5D99624F2465017600D4151F /* UserModelTests.swift */,
@@ -493,6 +492,7 @@
 				377D1A05246A48A500CA3AEB /* SignUpTests */,
 				378CE7C82473A28C00486754 /* CarTests */,
 				37C3A1F224762A3A008ECB90 /* JobTests */,
+				5D0971E6246B902500B5492D /* Mock Data */,
 				5D9962512465021C00D4151F /* Modeltests */,
 				5DA0A8AC24592A3100992692 /* Info.plist */,
 			);
