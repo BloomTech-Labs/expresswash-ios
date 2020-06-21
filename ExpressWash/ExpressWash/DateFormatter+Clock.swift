@@ -18,14 +18,14 @@ extension DateFormatter {
     static var FromISODate: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
         return formatter
     }()
-    
+
     static var nowAsISOString: String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
         return formatter.string(from: Foundation.Date())
     }
 
