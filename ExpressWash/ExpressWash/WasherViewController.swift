@@ -62,7 +62,7 @@ class WasherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        checkUserWasherLink()
+        UserController.shared.checkUserWasherLink()
         setupSubviews()
         if UserController.shared.sessionUser.washer != nil {
             setUpMap()
@@ -72,17 +72,6 @@ class WasherViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         updateViews()
-    }
-
-    private func checkUserWasherLink() {
-        if UserController.shared.sessionUser.user != nil &&
-           UserController.shared.sessionUser.washer != nil &&
-           UserController.shared.sessionUser.washer?.user == nil {
-            // if the signed in user isn't linked to its washer in
-            // Core Data, link them up
-            UserController.shared.sessionUser.user?.washer =
-                UserController.shared.sessionUser.washer
-        }
     }
 
     private func setupSubviews() {
@@ -144,7 +133,7 @@ class WasherViewController: UIViewController {
         // checks with the server to get the latest list of jobs
         // for this washer and sets the current job, if any, to self.job
 
-        checkUserWasherLink()
+        UserController.shared.checkUserWasherLink()
         guard let washer = UserController.shared.sessionUser.washer else {
             return
         }
