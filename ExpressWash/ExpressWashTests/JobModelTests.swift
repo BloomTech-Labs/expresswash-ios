@@ -80,5 +80,64 @@ class JobModelTests: XCTestCase {
         XCTAssert(user.cars!.contains(job.car!))
 
     }
+    
+    func testJobModelRepresentation() throws {
+        let user = User(accountType: "client", email: "email@email.com", firstName: "Test", lastName: "User")
+        let washerUser = User(accountType: "washer", email: "washer@email.com", firstName: "Test", lastName: "User")
+        user.userId = 1
+        washerUser.userId = 2
+
+        let washer = Washer(aboutMe: testAboutMe,
+                            available: false,
+                            currentLocationLat: testLat,
+                            currentLocationLon: testLon,
+                            rateSmall: testRateSmall,
+                            rateMedium: testRateMedium,
+                            rateLarge: testRateLarge,
+                            washerId: 2,
+                            washerRating: 3,
+                            washerRatingTotal: 3,
+                            user: washerUser)
+
+        let job = Job(jobId: 1, jobLocationLat: nil ?? 0.0, jobLocationLon: nil ?? 0.0, washAddress: "123 First St", address: "123 First St", address2: "APT 2", city: "tampa", state: "FL", zip: "60184", notes: nil, completed: false, jobType: "basic", paid: false, photoBeforeJob: nil, photoAfterJob: nil, scheduled: true, timeCompleted: nil, timeRequested: "12:00 PM")
+
+        let car1 = Car(carId: 1,
+                       clientId: 4,
+                       make: "Ford",
+                       model: "Taurus",
+                       year: 2016,
+                       color: "White",
+                       licensePlate: "1ABC234",
+                       photo: nil,
+                       category: "Car",
+                       size: CarSize.medium.rawValue)
+        user.addToCars(car1)
+        
+        job.client = user
+        job.washer = washer
+        job.car = car1
+        
+        guard var jobRep = job.representation else {
+            XCTFail()
+            return
+        }
+        
+        XCTAssert(jobRep.jobLocationLat == 0.0)
+        XCTAssert(jobRep.jobLocationLon == 0.0)
+        XCTAssert(jobRep.address == "123 First St")
+        XCTAssert(jobRep.address2 == "APT 2")
+        XCTAssert(jobRep.city == "tampa")
+        XCTAssert(jobRep.state == "FL")
+        XCTAssert(jobRep.zip == "60184")
+        XCTAssert(jobRep.jobType == "basic")
+        XCTAssert(jobRep.timeRequested == "12:00 PM")
+        XCTAssert(jobRep.clientId == 1)
+        XCTAssert(jobRep.washerId == 2)
+        XCTAssert(jobRep.carId == 1)
+
+        jobRep.jobId = 2
+        let job2 = Job(representation: jobRep)
+        XCTAssert(job2.jobId == 2)
+    }
 
 }
