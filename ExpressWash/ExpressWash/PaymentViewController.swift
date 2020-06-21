@@ -103,6 +103,8 @@ UICollectionViewDataSource, STPAuthenticationContext {
             cell.imageView.image = UIImage.cached(from: photoString, defaultTitle: nil)
         }
 
+        cell.modelLabel.text = car.model
+
         if self.selectedIndexPath != nil && indexPath == self.selectedIndexPath {
             cell.layer.borderColor = UIColor(named: "Salmon")?.cgColor
         } else {

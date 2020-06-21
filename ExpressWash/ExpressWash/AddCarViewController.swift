@@ -88,14 +88,11 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
 
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        picker.dismiss(animated: true)
-
-        guard let image = info[.editedImage] as? UIImage else {
-            print("No image found")
-            return
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            carImageView.image = image
         }
 
-        carImageView.image = image
+        self.dismiss(animated: true, completion: nil)
     }
 
     func tieCar(carRep: CarRepresentation, carId: Int) {
@@ -162,7 +159,8 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
               let model = modelTextField.text,
               let licensePlate = licenseTextField.text,
               let color = colorTextField.text,
-              let category = categoryTextField.text else { return nil }
+              let category = categoryTextField.text,
+              carImageView.image != nil else { return nil }
 
         let segment = sizeSegmentedControl.selectedSegmentIndex
         guard let size = sizeSegmentedControl.titleForSegment(at: segment),

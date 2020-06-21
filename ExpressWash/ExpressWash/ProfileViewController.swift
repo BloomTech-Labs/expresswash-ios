@@ -79,6 +79,8 @@ class ProfileViewController: UIViewController,
             cell.imageView.image = UIImage.cached(from: photoString, defaultTitle: nil)
         }
 
+        cell.modelLabel.text = car.model
+
         cell.layer.cornerRadius = 10.0
 
         cell.addButtonTapAction = {
