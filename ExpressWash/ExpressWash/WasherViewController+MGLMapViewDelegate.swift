@@ -44,15 +44,15 @@ extension WasherViewController: MGLMapViewDelegate {
 
     func addAnnotation() {
         guard let job = job else { return }
-        let annotation = MGLPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude: job.jobLocationLat, longitude: job.jobLocationLon)
-        annotation.title = "\(job.address)"
+        annotation = MGLPointAnnotation()
+        annotation!.coordinate = CLLocationCoordinate2D(latitude: job.jobLocationLat, longitude: job.jobLocationLon)
+        annotation!.title = "\(job.address)"
         if job.address2 != nil {
-            annotation.title! += ", \(job.address2!)"
+            annotation!.title! += ", \(job.address2!)"
         }
-        annotation.subtitle = jobStarted ? "Tap the button when you arrive -->" : "Tap the button when you are done -->"
-        mapView.addAnnotation(annotation)
-        mapView.setCenter(annotation.coordinate, animated: true)
+        annotation!.subtitle = jobStarted ? "Tap the button when you arrive -->" : "Tap the button when you are done -->"
+        mapView.addAnnotation(annotation!)
+        mapView.setCenter(annotation!.coordinate, animated: true)
     }
 
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {

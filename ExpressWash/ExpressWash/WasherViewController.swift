@@ -20,6 +20,7 @@ class WasherViewController: UIViewController {
     var lastKnownLat = kCLLocationCoordinate2DInvalid.latitude
     var lastKnownLon = kCLLocationCoordinate2DInvalid.longitude
     var imagePicker = UIImagePickerController()
+    var annotation: MGLPointAnnotation?
     var jobStarted: Bool {
         guard let job = job else { return false }
         if job.timeArrived == nil {
@@ -98,8 +99,10 @@ class WasherViewController: UIViewController {
 
         updateWasherViews()
         fetchJobs {
-            self.updateJobViews()
-            self.addAnnotation()
+            DispatchQueue.main.async {
+                self.updateJobViews()
+                self.addAnnotation()
+            }
         }
     }
 
@@ -138,6 +141,8 @@ class WasherViewController: UIViewController {
             return
         }
 
+        job = nil
+
         jobController.getWasherJobs(washer: washer) { (jobReps, error) in
             if let error = error {
                 DispatchQueue.main.async {
@@ -172,12 +177,19 @@ class WasherViewController: UIViewController {
                     self.job?.car = self.carController.findCar(by: selectedJobRep!.carId)
                     completion()
                 }
+            } else {
+                completion()
             }
         }
     }
 
     private func updateJobViews() {
+        addressLabel.isHidden = true
+        arrivedCompleteLabel.isHidden = true
+        arrivedCompleteButton.isHidden = true
+
         guard let job = job,
+            !jobFinished,
             let client = job.client,
             let car = job.car
         else { return }
@@ -214,14 +226,6 @@ class WasherViewController: UIViewController {
         }
         addressLabel.text = addressText
 
-        if jobFinished {
-            arrivedCompleteLabel.isHidden = true
-            arrivedCompleteButton.isHidden = true
-        } else {
-            arrivedCompleteLabel.isHidden = false
-            arrivedCompleteButton.isHidden = false
-        }
-
         if jobStarted {
             arrivedCompleteLabel.text = "Completed?"
             arrivedCompleteButton.isSelected = true
@@ -229,6 +233,10 @@ class WasherViewController: UIViewController {
             arrivedCompleteLabel.text = "Arrived?"
             arrivedCompleteButton.isSelected = false
         }
+
+        addressLabel.isHidden = false
+        arrivedCompleteLabel.isHidden = false
+        arrivedCompleteButton.isHidden = false
     }
 
     // MARK: - Actions
@@ -269,6 +277,10 @@ class WasherViewController: UIViewController {
     }
 
     @IBAction func arrivedCompleteTapped(_ sender: Any) {
+        // Displays the camera (or saved photos for simulator) to allow the Washer
+        // to take a before or after photo of the car they are washing for this
+        // job. When the photo is taken, imagePickerController(_:didFinishPickingMediaWithInfo:) is called
+
         if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
             imagePicker.delegate = self
             imagePicker.sourceType = .savedPhotosAlbum
@@ -279,9 +291,11 @@ class WasherViewController: UIViewController {
             AVCaptureDevice.requestAccess(for: .video) { granted in
                 if granted {
                     self.imagePicker.delegate = self
+                    // try to access the camera
                     if UIImagePickerController.isSourceTypeAvailable(.camera) {
                         self.imagePicker.sourceType = .camera
                     } else {
+                        // if camera not available (simulator) access saved photos
                         self.imagePicker.sourceType = .savedPhotosAlbum
                     }
                     self.imagePicker.allowsEditing = false
