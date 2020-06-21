@@ -28,6 +28,7 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
         getJobs()
         receiptsTableView.delegate = self
         receiptsTableView.dataSource = self
+        receiptsTableView.backgroundColor = .white
     }
 
     // MARK: - Methods

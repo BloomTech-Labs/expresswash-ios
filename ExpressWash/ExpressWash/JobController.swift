@@ -158,9 +158,9 @@ class JobController {
     // finds or creates a Job in Core Data (not on the server)
     func findOrCreateJobInCoreData(from rep: JobRepresentation,
                                    context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> Job {
-        var foundJob = findJob(by: rep.jobId, context: context)
+        let foundJob = findJob(by: rep.jobId, context: context)
         if foundJob == nil {
-            foundJob = Job(representation: rep, context: context)
+            foundJob?.washer = WasherController.shared.findWasher(byID: rep.washerId!)
         } else {
             // if the Job already exists in Core Data, update based on rep
             updateJob(foundJob!, with: rep) { (_, _) in }
