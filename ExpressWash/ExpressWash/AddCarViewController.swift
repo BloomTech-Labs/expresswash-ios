@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class AddCarViewController: UIViewController, UINavigationControllerDelegate,
 UIImagePickerControllerDelegate, UITextFieldDelegate {
@@ -15,6 +16,7 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
 
     var carController = CarController()
     var photoController = PhotoController()
+    var carImagePicker = UIImagePickerController()
     var user: User?
     var car: Car?
 
@@ -61,11 +63,27 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
     }
 
     private func setupCamera() {
-        let camera = UIImagePickerController()
-        camera.sourceType = .camera
-        camera.allowsEditing = true
-        camera.delegate = self
-        present(camera, animated: true)
+        if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
+            carImagePicker.delegate = self
+            carImagePicker.sourceType = .camera
+            carImagePicker.allowsEditing = false
+
+            present(carImagePicker, animated: true, completion: nil)
+        } else {
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
+                if granted {
+                    DispatchQueue.main.async {
+                        self.carImagePicker.delegate = self
+                        self.carImagePicker.sourceType = .camera
+                        self.carImagePicker.allowsEditing = false
+
+                        self.present(self.carImagePicker, animated: true, completion: nil)
+                    }
+                } else {
+                    return
+                }
+            })
+        }
     }
 
     func imagePickerController(_ picker: UIImagePickerController,
