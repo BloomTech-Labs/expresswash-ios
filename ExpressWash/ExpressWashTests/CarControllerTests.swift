@@ -33,6 +33,7 @@ class CarControllerTests: XCTestCase {
     func testCreateCar() throws {
 
         let carId = 0
+        let clientId = 6
         let make = "ford"
         let model = "mustang"
         let year: Int16 = 1996
@@ -42,7 +43,7 @@ class CarControllerTests: XCTestCase {
         let category = "car"
         let size = "small"
         
-        let carRepresentation = CarRepresentation(carId: carId, make: make, model: model, year: year, color: color, licensePlate: licensePlate, photo: photo, category: category, size: size)
+        let carRepresentation = CarRepresentation(carId: carId, clientId: clientId, make: make, model: model, year: year, color: color, licensePlate: licensePlate, photo: photo, category: category, size: size)
         
         let expect = expectation(description: "Car Created")
         
@@ -76,6 +77,7 @@ class CarControllerTests: XCTestCase {
     func testAddCar() throws {
 
         let carId = 0
+        let clientId = 6
         let make = "ford"
         let model = "mustang"
         let year: Int16 = 1996
@@ -85,7 +87,7 @@ class CarControllerTests: XCTestCase {
         let category = "car"
         let size = "small"
         
-        let carRepresentation = CarRepresentation(carId: carId, make: make, model: model, year: year, color: color, licensePlate: licensePlate, photo: photo, category: category, size: size)
+        let carRepresentation = CarRepresentation(carId: carId, clientId: clientId, make: make, model: model, year: year, color: color, licensePlate: licensePlate, photo: photo, category: category, size: size)
         
         let expect = expectation(description: "Car Added")
         
@@ -117,6 +119,7 @@ class CarControllerTests: XCTestCase {
     func testEditCar() throws {
 
         let carId = 0
+        let clientId = 6
         let make = "ford"
         let model = "fusion"
         let year: Int16 = 1996
@@ -126,7 +129,7 @@ class CarControllerTests: XCTestCase {
         let category = "car"
         let size = "small"
         
-        let carRepresentation = CarRepresentation(carId: carId, make: make, model: model, year: year, color: color, licensePlate: licensePlate, photo: photo, category: category, size: size)
+        let carRepresentation = CarRepresentation(carId: carId, clientId: clientId, make: make, model: model, year: year, color: color, licensePlate: licensePlate, photo: photo, category: category, size: size)
         
         let expect = expectation(description: "Car Edited")
         
@@ -156,8 +159,21 @@ class CarControllerTests: XCTestCase {
     }
     
     func testUpdateCar() throws {
+        let baseCarId = 0
+        let baseClientId = 6
+        let baseMake = "ford"
+        let baseModel = "mustang"
+        let baseYear: Int16 = 1996
+        let baseColor = "blue"
+        let baseLicensePlate = "xyz 123"
+        let basePhoto = "some url"
+        let baseCategory = "car"
+        let baseSize = "small"
+
+        let baseCar = Car(carId: Int32(baseCarId), clientId: baseClientId, make: baseMake, model: baseModel, year: baseYear, color: baseColor, licensePlate: baseLicensePlate, photo: basePhoto, category: baseCategory, size: baseSize)
         
         let carId = 0
+        let clientId = 6
         let make = "ford"
         let model = "fusion"
         let year: Int16 = 1996
@@ -167,11 +183,11 @@ class CarControllerTests: XCTestCase {
         let category = "car"
         let size = "small"
         
-        let carRepresentation = CarRepresentation(carId: carId, make: make, model: model, year: year, color: color, licensePlate: licensePlate, photo: photo, category: category, size: size)
+        let carRepresentation = CarRepresentation(carId: carId, clientId: clientId, make: make, model: model, year: year, color: color, licensePlate: licensePlate, photo: photo, category: category, size: size)
         
         let expect = expectation(description: "Car Updated")
         
-        CarController.shared.updateCar(carRepresentation: carRepresentation) { (car, error) in
+        CarController.shared.updateCar(carRepresentation: carRepresentation, baseCar: baseCar) { (car, error) in
             if let error = error {
                 print("Error: \(error)")
                 XCTFail()
@@ -201,7 +217,7 @@ class CarControllerTests: XCTestCase {
             URLProtocolMock.testURLs[BASEURL.appendingPathComponent("cars/\(0)")] = DeleteData
         }
 
-        let car = Car(carId: 0, make: "", model: "", year: 1996, color: "", licensePlate: "", photo: "", category: "", size: "")
+        let car = Car(carId: 0, clientId: 6, make: "", model: "", year: 1996, color: "", licensePlate: "", photo: "", category: "", size: "")
         
         let expect = expectation(description: "Car Deleted")
         
