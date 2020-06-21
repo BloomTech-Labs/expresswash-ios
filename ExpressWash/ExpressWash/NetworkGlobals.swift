@@ -16,7 +16,7 @@ let CANNOTCONVERT = 99995
 
 var SESSION = URLSession.shared
 
-let BASEURL = URL(string: "http://wowo-env.eba-35bhjsem.us-east-1.elasticbeanstalk.com")!
+let BASEURL = URL(string: "https://serverprod.expresswash.us")!
 
 enum ENDPOINTS: String {
     case registerClient = "/auth/RegisterClient"    // POST     Register for a client account.
