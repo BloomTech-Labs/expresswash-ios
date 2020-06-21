@@ -46,7 +46,7 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
             self.jobs = []
 
             for rep in jobReps {
-                let job = Job(representation: rep)
+                let job = self.jobController.findOrCreateJobInCoreData(from: rep)
                 self.jobs.append(job)
             }
 

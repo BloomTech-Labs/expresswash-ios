@@ -51,12 +51,16 @@ UICollectionViewDataSource, STPAuthenticationContext {
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var addCarsButton: UIButton!
+    @IBOutlet weak var fullNameLabel: UILabel!
 
     // MARK: - Views
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let user = UserController.shared.sessionUser.user {
+            fullNameLabel.text = "\(user.firstName.capitalized) \(user.lastName.capitalized)"
+        }
         cardView.layer.cornerRadius = 10.0
         logoImageView.layer.cornerRadius = 10.0
         carsCollectionView.delegate = self
@@ -71,7 +75,7 @@ UICollectionViewDataSource, STPAuthenticationContext {
             cardTextField.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 10.0),
             cardTextField.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -10.0),
             cardTextField.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
-            cardTextField.centerXAnchor.constraint(equalTo: cardView.centerXAnchor),
+            cardTextField.centerXAnchor.constraint(equalTo: cardView.centerXAnchor, constant: -10.0),
             cardTextField.heightAnchor.constraint(equalToConstant: 50.0)
         ])
     }
