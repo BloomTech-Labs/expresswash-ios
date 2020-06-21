@@ -102,9 +102,11 @@ class CarController {
         }
     }
 
-    func deleteCar(car: Car, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    func deleteCar(car: Car,
+                   context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
+                   completion: @escaping (String?, Error?) -> Void = { _, _ in }) {
 
-        deleteCar(car: car) { _, error  in
+        deleteCarFromServer(car: car) { msg, error  in
             if let error = error {
                 print("Error deleting car: \(error)")
                 return
@@ -113,10 +115,11 @@ class CarController {
                     do {
                         context.delete(car)
                         try CoreDataStack.shared.save(context: context)
+                        completion(msg, nil)
                     } catch {
                         print("Could not save after deleting: \(error)")
                         context.reset()
-                        return
+                        completion(nil, error)
                     }
                 }
             }
@@ -255,7 +258,7 @@ extension CarController {
         }.resume()
     }
 
-    func deleteCar(car: Car, completion: @escaping (String?, Error?) -> Void) {
+    func deleteCarFromServer(car: Car, completion: @escaping (String?, Error?) -> Void) {
 
         let deleteCarURL = BASEURL.appendingPathComponent("cars/\(car.carId)")
         var request = URLRequest(url: deleteCarURL)
