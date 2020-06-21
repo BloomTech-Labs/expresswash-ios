@@ -460,6 +460,14 @@
 		5D0971E6246B902500B5492D /* ModelData */ = {
 			isa = PBXGroup;
 			children = (
+				5D0971E7246B909000B5492D /* authLogin.json */,
+				371683A4247074BA000CE78C /* authRegister.json */,
+				371DFE3C2474AE05008EAAE0 /* Car.json */,
+				371DFE402474D98B008EAAE0 /* DeleteCar.json */,
+				37C3A1F0247629EC008ECB90 /* DeleteJob.json */,
+				371DFE3E2474CAB1008EAAE0 /* EditCar.json */,
+				37C3A1F72476D852008ECB90 /* EditJob.json */,
+				37C3A1EE247629D2008ECB90 /* Job.json */,
 				5D41D4F92474DB6900DC3152 /* washerRating.json */,
 			);
 			name = ModelData;
@@ -480,14 +488,6 @@
 		5DA0A8A924592A3100992692 /* ExpressWashTests */ = {
 			isa = PBXGroup;
 			children = (
-				5D0971E7246B909000B5492D /* authLogin.json */,
-				371683A4247074BA000CE78C /* authRegister.json */,
-				371DFE3C2474AE05008EAAE0 /* Car.json */,
-				371DFE3E2474CAB1008EAAE0 /* EditCar.json */,
-				371DFE402474D98B008EAAE0 /* DeleteCar.json */,
-				37C3A1EE247629D2008ECB90 /* Job.json */,
-				37C3A1F72476D852008ECB90 /* EditJob.json */,
-				37C3A1F0247629EC008ECB90 /* DeleteJob.json */,
 				5DD4A84D246B8D7200E5FA2B /* URLProcotolMock.swift */,
 				5D0971E9246B913500B5492D /* JSONLoader.swift */,
 				377D1A05246A48A500CA3AEB /* SignUpTests */,
