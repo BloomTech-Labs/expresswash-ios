@@ -29,10 +29,10 @@ class SignUpTests: XCTestCase {
     func testRegistration() throws {
 
         let accountType = "client"
-        let email = "test.testerson@teser.com6"
-        let firstName = "tester"
-        let lastName = "testerson"
-        let password = "123456789"
+        let email = "testing.testing@testing.testing"
+        let firstName = "testing"
+        let lastName = "testingson"
+        let password = "1234567890"
 
         let expect = expectation(description: "User registered")
 
