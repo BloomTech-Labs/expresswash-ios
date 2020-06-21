@@ -436,6 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				378CE7C92473A2C100486754 /* CarControllerTests.swift */,
+				5D99624D2464FFE900D4151F /* CarModelTest.swift */,
 			);
 			name = CarTests;
 			sourceTree = "<group>";
@@ -443,6 +444,7 @@
 		37C3A1F224762A3A008ECB90 /* JobTests */ = {
 			isa = PBXGroup;
 			children = (
+				5D99624B2464FFDB00D4151F /* JobModelTests.swift */,
 				37C3A1F324762A4F008ECB90 /* JobTests.swift */,
 			);
 			name = JobTests;
@@ -457,43 +459,41 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		5D0971E6246B902500B5492D /* ModelData */ = {
-			isa = PBXGroup;
-			children = (
-				5D41D4F92474DB6900DC3152 /* washerRating.json */,
-			);
-			name = ModelData;
-			sourceTree = "<group>";
-		};
-		5D9962512465021C00D4151F /* Modeltests */ = {
-			isa = PBXGroup;
-			children = (
-				5D0971E6246B902500B5492D /* ModelData */,
-				5D99624D2464FFE900D4151F /* CarModelTest.swift */,
-				5D99624B2464FFDB00D4151F /* JobModelTests.swift */,
-				5D99624F2465017600D4151F /* UserModelTests.swift */,
-				5D9962492464FFB700D4151F /* WasherModelTests.swift */,
-			);
-			name = Modeltests;
-			sourceTree = "<group>";
-		};
-		5DA0A8A924592A3100992692 /* ExpressWashTests */ = {
+		5D0971E6246B902500B5492D /* Mock Data */ = {
 			isa = PBXGroup;
 			children = (
 				5D0971E7246B909000B5492D /* authLogin.json */,
 				371683A4247074BA000CE78C /* authRegister.json */,
 				371DFE3C2474AE05008EAAE0 /* Car.json */,
-				371DFE3E2474CAB1008EAAE0 /* EditCar.json */,
 				371DFE402474D98B008EAAE0 /* DeleteCar.json */,
-				37C3A1EE247629D2008ECB90 /* Job.json */,
-				37C3A1F72476D852008ECB90 /* EditJob.json */,
 				37C3A1F0247629EC008ECB90 /* DeleteJob.json */,
+				371DFE3E2474CAB1008EAAE0 /* EditCar.json */,
+				37C3A1F72476D852008ECB90 /* EditJob.json */,
+				37C3A1EE247629D2008ECB90 /* Job.json */,
+				5D41D4F92474DB6900DC3152 /* washerRating.json */,
+			);
+			name = "Mock Data";
+			sourceTree = "<group>";
+		};
+		5D9962512465021C00D4151F /* WasherTests */ = {
+			isa = PBXGroup;
+			children = (
+				5D9962492464FFB700D4151F /* WasherModelTests.swift */,
+			);
+			name = WasherTests;
+			sourceTree = "<group>";
+		};
+		5DA0A8A924592A3100992692 /* ExpressWashTests */ = {
+			isa = PBXGroup;
+			children = (
 				5DD4A84D246B8D7200E5FA2B /* URLProcotolMock.swift */,
 				5D0971E9246B913500B5492D /* JSONLoader.swift */,
 				377D1A05246A48A500CA3AEB /* SignUpTests */,
 				378CE7C82473A28C00486754 /* CarTests */,
 				37C3A1F224762A3A008ECB90 /* JobTests */,
-				5D9962512465021C00D4151F /* Modeltests */,
+				5DF65E35249FF7D9009B49BA /* UserTests */,
+				5D9962512465021C00D4151F /* WasherTests */,
+				5D0971E6246B902500B5492D /* Mock Data */,
 				5DA0A8AC24592A3100992692 /* Info.plist */,
 			);
 			path = ExpressWashTests;
@@ -515,6 +515,14 @@
 			children = (
 			);
 			name = Location;
+			sourceTree = "<group>";
+		};
+		5DF65E35249FF7D9009B49BA /* UserTests */ = {
+			isa = PBXGroup;
+			children = (
+				5D99624F2465017600D4151F /* UserModelTests.swift */,
+			);
+			name = UserTests;
 			sourceTree = "<group>";
 		};
 		B41FE9FEE225BA7775004AA3 /* Frameworks */ = {

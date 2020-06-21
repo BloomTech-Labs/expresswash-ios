@@ -25,12 +25,15 @@ class WasherModelTests: XCTestCase {
     override func setUpWithError() throws {
         if let rateWasherData = JSONLoader.readFrom(filename: "washerRating") {
             // test data
-            URLProtocolMock.testURLs[BASEURL.appendingPathComponent(ENDPOINTS.washerRating.rawValue).appendingPathComponent("2")] = rateWasherData
+            URLProtocolMock.testURLs[BASEURL.appendingPathComponent(ENDPOINTS.washerRating.rawValue).appendingPathComponent("1")] = rateWasherData
+            if let userData = JSONLoader.readFrom(filename: "authLogin") {
+                URLProtocolMock.testURLs[BASEURL.appendingPathComponent(ENDPOINTS.users.rawValue).appendingPathComponent("39")] = userData
             
-            // Set URLSession to use Mock Protocol
-            let testConfig = URLSessionConfiguration.ephemeral
-            testConfig.protocolClasses = [URLProtocolMock.self]
-            ExpressWash.SESSION = URLSession(configuration: testConfig)
+                // Set URLSession to use Mock Protocol
+                let testConfig = URLSessionConfiguration.ephemeral
+                testConfig.protocolClasses = [URLProtocolMock.self]
+                ExpressWash.SESSION = URLSession(configuration: testConfig)
+            }
         }
     }
 
@@ -136,9 +139,13 @@ class WasherModelTests: XCTestCase {
         
         waitForExpectations(timeout: 3.0, handler: nil)
         
+        let washerDeletedExpectation = expectation(description: "Washer is deleted")
         washerController.deleteWasherLocally(washer: washer) { error in
             XCTAssertNil(error)
+            washerDeletedExpectation.fulfill()
         }
+        
+        waitForExpectations(timeout: 3.0, handler: nil)
     }
     
     func testRateWasher() throws {
@@ -146,7 +153,7 @@ class WasherModelTests: XCTestCase {
         let washer = Washer(aboutMe: testAboutMe, currentLocationLat: testLat, currentLocationLon: testLon, rateSmall: testRateSmall, rateMedium: testRateMedium, rateLarge: testRateLarge, washerId: 8, washerRating: 3, washerRatingTotal: 1, user: user)
         let washerController = WasherController()
         
-        washer.washerId = 2
+        washer.washerId = 1
         
         let rateExpectation = expectation(description: "Rating updated to 4")
         washerController.rate(washer: washer, rating: 5) { error in

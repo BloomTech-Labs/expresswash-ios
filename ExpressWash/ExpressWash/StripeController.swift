@@ -26,7 +26,7 @@ class StripeController {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONSerialization.data(withJSONObject: json)
-        let task = URLSession.shared.dataTask(with: request, completionHandler: { [weak self] (data, response, error) in
+        let task = SESSION.dataTask(with: request, completionHandler: { [weak self] (data, response, error) in
             guard let response = response as? HTTPURLResponse,
                 response.statusCode == 200,
                 let data = data,

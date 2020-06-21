@@ -63,7 +63,7 @@ class PhotoController {
         httpBody.appendString("--\(boundary)--")
         request.httpBody = httpBody as Data
 
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        SESSION.dataTask(with: request) { data, response, error in
             if let error = error {
                 print("Error uploading photo: \(error)")
                 completion(nil, error)

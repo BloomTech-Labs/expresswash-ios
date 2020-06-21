@@ -17,6 +17,33 @@
     "bannerImage": "",
     "creationDate": "2020-05-12T01:28:12.766+00:00",
     "userRating": null,
-    "userRatingTotal": 1
+    "userRatingTotal": 1,
+    "cars": [
+    {
+        "carId": 60,
+        "clientId": 1,
+        "make": "Tesla",
+        "model": "X",
+        "year": 2020,
+        "color": "Red",
+        "licensePlate": "X234TGB",
+        "photo": null,
+        "category": "Car",
+        "size": "Medium"
+      }
+    ],
+    "washer": {
+      "washerId": 1,
+      "userId": 1,
+      "workStatus": true,
+      "rateSmall": 30,
+      "rateMedium": 50,
+      "rateLarge": 75,
+      "aboutMe": "I am a washer",
+      "currentLocationLat": 37.33233141,
+      "currentLocationLon": -122.0312186,
+      "washerRating": 3,
+      "washerRatingTotal": 1
+    }
   }
 }
