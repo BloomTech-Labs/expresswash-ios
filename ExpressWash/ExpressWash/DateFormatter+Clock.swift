@@ -9,27 +9,27 @@
 import Foundation
 
 extension DateFormatter {
-    static var Clock: DateFormatter = {
+    public static var Clock: DateFormatter = {
        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
+        formatter.dateFormat = "hh:mm a"
         return formatter
     }()
 
-    static var FromISODate: DateFormatter = {
+    public static var FromISODate: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
         return formatter
     }()
 
-    static var nowAsISOString: String {
+    public static var nowAsISOString: String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
         return formatter.string(from: Foundation.Date())
     }
 
-    static func clockString(from timeString: String) -> String {
+    public static func clockString(from timeString: String) -> String {
         if let date = DateFormatter.FromISODate.date(from: timeString) {
             return DateFormatter.Clock.string(from: date)
         }
@@ -37,13 +37,13 @@ extension DateFormatter {
         return "00:00?"
     }
 
-    static var Date: DateFormatter = {
+    public static var Date: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM dd, YYYY"
         return formatter
     }()
 
-    static func dateString(from dateString: String) -> String {
+    public static func dateString(from dateString: String) -> String {
         if let date = DateFormatter.FromISODate.date(from: dateString) {
             return DateFormatter.Date.string(from: date)
         }
@@ -51,7 +51,7 @@ extension DateFormatter {
         return ""
     }
 
-    static func timeTaken(timeArrived: String?, timeCompleted: String?) -> String {
+    public static func timeTaken(timeArrived: String?, timeCompleted: String?) -> String {
         guard let timeArrived = timeArrived, let timeCompleted = timeCompleted else { return "In Progress"}
         let dateFormatter = DateFormatter.FromISODate
         let arrivalDate = dateFormatter.date(from: timeArrived)
