@@ -63,26 +63,39 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
     }
 
     private func setupCamera() {
+        
         if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
             carImagePicker.delegate = self
             carImagePicker.sourceType = .camera
             carImagePicker.allowsEditing = false
-
+            
             present(carImagePicker, animated: true, completion: nil)
         } else {
-            AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
+            AVCaptureDevice.requestAccess(for: .video) { granted in
                 if granted {
-                    DispatchQueue.main.async {
-                        self.carImagePicker.delegate = self
-                        self.carImagePicker.sourceType = .camera
-                        self.carImagePicker.allowsEditing = false
-
-                        self.present(self.carImagePicker, animated: true, completion: nil)
+                    self.carImagePicker.delegate = self
+                    
+                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                        DispatchQueue.main.async {
+                            self.carImagePicker.delegate = self
+                            self.carImagePicker.sourceType = .camera
+                            self.carImagePicker.allowsEditing = false
+                            
+                            self.present(self.carImagePicker, animated: true, completion: nil)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            self.carImagePicker.delegate = self
+                            self.carImagePicker.sourceType = .savedPhotosAlbum
+                            self.carImagePicker.allowsEditing = false
+                            
+                            self.present(self.carImagePicker, animated: true, completion: nil)
+                        }
                     }
                 } else {
                     return
                 }
-            })
+            }
         }
     }
 
