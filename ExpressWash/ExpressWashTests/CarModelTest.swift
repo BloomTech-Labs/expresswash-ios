@@ -24,6 +24,7 @@ class CarModelTest: XCTestCase {
         user.userId = 1
 
         let car1 = Car(carId: 1,
+                       clientId: 6,
                        make: "Ford",
                        model: "Taurus",
                        year: 2016,
@@ -33,6 +34,7 @@ class CarModelTest: XCTestCase {
                        category: "Car",
                        size: CarSize.medium.rawValue)
         let car2 = Car(carId: 2,
+                       clientId: 6,
                        make: "Nissan",
                        model: "Sentra",
                        year: 2020,
