@@ -69,6 +69,8 @@
 		5D605C652453D31100B83420 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D605C642453D31100B83420 /* UserRepresentation.swift */; };
 		5D605C672453DEB700B83420 /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D605C662453DEB700B83420 /* User+Convenience.swift */; };
 		5D7DBB062488995C00ABD34C /* SessionUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DBB052488995C00ABD34C /* SessionUser.swift */; };
+		5D7FD39E249F023B002B1090 /* WasherViewController+MGLMapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7FD39D249F023B002B1090 /* WasherViewController+MGLMapViewDelegate.swift */; };
+		5D7FD3A0249F02E1002B1090 /* WasherViewController+UIImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7FD39F249F02E1002B1090 /* WasherViewController+UIImagePickerControllerDelegate.swift */; };
 		5D84F2942481EE3700CE7A4C /* UIImage+cached.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84F2932481EE3700CE7A4C /* UIImage+cached.swift */; };
 		5D99624A2464FFB700D4151F /* WasherModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9962492464FFB700D4151F /* WasherModelTests.swift */; };
 		5D99624C2464FFDB00D4151F /* JobModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D99624B2464FFDB00D4151F /* JobModelTests.swift */; };
@@ -159,6 +161,8 @@
 		5D605C642453D31100B83420 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
 		5D605C662453DEB700B83420 /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
 		5D7DBB052488995C00ABD34C /* SessionUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUser.swift; sourceTree = "<group>"; };
+		5D7FD39D249F023B002B1090 /* WasherViewController+MGLMapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WasherViewController+MGLMapViewDelegate.swift"; sourceTree = "<group>"; };
+		5D7FD39F249F02E1002B1090 /* WasherViewController+UIImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WasherViewController+UIImagePickerControllerDelegate.swift"; sourceTree = "<group>"; };
 		5D84F2932481EE3700CE7A4C /* UIImage+cached.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+cached.swift"; sourceTree = "<group>"; };
 		5D9962492464FFB700D4151F /* WasherModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherModelTests.swift; sourceTree = "<group>"; };
 		5D99624B2464FFDB00D4151F /* JobModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobModelTests.swift; sourceTree = "<group>"; };
@@ -406,8 +410,10 @@
 		3765B41324888D7D00D93751 /* Washer */ = {
 			isa = PBXGroup;
 			children = (
-				375D41102451299500479C7E /* WasherViewController.swift */,
 				5D2370F124776C4B007A7AB8 /* EditWasherViewController.swift */,
+				375D41102451299500479C7E /* WasherViewController.swift */,
+				5D7FD39D249F023B002B1090 /* WasherViewController+MGLMapViewDelegate.swift */,
+				5D7FD39F249F02E1002B1090 /* WasherViewController+UIImagePickerControllerDelegate.swift */,
 			);
 			name = Washer;
 			sourceTree = "<group>";
@@ -704,6 +710,7 @@
 				5D46BE46244EA0950058A660 /* JobRepresentation.swift in Sources */,
 				5D46BE5D244EBE5A0058A660 /* Car+CoreDataProperties.swift in Sources */,
 				5D46BE57244EBE5A0058A660 /* User+CoreDataProperties.swift in Sources */,
+				5D7FD3A0249F02E1002B1090 /* WasherViewController+UIImagePickerControllerDelegate.swift in Sources */,
 				5D46BE5C244EBE5A0058A660 /* Car+CoreDataClass.swift in Sources */,
 				5D0B260A2490866700F76302 /* NSMutableData+appendString.swift in Sources */,
 				5D16D471247F69BE00ED6F43 /* DateFormatter+Clock.swift in Sources */,
@@ -735,6 +742,7 @@
 				5DD4A848246A461000E5FA2B /* UserController+authenticate.swift in Sources */,
 				5D46BE58244EBE5A0058A660 /* Job+CoreDataClass.swift in Sources */,
 				5D46BE42244E9E2A0058A660 /* Job+Convenience.swift in Sources */,
+				5D7FD39E249F023B002B1090 /* WasherViewController+MGLMapViewDelegate.swift in Sources */,
 				5D46BE56244EBE5A0058A660 /* User+CoreDataClass.swift in Sources */,
 				3765B41524888DD000D93751 /* ReceiptDetailViewController.swift in Sources */,
 				5D46BE5A244EBE5A0058A660 /* Washer+CoreDataClass.swift in Sources */,

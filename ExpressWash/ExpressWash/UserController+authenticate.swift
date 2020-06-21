@@ -194,4 +194,14 @@ extension UserController {
 
         sender.present(alert, animated: true, completion: nil)
     }
+
+    func checkUserWasherLink() {
+        if sessionUser.user != nil &&
+           sessionUser.washer != nil &&
+           sessionUser.washer?.user == nil {
+            // if the signed in user isn't linked to its washer in
+            // Core Data, link them up
+            sessionUser.user?.washer = sessionUser.washer
+        }
+    }
 }
