@@ -11,6 +11,9 @@ import CoreData
 import CoreLocation
 
 class WasherController {
+
+    static let shared = WasherController()
+
     // MARK: - Local store methods
     func createLocalWasher(from representation: WasherRepresentation,
                            context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
@@ -287,5 +290,4 @@ extension WasherController {
     struct WasherRating: Encodable {
         var washerRating: Int
     }
-
 }

@@ -20,13 +20,19 @@ UICollectionViewDataSource, STPAuthenticationContext {
         return cardTextField
     }()
     var cars: [Car] {
-        let orderedSet = UserController.shared.sessionUser.user?.cars?.set as? Set<Car> ?? []
-        return orderedSet.sorted { (car1, car2) -> Bool in
-            car1.carId > car2.carId
-        }
+        guard let user = UserController.shared.sessionUser.user else { return [] }
+        guard let cars = user.cars else { return [] }
+        let set = cars as? Set<Car> ?? []
+        return set.sorted(by: { (carOne, carTwo) -> Bool in
+            carOne.carId > carTwo.carId
+        })
     }
     var jobController = JobController()
-    var amount: Int?
+    var amount: Int? {
+        didSet {
+            amountLabel.text = "$\(amount ?? 0)"
+        }
+    }
     var addressString: String?
     var cityString: String?
     var stateString: String?
@@ -35,28 +41,42 @@ UICollectionViewDataSource, STPAuthenticationContext {
     var selectedCar: Car?
     var annotation: MGLAnnotation?
     var timeRequested: String?
+    var selectedIndexPath: IndexPath?
+    var scheduleViewController: ScheduleViewController?
 
     // MARK: - Outlets
 
     @IBOutlet weak var carsCollectionView: UICollectionView!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var confirmWashButton: UIButton!
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var addCarsButton: UIButton!
+    @IBOutlet weak var fullNameLabel: UILabel!
 
     // MARK: - Views
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let user = UserController.shared.sessionUser.user {
+            fullNameLabel.text = "\(user.firstName.capitalized) \(user.lastName.capitalized)"
+        }
+        cardView.layer.cornerRadius = 10.0
+        logoImageView.layer.cornerRadius = 10.0
+        carsCollectionView.delegate = self
+        carsCollectionView.dataSource = self
         carsCollectionView.allowsMultipleSelection = false
         confirmWashButton.layer.cornerRadius = 10.0
         cardView.addSubview(cardTextField)
         cardTextField.translatesAutoresizingMaskIntoConstraints = false
         cardTextField.textColor = UIColor(named: "Navy")
+        cardTextField.backgroundColor = .white
         NSLayoutConstraint.activate([
-            cardTextField.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
-            cardTextField.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
+            cardTextField.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 10.0),
+            cardTextField.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -10.0),
             cardTextField.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
-            cardTextField.centerXAnchor.constraint(equalTo: cardView.centerXAnchor),
+            cardTextField.centerXAnchor.constraint(equalTo: cardView.centerXAnchor, constant: -10.0),
             cardTextField.heightAnchor.constraint(equalToConstant: 50.0)
         ])
     }
@@ -64,7 +84,15 @@ UICollectionViewDataSource, STPAuthenticationContext {
     // MARK: - CollectionView
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cars.count
+        if cars.count == 0 {
+            addCarsButton.isEnabled = true
+            addCarsButton.alpha = 1
+            return cars.count
+        } else {
+            addCarsButton.isEnabled = false
+            addCarsButton.alpha = 0
+            return cars.count
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -79,32 +107,58 @@ UICollectionViewDataSource, STPAuthenticationContext {
             cell.imageView.image = UIImage.cached(from: photoString, defaultTitle: nil)
         }
 
+        if self.selectedIndexPath != nil && indexPath == self.selectedIndexPath {
+            cell.layer.borderColor = UIColor(named: "Salmon")?.cgColor
+        } else {
+            cell.layer.borderColor = UIColor.white.cgColor
+        }
+
+        cell.layer.cornerRadius = 5.0
+
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderWidth = 2.0
+        cell?.layer.borderColor = UIColor(named: "Salmon")?.cgColor
+        self.selectedIndexPath = indexPath
         self.selectedCar = nil
         self.selectedCar = cars[indexPath.row]
-        setAmount(car: selectedCar!, washer: selectedWasher!)
+        setAmount(car: selectedCar!,
+                  washer: selectedWasher!)
         StripeController.shared.startCheckout(with: self.amount!)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderWidth = 0.0
+        cell?.layer.borderColor = UIColor.white.cgColor
+        self.selectedIndexPath = nil
     }
 
     // MARK: - Methods
 
     private func createJob() {
+        guard let address = addressString, let city = cityString,
+            let state = stateString, let zip = zipString,
+            let timeRequested = timeRequested, let car = selectedCar,
+            let washer = selectedWasher, let user = washer.user else { return }
+
         let jobRep = JobRepresentation(jobLocationLat: annotation!.coordinate.latitude,
                                        jobLocationLon: annotation!.coordinate.latitude,
-                                       address: addressString!,
+                                       washAddress: address,
+                                       address: address,
                                        address2: nil,
-                                       city: cityString!,
-                                       state: stateString!,
-                                       zip: zipString!,
+                                       city: city,
+                                       state: state,
+                                       zip: zip,
                                        notes: nil,
                                        jobType: "basic",
-                                       timeRequested: timeRequested!,
-                                       carId: Int(selectedCar!.carId),
+                                       timeRequested: timeRequested,
+                                       carId: Int(car.carId),
                                        clientId: Int(UserController.shared.sessionUser.user!.userId),
-                                       washerId: Int(selectedWasher!.washerId))
+                                       washerId: Int(washer.washerId))
 
         jobController.addJob(jobRepresentation: jobRep) { (job, error) in
             if let error = error {
@@ -114,28 +168,39 @@ UICollectionViewDataSource, STPAuthenticationContext {
 
             guard let job = job else { return }
 
-            self.jobController.assignWasher(job: job, washerID: Int(self.selectedWasher!.washerId)) { (job, error) in
+            self.jobController.assignWasher(job: job, washerId: Int(washer.washerId),
+                                            userId: Int(user.userId)) { (job, error) in
                 if let error = error {
                     print("Error assigning washer to job: \(error)")
                     return
                 }
 
                 if job != nil {
-                    self.dismiss(animated: true, completion: nil)
-                    self.tabBarController?.selectedIndex = 3
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true, completion: nil)
+                        if let tabBarController = self.scheduleViewController?.tabBarController {
+                            tabBarController.selectedIndex = 2
+                        }
+                    }
                 }
             }
         }
     }
 
     private func setAmount(car: Car, washer: Washer) {
-        if car.size == "small" {
+        if car.size == "Small" {
             self.amount = Int(washer.rateSmall)
-        } else if car.size == "medium" {
+        } else if car.size == "Medium" {
             self.amount = Int(washer.rateMedium)
-        } else if car.size == "large" {
+        } else if car.size == "Large" {
             self.amount = Int(washer.rateLarge)
         }
+    }
+
+    private func alertUser(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
     }
 
     // MARK: - Actions
@@ -154,13 +219,11 @@ UICollectionViewDataSource, STPAuthenticationContext {
                                       authenticationContext: self) { (status, _, _) in
             switch status {
             case .failed:
-                // Alert of failed payment
+                self.alertUser(title: "Payment Failed", message: "please try again")
                 print("Payment Failed")
             case .canceled:
-                // Alert of cenceled payment
                 print("Payment Canceled")
             case .succeeded:
-                // Alert of succeeded payment
                 self.createJob()
                 print("Payment Successful")
             @unknown default:
@@ -173,8 +236,20 @@ UICollectionViewDataSource, STPAuthenticationContext {
         return self
     }
 
-    // MARK: - Navigation
+    @IBAction func addCarsButtonTapped(_ sender: Any) {
+        if let tabBarController = scheduleViewController?.tabBarController {
+            tabBarController.selectedIndex = 0
+        }
+        self.dismiss(animated: true, completion: nil)
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "addCar"), object: nil)
+    }
+}
+
+extension PaymentViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 120.0, height: 120.0)
     }
 }

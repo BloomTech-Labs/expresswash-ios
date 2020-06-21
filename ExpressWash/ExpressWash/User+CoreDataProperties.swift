@@ -34,9 +34,8 @@ extension User {
     @NSManaged public var zip: String?
     @NSManaged public var token: String?
     @NSManaged public var jobs: NSOrderedSet?
-    @NSManaged public var cars: NSOrderedSet?
+    @NSManaged public var cars: NSSet?
     @NSManaged public var washer: Washer?
-
 }
 
 // MARK: Generated accessors for jobs

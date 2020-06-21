@@ -10,6 +10,7 @@ import Foundation
 import CoreLocation
 
 struct JobRepresentation: Codable {
+    var washAddress: String
     var address: String
     var address2: String?
     var carId: Int
@@ -28,7 +29,7 @@ struct JobRepresentation: Codable {
     var state: String
     var timeRequested: String
     var timeCompleted: String?
-    var washerId: Int
+    var washerId: Int?
     var zip: String
     var creationDate: String?
     var timeArrived: String?
@@ -36,6 +37,7 @@ struct JobRepresentation: Codable {
     init(jobId: Int = 0,
          jobLocationLat: Double,
          jobLocationLon: Double,
+         washAddress: String,
          address: String,
          address2: String?,
          city: String,
@@ -52,9 +54,10 @@ struct JobRepresentation: Codable {
          timeCompleted: String? = nil,
          carId: Int,
          clientId: Int,
-         washerId: Int,
+         washerId: Int? = nil,
          creationDate: String? = nil,
          timeArrived: String? = nil) {
+        self.washAddress = washAddress
         self.address = address
         self.address2 = address2
         self.carId = carId
@@ -80,6 +83,7 @@ struct JobRepresentation: Codable {
     }
 
     enum JobKeys: String, CodingKey {
+        case washAddress
         case address
         case address2
         case carId
@@ -111,6 +115,7 @@ struct JobRepresentation: Codable {
         scheduled       = try container.decode(Bool.self, forKey: .scheduled)
         completed       = try container.decode(Bool.self, forKey: .completed)
         paid            = try container.decode(Bool.self, forKey: .paid)
+        washAddress     = try container.decode(String.self, forKey: .washAddress)
         address         = try container.decode(String.self, forKey: .address)
         address2        = try container.decodeIfPresent(String.self, forKey: .address2)
 
@@ -130,7 +135,7 @@ struct JobRepresentation: Codable {
         timeCompleted   = try container.decodeIfPresent(String.self, forKey: .timeCompleted)
         carId           = try container.decode(Int.self, forKey: .carId)
         clientId        = try container.decode(Int.self, forKey: .clientId)
-        washerId        = try container.decode(Int.self, forKey: .washerId)
+        washerId        = try container.decodeIfPresent(Int.self, forKey: .washerId)
         creationDate    = try container.decodeIfPresent(String.self, forKey: .creationDate)
         timeArrived     = try container.decodeIfPresent(String.self, forKey: .timeArrived)
     }
@@ -141,6 +146,7 @@ struct JobRepresentation: Codable {
         try container.encode(scheduled, forKey: .scheduled)
         try container.encode(completed, forKey: .completed)
         try container.encode(paid, forKey: .paid)
+        try container.encode(washAddress, forKey: .washAddress)
         try container.encode(address, forKey: .address)
         if let address2 = address2 {
             try container.encode(address2, forKey: .address2)
@@ -167,5 +173,8 @@ struct JobRepresentation: Codable {
             try container.encode(creationDate, forKey: .creationDate)
         }
         try container.encode(timeArrived, forKey: .timeArrived)
+        if let washerId = washerId {
+            try container.encode(washerId, forKey: .washerId)
+        }
     }
 }

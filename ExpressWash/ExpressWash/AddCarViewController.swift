@@ -8,13 +8,15 @@
 
 import UIKit
 
-class AddCarViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class AddCarViewController: UIViewController, UINavigationControllerDelegate,
+UIImagePickerControllerDelegate, UITextFieldDelegate {
 
     // MARK: - Properties
 
     var carController = CarController()
     var photoController = PhotoController()
     var user: User?
+    var car: Car?
 
     // MARK: - Outlets
 
@@ -28,6 +30,7 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var sizeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var addCarButton: UIButton!
+    @IBOutlet weak var deleteCarButton: UIButton!
 
     // MARK: - Views
 
@@ -35,6 +38,9 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
         super.viewDidLoad()
 
         setupSubviews()
+        if car != nil {
+            updateViews()
+        }
     }
 
     // MARK: - Methods
@@ -44,7 +50,14 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
         UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .normal)
 
         addCarButton.layer.cornerRadius = 10.0
+        addCarButton.isEnabled = true
         carImageView.layer.cornerRadius = 10.0
+        deleteCarButton.layer.cornerRadius = 10.0
+        deleteCarButton.isEnabled = false
+        deleteCarButton.alpha = 0
+
+        licenseTextField.delegate = self
+        yearTextField.delegate = self
     }
 
     private func setupCamera() {
@@ -76,33 +89,87 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
         }
     }
 
-    // MARK: - Actions
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        var maxLength = 7
 
-    @IBAction func addCarButtonTapped(_ sender: Any) {
+        if textField == licenseTextField {
+            maxLength = 7
+        } else if textField == yearTextField {
+            maxLength = 4
+        }
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
+    }
+
+    private func updateViews() {
+        guard let car = car else { return }
+
+        carImageView.image = UIImage.cached(from: car.photo!)
+        yearTextField.text = "\(car.year)"
+        makeTextField.text = car.make
+        modelTextField.text = car.model
+        licenseTextField.text = car.licensePlate
+        colorTextField.text = car.color
+        categoryTextField.text = car.category
+        if car.size == "small" {
+            sizeSegmentedControl.selectedSegmentIndex = 1
+        } else if car.size == "medium" {
+            sizeSegmentedControl.selectedSegmentIndex = 2
+        } else {
+            sizeSegmentedControl.selectedSegmentIndex = 3
+        }
+
+        yearTextField.isEnabled = false
+        makeTextField.isEnabled = false
+        modelTextField.isEnabled = false
+        licenseTextField.isEnabled = false
+        colorTextField.isEnabled = false
+        categoryTextField.isEnabled = false
+        sizeSegmentedControl.isEnabled = false
+        showCameraTapped.isEnabled = false
+        showCameraTapped.alpha = 0
+        addCarButton.isEnabled = false
+        addCarButton.alpha = 0
+        deleteCarButton.isEnabled = true
+        deleteCarButton.alpha = 1
+    }
+
+    private func fetchCar() -> CarRepresentation? {
         guard let year = yearTextField.text,
               let make = makeTextField.text,
               let model = modelTextField.text,
               let licensePlate = licenseTextField.text,
               let color = colorTextField.text,
-              let category = categoryTextField.text else { return }
+              let category = categoryTextField.text else { return nil }
 
         let segment = sizeSegmentedControl.selectedSegmentIndex
         guard let size = sizeSegmentedControl.titleForSegment(at: segment),
               let yearInt = Int16(year),
-              let clientID = UserController.shared.sessionUser.user?.userId else { return }
+              let clientID = UserController.shared.sessionUser.user?.userId else { return nil }
 
-        let carRepresentation = CarRepresentation(carId: nil,
-                                                  clientId: Int(clientID),
-                                                  make: make,
-                                                  model: model,
-                                                  year: yearInt,
-                                                  color: color,
-                                                  licensePlate: licensePlate,
-                                                  photo: nil,
-                                                  category: category,
-                                                  size: size)
+            let carRepresentation = CarRepresentation(carId: nil,
+                                                      clientId: Int(clientID),
+                                                      make: make,
+                                                      model: model,
+                                                      year: yearInt,
+                                                      color: color,
+                                                      licensePlate: licensePlate,
+                                                      photo: nil,
+                                                      category: category,
+                                                      size: size)
+            return carRepresentation
+    }
 
-        carController.addCar(carRepresentation: carRepresentation) { (car, error) in
+    // MARK: - Actions
+
+    @IBAction func addCarButtonTapped(_ sender: Any) {
+        guard let carRep = fetchCar() else { return }
+
+        carController.addCar(carRepresentation: carRep) { (car, error) in
             if let error = error {
                 print("Error creating car: \(error)")
                 return
@@ -123,8 +190,16 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
                             guard let data = data else { return }
 
                             if let car = self.carController.decodeCar(with: data) {
-                                self.user?.addToCars(car)
-                                self.tieCar(carRep: carRepresentation, carId: Int(car.carId))
+                                guard let user = self.user else { return }
+                                user.addToCars(car)
+                                self.tieCar(carRep: carRep, carId: Int(car.carId))
+
+                                let moc = CoreDataStack.shared.mainContext
+                                do {
+                                    try moc.save()
+                                } catch {
+                                    print("Error saving added car: \(error)")
+                                }
                             }
                         }
                     }
@@ -133,11 +208,23 @@ class AddCarViewController: UIViewController, UINavigationControllerDelegate, UI
 
             DispatchQueue.main.async {
                 self.dismiss(animated: true, completion: nil)
+               DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+                }
             }
         }
     }
 
     @IBAction func captureImageButtonTapped(_ sender: Any) {
         setupCamera()
+    }
+
+    @IBAction func deleteCarButtonTapped(_ sender: Any) {
+        guard let car = car else { return }
+        carController.deleteCar(car: car, context: CoreDataStack.shared.mainContext)
+        self.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+        }
     }
 }

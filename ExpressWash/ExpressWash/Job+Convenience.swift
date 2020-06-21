@@ -13,6 +13,7 @@ extension Job {
     convenience init(jobId: Int32 = 0,
                      jobLocationLat: Double,
                      jobLocationLon: Double,
+                     washAddress: String,
                      address: String,
                      address2: String? = nil,
                      city: String,
@@ -34,6 +35,7 @@ extension Job {
         self.jobId = jobId
         self.jobLocationLat = jobLocationLat
         self.jobLocationLon = jobLocationLon
+        self.washAddress = washAddress
         self.address = address
         self.address2 = address2
         self.city = city
@@ -58,6 +60,7 @@ extension Job {
         self.jobId = Int32(representation.jobId)
         self.jobLocationLat = representation.jobLocationLat
         self.jobLocationLon = representation.jobLocationLon
+        self.washAddress = representation.washAddress
         self.address = representation.address
         self.address2 = representation.address2
         self.city = representation.city
@@ -80,6 +83,7 @@ extension Job {
         JobRepresentation(jobId: Int(self.jobId),
                           jobLocationLat: self.jobLocationLat,
                           jobLocationLon: self.jobLocationLon,
+                          washAddress: self.washAddress,
                           address: self.address,
                           address2: self.address2,
                           city: self.city,

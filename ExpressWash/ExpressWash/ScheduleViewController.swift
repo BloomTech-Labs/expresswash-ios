@@ -20,7 +20,6 @@ class ScheduleViewController: UIViewController,
     let jobController = JobController()
     let washerController = WasherController()
     let locationManager = CLLocationManager()
-    let geoCoder = CLGeocoder()
     var annotation = MGLPointAnnotation()
     var washers: [Washer] = []
 
@@ -30,6 +29,7 @@ class ScheduleViewController: UIViewController,
     var zipString: String?
     var timeRequested: String?
     var selectedWasher: Washer?
+    var selectedIndexPath: IndexPath?
 
     // MARK: - Outlets
 
@@ -43,8 +43,8 @@ class ScheduleViewController: UIViewController,
 
     // MARK: - Views
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
 
         setupSubviews()
         setUpMap()
@@ -76,10 +76,15 @@ class ScheduleViewController: UIViewController,
             if let url = user.profilePicture {
                 cell.imageView.image = UIImage.cached(from: url, defaultTitle: "person.circle")
             } else {
-                cell.imageView.image = UIImage(named: "person.circle")
+                cell.imageView.image = UIImage(systemName: "person.circle")
             }
+            cell.nameLabel.text = "\(user.firstName.capitalized)  \(user.lastName.capitalized)"
+        }
 
-            cell.nameLabel.text = user.firstName + user.lastName
+        if self.selectedIndexPath != nil && indexPath == self.selectedIndexPath {
+            cell.layer.borderColor = UIColor(named: "Salmon")?.cgColor
+        } else {
+            cell.layer.borderColor = UIColor(named: "Light Blue")?.cgColor
         }
 
         cell.starLabel.text = "★ \(washer.washerRating)"
@@ -91,8 +96,19 @@ class ScheduleViewController: UIViewController,
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderWidth = 2.0
+        cell?.layer.borderColor = UIColor(named: "Salmon")?.cgColor
+        self.selectedIndexPath = indexPath
         self.selectedWasher = nil
         self.selectedWasher = washers[indexPath.row]
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderWidth = 2.0
+        cell?.layer.borderColor = UIColor(named: "Light Blue")?.cgColor
+        self.selectedIndexPath = nil
     }
 
     // MARK: - Methods
@@ -114,7 +130,7 @@ class ScheduleViewController: UIViewController,
     }
 
     func getWashers(location: CLLocation) {
-        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
+        CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
             if let error = error {
                 print("Error reverse geocoding: \(error)")
                 return
@@ -131,7 +147,12 @@ class ScheduleViewController: UIViewController,
                     self.washers = []
 
                     if let washers = washers {
-                        self.washers = washers
+                        self.washers = washers.sorted(by: { (washer1, washer2) -> Bool in
+                            washer1.washerRating > washer2.washerRating
+                        })
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                            self.washersCollectionView.reloadData()
+                        })
                     }
                 }
             }
@@ -151,7 +172,7 @@ class ScheduleViewController: UIViewController,
         if let address = UserController.shared.sessionUser.user?.streetAddress {
             addressTextField.text = address
 
-            geoCoder.geocodeAddressString(address) { (placemarks, error) in
+            CLGeocoder().geocodeAddressString(address) { (placemarks, error) in
                 if let error = error {
                     print("Error geocoding address: \(error)")
                     return
@@ -174,7 +195,7 @@ class ScheduleViewController: UIViewController,
     }
 
     func reversGeocode(location: CLLocation) {
-        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
+        CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
             if let error = error {
                 print("Error reverse geocoding: \(error)")
                 return
@@ -201,7 +222,7 @@ class ScheduleViewController: UIViewController,
             if let zip = placemark.isoCountryCode {
                 self.zipString = zip
             }
-        }
+        })
     }
 
     func mapView(_ mapView: MGLMapView, didAdd annotationViews: [MGLAnnotationView]) {
@@ -216,7 +237,7 @@ class ScheduleViewController: UIViewController,
 
         guard let address = addressTextField.text else { return }
 
-        geoCoder.geocodeAddressString(address) { (placemarks, error) in
+        CLGeocoder().geocodeAddressString(address) { (placemarks, error) in
             if let error = error {
                 print("Error geocoding address: \(error)")
                 return
@@ -252,6 +273,8 @@ class ScheduleViewController: UIViewController,
 
                 self.getWashers(location: currentLocation)
 
+                self.addressTextField.text = "Current Location"
+
                 self.washersCollectionView.reloadData()
             }
         }
@@ -266,7 +289,13 @@ class ScheduleViewController: UIViewController,
 
         reversGeocode(location: location)
 
-        self.performSegue(withIdentifier: "confirmWashSegue", sender: self)
+        guard self.selectedWasher != nil else {
+            self.alertUser(title: "Please Select Washer", message: "")
+            return }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.performSegue(withIdentifier: "confirmWashSegue", sender: self)
+        }
     }
 
     // MARK: - Navigation
@@ -280,6 +309,8 @@ class ScheduleViewController: UIViewController,
                 paymentVC.stateString = stateString
                 paymentVC.zipString = zipString
                 paymentVC.timeRequested = timeRequested
+                paymentVC.selectedWasher = selectedWasher
+                paymentVC.scheduleViewController = self
             }
         }
     }

@@ -16,6 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zmO-wa-k8X">
+                                <rect key="frame" x="40" y="343" width="334" height="320"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nN4-Qo-GzJ">
                                 <rect key="frame" x="50" y="363" width="314" height="280"/>
                                 <subviews>
@@ -61,6 +65,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="5nt-yI-f6k" firstAttribute="leading" secondItem="nN4-Qo-GzJ" secondAttribute="leading" id="SIl-jt-sdF"/>
                                     <constraint firstAttribute="trailing" secondItem="PJ0-mi-ta0" secondAttribute="trailing" id="aC2-sb-0hJ"/>
@@ -98,23 +103,29 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="pIh-du-IKM" firstAttribute="trailing" secondItem="nN4-Qo-GzJ" secondAttribute="trailing" id="0fa-Aj-dIR"/>
+                            <constraint firstItem="zmO-wa-k8X" firstAttribute="top" secondItem="nN4-Qo-GzJ" secondAttribute="top" constant="-20" id="1yb-jC-CDh"/>
                             <constraint firstItem="1h7-bN-c6y" firstAttribute="trailing" secondItem="nN4-Qo-GzJ" secondAttribute="trailing" constant="50" id="6n4-bD-EAc"/>
                             <constraint firstItem="nN4-Qo-GzJ" firstAttribute="centerX" secondItem="1h7-bN-c6y" secondAttribute="centerX" id="GTh-jy-9og"/>
                             <constraint firstItem="nN4-Qo-GzJ" firstAttribute="leading" secondItem="1h7-bN-c6y" secondAttribute="leading" constant="50" id="KYm-uP-rqN"/>
+                            <constraint firstItem="zmO-wa-k8X" firstAttribute="leading" secondItem="nN4-Qo-GzJ" secondAttribute="leading" constant="-10" id="ZWG-mh-hsO"/>
+                            <constraint firstItem="zmO-wa-k8X" firstAttribute="bottom" secondItem="nN4-Qo-GzJ" secondAttribute="bottom" constant="20" id="aJ6-EZ-al8"/>
                             <constraint firstItem="oaH-n0-NRq" firstAttribute="centerX" secondItem="1h7-bN-c6y" secondAttribute="centerX" id="ffs-PC-Xge"/>
                             <constraint firstItem="pIh-du-IKM" firstAttribute="top" secondItem="nN4-Qo-GzJ" secondAttribute="bottom" constant="30" id="gIe-sO-Cd7"/>
                             <constraint firstItem="nN4-Qo-GzJ" firstAttribute="top" secondItem="oaH-n0-NRq" secondAttribute="bottom" constant="75" id="sCC-O9-Svn"/>
+                            <constraint firstItem="zmO-wa-k8X" firstAttribute="trailing" secondItem="nN4-Qo-GzJ" secondAttribute="trailing" constant="10" id="xFh-jf-Ix8"/>
                             <constraint firstItem="nN4-Qo-GzJ" firstAttribute="centerY" secondItem="1h7-bN-c6y" secondAttribute="centerY" constant="50" id="zhw-Au-q8c"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1h7-bN-c6y"/>
                     </view>
                     <connections>
+                        <outlet property="borderView" destination="zmO-wa-k8X" id="1xv-LF-mLX"/>
                         <outlet property="emailAddressTextField" destination="5nt-yI-f6k" id="rb8-wZ-N8k"/>
                         <outlet property="firstNameTextField" destination="ZU0-5N-QXV" id="cVy-Cv-qpK"/>
                         <outlet property="lastNameTextField" destination="PJ0-mi-ta0" id="pQX-ZX-iJJ"/>
                         <outlet property="minimumLabel" destination="H6T-6c-YVT" id="B4K-wh-U0t"/>
                         <outlet property="passwordTextField" destination="MFP-Ni-flY" id="YJL-qx-dkR"/>
                         <outlet property="registerButton" destination="pIh-du-IKM" id="RcC-lr-4XC"/>
+                        <outlet property="stackView" destination="nN4-Qo-GzJ" id="kJ9-Kb-GYh"/>
                         <segue destination="fpM-Xw-fn7" kind="presentation" identifier="finishedSignUpSegue" modalPresentationStyle="fullScreen" id="PSJ-yx-rPh"/>
                     </connections>
                 </viewController>

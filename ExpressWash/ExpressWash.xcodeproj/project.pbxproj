@@ -25,12 +25,14 @@
 		375DB3E6244A5AE800C889F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375DB3E4244A5AE800C889F2 /* LaunchScreen.storyboard */; };
 		3765B41524888DD000D93751 /* ReceiptDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3765B41424888DD000D93751 /* ReceiptDetailViewController.swift */; };
 		3765B4172488932B00D93751 /* ReceiptDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3765B4162488932B00D93751 /* ReceiptDetail.storyboard */; };
+		37708880249D31CA002891B1 /* ProfileViewController+Toggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3770887F249D31CA002891B1 /* ProfileViewController+Toggle.swift */; };
 		377D1A02246A46FD00CA3AEB /* UserController+Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377D1A01246A46FD00CA3AEB /* UserController+Registration.swift */; };
 		377D1A07246A4A3D00CA3AEB /* SignUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377D1A06246A4A3D00CA3AEB /* SignUpTests.swift */; };
 		378BB366244E837000A2DCDA /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 378BB365244E837000A2DCDA /* SignUp.storyboard */; };
 		378BB368244E8C6100A2DCDA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378BB367244E8C6100A2DCDA /* SignUpViewController.swift */; };
 		378CE7C72473655400486754 /* CarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378CE7C62473655400486754 /* CarController.swift */; };
 		378CE7CA2473A2C100486754 /* CarControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378CE7C92473A2C100486754 /* CarControllerTests.swift */; };
+		3793E361249EC5FF009A4E46 /* JobController+networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3793E360249EC5FF009A4E46 /* JobController+networking.swift */; };
 		37A04F9C246B9AC60045E7C8 /* ReceiptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A04F9B246B9AC60045E7C8 /* ReceiptTableViewCell.swift */; };
 		37B747F0244FF997004AD2FE /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B747EF244FF997004AD2FE /* ScheduleViewController.swift */; };
 		37B8377E2457CCC3007D65DA /* WasherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8377D2457CCC3007D65DA /* WasherCollectionViewCell.swift */; };
@@ -117,12 +119,14 @@
 		375DB3E7244A5AE800C889F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3765B41424888DD000D93751 /* ReceiptDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptDetailViewController.swift; sourceTree = "<group>"; };
 		3765B4162488932B00D93751 /* ReceiptDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReceiptDetail.storyboard; sourceTree = "<group>"; };
+		3770887F249D31CA002891B1 /* ProfileViewController+Toggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Toggle.swift"; sourceTree = "<group>"; };
 		377D1A01246A46FD00CA3AEB /* UserController+Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserController+Registration.swift"; sourceTree = "<group>"; };
 		377D1A06246A4A3D00CA3AEB /* SignUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTests.swift; sourceTree = "<group>"; };
 		378BB365244E837000A2DCDA /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		378BB367244E8C6100A2DCDA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		378CE7C62473655400486754 /* CarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarController.swift; sourceTree = "<group>"; };
 		378CE7C92473A2C100486754 /* CarControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarControllerTests.swift; sourceTree = "<group>"; };
+		3793E360249EC5FF009A4E46 /* JobController+networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JobController+networking.swift"; sourceTree = "<group>"; };
 		37A04F9B246B9AC60045E7C8 /* ReceiptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptTableViewCell.swift; sourceTree = "<group>"; };
 		37B747EF244FF997004AD2FE /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		37B8377D2457CCC3007D65DA /* WasherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -330,6 +334,7 @@
 				5D4FD9E5246E3E03009962E4 /* WasherController.swift */,
 				378CE7C62473655400486754 /* CarController.swift */,
 				37C3A1EC2475FE64008ECB90 /* JobController.swift */,
+				3793E360249EC5FF009A4E46 /* JobController+networking.swift */,
 			);
 			name = "Model Controllers";
 			sourceTree = "<group>";
@@ -393,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				375D410C2451296E00479C7E /* ProfileViewController.swift */,
+				3770887F249D31CA002891B1 /* ProfileViewController+Toggle.swift */,
 				370E67622482008500297018 /* AddCarViewController.swift */,
 			);
 			name = Profile;
@@ -703,6 +709,7 @@
 				5DA0A8A32459141E00992692 /* NetworkGlobals.swift in Sources */,
 				5DBD0ECF2457C10200ADE10A /* UserController.swift in Sources */,
 				5D51383D2463A13500E81AEA /* Washer+Convenience.swift in Sources */,
+				37708880249D31CA002891B1 /* ProfileViewController+Toggle.swift in Sources */,
 				5D2370F224776C4B007A7AB8 /* EditWasherViewController.swift in Sources */,
 				5D46BE44244E9EE20058A660 /* CoreDataStack.swift in Sources */,
 				5D7DBB062488995C00ABD34C /* SessionUser.swift in Sources */,
@@ -732,6 +739,7 @@
 				375DB3DC244A5AE500C889F2 /* SceneDelegate.swift in Sources */,
 				37B747F0244FF997004AD2FE /* ScheduleViewController.swift in Sources */,
 				5D0B2608249085D200F76302 /* PhotoController.swift in Sources */,
+				3793E361249EC5FF009A4E46 /* JobController+networking.swift in Sources */,
 				377D1A02246A46FD00CA3AEB /* UserController+Registration.swift in Sources */,
 				5DC1B276244FD97C007C11EA /* Car+Convenience.swift in Sources */,
 				378CE7C72473655400486754 /* CarController.swift in Sources */,
@@ -924,6 +932,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BobbyKeffury.ExpressWash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -945,6 +954,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BobbyKeffury.ExpressWash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -957,7 +967,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3C2X999TFX;
+				DEVELOPMENT_TEAM = TFT6PV3RZ7;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				INFOPLIST_FILE = ExpressWashTests/Info.plist;
@@ -979,7 +989,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3C2X999TFX;
+				DEVELOPMENT_TEAM = TFT6PV3RZ7;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				INFOPLIST_FILE = ExpressWashTests/Info.plist;

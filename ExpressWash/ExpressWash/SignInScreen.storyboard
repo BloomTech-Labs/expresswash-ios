@@ -65,7 +65,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Cy-Id-UAE">
                                 <rect key="frame" x="85" y="580.5" width="244" height="45"/>
-                                <color key="backgroundColor" name="Light Blue"/>
+                                <color key="backgroundColor" name="Navy"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="9hu-Ir-HL7"/>
                                 </constraints>
@@ -180,7 +180,7 @@
                         <outlet property="tapExpressWash" destination="8cF-4u-33C" id="FIE-Od-fAK"/>
                         <outlet property="txtEmail" destination="EkV-Vn-2sh" id="iJ7-Fk-O76"/>
                         <outlet property="txtPassword" destination="gRT-dK-KGu" id="QuT-Hm-8Fw"/>
-                        <segue destination="lhQ-oF-n5L" kind="presentation" identifier="segueToMain" destinationCreationSelector="segueToMain" modalPresentationStyle="fullScreen" id="6Mw-Do-NqM"/>
+                        <segue destination="lhQ-oF-n5L" kind="presentation" identifier="segueToMain" modalPresentationStyle="fullScreen" id="6Mw-Do-NqM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z4V-22-kbn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -210,15 +210,15 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ghj-QF-QRa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="272" y="221"/>
+            <point key="canvasLocation" x="271" y="171"/>
         </scene>
     </scenes>
     <resources>
         <image name="Logo" width="1024" height="1024"/>
         <image name="checkmark.square" catalog="system" width="128" height="114"/>
         <image name="square" catalog="system" width="128" height="114"/>
-        <namedColor name="Light Blue">
-            <color red="0.74099999666213989" green="0.83499997854232788" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        <namedColor name="Navy">
+            <color red="0.3411764705882353" green="0.45098039215686275" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

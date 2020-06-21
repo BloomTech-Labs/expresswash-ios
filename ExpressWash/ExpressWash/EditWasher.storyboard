@@ -47,7 +47,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit your name and photo in your user profile" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thn-mk-VJC">
                                 <rect key="frame" x="103" y="193" width="291" height="14.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Fc-V9-ZlC">
@@ -93,13 +93,13 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$xx.xx" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fYj-A4-F0R">
                                                 <rect key="frame" x="0.0" y="34" width="238" height="34"/>
-                                                <color key="textColor" name="Salmon"/>
+                                                <color key="textColor" name="Navy"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$xx,xx" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fni-9g-9ea">
                                                 <rect key="frame" x="0.0" y="68" width="238" height="34"/>
-                                                <color key="textColor" name="Salmon"/>
+                                                <color key="textColor" name="Light Blue"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
@@ -119,20 +119,24 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="ETJ-Ll-3Sz"/>
                                 </constraints>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CzG-2U-OZM">
-                                <rect key="frame" x="224" y="597" width="48" height="30"/>
-                                <state key="normal" title="Cancel"/>
+                                <rect key="frame" x="217" y="597" width="48" height="30"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="cancelTapped:" destination="51l-ZF-fr2" eventType="touchUpInside" id="Cil-ez-cbx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4yc-Qs-yaB">
-                                <rect key="frame" x="139" y="596" width="46" height="30"/>
-                                <state key="normal" title="Save"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4yc-Qs-yaB">
+                                <rect key="frame" x="163" y="597" width="34" height="30"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="saveTapped:" destination="51l-ZF-fr2" eventType="touchUpInside" id="VGu-JX-XsE"/>
                                 </connections>
@@ -163,7 +167,7 @@
                             <constraint firstItem="v0A-3U-Hjy" firstAttribute="top" secondItem="b22-qd-kaZ" secondAttribute="bottom" constant="20" id="pZI-ti-anN"/>
                             <constraint firstItem="ReP-Hg-XcT" firstAttribute="leading" secondItem="gzl-bp-OZD" secondAttribute="leading" constant="20" id="pid-ud-fnt"/>
                             <constraint firstItem="gzl-bp-OZD" firstAttribute="trailing" secondItem="3eQ-h4-55L" secondAttribute="trailing" constant="20" id="qTl-45-gSN"/>
-                            <constraint firstItem="4yc-Qs-yaB" firstAttribute="centerX" secondItem="gzl-bp-OZD" secondAttribute="centerX" constant="-20" id="r1E-xI-dsQ"/>
+                            <constraint firstItem="4yc-Qs-yaB" firstAttribute="trailing" secondItem="gzl-bp-OZD" secondAttribute="centerX" constant="-10" id="r1E-xI-dsQ"/>
                             <constraint firstItem="3Fc-V9-ZlC" firstAttribute="leading" secondItem="gzl-bp-OZD" secondAttribute="leading" constant="20" id="vX2-t2-8aQ"/>
                             <constraint firstItem="MCE-0r-N5H" firstAttribute="top" secondItem="v0A-3U-Hjy" secondAttribute="bottom" constant="20" id="wXt-xu-ai2"/>
                             <constraint firstItem="MCE-0r-N5H" firstAttribute="leading" secondItem="gzl-bp-OZD" secondAttribute="leading" constant="20" id="wiE-Dm-B4f"/>
@@ -188,6 +192,12 @@
     </scenes>
     <resources>
         <image name="person.circle" catalog="system" width="128" height="121"/>
+        <namedColor name="Light Blue">
+            <color red="0.74099999666213989" green="0.83499997854232788" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="Navy">
+            <color red="0.3411764705882353" green="0.45098039215686275" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Salmon">
             <color red="0.99607843137254903" green="0.37254901960784315" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -53,9 +53,7 @@ extension DateFormatter {
 
     static func timeTaken(timeArrived: String?, timeCompleted: String?) -> String {
         guard let timeArrived = timeArrived, let timeCompleted = timeCompleted else { return "In Progress"}
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "hh:mm a"
-        dateFormatter.timeZone = TimeZone.current
+        let dateFormatter = DateFormatter.FromISODate
         let arrivalDate = dateFormatter.date(from: timeArrived)
         let completedDate = dateFormatter.date(from: timeCompleted)
 
