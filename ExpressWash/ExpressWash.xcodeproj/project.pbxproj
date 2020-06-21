@@ -493,6 +493,7 @@
 				378CE7C82473A28C00486754 /* CarTests */,
 				5DF65E3624A02289009B49BA /* HelperTests */,
 				37C3A1F224762A3A008ECB90 /* JobTests */,
+				377D1A05246A48A500CA3AEB /* SignUpTests */,
 				5DF65E35249FF7D9009B49BA /* UserTests */,
 				5D9962512465021C00D4151F /* WasherTests */,
 				5D0971E6246B902500B5492D /* Mock Data */,
@@ -525,6 +526,14 @@
 				5D99624F2465017600D4151F /* UserModelTests.swift */,
 			);
 			name = UserTests;
+			sourceTree = "<group>";
+		};
+		5DF65E3624A02289009B49BA /* HelperTests */ = {
+			isa = PBXGroup;
+			children = (
+				5DF65E3724A022DE009B49BA /* DateFromatter+ClockTests.swift */,
+			);
+			name = HelperTests;
 			sourceTree = "<group>";
 		};
 		B41FE9FEE225BA7775004AA3 /* Frameworks */ = {
