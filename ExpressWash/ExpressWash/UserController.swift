@@ -379,4 +379,48 @@ extension UserController {
             }
         }.resume()
     }
+
+    func findOrCreateUserInCoreData(from rep: UserRepresentation,
+                                    context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> User {
+        var foundUser = findUser(byID: rep.userId)
+        if foundUser == nil {
+            foundUser = User(representation: rep, context: context)
+        } else {
+            updateUserInCoreData(foundUser!, rep: rep, context: context) { (_, _) in }
+        }
+        return foundUser!
+    }
+
+    func updateUserInCoreData(_ user: User,
+                              rep: UserRepresentation,
+                              context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
+                              completion: @escaping CompletionHandler) {
+        let privateMOC = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        privateMOC.parent = context
+        privateMOC.performAndWait {
+            user.userId = Int32(rep.userId)
+            user.accountType = rep.accountType
+            user.email = rep.email
+            user.firstName = rep.firstName
+            user.lastName = rep.lastName
+            user.phoneNumber = rep.phoneNumber
+            user.stripeUUID = rep.stripeUUID
+            user.streetAddress = rep.streetAddress
+            user.streetAddress2 = rep.streetAddress2
+            user.city = rep.city
+            user.state = rep.state
+            user.zip = rep.zip
+            user.profilePicture = rep.profilePicture
+            user.bannerImage = rep.bannerImage
+            user.userRating = rep.userRating != nil ? rep.userRating! : user.userRating
+            do {
+                try privateMOC.save()
+            } catch {
+                print("Unable to save updated car: \(error)")
+                context.reset()
+                completion(nil, error)
+            }
+            completion(user, nil)
+        }
+    }
 }
