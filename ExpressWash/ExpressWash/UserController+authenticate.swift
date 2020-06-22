@@ -62,7 +62,16 @@ extension UserController {
             do {
                 let authReturn = try decoder.decode(AuthReturn.self, from: data)
                 self.token = authReturn.token
-                self.sessionUser.user = self.findUser(byID: authReturn.user.userId)
+                self.fetchUserByID(uid: authReturn.user.userId) { (user, error) in
+                    if let error = error {
+                        print("Error fetching user after sign in: \(error)")
+                        return
+                    }
+                    guard let user = user else { return }
+                    self.sessionUser.user = user
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadCars"),
+                    object: nil)
+                }
                 if self.sessionUser.user != nil {
                     self.update(user: self.sessionUser.user!, with: authReturn.user)
                 } else {

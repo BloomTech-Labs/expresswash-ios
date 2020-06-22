@@ -63,24 +63,23 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
     }
 
     private func setupCamera() {
-        
+
         if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
             carImagePicker.delegate = self
             carImagePicker.sourceType = .camera
             carImagePicker.allowsEditing = false
-            
+
             present(carImagePicker, animated: true, completion: nil)
         } else {
             AVCaptureDevice.requestAccess(for: .video) { granted in
                 if granted {
-                    self.carImagePicker.delegate = self
-                    
+
                     if UIImagePickerController.isSourceTypeAvailable(.camera) {
                         DispatchQueue.main.async {
                             self.carImagePicker.delegate = self
                             self.carImagePicker.sourceType = .camera
                             self.carImagePicker.allowsEditing = false
-                            
+
                             self.present(self.carImagePicker, animated: true, completion: nil)
                         }
                     } else {
@@ -88,7 +87,7 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
                             self.carImagePicker.delegate = self
                             self.carImagePicker.sourceType = .savedPhotosAlbum
                             self.carImagePicker.allowsEditing = false
-                            
+
                             self.present(self.carImagePicker, animated: true, completion: nil)
                         }
                     }
@@ -136,7 +135,7 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
     private func updateViews() {
         guard let car = car else { return }
 
-        carImageView.image = UIImage.cached(from: car.photo!)
+        carImageView.image = UIImage.cached(from: car.photo ?? "")
         yearTextField.text = "\(car.year)"
         makeTextField.text = car.make
         modelTextField.text = car.model
@@ -219,9 +218,15 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
                             guard let data = data else { return }
 
                             if let car = self.carController.decodeCar(with: data) {
-                                guard let user = self.user else { return }
-                                user.addToCars(car)
                                 self.tieCar(carRep: carRep, carId: Int(car.carId))
+                            }
+
+                            if let carRep = self.carController.decodeCarRep(with: data) {
+                                guard let user = UserController.shared.sessionUser.user else { return }
+                                let car = self.carController.findOrCreateCarInCoreData(from: carRep)
+                                user.addToCars(car)
+                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"),
+                                                                object: nil)
 
                                 let moc = CoreDataStack.shared.mainContext
                                 do {
@@ -237,9 +242,6 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
 
             DispatchQueue.main.async {
                 self.dismiss(animated: true, completion: nil)
-               DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
-                }
             }
         }
     }

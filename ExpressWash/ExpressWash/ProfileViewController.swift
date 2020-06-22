@@ -60,6 +60,8 @@ class ProfileViewController: UIViewController,
                                                name: NSNotification.Name(rawValue: "load"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(editEnabled),
                                                name: NSNotification.Name(rawValue: "addCar"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(loadCars),
+                                                      name: NSNotification.Name(rawValue: "loadCars"), object: nil)
     }
 
     // MARK: - CollectionView Data Source
@@ -208,7 +210,15 @@ class ProfileViewController: UIViewController,
     }
 
     @objc func loadList(notification: NSNotification) {
-        self.carsCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.carsCollectionView.reloadData()
+        }
+    }
+
+    @objc func loadCars(notification: NSNotification) {
+        DispatchQueue.main.async {
+            self.carsCollectionView.reloadData()
+        }
     }
 
     // MARK: - Actions
