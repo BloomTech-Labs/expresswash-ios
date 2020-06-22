@@ -219,9 +219,15 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
                             guard let data = data else { return }
 
                             if let car = self.carController.decodeCar(with: data) {
-                                guard let user = self.user else { return }
-                                user.addToCars(car)
                                 self.tieCar(carRep: carRep, carId: Int(car.carId))
+                            }
+
+                            if let carRep = self.carController.decodeCarRep(with: data) {
+                                guard let user = UserController.shared.sessionUser.user else { return }
+                                let car = self.carController.findOrCreateCarInCoreData(from: carRep)
+                                user.addToCars(car)
+                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"),
+                                                                object: nil)
 
                                 let moc = CoreDataStack.shared.mainContext
                                 do {
@@ -237,9 +243,6 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
 
             DispatchQueue.main.async {
                 self.dismiss(animated: true, completion: nil)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.75) {
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
-                }
             }
         }
     }

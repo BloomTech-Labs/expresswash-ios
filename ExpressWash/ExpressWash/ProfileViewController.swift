@@ -208,7 +208,9 @@ class ProfileViewController: UIViewController,
     }
 
     @objc func loadList(notification: NSNotification) {
-        self.carsCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.carsCollectionView.reloadData()
+        }
     }
 
     // MARK: - Actions

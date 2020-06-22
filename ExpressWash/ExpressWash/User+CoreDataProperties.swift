@@ -38,10 +38,10 @@ extension User {
     @NSManaged public var washer: Washer?
 
     public var carsArray: [Car] {
-      let set = cars as? Set<Car> ?? []
-      return set.sorted {
-        $0.carId < $1.carId
-      }
+        let set = cars as? Set<Car> ?? []
+        return set.sorted { (car1, car2) -> Bool in
+            car1.carId > car2.carId
+        }
     }
 }
 
