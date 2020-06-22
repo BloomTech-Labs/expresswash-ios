@@ -446,8 +446,8 @@
 		37C3A1F224762A3A008ECB90 /* JobTests */ = {
 			isa = PBXGroup;
 			children = (
+				37C3A1F324762A4F008ECB90 /* JobControllerTests.swift */,
 				5D99624B2464FFDB00D4151F /* JobModelTests.swift */,
-				37C3A1F324762A4F008ECB90 /* JobTests.swift */,
 			);
 			name = JobTests;
 			sourceTree = "<group>";
