@@ -15,20 +15,6 @@ class WasherController {
     static let shared = WasherController()
 
     // MARK: - Local store methods
-    func createLocalWasher(from representation: WasherRepresentation,
-                           context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        _ = Washer(representation: representation, context: context)
-        context.perform {
-            do {
-                try CoreDataStack.shared.save(context: context)
-            } catch {
-                print("Unable to save new washer: \(error)")
-                context.reset()
-            }
-        }
-        // put(washer: newWasher)
-    }
-
     func updateWasher(_ washer: Washer,
                       with rep: WasherRepresentation,
                       context: NSManagedObjectContext = CoreDataStack.shared.mainContext,

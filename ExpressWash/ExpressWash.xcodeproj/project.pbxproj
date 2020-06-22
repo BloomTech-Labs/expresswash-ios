@@ -72,6 +72,8 @@
 		5D605C672453DEB700B83420 /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D605C662453DEB700B83420 /* User+Convenience.swift */; };
 		5D7D92DB24A0551400AE9841 /* jobsForUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D92DA24A0551400AE9841 /* jobsForUser.json */; };
 		5D7D92DF24A0597500AE9841 /* NumberFormatter+DollarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D92DE24A0597500AE9841 /* NumberFormatter+DollarTests.swift */; };
+		5D7D92E324A0693C00AE9841 /* User1.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D92E224A0693C00AE9841 /* User1.json */; };
+		5D7D92E524A06B2D00AE9841 /* UserControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D92E424A06B2D00AE9841 /* UserControllerTests.swift */; };
 		5D7DBB062488995C00ABD34C /* SessionUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DBB052488995C00ABD34C /* SessionUser.swift */; };
 		5D7FD39E249F023B002B1090 /* WasherViewController+MGLMapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7FD39D249F023B002B1090 /* WasherViewController+MGLMapViewDelegate.swift */; };
 		5D7FD3A0249F02E1002B1090 /* WasherViewController+UIImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7FD39F249F02E1002B1090 /* WasherViewController+UIImagePickerControllerDelegate.swift */; };
@@ -169,6 +171,8 @@
 		5D605C662453DEB700B83420 /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
 		5D7D92DA24A0551400AE9841 /* jobsForUser.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = jobsForUser.json; sourceTree = "<group>"; };
 		5D7D92DE24A0597500AE9841 /* NumberFormatter+DollarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+DollarTests.swift"; sourceTree = "<group>"; };
+		5D7D92E224A0693C00AE9841 /* User1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = User1.json; sourceTree = "<group>"; };
+		5D7D92E424A06B2D00AE9841 /* UserControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserControllerTests.swift; sourceTree = "<group>"; };
 		5D7DBB052488995C00ABD34C /* SessionUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUser.swift; sourceTree = "<group>"; };
 		5D7FD39D249F023B002B1090 /* WasherViewController+MGLMapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WasherViewController+MGLMapViewDelegate.swift"; sourceTree = "<group>"; };
 		5D7FD39F249F02E1002B1090 /* WasherViewController+UIImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WasherViewController+UIImagePickerControllerDelegate.swift"; sourceTree = "<group>"; };
@@ -478,6 +482,7 @@
 				37C3A1EE247629D2008ECB90 /* Job.json */,
 				5D41D4F92474DB6900DC3152 /* washerRating.json */,
 				5D7D92DA24A0551400AE9841 /* jobsForUser.json */,
+				5D7D92E224A0693C00AE9841 /* User1.json */,
 			);
 			name = "Mock Data";
 			sourceTree = "<group>";
@@ -529,6 +534,7 @@
 			isa = PBXGroup;
 			children = (
 				5D99624F2465017600D4151F /* UserModelTests.swift */,
+				5D7D92E424A06B2D00AE9841 /* UserControllerTests.swift */,
 			);
 			name = UserTests;
 			sourceTree = "<group>";
@@ -651,6 +657,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				371DFE3F2474CAB1008EAAE0 /* EditCar.json in Resources */,
+				5D7D92E324A0693C00AE9841 /* User1.json in Resources */,
 				37C3A1EF247629D2008ECB90 /* Job.json in Resources */,
 				371DFE3D2474AE05008EAAE0 /* Car.json in Resources */,
 				371683A5247074BA000CE78C /* authRegister.json in Resources */,
@@ -790,6 +797,7 @@
 			files = (
 				378CE7CA2473A2C100486754 /* CarControllerTests.swift in Sources */,
 				5D99624E2464FFE900D4151F /* CarModelTest.swift in Sources */,
+				5D7D92E524A06B2D00AE9841 /* UserControllerTests.swift in Sources */,
 				5D99624A2464FFB700D4151F /* WasherModelTests.swift in Sources */,
 				37C3A1F424762A4F008ECB90 /* JobControllerTests.swift in Sources */,
 				5D7D92DF24A0597500AE9841 /* NumberFormatter+DollarTests.swift in Sources */,

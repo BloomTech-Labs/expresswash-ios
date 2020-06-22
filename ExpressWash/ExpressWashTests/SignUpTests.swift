@@ -54,7 +54,7 @@ class SignUpTests: XCTestCase {
                 expect.fulfill()
             }
 
-            waitForExpectations(timeout: 3.0, handler: nil)
+            waitForExpectations(timeout: 15.0, handler: nil)
         }
 
 }

@@ -86,28 +86,6 @@ class UserController {
 
     // MARK: - Local store methods
 
-    func createUser(accountType: String,
-                    email: String,
-                    firstName: String,
-                    lastName: String,
-                    context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        let newUser = User(accountType: accountType,
-                           email: email,
-                           firstName: firstName,
-                           lastName: lastName)
-        context.perform {
-            do {
-                try CoreDataStack.shared.save(context: context)
-            } catch {
-                print("Unable to save new user: \(error)")
-                context.reset()
-            }
-        }
-
-        put(user: newUser)
-
-    }
-
     func updateUser(_ user: User,
                     with representation: UserRepresentation,
                     context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
@@ -200,42 +178,6 @@ class UserController {
                 }
             }
             put(user: user)
-        }
-    }
-
-    func updateUsers(with representations: [UserRepresentation]) {
-        let usersWithID = representations.filter({ $0.userId != NOID })
-        let usersToFetch = usersWithID.compactMap({ $0.userId })
-        let representationsByID = Dictionary(uniqueKeysWithValues: zip(usersToFetch, usersWithID))
-        var usersToCreate = representationsByID // holds all users now, but will be whittled down
-
-        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "id IN %@", usersToFetch)
-
-        let context = CoreDataStack.shared.container.newBackgroundContext()
-        context.perform {
-            do {
-                let existingUsers = try context.fetch(fetchRequest)
-
-                for user in existingUsers {
-                    guard user.userId != NOID,
-                        let representation = representationsByID[Int(user.userId)] else {
-                        continue
-                    }
-
-                    self.update(user: user, with: representation)
-                    usersToCreate.removeValue(forKey: Int(user.userId))
-                    try CoreDataStack.shared.save(context: context)
-                }
-
-                // take care of the ones with id == 0
-                for representation in usersToCreate.values {
-                    _ = User(representation: representation)
-                    try CoreDataStack.shared.save(context: context)
-                }
-            } catch {
-                print("Error fetching users for IDs: \(error)")
-            }
         }
     }
 
@@ -337,7 +279,7 @@ extension UserController {
 
             guard let httpResponse = response as? HTTPURLResponse else {
                 print("Not a valid HTTPResponse when fetching user by ID \(uid)")
-                completion(nil, error)
+                completion(nil, NSError(domain: "fetch user", code: BADHTTPRESPONSE, userInfo: nil))
                 return
             }
 

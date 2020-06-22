@@ -70,7 +70,7 @@ class CarControllerTests: XCTestCase {
             expect.fulfill()
         }
         
-        waitForExpectations(timeout: 3.0, handler: nil)
+        waitForExpectations(timeout: 15.0, handler: nil)
         
     }
     
@@ -113,7 +113,7 @@ class CarControllerTests: XCTestCase {
             expect.fulfill()
         }
         
-        waitForExpectations(timeout: 3.0, handler: nil)
+        waitForExpectations(timeout: 15.0, handler: nil)
     }
     
     func testEditCar() throws {
@@ -155,7 +155,7 @@ class CarControllerTests: XCTestCase {
              expect.fulfill()
         }
         
-        waitForExpectations(timeout: 3.0, handler: nil)
+        waitForExpectations(timeout: 15.0, handler: nil)
     }
     
     func testUpdateCar() throws {
@@ -209,7 +209,7 @@ class CarControllerTests: XCTestCase {
             expect.fulfill()
         }
         
-        waitForExpectations(timeout: 3.0, handler: nil)
+        waitForExpectations(timeout: 15.0, handler: nil)
     }
     
     func testDeleteCar() throws {
@@ -236,6 +236,6 @@ class CarControllerTests: XCTestCase {
             expect.fulfill()
         }
         
-        waitForExpectations(timeout: 3.0, handler: nil)
+        waitForExpectations(timeout: 15.0, handler: nil)
     }
 }

@@ -96,7 +96,7 @@ class JobControllerTests: XCTestCase {
             expect.fulfill()
         }
         
-        waitForExpectations(timeout: 3.0, handler: nil)
+        waitForExpectations(timeout: 15.0, handler: nil)
     }
     
     func testAddJob() throws {
@@ -136,7 +136,7 @@ class JobControllerTests: XCTestCase {
             expect.fulfill()
         }
         
-        waitForExpectations(timeout: 3.0, handler: nil)
+        waitForExpectations(timeout: 15.0, handler: nil)
     }
     
     func testEditJob() throws {
@@ -181,7 +181,7 @@ class JobControllerTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: 3.0, handler: nil)
+        waitForExpectations(timeout: 15.0, handler: nil)
     }
 
     func testUpdateJob() throws {
@@ -225,7 +225,7 @@ class JobControllerTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: 3.0, handler: nil)
+        waitForExpectations(timeout: 15.0, handler: nil)
     }
     
     func testUpdateJob2() {
@@ -280,7 +280,7 @@ class JobControllerTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: 3.0, handler: nil)
+        waitForExpectations(timeout: 15.0, handler: nil)
     }
     
     func testJobInfo() throws {
@@ -320,7 +320,7 @@ class JobControllerTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: 3.0, handler: nil)
+        waitForExpectations(timeout: 15.0, handler: nil)
     }
     
     func testGetUserJobs() throws {
@@ -343,7 +343,7 @@ class JobControllerTests: XCTestCase {
             expect.fulfill()
         }
         
-        waitForExpectations(timeout: 3.0, handler: nil)
+        waitForExpectations(timeout: 15.0, handler: nil)
     }
     
     func testGetWasherJobs() throws {
@@ -370,6 +370,6 @@ class JobControllerTests: XCTestCase {
             expect.fulfill()
         }
         
-        waitForExpectations(timeout: 3.0, handler: nil)
+        waitForExpectations(timeout: 15.0, handler: nil)
     }
 }
