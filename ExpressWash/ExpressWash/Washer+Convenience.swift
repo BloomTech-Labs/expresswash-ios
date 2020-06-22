@@ -50,6 +50,7 @@ extension Washer {
         self.washerId = Int32(representation.washerId)
         self.washerRating = representation.washerRating ?? 0.0
         self.washerRatingTotal = Int16(representation.washerRatingTotal)
+        self.user = UserController.shared.findUser(byID: representation.userId)
     }
 
     var representation: WasherRepresentation {

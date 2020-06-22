@@ -76,7 +76,7 @@ extension UserController {
                     self.update(user: self.sessionUser.user!, with: authReturn.user)
                 } else {
                     CoreDataStack.shared.mainContext.perform {
-                        self.sessionUser.user = User(representation: authReturn.user)
+                        self.sessionUser.user = self.findOrCreateUserInCoreData(from: authReturn.user)
                         do {
                             try CoreDataStack.shared.mainContext.save()
                         } catch {

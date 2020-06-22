@@ -90,7 +90,7 @@ class ReceiptsViewController: UIViewController, UITableViewDataSource, UITableVi
 
         cell.washerRating.text = "★ \(job.washer!.washerRating)"
 
-        cell.dateLabel.text = DateFormatter.dateString(from: job.creationDate!)
+        cell.dateLabel.text = job.creationDate
 
         let timeTakenString = DateFormatter.timeTaken(timeArrived: job.timeArrived, timeCompleted: job.timeCompleted)
 
