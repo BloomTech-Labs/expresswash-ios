@@ -1,0 +1,28 @@
+[
+  {
+    "jobId": 1,
+    "washAddress": "10225 N Portal Ave",
+    "scheduled": true,
+    "completed": true,
+    "paid": false,
+    "clientId": 1,
+    "washerId": 11,
+    "creationDate": "2020-06-11T01:49:47.705+00:00",
+    "carId": 1,
+    "address": "10225 N Portal Ave",
+    "address2": "APT 2",
+    "jobLocationLat": 37.326283,
+    "jobLocationLon": -122.020647,
+    "city": "Cupertino",
+    "state": "CA",
+    "zip": "95014",
+    "notes": null,
+    "jobType": "basic",
+    "photoBeforeJob": "https://wowo-images.s3.amazonaws.com/1592718290430",
+    "photoAfterJob": "https://wowo-images.s3.amazonaws.com/1592718299629",
+    "timeRequested": "12:00 PM",
+    "timeCompleted": "2020-06-20 22:44:59-0700",
+    "dateScheduled": null,
+    "timeArrived": "2020-06-20 22:44:50-0700"
+  }
+]

@@ -25,8 +25,6 @@ class DateFromatter_ClockTests: XCTestCase {
         XCTAssert(DateFormatter.clockString(from: "2020-06-21 04:33:33 +0000") == "09:33 PM")
         XCTAssert(DateFormatter.clockString(from: "gobbledigook") == "00:00?")
         XCTAssert(DateFormatter.Date.dateFormat == "MMM dd, YYYY")
-        XCTAssert(DateFormatter.dateString(from: "2020-06-21 04:33:33 +0000") == "Jun 20, 2020")
-        XCTAssert(DateFormatter.dateString(from: "gobbledigook") == "")
     }
 
     func testTimeTaken() throws {

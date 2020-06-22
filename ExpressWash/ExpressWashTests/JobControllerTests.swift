@@ -44,6 +44,12 @@ class JobControllerTests: XCTestCase {
             URLProtocolMock.testURLs[BASEURL.appendingPathComponent(ENDPOINTS.jobSelect.rawValue)] = JobData
         }
         
+        if let userJobData = JSONLoader.readFrom(filename: "jobsForUser") {
+            URLProtocolMock.testURLs[BASEURL.appendingPathComponent(ENDPOINTS.jobsClient.rawValue).appendingPathComponent("\(1)")] = userJobData
+            
+            URLProtocolMock.testURLs[BASEURL.appendingPathComponent(ENDPOINTS.jobsWasher.rawValue).appendingPathComponent("\(11)")] = userJobData
+        }
+        
         // Set URLSession to use Mock Protocol
         let testConfig = URLSessionConfiguration.ephemeral
         testConfig.protocolClasses = [URLProtocolMock.self]
@@ -314,6 +320,56 @@ class JobControllerTests: XCTestCase {
             expect.fulfill()
         }
 
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
+    
+    func testGetUserJobs() throws {
+        let client = User(accountType: "client", email: "client@email.com", firstName: "Client", lastName: "Client")
+        client.userId = 1
+        
+        let expect = expectation(description: "a job is returned")
+        jobController.getUserJobs(user: client) { (jobReps, error) in
+            if error != nil {
+                XCTFail()
+            }
+            
+            guard let jobReps = jobReps else {
+                XCTFail()
+                return
+            }
+            
+            XCTAssert(jobReps.count == 1)
+            XCTAssert(jobReps[0].clientId == client.userId)
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
+    
+    func testGetWasherJobs() throws {
+        let client = User(accountType: "client", email: "client@email.com", firstName: "Client", lastName: "Client")
+        client.userId = 1
+        let wUser = User(accountType: "washer", email: "washer@email.com", firstName: "Washer", lastName: "Washer")
+        wUser.userId = 2
+        let washer = Washer(aboutMe: nil, available: true, currentLocationLat: 0.0, currentLocationLon: 0.0, rateSmall: 35.0, rateMedium: 45.0, rateLarge: 55.0, washerId: 11, washerRating: 5.0, washerRatingTotal: 5, user: wUser)
+        
+        let expect = expectation(description: "a job is returned")
+        jobController.getWasherJobs(washer: washer) { (jobReps, error) in
+            if error != nil {
+                XCTFail()
+            }
+            
+            guard let jobReps = jobReps else {
+                XCTFail()
+                return
+            }
+            
+            XCTAssert(jobReps.count == 1)
+            XCTAssert(jobReps[0].clientId == client.userId)
+            XCTAssert(jobReps[0].washerId == Int(washer.washerId))
+            expect.fulfill()
+        }
+        
         waitForExpectations(timeout: 3.0, handler: nil)
     }
 }
