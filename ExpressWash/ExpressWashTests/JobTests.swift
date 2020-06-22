@@ -16,8 +16,8 @@ class JobTests: XCTestCase {
     let city = "tampa"
     let completed = false
     let jobId = 2
-    let jobLocationLat: Float? = 0.0
-    let jobLocationLon: Float? = 0.0
+    let jobLocationLat = 0.0
+    let jobLocationLon = 0.0
     let jobType = "basic"
     let notes: String? = nil
     let paid = false
@@ -28,6 +28,8 @@ class JobTests: XCTestCase {
     let timeRequested = "12:00 PM"
     let timeCompleted: String? = nil
     let zip = "60184"
+    let carId = 1
+    let clientId = 4
     
     let jobController = JobController()
 
@@ -51,7 +53,7 @@ class JobTests: XCTestCase {
     }
 
     func testCreateJob() throws {
-        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat ?? 0.0, jobLocationLon: jobLocationLon ?? 0.0, address: address, address2: address2, city: city, state: state, zip: zip, notes: notes, jobType: jobType, completed: completed, paid: paid, scheduled: scheduled, photoBeforeJob: photoBeforeJob, photoAfterJob: photoAfterJob, timeRequested: timeRequested, timeCompleted: timeCompleted)
+        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat, jobLocationLon: jobLocationLon, washAddress: address, address: address, address2: address2, city: city, state: state, zip: zip, notes: notes, jobType: jobType, completed: completed, paid: paid, scheduled: scheduled, photoBeforeJob: photoBeforeJob, photoAfterJob: photoAfterJob, timeRequested: timeRequested, timeCompleted: timeCompleted, carId: carId, clientId: clientId)
         
         let expect = expectation(description: "Job Created")
         
@@ -91,7 +93,7 @@ class JobTests: XCTestCase {
     }
     
     func testAddJob() throws {
-        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat ?? 0.0, jobLocationLon: jobLocationLon ?? 0.0, address: address, address2: address2, city: city, state: state, zip: zip, notes: notes, jobType: jobType, completed: completed, paid: paid, scheduled: scheduled, photoBeforeJob: photoBeforeJob, photoAfterJob: photoAfterJob, timeRequested: timeRequested, timeCompleted: timeCompleted)
+        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat, jobLocationLon: jobLocationLon, washAddress: address, address: address, address2: address2, city: city, state: state, zip: zip, notes: notes, jobType: jobType, completed: completed, paid: paid, scheduled: scheduled, photoBeforeJob: photoBeforeJob, photoAfterJob: photoAfterJob, timeRequested: timeRequested, timeCompleted: timeCompleted, carId: carId, clientId: clientId)
         
         let expect = expectation(description: "Job Added")
         
@@ -136,7 +138,7 @@ class JobTests: XCTestCase {
             URLProtocolMock.testURLs[BASEURL.appendingPathComponent("jobs/job/\(jobId)")] = EditData
         }
         
-        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat!, jobLocationLon: jobLocationLon!, address: address, address2: nil, city: city, state: state, zip: zip, notes: nil, jobType: jobType, completed: false, paid: false, scheduled: true, photoBeforeJob: nil, photoAfterJob: nil, timeRequested: timeRequested, timeCompleted: nil)
+        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat, jobLocationLon: jobLocationLon, washAddress: address, address: address, address2: address2, city: city, state: state, zip: zip, notes: notes, jobType: jobType, completed: completed, paid: paid, scheduled: scheduled, photoBeforeJob: photoBeforeJob, photoAfterJob: photoAfterJob, timeRequested: timeRequested, timeCompleted: timeCompleted, carId: carId, clientId: clientId)
 
         let expect = expectation(description: "Job Edited")
 
@@ -180,7 +182,7 @@ class JobTests: XCTestCase {
             URLProtocolMock.testURLs[BASEURL.appendingPathComponent("jobs/job/\(jobId)")] = EditData
         }
         
-        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat!, jobLocationLon: jobLocationLon!, address: address, address2: nil, city: city, state: state, zip: zip, notes: nil, jobType: jobType, completed: false, paid: false, scheduled: true, photoBeforeJob: nil, photoAfterJob: nil, timeRequested: timeRequested, timeCompleted: nil)
+        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat, jobLocationLon: jobLocationLon, washAddress: address, address: address, address2: address2, city: city, state: state, zip: zip, notes: notes, jobType: jobType, completed: completed, paid: paid, scheduled: scheduled, photoBeforeJob: photoBeforeJob, photoAfterJob: photoAfterJob, timeRequested: timeRequested, timeCompleted: timeCompleted, carId: carId, clientId: clientId)
 
         let expect = expectation(description: "Job Edited")
 
@@ -224,7 +226,7 @@ class JobTests: XCTestCase {
             URLProtocolMock.testURLs[BASEURL.appendingPathComponent("jobs/job/\(jobId)")] = DeleteData
         }
         
-        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat!, jobLocationLon: jobLocationLon!, address: address, address2: nil, city: city, state: state, zip: zip, notes: nil, jobType: jobType, completed: false, paid: false, scheduled: true, photoBeforeJob: nil, photoAfterJob: nil, timeRequested: timeRequested, timeCompleted: nil)
+        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat, jobLocationLon: jobLocationLon, washAddress: address, address: address, address2: address2, city: city, state: state, zip: zip, notes: notes, jobType: jobType, completed: completed, paid: paid, scheduled: scheduled, photoBeforeJob: photoBeforeJob, photoAfterJob: photoAfterJob, timeRequested: timeRequested, timeCompleted: timeCompleted, carId: carId, clientId: clientId)
         
         let expect = expectation(description: "Job Deleted")
         
@@ -249,7 +251,7 @@ class JobTests: XCTestCase {
     }
     
     func testJobInfo() throws {
-        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat ?? 0.0, jobLocationLon: jobLocationLon ?? 0.0, address: address, address2: address2, city: city, state: state, zip: zip, notes: notes, jobType: jobType, completed: completed, paid: paid, scheduled: scheduled, photoBeforeJob: photoBeforeJob, photoAfterJob: photoAfterJob, timeRequested: timeRequested, timeCompleted: timeCompleted)
+        let jobRepresentation = JobRepresentation(jobId: jobId, jobLocationLat: jobLocationLat, jobLocationLon: jobLocationLon, washAddress: address, address: address, address2: address2, city: city, state: state, zip: zip, notes: notes, jobType: jobType, completed: completed, paid: paid, scheduled: scheduled, photoBeforeJob: photoBeforeJob, photoAfterJob: photoAfterJob, timeRequested: timeRequested, timeCompleted: timeCompleted, carId: carId, clientId: clientId)
 
         let expect = expectation(description: "Job Info Received")
 
