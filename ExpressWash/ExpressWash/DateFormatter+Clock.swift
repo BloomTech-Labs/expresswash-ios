@@ -43,14 +43,6 @@ extension DateFormatter {
         return formatter
     }()
 
-    static func dateString(from dateString: String) -> String {
-        if let date = DateFormatter.FromISODate.date(from: dateString) {
-            return DateFormatter.Date.string(from: date)
-        }
-
-        return ""
-    }
-
     static func timeTaken(timeArrived: String?, timeCompleted: String?) -> String {
         guard let timeArrived = timeArrived, let timeCompleted = timeCompleted else { return "In Progress"}
         let dateFormatter = DateFormatter.FromISODate
