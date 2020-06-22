@@ -73,7 +73,6 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
         } else {
             AVCaptureDevice.requestAccess(for: .video) { granted in
                 if granted {
-                    self.carImagePicker.delegate = self
 
                     if UIImagePickerController.isSourceTypeAvailable(.camera) {
                         DispatchQueue.main.async {
@@ -136,7 +135,7 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
     private func updateViews() {
         guard let car = car else { return }
 
-        carImageView.image = UIImage.cached(from: car.photo!)
+        carImageView.image = UIImage.cached(from: car.photo ?? "")
         yearTextField.text = "\(car.year)"
         makeTextField.text = car.make
         modelTextField.text = car.model
