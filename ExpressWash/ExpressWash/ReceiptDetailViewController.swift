@@ -54,7 +54,7 @@ class ReceiptDetailViewController: UIViewController {
         guard let job = job else { return }
         guard let washer = job.washer?.user else { return }
 
-        washDateLabel.text = DateFormatter.dateString(from: job.creationDate!)
+        washDateLabel.text = job.creationDate
 
         addressLabel.text = job.address
         cityStateLabel.text = "\(job.city.capitalized), \(job.state.capitalized)"
