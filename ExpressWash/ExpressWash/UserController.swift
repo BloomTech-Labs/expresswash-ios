@@ -192,6 +192,7 @@ class UserController {
             if matchedUsers.count == 1 {
                 foundUser = matchedUsers[0]
             } else {
+                print("Found \(matchedUsers.count) when searching for userId \(uid)")
                 foundUser = nil
             }
             return foundUser
@@ -277,16 +278,12 @@ extension UserController {
                 return
             }
 
-            guard let httpResponse = response as? HTTPURLResponse else {
-                print("Not a valid HTTPResponse when fetching user by ID \(uid)")
-                completion(nil, NSError(domain: "fetch user", code: BADHTTPRESPONSE, userInfo: nil))
-                return
-            }
-
-            if httpResponse.statusCode != 200 {
-                print("Non-200 response when fetching user by ID \(uid): \(httpResponse.statusCode)")
-                completion(nil, NSError(domain: "fetchUserByID", code: httpResponse.statusCode, userInfo: nil))
-                return
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode != 200 {
+                    print("Non-200 response when fetching user by ID \(uid): \(response.statusCode)")
+                    completion(nil, NSError(domain: "fetchUserByID", code: response.statusCode, userInfo: nil))
+                    return
+                }
             }
 
             guard let data = data else {

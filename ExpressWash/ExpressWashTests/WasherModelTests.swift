@@ -94,62 +94,63 @@ class WasherModelTests: XCTestCase {
         XCTAssert(representation.userId == 1)
     }
     
-//    func testWasherController() throws {
-//        let user = User(userId: 1,
-//                        accountType: "washer",
-//                        email: "washer@email.com",
-//                        firstName: "Test",
-//                        lastName: "User")
-//        var washerRep = WasherRepresentation(aboutMe: testAboutMe,
-//                                             available: false,
-//                                             currentLocationLat: testLat,
-//                                             currentLocationLon: testLon,
-//                                             rateSmall: testRateSmall,
-//                                             rateMedium: testRateMedium,
-//                                             rateLarge: testRateLarge,
-//                                             washerId: 7,
-//                                             washerRating: 3,
-//                                             washerRatingTotal: 3,
-//                                             userId: Int(user.userId))
-//
-//        let washerController = WasherController()
-//        _ = Washer(representation: washerRep)
-//        
-//        guard let washer = washerController.findWasher(byID: Int32(7)) else {
-//            XCTFail()
-//            return
-//        }
-//        
-//        washerRep.washerId = 987
-//        washerRep.aboutMe = updatedAboutMe
-//        washerRep.currentLocationLat = updatedLat
-//        washerRep.currentLocationLon = updatedLon
-//        washerRep.rateLarge = updatedRateLarge
-//        
-//        let washerExpectation = expectation(description: "Washer is updated, deleted")
-//
-//        washerController.updateWasher(washer, with: washerRep) { (error) in
-//            if let error = error {
-//                print(error)
-//                XCTFail()
-//                return
-//            }
-//            
-//            XCTAssert(washer.washerId == 987)
-//            XCTAssert(washer.aboutMe == self.updatedAboutMe)
-//            XCTAssert(washer.currentLocationLat == self.updatedLat)
-//            XCTAssert(washer.currentLocationLon == self.updatedLon)
-//            XCTAssert(washer.rateLarge == self.updatedRateLarge)
-//            
-//            washerController.deleteWasherLocally(washer: washer) { error in
-//                XCTAssertNil(error)
-//            }
-//            washerExpectation.fulfill()
-//        }
-//                
-//        
-//        waitForExpectations(timeout: 15.0, handler: nil)
-//    }
+    func testWasherController() throws {
+        let user = User(userId: 1,
+                        accountType: "washer",
+                        email: "washer@email.com",
+                        firstName: "Test",
+                        lastName: "User")
+        var washerRep = WasherRepresentation(aboutMe: testAboutMe,
+                                             available: false,
+                                             currentLocationLat: testLat,
+                                             currentLocationLon: testLon,
+                                             rateSmall: testRateSmall,
+                                             rateMedium: testRateMedium,
+                                             rateLarge: testRateLarge,
+                                             washerId: 97,
+                                             washerRating: 3,
+                                             washerRatingTotal: 3,
+                                             userId: Int(user.userId))
+
+        let washerController = WasherController()
+        _ = Washer(representation: washerRep)
+        
+        guard let washer = washerController.findWasher(byID: Int32(97)) else {
+            XCTFail()
+            return
+        }
+        
+        washerRep.washerId = 987
+        washerRep.aboutMe = updatedAboutMe
+        washerRep.currentLocationLat = updatedLat
+        washerRep.currentLocationLon = updatedLon
+        washerRep.rateLarge = updatedRateLarge
+        
+        let washerExpectation = expectation(description: "Washer is updated")
+        let washerDeletedExpectation = expectation(description: "Washer deleted")
+
+        washerController.updateWasher(washer, with: washerRep) { (error) in
+            if let error = error {
+                print(error)
+                XCTFail()
+                return
+            }
+            
+            XCTAssert(washer.washerId == 987)
+            XCTAssert(washer.aboutMe == self.updatedAboutMe)
+            XCTAssert(washer.currentLocationLat == self.updatedLat)
+            XCTAssert(washer.currentLocationLon == self.updatedLon)
+            XCTAssert(washer.rateLarge == self.updatedRateLarge)
+            washerExpectation.fulfill()
+            
+            washerController.deleteWasherLocally(washer: washer) { error in
+                XCTAssertNil(error)
+                washerDeletedExpectation.fulfill()
+            }
+        }
+        
+        waitForExpectations(timeout: 15.0, handler: nil)
+    }
     
     func testRateWasher() throws {
         let user = User(accountType: "washer", email: "test@email.com", firstName: "test", lastName: "washer")

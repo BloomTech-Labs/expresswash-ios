@@ -27,9 +27,9 @@ class UserControllerTests: XCTestCase {
     }
 
     func testFindUserByID() throws {
-        _ = User(userId: 1, accountType: "client", email: "test@test.com", firstName: "Test", lastName: "Client", bannerImage: nil, phoneNumber: "555-555-1212", profilePicture: nil, stripeUUID: nil, streetAddress: "1234 First St.", streetAddress2: "nil", city: "Town", state: "CA", zip: "90000", userRating: 3.0, userRatingTotal: 1)
+        _ = User(userId: 1000, accountType: "client", email: "test@test.com", firstName: "Test", lastName: "Client", bannerImage: nil, phoneNumber: "555-555-1212", profilePicture: nil, stripeUUID: nil, streetAddress: "1234 First St.", streetAddress2: "nil", city: "Town", state: "CA", zip: "90000", userRating: 3.0, userRatingTotal: 1)
                 
-        let user = UserController.shared.findUser(byID: Int32(1))
+        let user = UserController.shared.findUser(byID: Int32(1000))
         XCTAssertNotNil(user)
     }
     
