@@ -11,6 +11,7 @@ import UIKit
 class CarCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var modelLabel: UILabel!
 
     override func awakeFromNib() {
         imageView.layer.cornerRadius = 5.0

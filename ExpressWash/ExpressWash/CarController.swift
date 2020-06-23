@@ -35,15 +35,6 @@ class CarController {
             }
 
             completion(car, nil)
-
-            context.perform {
-                do {
-                    try CoreDataStack.shared.save(context: context)
-                } catch {
-                    print("Unable to save car to user: \(error)")
-                    context.reset()
-                }
-            }
         }
     }
 
@@ -343,6 +334,18 @@ extension CarController {
             let carRep = try decoder.decode(CarRepresentation.self, from: data)
             let car = Car(representation: carRep)
             return car
+        } catch {
+            print("Error decoding car from data: \(error)")
+            return nil
+        }
+    }
+
+    func decodeCarRep(with data: Data) -> CarRepresentation? {
+        let decoder = JSONDecoder()
+
+        do {
+            let carRep = try decoder.decode(CarRepresentation.self, from: data)
+            return carRep
         } catch {
             print("Error decoding car from data: \(error)")
             return nil

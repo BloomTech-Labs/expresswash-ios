@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class AddCarViewController: UIViewController, UINavigationControllerDelegate,
 UIImagePickerControllerDelegate, UITextFieldDelegate {
@@ -15,6 +16,7 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
 
     var carController = CarController()
     var photoController = PhotoController()
+    var carImagePicker = UIImagePickerController()
     var user: User?
     var car: Car?
 
@@ -61,23 +63,48 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
     }
 
     private func setupCamera() {
-        let camera = UIImagePickerController()
-        camera.sourceType = .camera
-        camera.allowsEditing = true
-        camera.delegate = self
-        present(camera, animated: true)
+
+        if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
+            carImagePicker.delegate = self
+            carImagePicker.sourceType = .camera
+            carImagePicker.allowsEditing = false
+
+            present(carImagePicker, animated: true, completion: nil)
+        } else {
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                if granted {
+
+                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                        DispatchQueue.main.async {
+                            self.carImagePicker.delegate = self
+                            self.carImagePicker.sourceType = .camera
+                            self.carImagePicker.allowsEditing = false
+
+                            self.present(self.carImagePicker, animated: true, completion: nil)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            self.carImagePicker.delegate = self
+                            self.carImagePicker.sourceType = .savedPhotosAlbum
+                            self.carImagePicker.allowsEditing = false
+
+                            self.present(self.carImagePicker, animated: true, completion: nil)
+                        }
+                    }
+                } else {
+                    return
+                }
+            }
+        }
     }
 
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        picker.dismiss(animated: true)
-
-        guard let image = info[.editedImage] as? UIImage else {
-            print("No image found")
-            return
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            carImageView.image = image
         }
 
-        carImageView.image = image
+        self.dismiss(animated: true, completion: nil)
     }
 
     func tieCar(carRep: CarRepresentation, carId: Int) {
@@ -108,7 +135,7 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
     private func updateViews() {
         guard let car = car else { return }
 
-        carImageView.image = UIImage.cached(from: car.photo!)
+        carImageView.image = UIImage.cached(from: car.photo ?? "")
         yearTextField.text = "\(car.year)"
         makeTextField.text = car.make
         modelTextField.text = car.model
@@ -144,7 +171,8 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
               let model = modelTextField.text,
               let licensePlate = licenseTextField.text,
               let color = colorTextField.text,
-              let category = categoryTextField.text else { return nil }
+              let category = categoryTextField.text,
+              carImageView.image != nil else { return nil }
 
         let segment = sizeSegmentedControl.selectedSegmentIndex
         guard let size = sizeSegmentedControl.titleForSegment(at: segment),
@@ -190,9 +218,15 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
                             guard let data = data else { return }
 
                             if let car = self.carController.decodeCar(with: data) {
-                                guard let user = self.user else { return }
-                                user.addToCars(car)
                                 self.tieCar(carRep: carRep, carId: Int(car.carId))
+                            }
+
+                            if let carRep = self.carController.decodeCarRep(with: data) {
+                                guard let user = UserController.shared.sessionUser.user else { return }
+                                let car = self.carController.findOrCreateCarInCoreData(from: carRep)
+                                user.addToCars(car)
+                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"),
+                                                                object: nil)
 
                                 let moc = CoreDataStack.shared.mainContext
                                 do {
@@ -208,9 +242,6 @@ UIImagePickerControllerDelegate, UITextFieldDelegate {
 
             DispatchQueue.main.async {
                 self.dismiss(animated: true, completion: nil)
-               DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
-                }
             }
         }
     }

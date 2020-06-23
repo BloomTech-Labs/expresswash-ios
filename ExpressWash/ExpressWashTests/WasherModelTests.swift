@@ -34,6 +34,7 @@ class WasherModelTests: XCTestCase {
         
         if let user1Data = JSONLoader.readFrom(filename: "User1") {
             URLProtocolMock.testURLs[BASEURL.appendingPathComponent(ENDPOINTS.users.rawValue).appendingPathComponent("1")] = user1Data
+
         }
         
         // Set URLSession to use Mock Protocol
@@ -149,7 +150,16 @@ class WasherModelTests: XCTestCase {
             }
         }
         
-        waitForExpectations(timeout: 15.0, handler: nil)
+
+        waitForExpectations(timeout: 3.0, handler: nil)
+        
+        let washerDeletedExpectation = expectation(description: "Washer is deleted")
+        washerController.deleteWasherLocally(washer: washer) { error in
+            XCTAssertNil(error)
+            washerDeletedExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 3.0, handler: nil)
     }
     
     func testRateWasher() throws {

@@ -21,11 +21,7 @@ UICollectionViewDataSource, STPAuthenticationContext {
     }()
     var cars: [Car] {
         guard let user = UserController.shared.sessionUser.user else { return [] }
-        guard let cars = user.cars else { return [] }
-        let set = cars as? Set<Car> ?? []
-        return set.sorted(by: { (carOne, carTwo) -> Bool in
-            carOne.carId > carTwo.carId
-        })
+        return user.carsArray
     }
     var jobController = JobController()
     var amount: Int? {
@@ -107,10 +103,12 @@ UICollectionViewDataSource, STPAuthenticationContext {
             cell.imageView.image = UIImage.cached(from: photoString, defaultTitle: nil)
         }
 
+        cell.modelLabel.text = car.model
+
         if self.selectedIndexPath != nil && indexPath == self.selectedIndexPath {
-            cell.layer.borderColor = UIColor(named: "Salmon")?.cgColor
+            cell.imageView.layer.borderColor = UIColor(named: "Salmon")?.cgColor
         } else {
-            cell.layer.borderColor = UIColor.white.cgColor
+            cell.imageView.layer.borderColor = UIColor.white.cgColor
         }
 
         cell.layer.cornerRadius = 5.0
@@ -119,9 +117,9 @@ UICollectionViewDataSource, STPAuthenticationContext {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell?.layer.borderWidth = 2.0
-        cell?.layer.borderColor = UIColor(named: "Salmon")?.cgColor
+        let cell = collectionView.cellForItem(at: indexPath) as? CarCollectionViewCell
+        cell?.imageView.layer.borderWidth = 2.0
+        cell?.imageView.layer.borderColor = UIColor(named: "Salmon")?.cgColor
         self.selectedIndexPath = indexPath
         self.selectedCar = nil
         self.selectedCar = cars[indexPath.row]
@@ -131,9 +129,9 @@ UICollectionViewDataSource, STPAuthenticationContext {
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell?.layer.borderWidth = 0.0
-        cell?.layer.borderColor = UIColor.white.cgColor
+        let cell = collectionView.cellForItem(at: indexPath) as? CarCollectionViewCell
+        cell?.imageView.layer.borderWidth = 0.0
+        cell?.imageView.layer.borderColor = UIColor.white.cgColor
         self.selectedIndexPath = nil
     }
 

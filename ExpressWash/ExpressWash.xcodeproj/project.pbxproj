@@ -509,6 +509,7 @@
 				378CE7C82473A28C00486754 /* CarTests */,
 				5DF65E3624A02289009B49BA /* HelperTests */,
 				37C3A1F224762A3A008ECB90 /* JobTests */,
+
 				377D1A05246A48A500CA3AEB /* SignUpTests */,
 				5DF65E35249FF7D9009B49BA /* UserTests */,
 				5D9962512465021C00D4151F /* WasherTests */,
@@ -540,11 +541,13 @@
 			isa = PBXGroup;
 			children = (
 				5D99624F2465017600D4151F /* UserModelTests.swift */,
+
 				5D7D92E424A06B2D00AE9841 /* UserControllerTests.swift */,
 			);
 			name = UserTests;
 			sourceTree = "<group>";
 		};
+
 		5DF65E3624A02289009B49BA /* HelperTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -554,6 +557,7 @@
 			name = HelperTests;
 			sourceTree = "<group>";
 		};
+
 		B41FE9FEE225BA7775004AA3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
