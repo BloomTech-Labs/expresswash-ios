@@ -3,3 +3,11 @@ excluded:
 - ExpressWash/AppDelegate.swift
 - ExpressWash/SceneDelegate.swift
 - ExpressWashTests
+
+type_body_length:
+- 300
+- 400
+
+function_body_length:
+- 75
+- 100

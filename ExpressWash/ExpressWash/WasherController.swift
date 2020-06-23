@@ -81,7 +81,6 @@ class WasherController {
                 }
             }
         }
-//        completion(nil)
     }
 
     func deleteWasherLocally(washer: Washer,
