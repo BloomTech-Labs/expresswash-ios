@@ -15,20 +15,6 @@ class WasherController {
     static let shared = WasherController()
 
     // MARK: - Local store methods
-    func createLocalWasher(from representation: WasherRepresentation,
-                           context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        _ = Washer(representation: representation, context: context)
-        context.perform {
-            do {
-                try CoreDataStack.shared.save(context: context)
-            } catch {
-                print("Unable to save new washer: \(error)")
-                context.reset()
-            }
-        }
-        // put(washer: newWasher)
-    }
-
     func updateWasher(_ washer: Washer,
                       with rep: WasherRepresentation,
                       context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
@@ -50,8 +36,8 @@ class WasherController {
             // if not, grab the user from Core Data
             if let newUser = UserController.shared.findUser(byID: rep.userId,
                                                             context: context) {
-                washer.user = newUser
                 context.perform {
+                    washer.user = newUser
                     do {
                         try CoreDataStack.shared.save(context: context)
                         completion(nil)
@@ -68,33 +54,33 @@ class WasherController {
                 UserController.shared.fetchUserByID(uid: rep.userId,
                                                     context: context) { (user, error) in
                     if let error = error {
-                        context.perform {
-                            print("Unable to fetch user to update washer: \(error)")
+                        print("Unable to fetch user to update washer: \(error)")
+                        completion(error)
+                        return
+                    }
+
+                    guard let user = user else {
+                        print("No user (id \(rep.userId)) returned for washer (id \(rep.washerId))")
+                        completion(NSError(domain: "update washer", code: NODATAERROR, userInfo: nil))
+                        return
+                    }
+
+                    context.perform {
+                        washer.user = user
+                        do {
+                            try CoreDataStack.shared.save(context: context)
+                            completion(nil)
+                            return
+                        } catch {
+                            print("Unable to save updated washer: \(error)")
                             context.reset()
                             completion(error)
-                        }
-                    } else {
-                        guard let user = user else {
-                            print("No user (id \(rep.userId)) returned for washer (id \(rep.washerId))")
-                            completion(NSError(domain: "update washer", code: NODATAERROR, userInfo: nil))
                             return
-                        }
-                        washer.user = user
-                        context.perform {
-                            do {
-                                try CoreDataStack.shared.save(context: context)
-                                completion(nil)
-                            } catch {
-                                print("Unable to save updated washer: \(error)")
-                                context.reset()
-                                completion(error)
-                            }
                         }
                     }
                 }
             }
         }
-        completion(nil)
     }
 
     func deleteWasherLocally(washer: Washer,
@@ -269,8 +255,8 @@ extension WasherController {
                     }
                     UserController.shared.fetchUserByID(uid: wash.userId) { (user, error) in
                         if let error = error {
-                            completion(washers, error)
-                            // sending back whatever washers we got plus the error
+                            print("Error fetching a washer-user: \(error)")
+                            return
                         }
 
                         if let user = user {

@@ -86,28 +86,6 @@ class UserController {
 
     // MARK: - Local store methods
 
-    func createUser(accountType: String,
-                    email: String,
-                    firstName: String,
-                    lastName: String,
-                    context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        let newUser = User(accountType: accountType,
-                           email: email,
-                           firstName: firstName,
-                           lastName: lastName)
-        context.perform {
-            do {
-                try CoreDataStack.shared.save(context: context)
-            } catch {
-                print("Unable to save new user: \(error)")
-                context.reset()
-            }
-        }
-
-        put(user: newUser)
-
-    }
-
     func updateUser(_ user: User,
                     with representation: UserRepresentation,
                     context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
@@ -203,42 +181,6 @@ class UserController {
         }
     }
 
-    func updateUsers(with representations: [UserRepresentation]) {
-        let usersWithID = representations.filter({ $0.userId != NOID })
-        let usersToFetch = usersWithID.compactMap({ $0.userId })
-        let representationsByID = Dictionary(uniqueKeysWithValues: zip(usersToFetch, usersWithID))
-        var usersToCreate = representationsByID // holds all users now, but will be whittled down
-
-        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "id IN %@", usersToFetch)
-
-        let context = CoreDataStack.shared.container.newBackgroundContext()
-        context.perform {
-            do {
-                let existingUsers = try context.fetch(fetchRequest)
-
-                for user in existingUsers {
-                    guard user.userId != NOID,
-                        let representation = representationsByID[Int(user.userId)] else {
-                        continue
-                    }
-
-                    self.update(user: user, with: representation)
-                    usersToCreate.removeValue(forKey: Int(user.userId))
-                    try CoreDataStack.shared.save(context: context)
-                }
-
-                // take care of the ones with id == 0
-                for representation in usersToCreate.values {
-                    _ = User(representation: representation)
-                    try CoreDataStack.shared.save(context: context)
-                }
-            } catch {
-                print("Error fetching users for IDs: \(error)")
-            }
-        }
-    }
-
     func findUser(byID uid: Int, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> User? {
         var foundUser: User?
         let obcjUID = NSNumber(value: uid)
@@ -250,6 +192,7 @@ class UserController {
             if matchedUsers.count == 1 {
                 foundUser = matchedUsers[0]
             } else {
+                print("Found \(matchedUsers.count) when searching for userId \(uid)")
                 foundUser = nil
             }
             return foundUser
@@ -335,16 +278,12 @@ extension UserController {
                 return
             }
 
-            guard let httpResponse = response as? HTTPURLResponse else {
-                print("Not a valid HTTPResponse when fetching user by ID \(uid)")
-                completion(nil, error)
-                return
-            }
-
-            if httpResponse.statusCode != 200 {
-                print("Non-200 response when fetching user by ID \(uid): \(httpResponse.statusCode)")
-                completion(nil, NSError(domain: "fetchUserByID", code: httpResponse.statusCode, userInfo: nil))
-                return
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode != 200 {
+                    print("Non-200 response when fetching user by ID \(uid): \(response.statusCode)")
+                    completion(nil, NSError(domain: "fetchUserByID", code: response.statusCode, userInfo: nil))
+                    return
+                }
             }
 
             guard let data = data else {

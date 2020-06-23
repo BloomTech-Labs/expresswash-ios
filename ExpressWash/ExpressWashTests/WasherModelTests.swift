@@ -26,15 +26,21 @@ class WasherModelTests: XCTestCase {
         if let rateWasherData = JSONLoader.readFrom(filename: "washerRating") {
             // test data
             URLProtocolMock.testURLs[BASEURL.appendingPathComponent(ENDPOINTS.washerRating.rawValue).appendingPathComponent("1")] = rateWasherData
-            if let userData = JSONLoader.readFrom(filename: "authLogin") {
-                URLProtocolMock.testURLs[BASEURL.appendingPathComponent(ENDPOINTS.users.rawValue).appendingPathComponent("39")] = userData
-            
-                // Set URLSession to use Mock Protocol
-                let testConfig = URLSessionConfiguration.ephemeral
-                testConfig.protocolClasses = [URLProtocolMock.self]
-                ExpressWash.SESSION = URLSession(configuration: testConfig)
-            }
         }
+        
+        if let userData = JSONLoader.readFrom(filename: "authLogin") {
+            URLProtocolMock.testURLs[BASEURL.appendingPathComponent(ENDPOINTS.users.rawValue).appendingPathComponent("39")] = userData
+        }
+        
+        if let user1Data = JSONLoader.readFrom(filename: "User1") {
+            URLProtocolMock.testURLs[BASEURL.appendingPathComponent(ENDPOINTS.users.rawValue).appendingPathComponent("1")] = user1Data
+
+        }
+        
+        // Set URLSession to use Mock Protocol
+        let testConfig = URLSessionConfiguration.ephemeral
+        testConfig.protocolClasses = [URLProtocolMock.self]
+        ExpressWash.SESSION = URLSession(configuration: testConfig)
     }
 
     override func tearDownWithError() throws {
@@ -90,11 +96,11 @@ class WasherModelTests: XCTestCase {
     }
     
     func testWasherController() throws {
-        let user = User(accountType: "washer",
+        let user = User(userId: 1,
+                        accountType: "washer",
                         email: "washer@email.com",
                         firstName: "Test",
                         lastName: "User")
-        user.userId = 1
         var washerRep = WasherRepresentation(aboutMe: testAboutMe,
                                              available: false,
                                              currentLocationLat: testLat,
@@ -102,15 +108,15 @@ class WasherModelTests: XCTestCase {
                                              rateSmall: testRateSmall,
                                              rateMedium: testRateMedium,
                                              rateLarge: testRateLarge,
-                                             washerId: 7,
+                                             washerId: 97,
                                              washerRating: 3,
                                              washerRatingTotal: 3,
                                              userId: Int(user.userId))
 
         let washerController = WasherController()
-        washerController.createLocalWasher(from: washerRep)
+        _ = Washer(representation: washerRep)
         
-        guard let washer = washerController.findWasher(byID: Int32(7)) else {
+        guard let washer = washerController.findWasher(byID: Int32(97)) else {
             XCTFail()
             return
         }
@@ -122,9 +128,12 @@ class WasherModelTests: XCTestCase {
         washerRep.rateLarge = updatedRateLarge
         
         let washerExpectation = expectation(description: "Washer is updated")
+        let washerDeletedExpectation = expectation(description: "Washer deleted")
+
         washerController.updateWasher(washer, with: washerRep) { (error) in
             if let error = error {
-                XCTFail(error.localizedDescription)
+                print(error)
+                XCTFail()
                 return
             }
             
@@ -133,10 +142,15 @@ class WasherModelTests: XCTestCase {
             XCTAssert(washer.currentLocationLat == self.updatedLat)
             XCTAssert(washer.currentLocationLon == self.updatedLon)
             XCTAssert(washer.rateLarge == self.updatedRateLarge)
-            
             washerExpectation.fulfill()
+            
+            washerController.deleteWasherLocally(washer: washer) { error in
+                XCTAssertNil(error)
+                washerDeletedExpectation.fulfill()
+            }
         }
         
+
         waitForExpectations(timeout: 3.0, handler: nil)
         
         let washerDeletedExpectation = expectation(description: "Washer is deleted")
@@ -163,6 +177,6 @@ class WasherModelTests: XCTestCase {
             rateExpectation.fulfill()
         }
         
-        waitForExpectations(timeout: 3.0, handler: nil)
+        waitForExpectations(timeout: 15.0, handler: nil)
     }
 }

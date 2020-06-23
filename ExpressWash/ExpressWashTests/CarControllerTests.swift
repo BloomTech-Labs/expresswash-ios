@@ -11,10 +11,13 @@ import XCTest
 
 class CarControllerTests: XCTestCase {
 
+    var data: Data?
+    
     override func setUpWithError() throws {
         // test data
         if let CarData = JSONLoader.readFrom(filename: "Car") {
             URLProtocolMock.testURLs[BASEURL.appendingPathComponent("cars/")] = CarData
+            data = CarData
         }
         
         if let EditData = JSONLoader.readFrom(filename: "EditCar") {
@@ -70,7 +73,7 @@ class CarControllerTests: XCTestCase {
             expect.fulfill()
         }
         
-        waitForExpectations(timeout: 3.0, handler: nil)
+        waitForExpectations(timeout: 15.0, handler: nil)
         
     }
     
@@ -113,7 +116,7 @@ class CarControllerTests: XCTestCase {
             expect.fulfill()
         }
         
-        waitForExpectations(timeout: 3.0, handler: nil)
+        waitForExpectations(timeout: 15.0, handler: nil)
     }
     
     func testEditCar() throws {
@@ -155,7 +158,7 @@ class CarControllerTests: XCTestCase {
              expect.fulfill()
         }
         
-        waitForExpectations(timeout: 3.0, handler: nil)
+        waitForExpectations(timeout: 15.0, handler: nil)
     }
     
     func testUpdateCar() throws {
@@ -209,7 +212,45 @@ class CarControllerTests: XCTestCase {
             expect.fulfill()
         }
         
-        waitForExpectations(timeout: 3.0, handler: nil)
+        waitForExpectations(timeout: 15.0, handler: nil)
+    }
+    
+    func testUpdateCarInCoreData() throws {
+        let baseCarId = 0
+        let baseClientId = 6
+        let baseMake = "ford"
+        let baseModel = "mustang"
+        let baseYear: Int16 = 1996
+        let baseColor = "blue"
+        let baseLicensePlate = "xyz 123"
+        let basePhoto = "some url"
+        let baseCategory = "car"
+        let baseSize = "small"
+
+        let baseCar = Car(carId: Int32(baseCarId), clientId: baseClientId, make: baseMake, model: baseModel, year: baseYear, color: baseColor, licensePlate: baseLicensePlate, photo: basePhoto, category: baseCategory, size: baseSize)
+        
+        let carId = 0
+        let clientId = 6
+        let make = "ford"
+        let model = "fusion"
+        let year: Int16 = 1996
+        let color = "blue"
+        let licensePlate = "xyz 123"
+        let photo = "some url"
+        let category = "car"
+        let size = "small"
+        
+        let carRepresentation = CarRepresentation(carId: carId, clientId: clientId, make: make, model: model, year: year, color: color, licensePlate: licensePlate, photo: photo, category: category, size: size)
+        
+        CarController.shared.updateCarInCoreData(baseCar, rep: carRepresentation) { (car, error) in
+            XCTAssertNil(error)
+            guard let car = car else {
+                XCTFail()
+                return
+            }
+            XCTAssert(car.clientId == 6)
+            XCTAssert(car.year == 1996)
+        }
     }
     
     func testDeleteCar() throws {
@@ -236,6 +277,16 @@ class CarControllerTests: XCTestCase {
             expect.fulfill()
         }
         
-        waitForExpectations(timeout: 3.0, handler: nil)
+        waitForExpectations(timeout: 15.0, handler: nil)
+    }
+    
+    func testDecodeCar() throws {
+        guard let data = data else {
+            XCTFail()
+            return
+        }
+        
+        let car = CarController.shared.decodeCar(with: data)
+        XCTAssertNotNil(car)
     }
 }

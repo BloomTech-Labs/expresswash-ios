@@ -100,7 +100,9 @@ class JobController {
             let washerController = WasherController()
             let carController = CarController()
             job.client = UserController.shared.findUser(byID: rep.clientId)
-            job.washer = washerController.findWasher(byID: rep.washerId!)
+            if let washerId = rep.washerId {
+                job.washer = washerController.findWasher(byID: washerId)
+            }
             job.car = carController.findCar(by: rep.carId)
 
             do {

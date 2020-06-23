@@ -39,7 +39,7 @@
 		37C3A1ED2475FE64008ECB90 /* JobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C3A1EC2475FE64008ECB90 /* JobController.swift */; };
 		37C3A1EF247629D2008ECB90 /* Job.json in Resources */ = {isa = PBXBuildFile; fileRef = 37C3A1EE247629D2008ECB90 /* Job.json */; };
 		37C3A1F1247629EC008ECB90 /* DeleteJob.json in Resources */ = {isa = PBXBuildFile; fileRef = 37C3A1F0247629EC008ECB90 /* DeleteJob.json */; };
-		37C3A1F424762A4F008ECB90 /* JobTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C3A1F324762A4F008ECB90 /* JobTests.swift */; };
+		37C3A1F424762A4F008ECB90 /* JobControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C3A1F324762A4F008ECB90 /* JobControllerTests.swift */; };
 		37C3A1F82476D852008ECB90 /* EditJob.json in Resources */ = {isa = PBXBuildFile; fileRef = 37C3A1F72476D852008ECB90 /* EditJob.json */; };
 		37E2B037249AB40000617C03 /* StripeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2B036249AB40000617C03 /* StripeController.swift */; };
 		37E2B039249AB9B000617C03 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2B038249AB9B000617C03 /* PaymentViewController.swift */; };
@@ -70,6 +70,12 @@
 		5D51383D2463A13500E81AEA /* Washer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D51383C2463A13500E81AEA /* Washer+Convenience.swift */; };
 		5D605C652453D31100B83420 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D605C642453D31100B83420 /* UserRepresentation.swift */; };
 		5D605C672453DEB700B83420 /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D605C662453DEB700B83420 /* User+Convenience.swift */; };
+		5D7D92DB24A0551400AE9841 /* jobsForUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D92DA24A0551400AE9841 /* jobsForUser.json */; };
+		5D7D92DF24A0597500AE9841 /* NumberFormatter+DollarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D92DE24A0597500AE9841 /* NumberFormatter+DollarTests.swift */; };
+		5D7D92E324A0693C00AE9841 /* User1.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D92E224A0693C00AE9841 /* User1.json */; };
+		5D7D92E524A06B2D00AE9841 /* UserControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D92E424A06B2D00AE9841 /* UserControllerTests.swift */; };
+		5D7D92E724A0FF8000AE9841 /* WasherControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D92E624A0FF8000AE9841 /* WasherControllerTests.swift */; };
+		5D7D92E924A1659800AE9841 /* washersInCity.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D92E824A1659800AE9841 /* washersInCity.json */; };
 		5D7DBB062488995C00ABD34C /* SessionUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DBB052488995C00ABD34C /* SessionUser.swift */; };
 		5D7FD39E249F023B002B1090 /* WasherViewController+MGLMapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7FD39D249F023B002B1090 /* WasherViewController+MGLMapViewDelegate.swift */; };
 		5D7FD3A0249F02E1002B1090 /* WasherViewController+UIImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7FD39F249F02E1002B1090 /* WasherViewController+UIImagePickerControllerDelegate.swift */; };
@@ -87,6 +93,7 @@
 		5DC3040C245285D2000C5631 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3040B245285D2000C5631 /* SignInViewController.swift */; };
 		5DD4A848246A461000E5FA2B /* UserController+authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD4A847246A461000E5FA2B /* UserController+authenticate.swift */; };
 		5DD4A84E246B8D7200E5FA2B /* URLProcotolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD4A84D246B8D7200E5FA2B /* URLProcotolMock.swift */; };
+		5DF65E3824A022DE009B49BA /* DateFromatter+ClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF65E3724A022DE009B49BA /* DateFromatter+ClockTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,7 +140,7 @@
 		37C3A1EC2475FE64008ECB90 /* JobController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobController.swift; sourceTree = "<group>"; };
 		37C3A1EE247629D2008ECB90 /* Job.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Job.json; sourceTree = "<group>"; };
 		37C3A1F0247629EC008ECB90 /* DeleteJob.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DeleteJob.json; sourceTree = "<group>"; };
-		37C3A1F324762A4F008ECB90 /* JobTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTests.swift; sourceTree = "<group>"; };
+		37C3A1F324762A4F008ECB90 /* JobControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobControllerTests.swift; sourceTree = "<group>"; };
 		37C3A1F72476D852008ECB90 /* EditJob.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EditJob.json; sourceTree = "<group>"; };
 		37E2B036249AB40000617C03 /* StripeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeController.swift; sourceTree = "<group>"; };
 		37E2B038249AB9B000617C03 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +171,12 @@
 		5D51383C2463A13500E81AEA /* Washer+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Washer+Convenience.swift"; sourceTree = "<group>"; };
 		5D605C642453D31100B83420 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
 		5D605C662453DEB700B83420 /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
+		5D7D92DA24A0551400AE9841 /* jobsForUser.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = jobsForUser.json; sourceTree = "<group>"; };
+		5D7D92DE24A0597500AE9841 /* NumberFormatter+DollarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+DollarTests.swift"; sourceTree = "<group>"; };
+		5D7D92E224A0693C00AE9841 /* User1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = User1.json; sourceTree = "<group>"; };
+		5D7D92E424A06B2D00AE9841 /* UserControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserControllerTests.swift; sourceTree = "<group>"; };
+		5D7D92E624A0FF8000AE9841 /* WasherControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherControllerTests.swift; sourceTree = "<group>"; };
+		5D7D92E824A1659800AE9841 /* washersInCity.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = washersInCity.json; sourceTree = "<group>"; };
 		5D7DBB052488995C00ABD34C /* SessionUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUser.swift; sourceTree = "<group>"; };
 		5D7FD39D249F023B002B1090 /* WasherViewController+MGLMapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WasherViewController+MGLMapViewDelegate.swift"; sourceTree = "<group>"; };
 		5D7FD39F249F02E1002B1090 /* WasherViewController+UIImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WasherViewController+UIImagePickerControllerDelegate.swift"; sourceTree = "<group>"; };
@@ -184,6 +197,7 @@
 		5DC3040B245285D2000C5631 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = SOURCE_ROOT; };
 		5DD4A847246A461000E5FA2B /* UserController+authenticate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserController+authenticate.swift"; sourceTree = "<group>"; };
 		5DD4A84D246B8D7200E5FA2B /* URLProcotolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProcotolMock.swift; sourceTree = "<group>"; };
+		5DF65E3724A022DE009B49BA /* DateFromatter+ClockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFromatter+ClockTests.swift"; sourceTree = "<group>"; };
 		784D55BC02CE141CBBA94DD7 /* Pods-ExpressWash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpressWash.release.xcconfig"; path = "Target Support Files/Pods-ExpressWash/Pods-ExpressWash.release.xcconfig"; sourceTree = "<group>"; };
 		7A8200D7CB7A1DA0AE0695DE /* Pods_ExpressWash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpressWash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22957D25B9EF61851B91CB3 /* Pods-ExpressWash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpressWash.debug.xcconfig"; path = "Target Support Files/Pods-ExpressWash/Pods-ExpressWash.debug.xcconfig"; sourceTree = "<group>"; };
@@ -445,7 +459,7 @@
 			isa = PBXGroup;
 			children = (
 				5D99624B2464FFDB00D4151F /* JobModelTests.swift */,
-				37C3A1F324762A4F008ECB90 /* JobTests.swift */,
+				37C3A1F324762A4F008ECB90 /* JobControllerTests.swift */,
 			);
 			name = JobTests;
 			sourceTree = "<group>";
@@ -471,6 +485,9 @@
 				37C3A1F72476D852008ECB90 /* EditJob.json */,
 				37C3A1EE247629D2008ECB90 /* Job.json */,
 				5D41D4F92474DB6900DC3152 /* washerRating.json */,
+				5D7D92DA24A0551400AE9841 /* jobsForUser.json */,
+				5D7D92E224A0693C00AE9841 /* User1.json */,
+				5D7D92E824A1659800AE9841 /* washersInCity.json */,
 			);
 			name = "Mock Data";
 			sourceTree = "<group>";
@@ -479,6 +496,7 @@
 			isa = PBXGroup;
 			children = (
 				5D9962492464FFB700D4151F /* WasherModelTests.swift */,
+				5D7D92E624A0FF8000AE9841 /* WasherControllerTests.swift */,
 			);
 			name = WasherTests;
 			sourceTree = "<group>";
@@ -488,9 +506,11 @@
 			children = (
 				5DD4A84D246B8D7200E5FA2B /* URLProcotolMock.swift */,
 				5D0971E9246B913500B5492D /* JSONLoader.swift */,
-				377D1A05246A48A500CA3AEB /* SignUpTests */,
 				378CE7C82473A28C00486754 /* CarTests */,
+				5DF65E3624A02289009B49BA /* HelperTests */,
 				37C3A1F224762A3A008ECB90 /* JobTests */,
+
+				377D1A05246A48A500CA3AEB /* SignUpTests */,
 				5DF65E35249FF7D9009B49BA /* UserTests */,
 				5D9962512465021C00D4151F /* WasherTests */,
 				5D0971E6246B902500B5492D /* Mock Data */,
@@ -521,10 +541,23 @@
 			isa = PBXGroup;
 			children = (
 				5D99624F2465017600D4151F /* UserModelTests.swift */,
+
+				5D7D92E424A06B2D00AE9841 /* UserControllerTests.swift */,
 			);
 			name = UserTests;
 			sourceTree = "<group>";
 		};
+
+		5DF65E3624A02289009B49BA /* HelperTests */ = {
+			isa = PBXGroup;
+			children = (
+				5DF65E3724A022DE009B49BA /* DateFromatter+ClockTests.swift */,
+				5D7D92DE24A0597500AE9841 /* NumberFormatter+DollarTests.swift */,
+			);
+			name = HelperTests;
+			sourceTree = "<group>";
+		};
+
 		B41FE9FEE225BA7775004AA3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -634,13 +667,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				371DFE3F2474CAB1008EAAE0 /* EditCar.json in Resources */,
+				5D7D92E324A0693C00AE9841 /* User1.json in Resources */,
 				37C3A1EF247629D2008ECB90 /* Job.json in Resources */,
 				371DFE3D2474AE05008EAAE0 /* Car.json in Resources */,
 				371683A5247074BA000CE78C /* authRegister.json in Resources */,
 				37C3A1F1247629EC008ECB90 /* DeleteJob.json in Resources */,
 				37C3A1F82476D852008ECB90 /* EditJob.json in Resources */,
+				5D7D92E924A1659800AE9841 /* washersInCity.json in Resources */,
 				5D41D4FA2474DB6900DC3152 /* washerRating.json in Resources */,
 				5D0685AF246B9FB800C44DEF /* authLogin.json in Resources */,
+				5D7D92DB24A0551400AE9841 /* jobsForUser.json in Resources */,
 				371DFE412474D98B008EAAE0 /* DeleteCar.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -772,13 +808,17 @@
 			files = (
 				378CE7CA2473A2C100486754 /* CarControllerTests.swift in Sources */,
 				5D99624E2464FFE900D4151F /* CarModelTest.swift in Sources */,
+				5D7D92E524A06B2D00AE9841 /* UserControllerTests.swift in Sources */,
 				5D99624A2464FFB700D4151F /* WasherModelTests.swift in Sources */,
-				37C3A1F424762A4F008ECB90 /* JobTests.swift in Sources */,
+				37C3A1F424762A4F008ECB90 /* JobControllerTests.swift in Sources */,
+				5D7D92DF24A0597500AE9841 /* NumberFormatter+DollarTests.swift in Sources */,
 				5D0971EA246B913500B5492D /* JSONLoader.swift in Sources */,
 				377D1A07246A4A3D00CA3AEB /* SignUpTests.swift in Sources */,
 				5D9962502465017600D4151F /* UserModelTests.swift in Sources */,
 				5D99624C2464FFDB00D4151F /* JobModelTests.swift in Sources */,
+				5D7D92E724A0FF8000AE9841 /* WasherControllerTests.swift in Sources */,
 				5DD4A84E246B8D7200E5FA2B /* URLProcotolMock.swift in Sources */,
+				5DF65E3824A022DE009B49BA /* DateFromatter+ClockTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

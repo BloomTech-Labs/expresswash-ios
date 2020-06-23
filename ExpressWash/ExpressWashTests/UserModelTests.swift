@@ -64,7 +64,7 @@ class UserModelTests: XCTestCase {
             authExpectation.fulfill()
         }
         
-        waitForExpectations(timeout: 3.0, handler: nil)
+        waitForExpectations(timeout: 15.0, handler: nil)
     }
 
 }

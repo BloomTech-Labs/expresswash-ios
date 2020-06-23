@@ -12,6 +12,7 @@ extension UserController {
 
     typealias CompletionHandler = (User?, Error?) -> Void
 
+    // swiftlint:disable function_parameter_count
     func registerUser(account type: String,
                       with emailAddress: String,
                       _ firstName: String,
