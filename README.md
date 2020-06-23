@@ -46,7 +46,7 @@ C. Allow customers to hire car washers and facilitate and manage the transaction
 
 D. Allow customers and car washers to rate and leave feedback about each other.
 
-![](header.png)
+![](https://github.com/Lambda-School-Labs/wowo-ios/blob/readme-updates/WasherScreens.png)
 
 ### Features
 
