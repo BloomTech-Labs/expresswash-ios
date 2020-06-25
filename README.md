@@ -23,6 +23,7 @@
 
 You can clone and build this project in Xcode.
 Test the app directly on your phone from TestFlight: https://testflight.apple.com/join/xOHV2Zmj (last deployed 25 Jun, 2020)
+
 You can find the deployed web project at [www.expresswash.us](https://www.expresswash.us).
 
 [Trello Board](https://trello.com/b/LeNRHnQ2/labspt9-wowo)
@@ -135,7 +136,7 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](_link to your backend readme here_) for details on the backend of our project.
+See [Backend Documentation](https://github.com/Lambda-School-Labs/wowo-be) for details on the backend of our project.
 
 
 [swift-image]: https://img.shields.io/badge/swift-5.0-orange.svg
