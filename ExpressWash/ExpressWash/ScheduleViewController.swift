@@ -125,6 +125,7 @@ class ScheduleViewController: UIViewController,
         washersCollectionView.allowsMultipleSelection = false
 
         addressTextField.text = ""
+        selectedWasher = nil
     }
 
     func setUpMap() {
@@ -174,29 +175,33 @@ class ScheduleViewController: UIViewController,
 
     func autoFillAddress() {
         self.mapView.removeAnnotation(annotation)
+        guard let user = UserController.shared.sessionUser.user,
+            let address = user.streetAddress,
+            let city = user.city,
+            let state = user.state else { return }
 
-        if let address = UserController.shared.sessionUser.user?.streetAddress {
-            addressTextField.text = address
+        let addressString = "\(address), \(city.capitalized), \(state.uppercased())"
 
-            CLGeocoder().geocodeAddressString(address) { (placemarks, error) in
-                if let error = error {
-                    print("Error geocoding address: \(error)")
-                    return
-                }
+        addressTextField.text = addressString
 
-                guard let placemarks = placemarks, let location = placemarks.first?.location else {
-                    print("No location found")
-                    return
-                }
-
-                self.annotation.coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
-                                                               longitude: location.coordinate.longitude)
-                self.mapView.addAnnotation(self.annotation)
-
-                self.getWashers(location: location)
-
-                self.washersCollectionView.reloadData()
+        CLGeocoder().geocodeAddressString(addressString) { (placemarks, error) in
+            if let error = error {
+                print("Error geocoding address: \(error)")
+                return
             }
+
+            guard let placemarks = placemarks, let location = placemarks.first?.location else {
+                print("No location found")
+                return
+            }
+
+            self.annotation.coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
+                                                           longitude: location.coordinate.longitude)
+            self.mapView.addAnnotation(self.annotation)
+
+            self.getWashers(location: location)
+
+            self.washersCollectionView.reloadData()
         }
     }
 

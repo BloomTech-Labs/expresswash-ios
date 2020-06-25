@@ -81,6 +81,7 @@ class ReceiptDetailViewController: UIViewController {
 
         \(job.washer!.aboutMe ?? "")
         """
+        washerAboutMeTextView.backgroundColor = .white
     }
 
     private func oneStarFill() {
