@@ -458,6 +458,7 @@
 		37C3A1F224762A3A008ECB90 /* JobTests */ = {
 			isa = PBXGroup;
 			children = (
+				37C3A1F324762A4F008ECB90 /* JobControllerTests.swift */,
 				5D99624B2464FFDB00D4151F /* JobModelTests.swift */,
 				37C3A1F324762A4F008ECB90 /* JobControllerTests.swift */,
 			);
@@ -509,7 +510,6 @@
 				378CE7C82473A28C00486754 /* CarTests */,
 				5DF65E3624A02289009B49BA /* HelperTests */,
 				37C3A1F224762A3A008ECB90 /* JobTests */,
-
 				377D1A05246A48A500CA3AEB /* SignUpTests */,
 				5DF65E35249FF7D9009B49BA /* UserTests */,
 				5D9962512465021C00D4151F /* WasherTests */,
