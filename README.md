@@ -1,7 +1,5 @@
 # ExpressWash.us (formerly Wo-Wo)
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
-
 ## Contributors
 
 |                                       [Joel Groomer](https://github.com/joelgroomer)                                        |                                       [Robert Keffury](https://github.com/Keffury1)                                        |                                       
@@ -23,7 +21,10 @@
 
 ## Project Overview
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+You can clone and build this project in Xcode.
+Test the app directly on your phone from TestFlight: https://testflight.apple.com/join/xOHV2Zmj (last deployed 25 Jun, 2020)
+
+You can find the deployed web project at [www.expresswash.us](https://www.expresswash.us).
 
 [Trello Board](https://trello.com/b/LeNRHnQ2/labspt9-wowo)
 
@@ -46,21 +47,26 @@ C. Allow customers to hire car washers and facilitate and manage the transaction
 
 D. Allow customers and car washers to rate and leave feedback about each other.
 
-![](https://github.com/Lambda-School-Labs/wowo-ios/blob/readme-updates/WasherScreens.png)
+![](https://github.com/Lambda-School-Labs/wowo-ios/blob/master/README_images/ExpressWashScreens.png)
 
 ### Features
 
--    In-App Payment
--    Schedule/Accept Car Wash  [Client/Washer]
--    Notification of Completed Wash w/ Photos
--    Map for Washers
--    User Profiles for Display
+-   Schedule a Car Wash
+    - Search for your desired location and see it on a map
+    - Select your desired Washer from a list of available Washers in your area
+-   In-App payment via Stripe
+-   Notification of completed job (via email)
+    - See before and after photos of your wash
+-   Map of job location for Washers
+    - Details of the car to be washed are displayed
+-   User profiles, add multiple cars to your account
+-   Washers can set rates for small, medium, and large cars
 
 ### Authentication API here
 
-AWS Amplify:
+Authentication is done through JWT via the back-end. To authenticate requests in the app, add UserController.shared.bearerToken to your request.
 
-AWS Amplify is a development platform for building secure, scalable mobile and web applications. It makes it easy for you to authenticate users, securely store data and user metadata, authorize selective access to data, integrate machine learning, analyze application metrics, and execute server-side code.
+`request.setValue(UserController.shared.bearerToken, forHTTPHeaderField: "Authorization")`
 
 
 ### Payment API here
@@ -130,14 +136,13 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](_link to your backend readme here_) for details on the backend of our project.
+See [Backend Documentation](https://github.com/Lambda-School-Labs/wowo-be) for details on the backend of our project.
 
 
-[swift-image]: https://img.shields.io/badge/swift-3.0-orange.svg
+[swift-image]: https://img.shields.io/badge/swift-5.0-orange.svg
 [swift-url]: https://swift.org/
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
 [travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
-[codebeat-image]: https://codebeat.co/badges/c19b47ea-2f9d-45df-8458-b2d952fe9dad
-[codebeat-url]: https://codebeat.co/projects/github-com-vsouza-awesomeios-com
+
