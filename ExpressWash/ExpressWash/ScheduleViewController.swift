@@ -125,6 +125,7 @@ class ScheduleViewController: UIViewController,
         washersCollectionView.allowsMultipleSelection = false
 
         addressTextField.text = ""
+        selectedWasher = nil
     }
 
     func setUpMap() {

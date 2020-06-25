@@ -80,6 +80,7 @@ class WasherViewController: UIViewController {
         arrivedCompleteLabel.layer.cornerRadius = 10.0
         arrivedCompleteLabel.layer.masksToBounds = true
         arrivedCompleteButton.layer.cornerRadius = 10.0
+        carImageView.layer.cornerRadius = 10.0
         addressLabel.layer.cornerRadius = 10.0
         addressLabel.layer.masksToBounds = true
         mapView.attributionButton.isHidden = true
