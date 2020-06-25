@@ -294,21 +294,23 @@ class WasherViewController: UIViewController {
 
             present(imagePicker, animated: true, completion: nil)
         } else {
-            AVCaptureDevice.requestAccess(for: .video) { granted in
-                if granted {
-                    self.imagePicker.delegate = self
-                    // try to access the camera
-                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                        self.imagePicker.sourceType = .camera
-                    } else {
-                        // if camera not available (simulator) access saved photos
-                        self.imagePicker.sourceType = .savedPhotosAlbum
-                    }
-                    self.imagePicker.allowsEditing = false
+            DispatchQueue.main.async {
+                AVCaptureDevice.requestAccess(for: .video) { granted in
+                    if granted {
+                        self.imagePicker.delegate = self
+                        // try to access the camera
+                        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                            self.imagePicker.sourceType = .camera
+                        } else {
+                            // if camera not available (simulator) access saved photos
+                            self.imagePicker.sourceType = .savedPhotosAlbum
+                        }
+                        self.imagePicker.allowsEditing = false
 
-                    self.present(self.imagePicker, animated: true, completion: nil)
-                } else {
-                    return
+                        self.present(self.imagePicker, animated: true, completion: nil)
+                    } else {
+                        return
+                    }
                 }
             }
         }
