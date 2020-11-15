@@ -1,5 +1,7 @@
 # ExpressWash.us (formerly Wo-Wo)
 
+**NOTE: This project has been moved to https://github.com/ExpressWash-9/expresswash-ios**
+
 ## Contributors
 
 |                                       [Joel Groomer](https://github.com/joelgroomer)                                        |                                       [Robert Keffury](https://github.com/Keffury1)                                        |                                       
